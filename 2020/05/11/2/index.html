@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://jocolorful.com/images/itermalias.png">
 <meta property="og:image" content="http://jocolorful.com/images/itermbg.png">
 <meta property="article:published_time" content="2020-05-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-11T08:05:46.403Z">
+<meta property="article:modified_time" content="2020-05-20T03:09:11.849Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://jocolorful.com/images/iterm.png">
@@ -158,6 +158,17 @@ ga('send', 'pageview');
             target="_self"
             >
             搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
           </a>
         </li>
       
@@ -334,6 +345,17 @@ ga('send', 'pageview');
             </a>
           </li>
         
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
       </ul>
 
     </div>
@@ -351,38 +373,39 @@ ga('send', 'pageview');
     
     
 
+  <div id="gitment-comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+    (function () {
+      var gitment = new Gitment({
+        owner: 'fidoChou',
+        repo: 'https://github.com/fidoChou/blog-comment.git',
+        oauth: {
+          client_id: '6e1bd36a2fd1534ebf18',
+          client_secret: '7bc12b47ad2a14669ec8eb1e0746201f3642cad1'
+        },
+        
+        
+        
+        
+        
+        
+        
+        
+      })
+      gitment.render('gitment-comments')
+    })()
+  </script>
+
+
+
+    
+
+    
     
 
     
-    
-
-    
-
-<!-- Gitalk评论插件通用代码 -->
-<div id="gitalk-container"></div>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
-<script>
-const gitalk = new Gitalk({
-  clientID: '277317290454635afa73',
-  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
-  repo: 'blog-comment',
-  owner: 'forsigner',
-  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
-  // 50个字符串则会报错.
-  // id: location.pathname.split('/').pop().substring(0, 49),
-  id: md5(location.pathname),
-  admin: ['forsigner'],
-  // facebook-like distraction free mode
-  distractionFreeMode: false
-})
-gitalk.render('gitalk-container')
-</script>
-<!-- Gitalk代码结束 -->
-
-
 
   </div>
 
