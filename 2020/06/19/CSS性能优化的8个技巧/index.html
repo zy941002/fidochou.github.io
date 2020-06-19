@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>实用 Demo 整理 | Jojo&#39;s World</title>
+  <title>CSS 性能优化的 8 个技巧 | Jojo&#39;s World</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -15,15 +15,15 @@
     <meta name="keywords" content="jojo,前端,户外领队,frontend,nodejs,JavaScript,Outdoor Leader" />
   
 
-  <meta name="description" content="👉 使用 react-dnd 实现拖拽 👉  使用 draft.js 实现编辑器文本高亮">
+  <meta name="description" content="这周周会翼巧同学分享了「内联首屏关键CSS(Critical CSS)」我学习的热情又燃起来了！  祭出原文👉 CSS性能优化的 8 个技巧 翼巧同学使用的是第一种方式（但不是内联，是内嵌），反正我已经知道怎么做的了，来看看优缺点吧！ 关键 CSS优点 内联 CSS 能够使浏览器开始页面渲染的时间提前  缺点 无法缓存 CSS  内嵌样式体积需要较小   异步加载 CSS 通过 script">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实用 Demo 整理">
-<meta property="og:url" content="http://jocolorful.com/2020/05/23/%E5%AE%9E%E7%94%A8Demo%E6%95%B4%E7%90%86/index.html">
+<meta property="og:title" content="CSS 性能优化的 8 个技巧">
+<meta property="og:url" content="http://jocolorful.com/2020/06/19/CSS%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%848%E4%B8%AA%E6%8A%80%E5%B7%A7/index.html">
 <meta property="og:site_name" content="Jojo&#39;s World">
-<meta property="og:description" content="👉 使用 react-dnd 实现拖拽 👉  使用 draft.js 实现编辑器文本高亮">
+<meta property="og:description" content="这周周会翼巧同学分享了「内联首屏关键CSS(Critical CSS)」我学习的热情又燃起来了！  祭出原文👉 CSS性能优化的 8 个技巧 翼巧同学使用的是第一种方式（但不是内联，是内嵌），反正我已经知道怎么做的了，来看看优缺点吧！ 关键 CSS优点 内联 CSS 能够使浏览器开始页面渲染的时间提前  缺点 无法缓存 CSS  内嵌样式体积需要较小   异步加载 CSS 通过 script">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-05-23T05:39:54.000Z">
-<meta property="article:modified_time" content="2020-05-28T05:42:00.358Z">
+<meta property="article:published_time" content="2020-06-19T08:28:58.000Z">
+<meta property="article:modified_time" content="2020-06-19T10:20:17.646Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -173,17 +173,22 @@ ga('send', 'pageview');
 </div>
 
 
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关键-CSS"><span class="toc-text">关键 CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#异步加载-CSS"><span class="toc-text">异步加载 CSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件压缩"><span class="toc-text">文件压缩</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#去除无用-CSS"><span class="toc-text">去除无用 CSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#减少使用昂贵的属性"><span class="toc-text">减少使用昂贵的属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#减少重排和避免重绘"><span class="toc-text">减少重排和避免重绘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不要使用-import"><span class="toc-text">不要使用 @import</span></a></li></ol>
+  </div>
+
 
 
 <div class="content content-post CENTER">
-   <article id="post-实用Demo整理" class="article article-type-post" itemprop="blogPost">
+   <article id="post-CSS性能优化的8个技巧" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">实用 Demo 整理</h1>
+    <h1 class="post-title">CSS 性能优化的 8 个技巧</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2020.05.23</span>
+        <span>2020.06.19</span>
       </span>
 
       
@@ -211,7 +216,41 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p><a href="https://codesandbox.io/s/sortabletree-pwrfv" target="_blank" rel="noopener">👉 使用 react-dnd 实现拖拽 </a><br><a href="https://codesandbox.io/s/draft-js-highlight-ir4bd" target="_blank" rel="noopener">👉  使用 draft.js 实现编辑器文本高亮</a></p>
+      <blockquote>
+<p>这周周会翼巧同学分享了「内联首屏关键CSS(Critical CSS)」我学习的热情又燃起来了！</p>
+</blockquote>
+<p>祭出原文👉 <a href="https://juejin.im/post/5ece2a1e6fb9a048021466b0?utm_source=gold_browser_extension" target="_blank" rel="noopener">CSS性能优化的 8 个技巧</a></p>
+<p>翼巧同学使用的是第一种方式（但不是内联，是内嵌），反正我已经知道怎么做的了，来看看优缺点吧！</p>
+<h1 id="关键-CSS"><a href="#关键-CSS" class="headerlink" title="关键 CSS"></a>关键 CSS</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>内联 CSS 能够使浏览器开始页面渲染的时间提前</li>
+</ol>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ol>
+<li><p>无法缓存 CSS</p>
+</li>
+<li><p>内嵌样式体积需要较小</p>
+</li>
+</ol>
+<h1 id="异步加载-CSS"><a href="#异步加载-CSS" class="headerlink" title="异步加载 CSS"></a>异步加载 CSS</h1><ol>
+<li>通过 script 标签异步创建 link 标签</li>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"preload"</span> <span class="attr">href</span>=<span class="string">"mystyles.css"</span> <span class="attr">as</span>=<span class="string">"style"</span> <span class="attr">onload</span>=<span class="string">"this.rel='stylesheet'"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="文件压缩"><a href="#文件压缩" class="headerlink" title="文件压缩"></a>文件压缩</h1><h1 id="去除无用-CSS"><a href="#去除无用-CSS" class="headerlink" title="去除无用 CSS"></a>去除无用 CSS</h1><ol>
+<li>保持简单，不要使用嵌套过多过于复杂的选择器</li>
+<li>通配符和属性选择器效率最低，需要匹配的元素最多，尽量避免使用</li>
+<li>不要使用类选择器和 ID 选择器修饰元素标签</li>
+<li>不要为了追求速度而放弃可读性与可维护性</li>
+</ol>
+<p>复习一遍： 为什么CSS选择器是从右向左匹配的</p>
+<blockquote>
+<p>CSS 中更多的选择器是不会匹配的，所以在考虑性能问题时，需要考虑的是如何在选择器「不匹配」时提升效率。从右向左匹配就是为了达成这一目的的，通过这一策略能够使得CSS选择器在不匹配的时候效率更高。这样想来，在匹配时多耗费一些性能也能够想的通了</p>
+</blockquote>
+<h1 id="减少使用昂贵的属性"><a href="#减少使用昂贵的属性" class="headerlink" title="减少使用昂贵的属性"></a>减少使用昂贵的属性</h1><h1 id="减少重排和避免重绘"><a href="#减少重排和避免重绘" class="headerlink" title="减少重排和避免重绘"></a>减少重排和避免重绘</h1><h1 id="不要使用-import"><a href="#不要使用-import" class="headerlink" title="不要使用 @import"></a>不要使用 @import</h1><p>使用@import引用的 CSS 文件只有在引用它的那个css文件被「下载、解析」之后，浏览器才会知道还有另外一个 CSS 需要下载，这时才去下载，然后下载后开始解析、构建render tree等一系列操作。这就导致浏览器无法并行下载所需的样式文件。</p>
+<p>直接导致的后果：</p>
+<p>当然是异步加载完的重绘</p>
+<p>That’s All !</p>
+<p>犹梦杰同学分享了一个高大上的分享，反正我是听不到太懂？ 我决定周末在家无聊的时候补一下。hiahiahia</p>
 
     
   </div>
