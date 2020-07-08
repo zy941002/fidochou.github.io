@@ -233,15 +233,15 @@ ga('send', 'pageview');
 
 <h1 id="Shell-冷知识"><a href="#Shell-冷知识" class="headerlink" title="Shell 冷知识"></a>Shell 冷知识</h1><p>前端开发往往不关心 *nix 内核。Shell 仅仅只是一个「壳」而已。我们借助 Shell 和内核打交道。Mac 自带终端的 Shell 是 bash。常见的 Shell 有 sh、bash、zsh、csh</p>
 <p>通过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;etc&#x2F;shells</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">cat &#x2F;etc&#x2F;shells<br></code></pre></td></tr></table></figure>
 
 <p>可以查看安装<br><img src="/images/cat.png"  width="300px"/></p>
-<h1 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h1><h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</span><br><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<h1 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h1><h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">git <span class="hljs-built_in">clone</span> git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh<br>cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc<br>chsh -s /bin/zsh<br></code></pre></td></tr></table></figure>
 
 <p>换回bash</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">chsh -s /bin/bash<br></code></pre></td></tr></table></figure>
 
-<h2 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</span><br></pre></td></tr></table></figure>
+<h2 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh<br></code></pre></td></tr></table></figure>
 
 <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="必备插件"><a href="#必备插件" class="headerlink" title="必备插件"></a>必备插件</h2><p><a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank" rel="noopener">ohmyzsh</a><br>itermpreference.png</p>
 <p>内置了 git 的插件管理 还有一些漂亮的主题，这里不在赘述</p>
@@ -255,7 +255,7 @@ ga('send', 'pageview');
 <img src="/images/itermalias.png"  width="300px"/>
 
 <p>这使得我可以使用终端快速打开文件。据我所知 atom 自带了 atom 命令来实现这个效果，但是我更倾向于自己 DIY，而不是依赖 IDE。这也是我选择 sublime 的原因。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subl &#123;path&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">subl &#123;path&#125;<br></code></pre></td></tr></table></figure>
 
 <h3 id="颜值-Buff"><a href="#颜值-Buff" class="headerlink" title="颜值 Buff"></a>颜值 Buff</h3><p>做为一只颜狗，我给 iTerm2 配置了背景图，并且设置了默认的行列数，以减少手动放大 iTerm2。</p>
 <img src="/images/itermbg.png"  width="300px"/>

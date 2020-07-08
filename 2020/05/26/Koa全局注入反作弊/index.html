@@ -225,7 +225,7 @@ ga('send', 'pageview');
 <p>前言：我们的项目是借助 Wepack，配置两套打包的脚本，分别输出服务端渲染「SSR」以及客户端渲染「CSR」所需要的资源。服务端渲染是利用「Koa」 以及渲染引擎 「Mustache」输出首屏内容。</p>
 <p>以上</p>
 <p>反作弊的状态码由后端返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const MEMBER_FROZEN_EXCEPTION_MAP &#x3D; &#123;</span><br><span class="line">  40350: &#39;abuseip&#39;,</span><br><span class="line">  40351: &#39;imfrozen&#39;,</span><br><span class="line">  40352: &#39;unhuman&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plain">const MEMBER_FROZEN_EXCEPTION_MAP &#x3D; &#123;<br>  40350: &#39;abuseip&#39;,<br>  40351: &#39;imfrozen&#39;,<br>  40352: &#39;unhuman&#39;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>http status 状态码为 403 时需要进行异常处理。</p>
 <p>Node 端和 Client 端本身就是隔离的（所以有了同构技术），需要考虑在不同环境对<code>http status</code>的处理。</p>
 <p>我可以联想到以下关键字👇</p>

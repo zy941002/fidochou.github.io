@@ -32,3 +32,8 @@ a:hover {
 .highlight {
   background: black;
 }
+
+.pagination .next,
+.pagination .prev {
+  display: none !important;
+}

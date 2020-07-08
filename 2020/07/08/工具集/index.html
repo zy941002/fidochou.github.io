@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>前端性能量化标准读后感 | Jojo&#39;s World</title>
+  <title>工具集 | Jojo&#39;s World</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -15,15 +15,15 @@
     <meta name="keywords" content="jojo,前端,户外领队,frontend,nodejs,JavaScript,Outdoor Leader" />
   
 
-  <meta name="description" content="祭出原 issue 👉 前端性能量化标准 它正在发生吗？FP：First paint 第一个像素绘制时间FCP：First Content paint 首次内容绘制时间  window.performance.getEntriesByType(‘paint’)  当然也可以使用 lighthouse，这里我全局安装的 lighthouse   它是否有用？FMP： First meaningfu">
+  <meta name="description" content="微信公众号排版">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端性能量化标准读后感">
-<meta property="og:url" content="http://jocolorful.com/2020/07/01/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E9%87%8F%E5%8C%96%E6%A0%87%E5%87%86%E8%AF%BB%E5%90%8E%E6%84%9F/index.html">
+<meta property="og:title" content="工具集">
+<meta property="og:url" content="http://jocolorful.com/2020/07/08/%E5%B7%A5%E5%85%B7%E9%9B%86/index.html">
 <meta property="og:site_name" content="Jojo&#39;s World">
-<meta property="og:description" content="祭出原 issue 👉 前端性能量化标准 它正在发生吗？FP：First paint 第一个像素绘制时间FCP：First Content paint 首次内容绘制时间  window.performance.getEntriesByType(‘paint’)  当然也可以使用 lighthouse，这里我全局安装的 lighthouse   它是否有用？FMP： First meaningfu">
+<meta property="og:description" content="微信公众号排版">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-01T08:19:22.000Z">
-<meta property="article:modified_time" content="2020-07-08T02:17:21.020Z">
+<meta property="article:published_time" content="2020-07-08T08:19:22.000Z">
+<meta property="article:modified_time" content="2020-07-08T02:19:05.361Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -173,22 +173,17 @@ ga('send', 'pageview');
 </div>
 
 
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#它正在发生吗？"><span class="toc-text">它正在发生吗？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#它是否有用？"><span class="toc-text">它是否有用？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#它是否令人愉快的"><span class="toc-text">它是否令人愉快的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#它是否可用？"><span class="toc-text">它是否可用？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思考"><span class="toc-text">思考</span></a></li></ol>
-  </div>
-
 
 
 <div class="content content-post CENTER">
-   <article id="post-前端性能量化标准读后感" class="article article-type-post" itemprop="blogPost">
+   <article id="post-工具集" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">前端性能量化标准读后感</h1>
+    <h1 class="post-title">工具集</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2020.07.01</span>
+        <span>2020.07.08</span>
       </span>
 
       
@@ -216,25 +211,7 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p>祭出原 issue 👉 <a href="https://github.com/frontend9/fe9-library/issues/7" target="_blank" rel="noopener">前端性能量化标准</a></p>
-<h1 id="它正在发生吗？"><a href="#它正在发生吗？" class="headerlink" title="它正在发生吗？"></a>它正在发生吗？</h1><p>FP：First paint 第一个像素绘制时间<br>FCP：First Content paint 首次内容绘制时间</p>
-<ol>
-<li><p>window.performance.getEntriesByType(‘paint’)</p>
-</li>
-<li><p>当然也可以使用 lighthouse，<br>这里我全局安装的 lighthouse</p>
-</li>
-</ol>
-<h1 id="它是否有用？"><a href="#它是否有用？" class="headerlink" title="它是否有用？"></a>它是否有用？</h1><p>FMP： First meaningful paint<br>hero element timing</p>
-<p>Lighthouse 使用的算法是：页面绘制布局「变化」最大的那次绘制（根据 页面高度/屏幕高度 调节权重）</p>
-<h1 id="它是否令人愉快的"><a href="#它是否令人愉快的" class="headerlink" title="它是否令人愉快的"></a>它是否令人愉快的</h1><p>Long tasks。</p>
-<p>JS 线程与 GUI 线程互斥。JS 如果在执行，那么渲染线程就会被阻塞。如果一个 LT 超过 50 ms ，就说明这个线程有问题。</p>
-<h1 id="它是否可用？"><a href="#它是否可用？" class="headerlink" title="它是否可用？"></a>它是否可用？</h1><p>TTI：Time to interactive（页面已经渲染并且可以响应用户交互）。不能响应用户的原因有：</p>
-<ol>
-<li>JS 的资源还未加载完。</li>
-<li>Long Task 阻塞了主线程</li>
-</ol>
-<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>当然这片文章还提出了一些优化策略，优化过程应该是一个全链路的解决方案。</p>
-<p>关于测量标准记录这些，策略手段我想我的学习清单又是一篇长笔记！</p>
+      <p><a href="https://mdnice.com/" target="_blank" rel="noopener">微信公众号排版</a></p>
 
     
   </div>
