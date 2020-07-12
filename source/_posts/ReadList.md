@@ -16,8 +16,9 @@ tags:
 # HTML
 
 # 工程能力
-- [ ] 前端缓存最佳实践
-- [x] [前端性能量化标准]()
+- [x] [前端缓存最佳实践]()
+- [x] [前端性能量化标准](https://github.com/frontend9/fe9-library/issues/7)
+- [x] [如何优雅处理前端异常？](https://zhuanlan.zhihu.com/p/51800345)
 
 # 工具
 
