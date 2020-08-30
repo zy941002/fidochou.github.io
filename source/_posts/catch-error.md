@@ -35,7 +35,7 @@ tags:
 
 > onerror 最好写在所有 JS 脚本的前面，否则有可能捕获不到错误；onerror 无法捕获语法错误；
 
-# window.addEventListener
+## window.addEventListener
 
 当静态资源加载失败会触发 error 事件。由于网络请求异常不会事件冒泡，因此必须在捕获阶段将其捕捉到才行，但是这种方式虽然可以捕捉到网络请求的异常，但是无法判断 HTTP 的状态是 404 还是其他比如 500 等等，所以还需要配合服务端日志才进行排查分析才可以。
 
@@ -85,3 +85,34 @@ UI的某部分引起的 JS 错误不应该破坏整个程序，为了帮React的
 3. 服务端的渲染代码
 
 4. 在error boundaries区域内的错误
+
+
+## iframe 异常
+借助 window.onerror
+
+
+## script 异常
+
+## 崩溃和卡顿
+
+1. 利用 window 对象的 「load」 和 「beforeunload」 事件实现了「网页崩溃」的监控
+2. 使用 Service Worker 来实现网页崩溃的监控：
+	1. Service Worker 有自己独立的工作线程，与网页区分开，网页崩溃了，Service Worker 下不会崩溃；
+	2. Service Worker 生命周期一般要比网页还要长，可以用来监控网页的状态；
+	3. 网页可以通过 navigator.serviceWorker.controller.postMessage API 向掌管自己的 SW发送消息
+
+# 错误上报
+
+1. 利用 Ajax 请求上报
+2. 动态创建 img 标签的形式
+
+上报时，设置采集率以减少服务器压力
+
+```js
+Reporter.send = function(data) {
+  // 只采集 30%
+  if (Math.random() < 0.3) {
+    send(data)      // 上报错误信息
+  }
+}
+```
