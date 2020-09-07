@@ -348,14 +348,14 @@ ga('send', 'pageview');
 <!-- Gitalk评论插件通用代码 -->
 <div id="gitalk-container"></div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 <script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
 <script>
 const gitalk = new Gitalk({
   clientID: '6e1bd36a2fd1534ebf18',
   clientSecret: '07d3d9b1d113a099673fe5180fa67c72263a847a',
-  repo: 'https://github.com/fidoChou/blog-comment.git',
+  repo: 'blog-comment',
   owner: 'fidoChou',
   // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
   // 50个字符串则会报错.
