@@ -37,3 +37,36 @@ a:hover {
 .pagination .prev {
   display: none !important;
 }
+
+code,
+figure.highlight {
+  padding-top: 40px;
+  background: rgb(39, 40, 34) !important;
+  color: rgb(248, 248, 242) !important;
+  position: relative;
+}
+code {
+  padding: 0;
+  position: relative;
+}
+
+.highlight::after {
+  top: 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  background: rgb(255, 95, 86);
+  content: '';
+}
+
+.highlight::before {
+  top: 12px;
+  left: 40px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  background: rgb(255, 189, 46);
+  content: '';
+}

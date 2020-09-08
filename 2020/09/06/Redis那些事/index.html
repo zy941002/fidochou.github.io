@@ -15,16 +15,16 @@
     <meta name="keywords" content="不知不会," />
   
 
-  <meta name="description" content="「纸上得来终觉浅，绝知此事要躬行」 2008 年，一家意大利创业公司嫌弃 MySQL 的性能，所以就自己搞了套数据库：Redis。这个个人开发的数据库究竟有哪些特性吸引着开发者？ 特性存储结构Redis 的全称是 Remote Dictionary Server（远程字典服务器） Redis 的键值除了是字符串还可以是其他数据类型：  字符串 散列 列表 集合 有序集合  内容存储与持久化所有的数">
+  <meta name="description" content="纸上得来终觉浅，绝知此事要躬行  2008 年，一家意大利创业公司嫌弃 MySQL 的性能，所以就自己搞了套数据库：Redis。这个个人开发的数据库究竟有哪些特性吸引着开发者？我将一一研读探秘： 特性存储结构Redis 的全称是 Remote Dictionary Server（远程字典服务器） Redis 的键值除了是字符串还可以是其他数据类型：  字符串 散列 列表 集合 有序集合  内容存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis 那些事">
-<meta property="og:url" content="http://jocolorful.com/2020/09/06/%E9%82%A3%E4%BA%9B%E4%BA%8B/index.html">
+<meta property="og:url" content="http://jocolorful.com/2020/09/06/Redis%E9%82%A3%E4%BA%9B%E4%BA%8B/index.html">
 <meta property="og:site_name" content="Jojo&#39;s World">
-<meta property="og:description" content="「纸上得来终觉浅，绝知此事要躬行」 2008 年，一家意大利创业公司嫌弃 MySQL 的性能，所以就自己搞了套数据库：Redis。这个个人开发的数据库究竟有哪些特性吸引着开发者？ 特性存储结构Redis 的全称是 Remote Dictionary Server（远程字典服务器） Redis 的键值除了是字符串还可以是其他数据类型：  字符串 散列 列表 集合 有序集合  内容存储与持久化所有的数">
+<meta property="og:description" content="纸上得来终觉浅，绝知此事要躬行  2008 年，一家意大利创业公司嫌弃 MySQL 的性能，所以就自己搞了套数据库：Redis。这个个人开发的数据库究竟有哪些特性吸引着开发者？我将一一研读探秘： 特性存储结构Redis 的全称是 Remote Dictionary Server（远程字典服务器） Redis 的键值除了是字符串还可以是其他数据类型：  字符串 散列 列表 集合 有序集合  内容存">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://jocolorful.com/images/hash.png">
 <meta property="article:published_time" content="2020-09-06T04:46:47.000Z">
-<meta property="article:modified_time" content="2020-09-06T06:35:19.220Z">
+<meta property="article:modified_time" content="2020-09-08T13:04:10.197Z">
 <meta property="article:author" content="Jojo">
 <meta property="article:tag" content="不知不会">
 <meta name="twitter:card" content="summary">
@@ -189,13 +189,13 @@ ga('send', 'pageview');
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#特性"><span class="toc-text">特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#存储结构"><span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内容存储与持久化"><span class="toc-text">内容存储与持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#功能丰富"><span class="toc-text">功能丰富</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单稳定"><span class="toc-text">简单稳定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#入门"><span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串类型"><span class="toc-text">字符串类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#散列类型"><span class="toc-text">散列类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表类型"><span class="toc-text">列表类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集合类型"><span class="toc-text">集合类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有序集合"><span class="toc-text">有序集合</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#特性"><span class="toc-text">特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#存储结构"><span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内容存储与持久化"><span class="toc-text">内容存储与持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#功能丰富"><span class="toc-text">功能丰富</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单稳定"><span class="toc-text">简单稳定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#入门"><span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串类型"><span class="toc-text">字符串类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#散列类型"><span class="toc-text">散列类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表类型"><span class="toc-text">列表类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集合类型"><span class="toc-text">集合类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有序集合"><span class="toc-text">有序集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型对比"><span class="toc-text">类型对比</span></a></li></ol></li></ol>
   </div>
 
 
 
 <div class="content content-post CENTER">
-   <article id="post-那些事" class="article article-type-post" itemprop="blogPost">
+   <article id="post-Redis那些事" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
     <h1 class="post-title">Redis 那些事</h1>
 
@@ -230,8 +230,10 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p>「纸上得来终觉浅，绝知此事要躬行」</p>
-<p>2008 年，一家意大利创业公司嫌弃 MySQL 的性能，所以就自己搞了套数据库：Redis。这个个人开发的数据库究竟有哪些特性吸引着开发者？</p>
+      <blockquote>
+<p>纸上得来终觉浅，绝知此事要躬行</p>
+</blockquote>
+<p>2008 年，一家意大利创业公司嫌弃 MySQL 的性能，所以就自己搞了套数据库：Redis。这个个人开发的数据库究竟有哪些特性吸引着开发者？我将一一研读探秘：</p>
 <h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>Redis 的全称是 Remote Dictionary Server（远程字典服务器）</p>
 <p>Redis 的键值除了是字符串还可以是其他数据类型：</p>
 <ol>
@@ -244,19 +246,31 @@ ga('send', 'pageview');
 <h2 id="内容存储与持久化"><a href="#内容存储与持久化" class="headerlink" title="内容存储与持久化"></a>内容存储与持久化</h2><p>所有的数据都存储在内存中，内存的读写速度快于硬盘，一秒内可读写超过十万个键值。</p>
 <h2 id="功能丰富"><a href="#功能丰富" class="headerlink" title="功能丰富"></a>功能丰富</h2><p>键值的 TTL 、单线程模型、可实现队列</p>
 <h2 id="简单稳定"><a href="#简单稳定" class="headerlink" title="简单稳定"></a>简单稳定</h2><h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><h2 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h2><p>字符串类型是 Redis 中最基本的类型，它能存储任何形式的字符串，包括二进制数据。是其他 4 种数据类型的基础，一个字符串类型键最大哦的容量是 512 MB。</p>
-<p>SET key value<br>GET key</p>
-<p>是最简单的操作</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">SET key value<br>GET key<br></code></pre></td></tr></table></figure>
+
 <h2 id="散列类型"><a href="#散列类型" class="headerlink" title="散列类型"></a>散列类型</h2><p>散列即 hash，其存储了字段 field 和 字段值的映射，「但字段值只能是字符串」，不支持其他数据类型。所以散列类型不能嵌套其他数据类型。</p>
 <img src="/images/hash.png"  width="500px"/>
 
-<p>key: 对象类型 + id<br>field：属性<br>value：字段值</p>
-<p>HSET key field value<br>HGET key field</p>
-<h2 id="列表类型"><a href="#列表类型" class="headerlink" title="列表类型"></a>列表类型</h2><p>Redis 列表类型内部使用双向链表实现，常用操作是两列表两端添加元素，或者获取列表片段。列表类型适合用来记录日志</p>
-<p>LPUSH key value<br>RPUSH key value</p>
-<h2 id="集合类型"><a href="#集合类型" class="headerlink" title="集合类型"></a>集合类型</h2><p>集合：不保证顺序、唯一</p>
-<p>SADD key member<br>SREM key member</p>
-<h2 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h2><p>ZADD key score memeber</p>
+<p>命名规范一般遵守：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">key: 对象类型:id<br>field: 属性<br>value: ：字段值<br></code></pre></td></tr></table></figure>
 
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">HSET key field value<br>HGET key field<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="列表类型"><a href="#列表类型" class="headerlink" title="列表类型"></a>列表类型</h2><p>Redis 列表类型内部使用双向链表（double linked list）实现，越接近两端速度越快，常用操作是两列表两端添加元素，或者获取列表片段。列表类型适合用来记录日志或者网站新鲜事。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">LPUSH key value or RPUSH key value<br></code></pre></td></tr></table></figure>
+
+<h2 id="集合类型"><a href="#集合类型" class="headerlink" title="集合类型"></a>集合类型</h2><p>集合：不保证顺序、唯一</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">SADD key member<br>SREM key member<br></code></pre></td></tr></table></figure>
+<h2 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h2><ol>
+<li>内部是通过散列表和跳跃表实现的，所以即使读取中间的数据速度也很快（O(log(N))）</li>
+<li>列表对于位置的调整不太方便，但有序集合可以（更改元素分数即可）</li>
+<li>有序集合更消耗内存</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">ZADD key score memeber<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="类型对比"><a href="#类型对比" class="headerlink" title="类型对比"></a>类型对比</h2>
     
   </div>
 
