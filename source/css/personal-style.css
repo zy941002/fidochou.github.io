@@ -1,28 +1,30 @@
-.page-post body {
- 	position: relative;
-  min-height: 100vh;
-  background-image: linear-gradient(to top right, rgba(0,132,255, 0.9) 50%, rgba(0,132,255,.1) 50%);
-  background-size: 100% calc(100% - 100vh + 5px);
-  z-index: 1;
+* {
+  transition-duration: .5s;
 }
 
-.page-post body::after {
-  content: "";
-  position: fixed;
-  top: 5px;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: #fff;
-  z-index: -1;
+.content-home .name {
+  margin: 12px 0;
 }
 
 .article-content a {
   color: rgba(0,132,255, 0.9);
 }
 
+.content.content-archive .toolbox {
+  margin-left: -30px;
+}
+
+.page-header {
+  margin-bottom: 0px !important;
+}
+
+.page-header .list-toolbox {
+  display: block !important;
+}
+
+
 a:hover {
-	color: rgba(0,132,255, 0.9) !important;
+	color: #1890ff !important;
 }
 
 .highlight .html, .gutter{
@@ -36,4 +38,112 @@ a:hover {
 .pagination .next,
 .pagination .prev {
   display: none !important;
+}
+
+code,
+figure.highlight {
+  padding-top: 40px;
+  background: rgb(39, 40, 34) !important;
+  color: rgb(248, 248, 242) !important;
+  position: relative;
+}
+code {
+  padding: 0;
+  position: relative;
+}
+
+.highlight::after {
+  top: 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  background: rgb(255, 95, 86);
+  content: '';
+}
+
+.highlight::before {
+  top: 12px;
+  left: 40px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  background: rgb(255, 189, 46);
+  content: '';
+}
+
+.box-blog-info {
+  display: flex !important;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.toolbox-list {
+  display: flex;
+  align-items: center;
+  margin: 0px 15px;
+}
+
+.item-toolbox a {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 40px;
+  width: 40px;
+  display: inline-block;
+  height: 40px;
+  margin-right: 12px;
+  transition-duration: .5s;
+  text-align: center;
+  color: #555;
+  border-radius: 20px;
+  background: #f0f0f0;
+  transition: box-shadow .3s ease-in-out
+}
+
+.item-toolbox a:hover {
+  box-shadow: 0 0 0 3px #e6f7ff;;
+  background: #e6f7ff !important;
+  color: #1890ff !important;
+}
+
+.gt-btn {
+  background: #0084ff !important;
+  opacity: 0.9;
+}
+.gt-btn:hover {
+  opacity: 1;
+  transition-duration: .5s;
+}
+
+.gt-btn-text {
+  color: #FFF;
+}
+
+
+.content.content-search .wrap-search-box {
+  margin-top: 20px;
+}
+
+.content.content-link .link-list .link-item .link-url {
+  display: flex;
+}
+
+.content.content-link .link-list .link-item .wrap-info {
+  margin-left: 12px;
+  flex-direction: column;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+.content.content-link .link-list .link-item {
+  padding: 12px 0;
+}
+
+.link-list .link-item .info {
+  font-size: 12px !important;
+}
+
+
+.box-prev-next {
+  margin-top: 0px;
 }

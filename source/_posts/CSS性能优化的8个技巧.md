@@ -2,7 +2,7 @@
 layout: post
 title: CSS 性能优化的 8 个技巧
 date: 2020-06-19 16:28:58
-tags:
+tags: CSS
 ---
 
 > 这周周会翼巧同学分享了「内联首屏关键CSS(Critical CSS)」我学习的热情又燃起来了！
