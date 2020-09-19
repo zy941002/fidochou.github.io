@@ -24,7 +24,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://jocolorful.com/images/hash.png">
 <meta property="article:published_time" content="2020-09-06T04:46:47.000Z">
-<meta property="article:modified_time" content="2020-09-08T13:04:10.197Z">
+<meta property="article:modified_time" content="2020-09-19T06:39:51.111Z">
 <meta property="article:author" content="Jojo">
 <meta property="article:tag" content="不知不会">
 <meta name="twitter:card" content="summary">
@@ -189,7 +189,7 @@ ga('send', 'pageview');
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#特性"><span class="toc-text">特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#存储结构"><span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内容存储与持久化"><span class="toc-text">内容存储与持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#功能丰富"><span class="toc-text">功能丰富</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单稳定"><span class="toc-text">简单稳定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#入门"><span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串类型"><span class="toc-text">字符串类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#散列类型"><span class="toc-text">散列类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表类型"><span class="toc-text">列表类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集合类型"><span class="toc-text">集合类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有序集合"><span class="toc-text">有序集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型对比"><span class="toc-text">类型对比</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#特性"><span class="toc-text">特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#存储结构"><span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内容存储与持久化"><span class="toc-text">内容存储与持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#功能丰富"><span class="toc-text">功能丰富</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单稳定"><span class="toc-text">简单稳定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#入门"><span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串类型"><span class="toc-text">字符串类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#散列类型"><span class="toc-text">散列类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表类型"><span class="toc-text">列表类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集合类型"><span class="toc-text">集合类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有序集合"><span class="toc-text">有序集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型对比"><span class="toc-text">类型对比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些高级用法"><span class="toc-text">一些高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#事务"><span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务的错误："><span class="toc-text">事务的错误：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WATCH"><span class="toc-text">WATCH</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过期时间"><span class="toc-text">过期时间</span></a></li></ol></li></ol>
   </div>
 
 
@@ -252,10 +252,9 @@ ga('send', 'pageview');
 <img src="/images/hash.png"  width="500px"/>
 
 <p>命名规范一般遵守：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">key: 对象类型:id<br>field: 属性<br>value: ：字段值<br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">key: 对象类型:id<br>field: 属性<br>value: 字段值<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">HSET key field value<br>HGET key field<br></code></pre></td></tr></table></figure>
-
 
 <h2 id="列表类型"><a href="#列表类型" class="headerlink" title="列表类型"></a>列表类型</h2><p>Redis 列表类型内部使用双向链表（double linked list）实现，越接近两端速度越快，常用操作是两列表两端添加元素，或者获取列表片段。列表类型适合用来记录日志或者网站新鲜事。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">LPUSH key value or RPUSH key value<br></code></pre></td></tr></table></figure>
@@ -269,8 +268,57 @@ ga('send', 'pageview');
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">ZADD key score memeber<br></code></pre></td></tr></table></figure>
 
+<h2 id="类型对比"><a href="#类型对比" class="headerlink" title="类型对比"></a>类型对比</h2><table>
+<thead>
+<tr>
+<th align="left">数据类型</th>
+<th align="left">使用场景</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">string</td>
+<td align="left">用于存储普通数据，int，string等等类型的基本类型数据</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">hash</td>
+<td align="left">通常用于存储数据对象类型</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">用于存储一些有序列表</td>
+<td align="left">双端操作较快，适用于日志、 可实现队列（其实我也没实践过，哭</td>
+</tr>
+<tr>
+<td align="left">set</td>
+<td align="left">无序集合</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">sort set</td>
+<td align="left">有序集合</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>有些关于 Redis Key 命名的设计规范，我借鉴了 <a href="https://www.infoq.cn/article/lxpytc3KckJPi72E8L3P" target="_blank" rel="noopener">Redis 开发设计规范及案例分析</a> 做了以下总结，并且在实际场景中有所运用</p>
+<ol>
+<li>可读性： 以业务名为前缀，用冒号分隔，可使用业务名：子业务名：id 的结构命名，子业务下多单词可再用下划线分隔。</li>
+<li>简洁性：这里需要控制 key 的长度，key 的占用内存不容忽视。</li>
+<li>不包含转义：不包含空格、换行、单双引号以及其他转义字符。</li>
+</ol>
+<h1 id="一些高级用法"><a href="#一些高级用法" class="headerlink" title="一些高级用法"></a>一些高级用法</h1><h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><p>事务是「一组命令」的集合：要么执行，要么都不执行。只有所有的命令都执行完成才能得到每个结果的返回值。</p>
+<h3 id="事务的错误："><a href="#事务的错误：" class="headerlink" title="事务的错误："></a>事务的错误：</h3><ol>
+<li>语法错误：只要有一个错误就会不会执行。</li>
+<li>运行错误：如果某条命令错误，那么其他命令会继续执行。（Redis 并没有事务回滚 rollback 的功能</li>
+</ol>
+<h3 id="WATCH"><a href="#WATCH" class="headerlink" title="WATCH"></a>WATCH</h3><p>防止竞态：在 GET 获得键值后不被其他客户端修改。直到函数完成后才允许其他客户端修改。</p>
+<p>来，请出事务家族的另外一位成员「WATCH」</p>
+<p>WATCH 命令可以监控一个或者多个键，一旦其中一个键被修改或删除之后的事务就不再执行。监控直到 EXEC 执行。</p>
+<h2 id="过期时间"><a href="#过期时间" class="headerlink" title="过期时间"></a>过期时间</h2><p>通过 EXPIRE 设置某个 key 的过期时间</p>
+<!-- ## 访问频次限制 -->
 
-<h2 id="类型对比"><a href="#类型对比" class="headerlink" title="类型对比"></a>类型对比</h2>
     
   </div>
 
