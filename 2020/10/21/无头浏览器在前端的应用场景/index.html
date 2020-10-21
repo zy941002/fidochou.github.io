@@ -15,19 +15,20 @@
     <meta name="keywords" content="jojo,前端,户外领队,frontend,nodejs,JavaScript,Outdoor Leader" />
   
 
-  <meta name="description" content="无头浏览器 from wikipedia： A headless browser is a web browser without a graphical user interface。无头实际上是指无界面地运行浏览器我们在终端或者代码层，使用无头浏览器的技术来可以模拟用户在网页端的浏览及操作。  无头浏览器的相关应用  E2E 测试：无需打开UI界面，即可完成对应的测试内容。模拟表单提交，键盘">
+  <meta name="description" content="无头浏览器 from wikipedia： A headless browser is a web browser without a graphical user interface。无头实际上是指无界面地运行浏览器我们在终端或者代码层，使用无头浏览器的技术来可以模拟用户在网页端的浏览及操作。  无头浏览器的相关应用 E2E 测试：无需打开UI界面，即可完成对应的测试内容。模拟表单提交，键盘输">
 <meta property="og:type" content="article">
 <meta property="og:title" content="无头浏览器在前端的应用场景">
 <meta property="og:url" content="http://jocolorful.com/2020/10/21/%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9C%A8%E5%89%8D%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/index.html">
 <meta property="og:site_name" content="Jojo&#39;s World">
-<meta property="og:description" content="无头浏览器 from wikipedia： A headless browser is a web browser without a graphical user interface。无头实际上是指无界面地运行浏览器我们在终端或者代码层，使用无头浏览器的技术来可以模拟用户在网页端的浏览及操作。  无头浏览器的相关应用  E2E 测试：无需打开UI界面，即可完成对应的测试内容。模拟表单提交，键盘">
+<meta property="og:description" content="无头浏览器 from wikipedia： A headless browser is a web browser without a graphical user interface。无头实际上是指无界面地运行浏览器我们在终端或者代码层，使用无头浏览器的技术来可以模拟用户在网页端的浏览及操作。  无头浏览器的相关应用 E2E 测试：无需打开UI界面，即可完成对应的测试内容。模拟表单提交，键盘输">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://jocolorful.com/images/link.png">
 <meta property="og:image" content="http://jocolorful.com/images/link.png">
 <meta property="og:image" content="http://jocolorful.com/images/op.png">
 <meta property="og:image" content="http://jocolorful.com/images/pool.png">
 <meta property="og:image" content="http://jocolorful.com/images/diff.png">
 <meta property="article:published_time" content="2020-10-21T07:55:35.000Z">
-<meta property="article:modified_time" content="2020-10-21T10:29:57.981Z">
+<meta property="article:modified_time" content="2020-10-21T10:56:29.379Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://jocolorful.com/images/link.png">
@@ -191,7 +192,7 @@ ga('send', 'pageview');
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#海报生成链路"><span class="toc-text">海报生成链路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#无头浏览器-Puppteer"><span class="toc-text">无头浏览器 Puppteer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Puppeteer-VS-Phantomjs"><span class="toc-text">Puppeteer VS Phantomjs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Puppeteer-模拟用户操作"><span class="toc-text">Puppeteer 模拟用户操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链接池-Generic-pool"><span class="toc-text">链接池 Generic pool</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#线程池-合理配置"><span class="toc-text">线程池-合理配置</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#纯前端实现有两种方式"><span class="toc-text">纯前端实现有两种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#利用CanvasAPI-（html2Canvas）"><span class="toc-text">利用CanvasAPI （html2Canvas）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVG"><span class="toc-text">SVG</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#无头浏览器的相关应用"><span class="toc-text">无头浏览器的相关应用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#posterMan-简介"><span class="toc-text">posterMan 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#海报生成链路"><span class="toc-text">海报生成链路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puppteer-相关介绍"><span class="toc-text">Puppteer 相关介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puppeteer-VS-Phantomjs"><span class="toc-text">Puppeteer VS Phantomjs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Puppeteer-模拟用户操作"><span class="toc-text">Puppeteer 模拟用户操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链接池-Generic-pool"><span class="toc-text">链接池 Generic pool</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#线程池-合理配置"><span class="toc-text">线程池-合理配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#纯前端实现有两种方式"><span class="toc-text">纯前端实现有两种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#利用CanvasAPI-（html2Canvas）"><span class="toc-text">利用CanvasAPI （html2Canvas）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVG"><span class="toc-text">SVG</span></a></li></ol></li></ol>
   </div>
 
 
@@ -235,17 +236,20 @@ ga('send', 'pageview');
       <blockquote>
 <p>无头浏览器 from wikipedia： A headless browser is a web browser without a graphical user interface。无头实际上是指无界面地运行浏览器<br>我们在终端或者代码层，使用无头浏览器的技术来可以模拟用户在网页端的浏览及操作。</p>
 </blockquote>
-<p>无头浏览器的相关应用</p>
-<ol>
+<h1 id="无头浏览器的相关应用"><a href="#无头浏览器的相关应用" class="headerlink" title="无头浏览器的相关应用"></a>无头浏览器的相关应用</h1><ol>
 <li>E2E 测试：无需打开UI界面，即可完成对应的测试内容。模拟表单提交，键盘输入，点击等行为</li>
 <li>网络爬虫 、SSR 服务端渲染</li>
 <li>网页截图生成海报或  PDF</li>
 <li>捕获网站时间线，帮助诊断性能问题（Lighthouse 就是使用了无头浏览器的技术的性能测量工具，他可生成各种性能数据以及网页加载时的快照，以辅助前端做一些性能优化</li>
 </ol>
 <p>以上，无头浏览器的作用非常强大；今天我就以 posterman 这个比较简单但是很有代表性的服务，来讲一下在前端的具体应用。</p>
-<h1 id="海报生成链路"><a href="#海报生成链路" class="headerlink" title="海报生成链路"></a>海报生成链路</h1><center><img src="/images/link.png" width="640px" /></center>
+<h1 id="posterMan-简介"><a href="#posterMan-简介" class="headerlink" title="posterMan 简介"></a>posterMan 简介</h1><p>类似于网抑云音乐，知乎的划线笔记。用户在截屏时可以生成封面海报。</p>
+<center><img src="/images/link.png" width="640px" /></center>
 
-<h2 id="无头浏览器-Puppteer"><a href="#无头浏览器-Puppteer" class="headerlink" title="无头浏览器 Puppteer"></a>无头浏览器 Puppteer</h2><blockquote>
+<p>posterMan 是一个 Node 服务。当我们提供一个 url 链接给到 posterMan 时，即可生成相应的封面截图。</p>
+<h2 id="海报生成链路"><a href="#海报生成链路" class="headerlink" title="海报生成链路"></a>海报生成链路</h2><center><img src="/images/link.png" width="640px" /></center>
+
+<h2 id="Puppteer-相关介绍"><a href="#Puppteer-相关介绍" class="headerlink" title="Puppteer 相关介绍"></a>Puppteer 相关介绍</h2><blockquote>
 <p>译：木偶；基于 CDP（Chrome devtools-protocol） 封装的 Node 库</p>
 </blockquote>
 <p>原理:</p>
@@ -254,7 +258,7 @@ ga('send', 'pageview');
 <li>CDP 分为多个域，每个域中都定义了相关的命令和事件（Commands and Events）</li>
 <li>基于 CDP 封装一些工具对 Chrome 浏览器进行调试及分析</li>
 </ol>
-<h3 id="Puppeteer-VS-Phantomjs"><a href="#Puppeteer-VS-Phantomjs" class="headerlink" title="Puppeteer VS Phantomjs"></a>Puppeteer VS Phantomjs</h3><table style="width:100%">
+<h2 id="Puppeteer-VS-Phantomjs"><a href="#Puppeteer-VS-Phantomjs" class="headerlink" title="Puppeteer VS Phantomjs"></a>Puppeteer VS Phantomjs</h2><table style="width:100%">
   <tr>
     <th></th>
     <th>puppeteer</th>
@@ -305,8 +309,8 @@ ga('send', 'pageview');
 
 <h3 id="Puppeteer-模拟用户操作"><a href="#Puppeteer-模拟用户操作" class="headerlink" title="Puppeteer 模拟用户操作"></a>Puppeteer 模拟用户操作</h3><center><img src="/images/op.png" width="640px" /></center>
 
-<h3 id="链接池-Generic-pool"><a href="#链接池-Generic-pool" class="headerlink" title="链接池 Generic pool"></a>链接池 Generic pool</h3><p>当用户访问调用 posterMan 时，就会创建一个 puppteer 的实例子，但是当我们的服务访问量巨大的时候，频繁的创建和销毁连接会产生非常大的系统开销。这个时候，链接池 Generic pool 就隆重登场了。</p>
-<h4 id="线程池-合理配置"><a href="#线程池-合理配置" class="headerlink" title="线程池-合理配置"></a>线程池-合理配置</h4><center><img src="/images/pool.png" width="300px" /></center>
+<h2 id="链接池-Generic-pool"><a href="#链接池-Generic-pool" class="headerlink" title="链接池 Generic pool"></a>链接池 Generic pool</h2><p>当用户访问调用 posterMan 时，就会创建一个 puppteer 的实例子，但是当我们的服务访问量巨大的时候，频繁的创建和销毁连接会产生非常大的系统开销。这个时候，链接池 Generic pool 就隆重登场了。</p>
+<h3 id="线程池-合理配置"><a href="#线程池-合理配置" class="headerlink" title="线程池-合理配置"></a>线程池-合理配置</h3><center><img src="/images/pool.png" width="300px" /></center>
 
 <ol>
 <li>合理设置连接池数；posterMan 阈值（min：2；Max：10）</li>
@@ -314,15 +318,15 @@ ga('send', 'pageview');
 <li>使用完一个数据库连接后，尽快释放给管理池。</li>
 </ol>
 <h1 id="纯前端实现有两种方式"><a href="#纯前端实现有两种方式" class="headerlink" title="纯前端实现有两种方式"></a>纯前端实现有两种方式</h1><h2 id="利用CanvasAPI-（html2Canvas）"><a href="#利用CanvasAPI-（html2Canvas）" class="headerlink" title="利用CanvasAPI （html2Canvas）"></a>利用CanvasAPI （html2Canvas）</h2><ol>
-<li>递归取出目标模版的所有DOM节点，填充到一个rederList，并附加是否为顶层元素/包含内容的容器 等信息</li>
-<li>通过z-index postion float等css属性和元素的层级信息将rederList排序，计算出一个canvas 的 renderQueue</li>
-<li>遍历 renderQueue，将css样式转为setFillStyle可识别的参数，依据nodeType调用相对应canvas方法，如文本则调用fillText，图片drawImage，设置背景色的div调用fillRect等</li>
+<li>递归取出目标模版的所有 DOM 节点，填充到一个 rederList，并附加是否为顶层元素/包含内容的容器 等信息</li>
+<li>通过 z-index postion float等css属性和元素的层级信息将 rederList 排序，计算出一个 canvas 的 renderQueue</li>
+<li>遍历 renderQueue，将 css 样式转为 setFillStyle 可识别的参数，依据 nodeType 调用相对应 canvas 方法，如文本则调用 fillText，图片 drawImage，设置背景色的 div 调用 fillRect 等</li>
 <li>将画好的canvas填充进页面</li>
 </ol>
 <p>缺点：</p>
 <ol>
 <li>无法渲染跨域资源(支持同域)</li>
-<li>无法渲染iFrame和Flash内容</li>
+<li>无法渲染 iFrame和 Flash 内容</li>
 <li>大量的递归和计算会非常缓慢</li>
 </ol>
 <h2 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h2><ol>
