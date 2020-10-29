@@ -1,3 +1,7 @@
+* {
+  transition-duration: .5s;
+}
+
 .content-home .name {
   margin: 12px 0;
 }
@@ -105,4 +109,41 @@ code {
 
 .gt-btn {
   background: #0084ff !important;
+  opacity: 0.9;
+}
+.gt-btn:hover {
+  opacity: 1;
+  transition-duration: .5s;
+}
+
+.gt-btn-text {
+  color: #FFF;
+}
+
+
+.content.content-search .wrap-search-box {
+  margin-top: 20px;
+}
+
+.content.content-link .link-list .link-item .link-url {
+  display: flex;
+}
+
+.content.content-link .link-list .link-item .wrap-info {
+  margin-left: 12px;
+  flex-direction: column;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+.content.content-link .link-list .link-item {
+  padding: 12px 0;
+}
+
+.link-list .link-item .info {
+  font-size: 12px !important;
+}
+
+
+.box-prev-next {
+  margin-top: 0px;
 }
