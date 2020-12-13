@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>进击的 NPM | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="jojo,前端,户外领队,frontend,nodejs,JavaScript,Outdoor Leader" />
+  
+
+  <meta name="description" content="NPM2完整的依赖拓扑图 NPM3公共依赖提升，但是由于下载顺序问题，极端情况下还是 npm2，并不能完全解决依赖重复 NPM4npm-shrinkwrap.json 被认为是完整的安装清单，但是 npm2 就有 npm-shrinkwrap.json NPM5lockfile        npm@5 以前：npm-shrinkwrap.json     npm@5 以后：package-loc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="进击的 NPM">
+<meta property="og:url" content="http://jocolorful.com/2020/12/10/%E8%BF%9B%E5%87%BB%E7%9A%84-NPM/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="NPM2完整的依赖拓扑图 NPM3公共依赖提升，但是由于下载顺序问题，极端情况下还是 npm2，并不能完全解决依赖重复 NPM4npm-shrinkwrap.json 被认为是完整的安装清单，但是 npm2 就有 npm-shrinkwrap.json NPM5lockfile        npm@5 以前：npm-shrinkwrap.json     npm@5 以后：package-loc">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-10T02:10:00.000Z">
+<meta property="article:modified_time" content="2020-12-13T03:37:26.300Z">
+<meta property="article:author" content="Jojo">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM2"><span class="toc-text">NPM2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM3"><span class="toc-text">NPM3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM4"><span class="toc-text">NPM4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM5"><span class="toc-text">NPM5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#lockfile"><span class="toc-text">lockfile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cache-优化"><span class="toc-text">cache 优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件下载优化"><span class="toc-text">文件下载优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npx"><span class="toc-text">npx</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM6"><span class="toc-text">NPM6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM7"><span class="toc-text">NPM7</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#breaking-Changes"><span class="toc-text">breaking Changes</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-进击的-NPM" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">进击的 NPM</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.12.10</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="NPM2"><a href="#NPM2" class="headerlink" title="NPM2"></a>NPM2</h1><p>完整的依赖拓扑图</p>
+<h1 id="NPM3"><a href="#NPM3" class="headerlink" title="NPM3"></a>NPM3</h1><p>公共依赖提升，但是由于下载顺序问题，极端情况下还是 npm2，并不能完全解决依赖重复</p>
+<h1 id="NPM4"><a href="#NPM4" class="headerlink" title="NPM4"></a>NPM4</h1><p>npm-shrinkwrap.json 被认为是完整的安装清单，但是 npm2 就有 npm-shrinkwrap.json</p>
+<h1 id="NPM5"><a href="#NPM5" class="headerlink" title="NPM5"></a>NPM5</h1><h2 id="lockfile"><a href="#lockfile" class="headerlink" title="lockfile"></a>lockfile</h2><table style="width:100%">
+  <tr>
+    <th width="500px">npm@5 以前：npm-shrinkwrap.json</th>
+    <th width="500px">npm@5 以后：package-lock.json</th>
+  </tr>
+  <tr>
+    <td>发布包时如果有锁定需求，可用 npm shrinkwrap 命令把 package-lock.json 转为 npm-shrinkwrap.json 随包发布（向下兼容）</td>
+    <td>开发时提交和使用，来保证不同环境、人员安装依赖的一致性。</td>
+  </tr>
+</table>
+
+<h2 id="cache-优化"><a href="#cache-优化" class="headerlink" title="cache 优化"></a>cache 优化</h2><table style="width:100%">
+  <tr>
+    <th></th>
+    <th width="500px">npm@5 以前</th>
+    <th width="500px">npm@5 以后</th>
+  </tr>
+  <tr>
+    <th width="120px">缓存路径</td>
+    <td>~/.npm 文件夹中以模块名的形式直接存储 <br/>eg: koa 模块存储在 ~/.npm/koa </td>
+    <td>路径存放在 ~/.npm/_cacache</td>
+  </tr>
+  <tr>
+    <th width="120px">缓存管理</td>
+    <td></td>
+    <td>由系统统一管理，数据发生错误就会重新获取，除非需要释放磁盘空间。需要 --force 参数</td>
+  </tr>
+</table>
+
+<h2 id="文件下载优化"><a href="#文件下载优化" class="headerlink" title="文件下载优化"></a>文件下载优化</h2><p>如果将本地目录作为依赖来安装</p>
+<p>npm@5 before：将会把文件目录作为「副本拷贝」到 node_modules 中。</p>
+<p>npm@5 after： symlinks 的方式来实现（使用本地 tarball 包除外），而不再执行文件拷贝。这将会提升安装速度：</p>
+<ol start="2">
+<li>安装耗时打印</li>
+<li>新的 [package-lock.json] 文件锁</li>
+<li>发包模块不包含 lock 文件</li>
+<li>install 时默认 –save，除非使用 –no-save</li>
+</ol>
+<h2 id="npx"><a href="#npx" class="headerlink" title="npx"></a>npx</h2><p>npx 一个随着 npm 5.2.0 发布的命令，会帮你执行依赖包里的二进制文件。比如对于没有全局安装的命令你想执行的话就只能 ./node_modules/.bin/webpack -v，有 npx 之后就可以直接使用 npx webpack -v。</p>
+<h1 id="NPM6"><a href="#NPM6" class="headerlink" title="NPM6"></a>NPM6</h1><p>解决安全相关问题</p>
+<p>npm audit：这个命令本地试过，但是貌似已经没撒用了 🤔</p>
+<h1 id="NPM7"><a href="#NPM7" class="headerlink" title="NPM7"></a>NPM7</h1><ol>
+<li>npm workspace</li>
+<li>自动安装 「对等依赖」（有些意思 🤔）</li>
+<li>lock 文件格式向 yarn 看齐</li>
+</ol>
+<h2 id="breaking-Changes"><a href="#breaking-Changes" class="headerlink" title="breaking Changes"></a>breaking Changes</h2><ol>
+<li>npx 被「npm exec」重写</li>
+</ol>
+<p>相关文章</p>
+<p><a href="https://github.com/Kimi-Gao/Program-Blog/issues/112" target="_blank" rel="noopener">npm@5 新特性使用指南</a><br><a href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905" target="_blank" rel="noopener">Announcing npm@6</a><br><a href="https://blog.npmjs.org/post/173239798780/beyond-npm6-the-future-of-the-npm-cli" target="_blank" rel="noopener">npm blog V6</a><br><a href="https://blog.npmjs.org/post/626173315965468672/npm-v7-series-beta-release-and-semver-major" target="_blank" rel="noopener">npm blog V7</a><br><a href="https://www.youtube.com/watch?v=7gFaBjY7fHs" target="_blank" rel="noopener">Youtube: V7 Released</a></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/12/09/Pause/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/12/10/%E8%BF%8E%E6%96%B0%E5%B0%8F%E8%B6%B4%E8%B8%A2%E8%AE%A1%E5%88%92/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6e1bd36a2fd1534ebf18',
+  clientSecret: '07d3d9b1d113a099673fe5180fa67c72263a847a',
+  repo: 'blog-comment',
+  owner: 'fidoChou',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['fidoChou'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
