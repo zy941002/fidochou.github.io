@@ -23,7 +23,7 @@
 <meta property="og:description" content="祭出原 issue 👉 前端性能量化标准 它正在发生吗？FP：First paint 第一个像素绘制时间FCP：First Content paint 首次内容绘制时间  window.performance.getEntriesByType(‘paint’)  当然也可以使用 lighthouse，这里我全局安装的 lighthouse   它是否有用？FMP： First meaningfu">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-01T08:19:22.000Z">
-<meta property="article:modified_time" content="2020-10-29T02:31:29.041Z">
+<meta property="article:modified_time" content="2021-03-03T07:30:09.563Z">
 <meta property="article:author" content="Jojo">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
@@ -105,7 +105,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#它正在发生吗？"><span class="toc-text">它正在发生吗？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#它是否有用？"><span class="toc-text">它是否有用？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#它是否令人愉快的"><span class="toc-text">它是否令人愉快的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#它是否可用？"><span class="toc-text">它是否可用？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思考"><span class="toc-text">思考</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#它正在发生吗？"><span class="toc-text">它正在发生吗？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#它是否有用？"><span class="toc-text">它是否有用？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#它是否令人愉快的"><span class="toc-text">它是否令人愉快的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#它是否可用-？"><span class="toc-text">它是否可用 ？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思考"><span class="toc-text">思考</span></a></li></ol>
   </div>
 
 
@@ -158,7 +158,7 @@ ga('send', 'pageview');
 <p>Lighthouse 使用的算法是：页面绘制布局「变化」最大的那次绘制（根据 页面高度/屏幕高度 调节权重）</p>
 <h1 id="它是否令人愉快的"><a href="#它是否令人愉快的" class="headerlink" title="它是否令人愉快的"></a>它是否令人愉快的</h1><p>Long tasks。</p>
 <p>JS 线程与 GUI 线程互斥。JS 如果在执行，那么渲染线程就会被阻塞。如果一个 LT 超过 50 ms ，就说明这个线程有问题。</p>
-<h1 id="它是否可用？"><a href="#它是否可用？" class="headerlink" title="它是否可用？"></a>它是否可用？</h1><p>TTI：Time to interactive（页面已经渲染并且可以响应用户交互）。不能响应用户的原因有：</p>
+<h1 id="它是否可用-？"><a href="#它是否可用-？" class="headerlink" title="它是否可用 ？"></a>它是否可用 ？</h1><p>TTI：Time to interactive（页面已经渲染并且可以响应用户交互）。不能响应用户的原因有：</p>
 <ol>
 <li>JS 的资源还未加载完。</li>
 <li>Long Task 阻塞了主线程</li>
