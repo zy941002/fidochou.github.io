@@ -47,10 +47,12 @@ figure.highlight {
   color: rgb(248, 248, 242) !important;
   position: relative;
 }
+
 code {
-  padding: 0;
+  padding: 2px 4px;
   position: relative;
 }
+
 
 .highlight::after {
   top: 12px;
@@ -61,6 +63,7 @@ code {
   background: rgb(255, 95, 86);
   content: '';
 }
+
 
 .highlight::before {
   top: 12px;
