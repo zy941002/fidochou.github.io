@@ -23,7 +23,7 @@
 <meta property="og:description" content="PM 要求将 iframe 里面的某个元素，对 window 进行定位。主要解决思路：我参考了👉解决 iframe 中 fixed 失效的问题。 这个过程主要分为两步：  使该元素 fixed。并且计算出相对真实 window 的 marginTop 值 监听 window 的滚动事件，滚动偏移量即是 fixed 的 top 值  在实践的过程中，我主要遇到了以下问题 Q1: iframe 通信">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-30T12:12:44.000Z">
-<meta property="article:modified_time" content="2021-03-30T13:00:14.613Z">
+<meta property="article:modified_time" content="2021-06-14T08:11:51.926Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -179,7 +179,7 @@ ga('send', 'pageview');
 </ul>
 <h3 id="上报机制"><a href="#上报机制" class="headerlink" title="上报机制"></a>上报机制</h3><p>通过 <code>report-uri</code> 进行一个 post 上报</p>
 <p>开源的 <a href="https://github.com/helmetjs/helmet/blob/042ee406c753c492a84d7c771010e38477f8c5cb/middlewares/content-security-policy/index.ts#L213" target="_blank" rel="noopener">koa-hemlet</a>本质也就是设置 Content-Secuiry-Policy</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>CSP 只是作为一种为网站策略增强的一种手段。和 iFrame 通信并没有什么联系。只是可以控制网站加载 iFrame 的源。所以我应该还去了解并且动手实现跨域的情况下，如何实现window 和 iframe 的通信。（不要 Hack，wwww</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>CSP 只是作为一种为网站策略增强的一种手段。和 iFrame 通信并没有什么联系。只是可以控制网站加载 iFrame 的源。所以我应该还去了解并且动手实现跨域的情况下，如何实现window 和 iframe 的通信。</p>
 
     
   </div>
@@ -194,7 +194,7 @@ ga('send', 'pageview');
     <a class="show pull-left" href="/2021/03/02/about/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="hide pull-right" href="/">
+    <a class="show pull-right" href="/2021/06/14/%E5%BE%AE%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
