@@ -1,9 +1,59 @@
 * {
   transition-duration: .5s;
+  scroll-behavior: smooth;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
+.layout {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  background: url(https://img.zcool.cn/community/01c9905b858a3ca8012126ce7c37c0.jpg@1280w_1l_0o_100sh.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.layout .category-box{
+  margin-top: 100px;
+}
+
+
+.layout .content-category-wrap .item-post .post-title {
+  font-size: 12px;
+  text-overflow: ellipsis;
+}
+
+.layout .content-category {
+  font-size: 12px;
+  width: 100%;
+}
+
+.layout .content-category-wrap {
+  position: relative;
+  padding-left: 20px;
+  width: 600px;
+  height: 100vh;
+  overflow: hidden scroll;
+}
+
+.content-category-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.layout .content-home {
+  position: relative;
+}
+
+.content-home .slogan,
 .content-home .name {
   margin: 12px 0;
+  color: #333333;
 }
 
 .article-content a {
@@ -138,6 +188,7 @@ code {
   display: flex !important;
   justify-content: space-between !important;
 }
+
 .content.content-link .link-list .link-item {
   padding: 12px 0;
 }
@@ -149,4 +200,17 @@ code {
 
 .box-prev-next {
   margin-top: 0px;
+}
+
+.layout .category-box {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout .category-box .category-list .category-item .category-size {
+  font-family: serif;
+  font-weight: bold;
 }
