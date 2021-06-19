@@ -2,7 +2,7 @@
 layout: post
 title: CSS 加载会造成阻塞吗？
 date: 2020-05-25 14:40:32
-tags: CSS
+categories: 漂亮的 CSS
 ---
 
 [原文链接](https://github.com/Nealyang/PersonalBlog/issues/48)

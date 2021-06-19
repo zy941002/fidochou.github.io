@@ -100,3 +100,32 @@ theme: fexo
 deploy:
   type: git
   repo: https://github.com/fidoChou/fidochou.github.io.git
+
+
+# 7.live2d配置宠物
+live2d:
+  # 当enable 为true的时候，会启用yaliya主题自带宠物shizuku,橘头发小姐姐，而且不可以配置位置，所以需要讲enable注释掉
+  # enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  model:
+    # live2d-widget-model-wanko 是一只趴在碗里的狗狗
+    use: live2d-widget-model-tororo # 通过修改use来确定使用哪种model
+    # hibiki 是一个御姐
+    # use: live2d-widget-model-hibiki
+    # haruto 海军服女孩，有点难看
+    # use: live2d-widget-model-haruto
+  display:
+    position: right
+    width: 200
+    height: 300
+    # 一个比较可爱的位置
+    # hOffset: 200
+    # vOffset: -100
+    # 第二个位置配置，这个在左侧边栏位置很居中
+    hOffset: 250  # 调节水平位置
+    vOffset: 0  # 调节垂直位置
+  mobile:
+    show: false

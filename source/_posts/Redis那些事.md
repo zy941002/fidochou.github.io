@@ -3,6 +3,7 @@ layout:
 title: Redis 那些事
 date: 2020-09-06 12:46:47
 tags: Redis
+categories: 后端相关
 ---
 
 > 纸上得来终觉浅，绝知此事要躬行

@@ -2,7 +2,7 @@
 layout: post
 title: Pause
 date: 2020-12-09 22:25:45
-tags: 生活
+categories: 生活随感
 ---
 
 时间似乎按下了暂停键，快到年底了。

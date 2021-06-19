@@ -2,7 +2,7 @@
 layout: post
 title: Hackathon
 date: 2020-09-06 10:45:11
-tags: 生活
+categories: 生活随感
 ---
 
 令人快乐的事：这周 Hackthon 我们拿了 final！

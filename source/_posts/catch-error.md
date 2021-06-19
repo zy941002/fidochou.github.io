@@ -2,7 +2,7 @@
 layout: post
 title: 如何优雅地处理前端异常？
 date: 2020-07-09 18:02:25
-tags: 工程相关
+categories: 前端相关
 ---
 
 原文：[如何优雅处理前端异常？](https://zhuanlan.zhihu.com/p/51800345)
