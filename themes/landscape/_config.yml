@@ -25,13 +25,286 @@ index_widgets:
 
 # widget behavior
 archive_type: 'monthly'
-show_count: false
+show_count: true
 
 # Miscellaneous
-google_analytics:
-gauges_analytics:
+google_analytics: UA-38189205-1
+baidu_analytics: 57e94d016e201fba3603a8a2b0263af0
 favicon: /favicon.png
 twitter:
 google_plus:
 fb_admins:
 fb_app_id:
+
+
+
+# # Blog info
+# blog_name: 周周的酒馆
+# slogan: Hey，你来了？那就进来坐坐吧！
+# url: http://www.jocolorful.com
+
+# # Set avatar (Absolute url and relative url)
+# avatar: /images/avatar.jpg
+
+# # Set favicon
+# favicon: /images/avatar.jpg
+
+# # For seo
+# keywords: jojo,前端,户外领队,frontend,nodejs,JavaScript,Outdoor Leader
+
+# home_nav:
+#   - name: 博文
+#     url: /archives
+#     target_blank: true #不在新页面打开
+#   - name: 关于
+#     url: /2021/03/02/about/
+#     target_blank: true #不在新页面打开
+#   - name: 留言板
+#     url: /2021/06/19/留言板/
+#     target_blank: true
+
+# # config page nav
+# page_nav:
+#   - name: 博客
+#     url: /archives/
+#     target_blank: false # 不在新页面打开
+#   - name: 友链
+#     url: /link/
+#     target_blank: false
+#   - name: 搜索
+#     url: /search/
+#     target_blank: false # 在新页面打开
+#   - name: 分类
+#     url: /category/
+#     target_blank: false # 在新页面打开
+#   - name: RSS
+#     url: /atom.xml
+
+# page_nav_style: CIRCLE  # CIRCLE|ROUND_RECT
+
+# # 面包屑
+# breadcrumb:
+#   isShow: true # true|fase
+
+# # 盒子
+# toolbox:
+#   isShow: true # true|fase
+#   text: 盒子
+
+# search_slogan:
+#   isShow: true # true|fase
+#   text: ｡◕‿◕｡
+
+# link_slogan:
+#   isShow: true # true|fase
+#   text: 交换友链可以邮件 inkzhou@gmail.com
+
+
+# # set backtop show or hide
+# backtop:
+#   home: false
+#   archive: false
+#   category: true
+#   tag: true
+#   post: true
+#   link: false
+#   about: true
+
+# donation:
+#   show: false
+#   btn_text: 支持一下
+#   tip: 扫一扫，支持forsigner
+#   items:
+#     - type: 微信
+#       text: 微信扫一扫
+#       imgUrl: /images/qr-wechat.png
+#     - type: 支付宝
+#       text: 支付宝扫一扫
+#       imgUrl: /images/qr-alipay.png
+
+# post:
+#   header_align: CENTER # LEFT|CENTER
+#   showToc: true # true|false
+#   showComments: true
+#   open_in_new_window: false
+#   show_prev_next: true
+
+# # =========================================================
+# # 个性化设置
+# # =========================================================
+
+# # Custom CSS style, 推荐把样式文件放在blog源码文件夹，而不是主题里面
+# personal_style: /css/personal-style.css
+
+# # 这个值取决于你得背景图片是深色还是浅色，深色用dark，浅色用light
+# home_background_scheme: light # dark、light
+
+# # custom font-family 暂时只支持这3种英文字体，你可以完全自定义字体(看文档)
+# # blog_name_font_familiy: calligraffittiregular
+# blog_name_font_familiy: Lobster-Regular
+# # blog_name_font_familiy: PoiretOne-Regular
+
+# init_page_content: HOME_NAV  # HOME_NAV | POST
+
+
+# # =========================================================
+# # 第三方服务
+# # =========================================================
+# # Stats
+# google_analytics: UA-38189205-1
+# baidu_analytics: 57e94d016e201fba3603a8a2b0263af0
+
+# # Comment service
+
+# # disqus_shortname: forsigner
+# # hypercomments_id: 89821
+# # gentie_key: d16a7241e7cd4b389584ed8db2a4e8bc
+
+# #有言用户编号
+# # uyan_key:
+
+# # 畅言, doc: http://changyan.kuaizhan.com/
+# changyan:
+#   enable: false  # true | false  这里开启
+#   changyan_appid:
+#   changyan_appkey:
+
+# # gitalk评论组件，把下面的配置换成你的，官方文档: https://gitalk.github.io/
+gitalk:
+  enable: true # 如果使用 gitalk，请设置改之为true
+  clientID: 6e1bd36a2fd1534ebf18
+  clientSecret: 07d3d9b1d113a099673fe5180fa67c72263a847a
+  repo: blog-comment
+  owner: fidoChou
+  admin: fidoChou
+
+
+# gitment comment service
+gitment:
+  enable: false  # true | false  这里开启
+  owner: fidoChou
+  repo: https://github.com/fidoChou/blog-comment.git
+  oauth: # An object contains your client ID and client secret. Required.
+    client_id: 6e1bd36a2fd1534ebf18
+    client_secret: 7bc12b47ad2a14669ec8eb1e0746201f3642cad1
+  id: # An optional string to identify your page. Default location.href.
+  title: # An optional title for your page, used as issue's title. Default document.title.
+  link: # An optional link for your page, used in issue's body. Default location.href.
+  desc: # An optional description for your page, used in issue's body. Default ''.
+  labels: # An optional array of labels your want to add when creating the issue. Default [].
+  theme: # An optional Gitment theme object. Default gitment.defaultTheme.
+  perPage: # An optional number to which comments will be paginated. Default 20.
+  maxCommentHeight: # An optional number to limit comments' max height, over which comments will be folded. Default 250.
+
+# Valine comment system  https://valine.js.org
+valine:
+  enable: false # 如果使用valine，请设置改之为true
+  appid:  # your leancloud application appid
+  appkey:  # your leancloud application appkey
+  notify: false # mail notifier , https://github.com/xCss/Valine/wiki
+  verify: false # Verification code
+  placeholder: Just go go # comment box placeholder
+  avatar: mm # gravatar style
+  guest_info: nick,mail,link # custom comment header
+  pageSize: 10 # pagination size
+
+
+# # 不算子,文章访问量统计和显示
+# busuanzi: true
+
+# # =========================================================
+# # 页面内容设置
+# # =========================================================
+about:
+  - type: me
+    icon: icon-user
+    text_value:
+    - "Jojo | 1994"
+    - "前端工程师 ｜ 户外领队"
+    - "间接性折腾 ｜ 三分钟热度 ｜ 对世界充满好奇"
+  - type: Github
+    icon: icon-github
+    text_key: Github
+    text_value: "@fidoChou"
+    text_value_url: https://github.com/fidoChou
+  - type: weibo
+    icon: icon-weibo
+    text_key: 微博
+    text_value: "@小小啊咪哒"
+    text_value_url: https://weibo.com/2056942432/profile?topnav=1&wvr=6
+  - type: mail
+    icon: icon-mail
+    text_key: Gmail
+    text_value: "inkzhou@gmail.com"
+  - type: location
+    icon: icon-location
+    text_value: 北京
+
+link:
+  - name: 山月
+    info: 山月不知心底事，水风空落眼前花
+    url: https://shanyue.tech/
+    avatar: https://shanyue.tech/favicon.ico
+  - name: zcWSR
+    info: 靡不有初, 鲜克有终
+    url: http://www.zcwsr.com/
+    avatar: https://avatars1.githubusercontent.com/u/13826610?s=400&u=6483d63b7ccc9a363e2d71f4ed6ac29e1a787af0&v=4
+
+  - name: 陈金亚
+    info: 你和你的酸奶，我舔我的瓶盖
+    url: https://me.csdn.net/EI__Nino?ref=miniprofile
+    avatar: https://profile.csdnimg.cn/7/1/9/1_ei__nino
+
+project:
+  - type: personal
+    name: fexo
+    url: https://github.com/forsigner/fexo
+    intro: A minimalist design theme for hexo
+  # - type: company
+  #   name: Fexo
+  #   url: https://github.com/forsigner/fexo
+  #   intro: A minimalist design theme for hexo
+  - type: personal
+    name: beside
+    url: https://github.com/forsigner/beside
+    intro: I need you beside me
+  - type: personal
+    name: web-fontmin
+    url: https://github.com/forsigner/web-fontmin
+    intro: 字体子集化，在线提取你需要的字体
+  - type: personal
+    name: magic-check
+    url: https://github.com/forsigner/magic-check
+    intro: Beautify Radio and Checkbox with pure CSS
+  - type: personal
+    name: nice-bar
+    url: https://github.com/forsigner/nice-bar
+    intro: A nice and lightweight scrollbar
+  - type: personal
+    name: angular-nice-bar
+    url: https://github.com/forsigner/angular-nice-bar
+    intro: A nice and lightweight scrollbar in Angular
+  - type: personal
+    name: fo-popover
+    url: https://github.com/forsigner/fo-popover
+    intro: A nice popover for Angular
+  - type: personal
+    name: fo-tooltip
+    url: A nice tooltip for Angular
+    intro: https://github.com/forsigner/fo-tooltip
+  - type: personal
+    name: fo-modal
+    url: https://github.com/forsigner/fo-modal
+    intro: A nice modal for Angular
+  - type: personal
+    name: mocer
+    url: https://github.com/forsigner/mocer
+    intro: Setup a mock server easily
+  - type: personal
+    name: node-pngdefry
+    url: https://github.com/forsigner/node-pngdefry
+    intro: Repairing iPhone fried PNGs using Node.js
+  - type: personal
+    name: ng-simditor
+    url: https://github.com/forsigner/ng-simditor
+    intro: Angular directive for simditor

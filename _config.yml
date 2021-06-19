@@ -44,13 +44,19 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+
 highlight:
   enable: true
-  line_number: true
   auto_detect: false
-  tab_replace: ''
+  line_number: false
+  line_threshold: 0
+  tab_replace: '  '
+  exclude_languages:
+    - example
   wrap: true
-  hljs: true
+  hljs: false
+prismjs:
+  enable: false
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -99,7 +105,7 @@ theme: fexo
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/fidoChou/fidochou.github.io.git
+  repo: git@github.com:fidoChou/fidochou.github.io.git
 
 
 # 7.live2d配置宠物
@@ -118,14 +124,28 @@ live2d:
     # haruto 海军服女孩，有点难看
     # use: live2d-widget-model-haruto
   display:
-    position: right
+    position: left
     width: 200
     height: 300
     # 一个比较可爱的位置
     # hOffset: 200
     # vOffset: -100
     # 第二个位置配置，这个在左侧边栏位置很居中
-    hOffset: 250  # 调节水平位置
+    hOffset: 90  # 调节水平位置
     vOffset: 0  # 调节垂直位置
   mobile:
     show: false
+
+feed:
+  enable: true
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content: false
+  content_limit: false
+  content_limit_delim: " "
+  order_by: -date
+  icon: icon.webp
+  autodiscovery: true
+  template:
