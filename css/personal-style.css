@@ -2,13 +2,23 @@
   transition-duration: .5s;
   scroll-behavior: smooth;
 }
-body {
+
+html {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
 }
 
+.page-header {
+  background: transparent;
+}
+
+body {
+  background: rgba(80, 213, 227, 0.35);
+}
+
+
 .layout {
+  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -213,4 +223,8 @@ code {
 .layout .category-box .category-list .category-item .category-size {
   font-family: serif;
   font-weight: bold;
+}
+
+.category-box--top {
+  margin-bottom: 15px;
 }
