@@ -8,6 +8,15 @@ html {
   height: 100vh;
 }
 
+.article-content blockquote {
+  background: #FFF;
+  padding: 2px 10px
+}
+.article-content blockquote  p {
+  line-height: 1em;
+  font-size: 13px;
+}
+
 .page-header {
   background: transparent;
 }

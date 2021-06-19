@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Jojo&#39;s World</title>
+  <icon>http://jocolorful.com/icon.webp</icon>
+  
+  <link href="http://jocolorful.com/atom.xml" rel="self"/>
+  
+  <link href="http://jocolorful.com/"/>
+  <updated>2021-06-19T14:07:05.929Z</updated>
+  <id>http://jocolorful.com/</id>
+  
+  <author>
+    <name>Jojo</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>奇怪的言论又来了</title>
+    <link href="http://jocolorful.com/2021/06/19/%E6%8A%96%E4%B8%AA%E6%9C%BA%E7%81%B5/"/>
+    <id>http://jocolorful.com/2021/06/19/%E6%8A%96%E4%B8%AA%E6%9C%BA%E7%81%B5/</id>
+    <published>2021-06-19T14:00:02.000Z</published>
+    <updated>2021-06-19T14:07:05.929Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>留言板</title>
+    <link href="http://jocolorful.com/2021/06/19/%E7%95%99%E8%A8%80%E6%9D%BF/"/>
+    <id>http://jocolorful.com/2021/06/19/%E7%95%99%E8%A8%80%E6%9D%BF/</id>
+    <published>2021-06-19T13:35:09.000Z</published>
+    <updated>2021-06-19T14:18:35.283Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Weekly</title>
+    <link href="http://jocolorful.com/2021/06/19/Weekly/"/>
+    <id>http://jocolorful.com/2021/06/19/Weekly/</id>
+    <published>2021-06-19T13:20:31.000Z</published>
+    <updated>2021-06-19T14:11:02.056Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="Weekly" scheme="http://jocolorful.com/categories/Weekly/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>随便写写</title>
+    <link href="http://jocolorful.com/2021/06/15/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/"/>
+    <id>http://jocolorful.com/2021/06/15/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/</id>
+    <published>2021-06-15T11:40:02.000Z</published>
+    <updated>2021-06-19T03:02:45.544Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>微前端相关知识</title>
+    <link href="http://jocolorful.com/2021/06/14/%E5%BE%AE%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/"/>
+    <id>http://jocolorful.com/2021/06/14/%E5%BE%AE%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/</id>
+    <published>2021-06-14T08:09:02.000Z</published>
+    <updated>2021-06-19T03:10:59.083Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="前端相关" scheme="http://jocolorful.com/categories/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CSP</title>
+    <link href="http://jocolorful.com/2021/03/30/CSP/"/>
+    <id>http://jocolorful.com/2021/03/30/CSP/</id>
+    <published>2021-03-30T12:12:44.000Z</published>
+    <updated>2021-06-19T03:07:06.090Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="前端相关" scheme="http://jocolorful.com/categories/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>About</title>
+    <link href="http://jocolorful.com/2021/03/02/about/"/>
+    <id>http://jocolorful.com/2021/03/02/about/</id>
+    <published>2021-03-02T08:51:59.497Z</published>
+    <updated>2021-06-19T02:59:09.040Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Babel</title>
+    <link href="http://jocolorful.com/2020/12/18/babel/"/>
+    <id>http://jocolorful.com/2020/12/18/babel/</id>
+    <published>2020-12-18T08:35:19.000Z</published>
+    <updated>2021-06-19T03:07:02.247Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="前端相关" scheme="http://jocolorful.com/categories/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进击的 NPM</title>
+    <link href="http://jocolorful.com/2020/12/10/%E8%BF%9B%E5%87%BB%E7%9A%84-NPM/"/>
+    <id>http://jocolorful.com/2020/12/10/%E8%BF%9B%E5%87%BB%E7%9A%84-NPM/</id>
+    <published>2020-12-10T02:10:00.000Z</published>
+    <updated>2021-06-19T14:02:08.697Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="Node.js" scheme="http://jocolorful.com/categories/Node-js/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Pause</title>
+    <link href="http://jocolorful.com/2020/12/09/Pause/"/>
+    <id>http://jocolorful.com/2020/12/09/Pause/</id>
+    <published>2020-12-09T14:25:45.000Z</published>
+    <updated>2021-06-19T13:20:50.404Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PPT 准备与演讲技巧</title>
+    <link href="http://jocolorful.com/2020/10/29/%E5%87%86%E5%A4%87%E4%B8%8E%E6%BC%94%E8%AE%B2%E6%8A%80%E5%B7%A7/"/>
+    <id>http://jocolorful.com/2020/10/29/%E5%87%86%E5%A4%87%E4%B8%8E%E6%BC%94%E8%AE%B2%E6%8A%80%E5%B7%A7/</id>
+    <published>2020-10-29T01:59:11.000Z</published>
+    <updated>2021-06-19T03:01:16.611Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="软技能" scheme="http://jocolorful.com/tags/%E8%BD%AF%E6%8A%80%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>做一颗饱满的麦穗</title>
+    <link href="http://jocolorful.com/2020/10/22/%E5%81%9A%E4%B8%80%E9%A2%97%E9%A5%B1%E6%BB%A1%E7%9A%84%E9%BA%A6%E7%A9%97/"/>
+    <id>http://jocolorful.com/2020/10/22/%E5%81%9A%E4%B8%80%E9%A2%97%E9%A5%B1%E6%BB%A1%E7%9A%84%E9%BA%A6%E7%A9%97/</id>
+    <published>2020-10-22T05:55:41.000Z</published>
+    <updated>2021-06-19T03:10:29.178Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>无头浏览器在前端的应用场景</title>
+    <link href="http://jocolorful.com/2020/10/21/%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9C%A8%E5%89%8D%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
+    <id>http://jocolorful.com/2020/10/21/%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9C%A8%E5%89%8D%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</id>
+    <published>2020-10-21T07:55:35.000Z</published>
+    <updated>2021-06-19T14:02:09.709Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="Node.js" scheme="http://jocolorful.com/categories/Node-js/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>一件悲伤的事</title>
+    <link href="http://jocolorful.com/2020/09/28/%E4%B8%80%E4%BB%B6%E6%82%B2%E4%BC%A4%E7%9A%84%E4%BA%8B/"/>
+    <id>http://jocolorful.com/2020/09/28/%E4%B8%80%E4%BB%B6%E6%82%B2%E4%BC%A4%E7%9A%84%E4%BA%8B/</id>
+    <published>2020-09-28T08:40:39.000Z</published>
+    <updated>2021-06-19T03:02:42.320Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于疯狂输出与摸 🐟</title>
+    <link href="http://jocolorful.com/2020/09/27/%E5%85%B3%E4%BA%8E%E7%96%AF%E7%8B%82%E8%BE%93%E5%87%BA%E4%B8%8E%E6%91%B8%F0%9F%90%9F/"/>
+    <id>http://jocolorful.com/2020/09/27/%E5%85%B3%E4%BA%8E%E7%96%AF%E7%8B%82%E8%BE%93%E5%87%BA%E4%B8%8E%E6%91%B8%F0%9F%90%9F/</id>
+    <published>2020-09-27T03:02:05.000Z</published>
+    <updated>2021-06-19T03:01:41.064Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Redis 那些事</title>
+    <link href="http://jocolorful.com/2020/09/06/Redis%E9%82%A3%E4%BA%9B%E4%BA%8B/"/>
+    <id>http://jocolorful.com/2020/09/06/Redis%E9%82%A3%E4%BA%9B%E4%BA%8B/</id>
+    <published>2020-09-06T04:46:47.000Z</published>
+    <updated>2021-06-19T03:10:26.032Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="后端相关" scheme="http://jocolorful.com/categories/%E5%90%8E%E7%AB%AF%E7%9B%B8%E5%85%B3/"/>
+    
+    
+    <category term="Redis" scheme="http://jocolorful.com/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hackathon</title>
+    <link href="http://jocolorful.com/2020/09/06/Hackathon/"/>
+    <id>http://jocolorful.com/2020/09/06/Hackathon/</id>
+    <published>2020-09-06T02:45:11.000Z</published>
+    <updated>2021-06-19T03:07:08.117Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>🧗‍♀️当我爬山时，我在想什么？</title>
+    <link href="http://jocolorful.com/2020/08/29/climb/"/>
+    <id>http://jocolorful.com/2020/08/29/climb/</id>
+    <published>2020-08-29T10:10:01.000Z</published>
+    <updated>2021-06-19T03:06:55.745Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>定时整理 - 夏日随想</title>
+    <link href="http://jocolorful.com/2020/08/06/%E5%A4%8F%E6%97%A5%E9%9A%8F%E6%83%B3/"/>
+    <id>http://jocolorful.com/2020/08/06/%E5%A4%8F%E6%97%A5%E9%9A%8F%E6%83%B3/</id>
+    <published>2020-08-06T05:41:47.000Z</published>
+    <updated>2021-06-19T03:02:05.516Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何优雅地处理前端异常？</title>
+    <link href="http://jocolorful.com/2020/07/09/catch-error/"/>
+    <id>http://jocolorful.com/2020/07/09/catch-error/</id>
+    <published>2020-07-09T10:02:25.000Z</published>
+    <updated>2021-06-19T03:06:59.529Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="前端相关" scheme="http://jocolorful.com/categories/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/"/>
+    
+    
+  </entry>
+  
+</feed>
