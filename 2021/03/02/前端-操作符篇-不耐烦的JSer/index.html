@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>不耐烦的 JSer | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="jojo,前端,户外领队,frontend,nodejs,JavaScript,Outdoor Leader" />
+  
+
+  <meta name="description" content="11. 运算符11.1. 运算符两个重要的规则1. 强制让运算数变为合适的类型 2. 大多数运算符只对原始类型有效11.1.1. 运算符两个重要的规则一个运算符操作的的数据类型不匹配， JS基本不会抛出异常。相反，它会自动进行强制类型转换。以便于这样看起来是正常运算的。让我们来看下面两个例子。 首先，一个乘法运算只可以让两个数字正常工作，因此，在相乘之前，他会将字符转换成数字。 12&#39;7&#39; * &#39;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不耐烦的 JSer">
+<meta property="og:url" content="http://jocolorful.com/2021/03/02/%E5%89%8D%E7%AB%AF-%E6%93%8D%E4%BD%9C%E7%AC%A6%E7%AF%87-%E4%B8%8D%E8%80%90%E7%83%A6%E7%9A%84JSer/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="11. 运算符11.1. 运算符两个重要的规则1. 强制让运算数变为合适的类型 2. 大多数运算符只对原始类型有效11.1.1. 运算符两个重要的规则一个运算符操作的的数据类型不匹配， JS基本不会抛出异常。相反，它会自动进行强制类型转换。以便于这样看起来是正常运算的。让我们来看下面两个例子。 首先，一个乘法运算只可以让两个数字正常工作，因此，在相乘之前，他会将字符转换成数字。 12&#39;7&#39; * &#39;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-02T06:40:32.000Z">
+<meta property="article:modified_time" content="2022-03-27T04:40:46.294Z">
+<meta property="article:author" content="Jojo">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-运算符"><span class="toc-text">11. 运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-1-运算符两个重要的规则"><span class="toc-text">11.1. 运算符两个重要的规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-1-1-运算符两个重要的规则"><span class="toc-text">11.1.1. 运算符两个重要的规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-1-2-大多数运算符只对原始类型起作用"><span class="toc-text">11.1.2. 大多数运算符只对原始类型起作用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2-加号plus"><span class="toc-text">11.2. 加号plus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-3-赋值运算符"><span class="toc-text">11.3. 赋值运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-3-1-基本的赋值运算符"><span class="toc-text">11.3.1. 基本的赋值运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-3-2-复合赋值运算符"><span class="toc-text">11.3.2. 复合赋值运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-3-3-所有可复合的运算符"><span class="toc-text">11.3.3. 所有可复合的运算符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-4-相等运算-VS"><span class="toc-text">11.4. 相等运算: &#x3D;&#x3D; VS &#x3D;&#x3D;&#x3D;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-4-1-宽松相等-and"><span class="toc-text">11.4.1. 宽松相等(&#x3D;&#x3D; and !&#x3D;)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-4-2-严格相等-and"><span class="toc-text">11.4.2. 严格相等 (&#x3D;&#x3D;&#x3D; and !&#x3D;&#x3D;)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-4-3-推荐：总是使用严格模式"><span class="toc-text">11.4.3. 推荐：总是使用严格模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#11-4-3-1-使用-比较一个数字和字符串"><span class="toc-text">11.4.3.1. 使用 &#x3D;&#x3D;:比较一个数字和字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-4-3-2-比较undefined-和-null"><span class="toc-text">11.4.3.2 &#x3D;&#x3D;: 比较undefined 和 null</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-5-排序运算"><span class="toc-text">11.5. 排序运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-6-其他的运算符"><span class="toc-text">11.6. 其他的运算符</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-前端-操作符篇-不耐烦的JSer" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">不耐烦的 JSer</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.03.02</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="11-运算符"><a href="#11-运算符" class="headerlink" title="11. 运算符"></a>11. 运算符</h2><h3 id="11-1-运算符两个重要的规则"><a href="#11-1-运算符两个重要的规则" class="headerlink" title="11.1. 运算符两个重要的规则"></a>11.1. 运算符两个重要的规则</h3><pre><code>1. 强制让运算数变为合适的类型
+2. 大多数运算符只对原始类型有效</code></pre><h4 id="11-1-1-运算符两个重要的规则"><a href="#11-1-1-运算符两个重要的规则" class="headerlink" title="11.1.1. 运算符两个重要的规则"></a>11.1.1. 运算符两个重要的规则</h4><p>一个运算符操作的的数据类型不匹配， JS基本不会抛出异常。相反，它会自动进行强制类型转换。以便于这样看起来是<code>正常</code>运算的。让我们来看下面两个例子。</p>
+<p>首先，一个乘法运算只可以让两个数字正常工作，因此，在相乘之前，他会将字符转换成数字。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">'7'</span> * <span class="hljs-string">'3'</span><br><span class="hljs-number">21</span><br></code></pre></td></tr></table></figure>
+
+<p>其次， 用于访问对象属性的操作符[]只能处理字符串或者symbol。其他的值会被强制转换成字符串。其他的字都会转换成字符串。</p>
+<h4 id="11-1-2-大多数运算符只对原始类型起作用"><a href="#11-1-2-大多数运算符只对原始类型起作用" class="headerlink" title="11.1.2. 大多数运算符只对原始类型起作用"></a>11.1.2. 大多数运算符只对原始类型起作用</h4><blockquote>
+<p>对于JS操作符需要要记住的规则是：大多数运算符只对原始类型起作用</p>
+</blockquote>
+<p>如果运算数是<code>对象</code>，则经常会被强制转换成基本类型。</p>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">&gt; [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>] + [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]<br><span class="hljs-string">'1,2,34,5,6'</span><br></code></pre></td></tr></table></figure>
+
+<p>为什么？因为 <code>+</code>操作符会首先将运算数转换成原始类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">&gt; <span class="hljs-built_in">String</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-string">'1,2,3'</span><br>&gt; <span class="hljs-built_in">String</span>([<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>])<br><span class="hljs-string">'4,5,6'</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="11-2-加号plus"><a href="#11-2-加号plus" class="headerlink" title="11.2. 加号plus"></a>11.2. 加号plus</h3><p>在JS中，加号按以下方式工作：首先它会将运算数转换成基本类型，然后它会切到两种模式之一：</p>
+<ul>
+<li>字符串模式：如果一个被转换成的基本类型有一个是字符串，那么另外一个也会被转换成字符串，最后字符串会进行连接。</li>
+<li>数字模式：除此之外，两边的运算数会被转换成数字，然后进行相加。</li>
+</ul>
+<p>字符串模式可以让你使用<code>+</code>去连接字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">&gt; <span class="hljs-string">'There are '</span> + <span class="hljs-number">3</span> + <span class="hljs-string">' items'</span><br><span class="hljs-string">'There are 3 items'</span><br></code></pre></td></tr></table></figure>
+
+<p>数字模式意味着如果。如果运算数两边都不是数字（或者一个对象变成了字符串）那么都会被变成数字：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">&gt; 4 + true<br>5<br></code></pre></td></tr></table></figure>
+
+<h3 id="11-3-赋值运算符"><a href="#11-3-赋值运算符" class="headerlink" title="11.3. 赋值运算符"></a>11.3. 赋值运算符</h3><h4 id="11-3-1-基本的赋值运算符"><a href="#11-3-1-基本的赋值运算符" class="headerlink" title="11.3.1. 基本的赋值运算符"></a>11.3.1. 基本的赋值运算符</h4><ul>
+<li><p>x = value</p>
+<p>  给一个声明的变量赋值</p>
+</li>
+<li><p>const x = value<br>  同时进行声明和复制</p>
+</li>
+<li><p>obj.propKey = value<br>  给一个属性赋值</p>
+</li>
+<li><p>arr[index] = value<br>  给数组的某个元素赋值</p>
+</li>
+</ul>
+<h4 id="11-3-2-复合赋值运算符"><a href="#11-3-2-复合赋值运算符" class="headerlink" title="11.3.2. 复合赋值运算符"></a>11.3.2. 复合赋值运算符</h4><p>给出的运算符工作时，以下两种方式是相同的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">myvar op= value<br>myvar = myvar op value<br></code></pre></td></tr></table></figure>
+
+<p>举例来说，复合<code>+</code>，然后我们可以得到运算符<code>+=</code>它会像下面的工作：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">''</span>;<br>str += <span class="hljs-string">'&lt;b&gt;'</span>;<br>str += <span class="hljs-string">'Hello!'</span>;<br>str += <span class="hljs-string">'&lt;/b&gt;'</span>;<br><br>assert.equal(str, <span class="hljs-string">'&lt;b&gt;Hello!&lt;/b&gt;'</span>);<br></code></pre></td></tr></table></figure>
+<h4 id="11-3-3-所有可复合的运算符"><a href="#11-3-3-所有可复合的运算符" class="headerlink" title="11.3.3. 所有可复合的运算符"></a>11.3.3. 所有可复合的运算符</h4><p>数学运算：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">+= -= *= <span class="hljs-regexp">/= %= **=</span><br></code></pre></td></tr></table></figure>
+
+<p>+= 同样对字符串连接有效</p>
+<p>按位运算符：</p>
+<h3 id="11-4-相等运算-VS"><a href="#11-4-相等运算-VS" class="headerlink" title="11.4. 相等运算: == VS ==="></a>11.4. 相等运算: == VS ===</h3><p>JS 有两种等号运算符:宽松相等(==)和严格相等(===)，推荐总是使用后者判断是否相等。</p>
+<h4 id="11-4-1-宽松相等-and"><a href="#11-4-1-宽松相等-and" class="headerlink" title="11.4.1. 宽松相等(== and !=)"></a>11.4.1. 宽松相等(== and !=)</h4><p>宽松相等是JS的特性之一。它经常会强制转换操作数，有些强制转换是起作用的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">&gt; <span class="hljs-string">'123'</span> == <span class="hljs-number">123</span><br><span class="hljs-literal">true</span><br>&gt; <span class="hljs-literal">false</span> == <span class="hljs-number">0</span><br><span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<p>大多数情况下意义不大：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">&gt; <span class="hljs-string">''</span> == <span class="hljs-number">0</span><br><span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+
+<p>对象被强制转换成基本类型。当且只当另外一个运算数是基本类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">&gt; [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] == <span class="hljs-string">'1,2,3'</span><br><span class="hljs-literal">true</span><br>&gt; [<span class="hljs-string">'1'</span>, <span class="hljs-string">'2'</span>, <span class="hljs-string">'3'</span>] == <span class="hljs-string">'1,2,3'</span><br><span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<p>如果两个操作数都是对象，当他们是同一个对象时才相等：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js">&gt; [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] == [<span class="hljs-string">'1'</span>, <span class="hljs-string">'2'</span>, <span class="hljs-string">'3'</span>]<br><span class="hljs-literal">false</span><br>&gt; [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] == [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br><span class="hljs-literal">false</span><br><br>&gt; <span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br>&gt; arr == arr<br><span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+
+<p>最后，== 允许了undefined和null相等</p>
+<h4 id="11-4-2-严格相等-and"><a href="#11-4-2-严格相等-and" class="headerlink" title="11.4.2. 严格相等 (=== and !==)"></a>11.4.2. 严格相等 (=== and !==)</h4><p>严格相等从不会类型转换。两个相等的值一定会有相同的类型。让我们复习一遍之前的<code>==</code>运算符，然后看<code>===</code>是怎样工作的</p>
+<p>如果两个运算数都是对象，当他们是同一个对象时才相等：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plain">&gt; [1, 2, 3] &#x3D;&#x3D;&#x3D; &#39;1,2,3&#39;<br>false<br>&gt; [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;] &#x3D;&#x3D;&#x3D; &#39;1,2,3&#39;<br>false<br><br>&gt; [1, 2, 3] &#x3D;&#x3D;&#x3D; [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]<br>false<br>&gt; [1, 2, 3] &#x3D;&#x3D;&#x3D; [1, 2, 3]<br>false<br><br>&gt; const arr &#x3D; [1, 2, 3];<br>&gt; arr &#x3D;&#x3D;&#x3D; arr<br>true<br></code></pre></td></tr></table></figure>
+
+
+<p><code>===</code> 运算符不允许undefined和null相等</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">&gt; <span class="hljs-literal">undefined</span> === <span class="hljs-literal">null</span><br><span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="11-4-3-推荐：总是使用严格模式"><a href="#11-4-3-推荐：总是使用严格模式" class="headerlink" title="11.4.3. 推荐：总是使用严格模式"></a>11.4.3. 推荐：总是使用严格模式</h4><p>推荐总是使用<code>===</code>。他会让你的代码可读性更高。把你从不得不思考怪异的<code>==</code>中解脱出来。<br>让我们看一下两个case：使用==的和我推荐的替代方案.</p>
+<h5 id="11-4-3-1-使用-比较一个数字和字符串"><a href="#11-4-3-1-使用-比较一个数字和字符串" class="headerlink" title="11.4.3.1. 使用 ==:比较一个数字和字符串"></a>11.4.3.1. 使用 ==:比较一个数字和字符串</h5><p>== 让你去判断一个值x是一个数字，或者作为字符串的数字，通过单个的比较：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (x == <span class="hljs-number">123</span>) &#123;<br>  <span class="hljs-comment">// x is either 123 or '123'</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我更喜欢以下两种替代方案：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (x === <span class="hljs-number">123</span> || x === <span class="hljs-string">'123'</span>) ···<br><span class="hljs-keyword">if</span> (<span class="hljs-built_in">Number</span>(x) === <span class="hljs-number">123</span>) ···<br></code></pre></td></tr></table></figure>
+<p>你也可以在第一次遇见他的时候将它进行类型转换：</p>
+<h5 id="11-4-3-2-比较undefined-和-null"><a href="#11-4-3-2-比较undefined-和-null" class="headerlink" title="11.4.3.2 ==: 比较undefined 和 null"></a>11.4.3.2 ==: 比较undefined 和 null</h5><p>使用==的另外一个case是比较undefined 或 null</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (x == <span class="hljs-literal">null</span>) &#123;<br>  <span class="hljs-comment">// x is either null or undefined</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这段代码的问题在于，你无法保证是其他人也会用这种方式判断，或者有人有用meant === null的方式。</p>
+<p>我更喜欢一下两者任意替代方式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">if (x &#x3D;&#x3D;&#x3D; undefined || x &#x3D;&#x3D;&#x3D; null) ···<br>if (x) ···<br></code></pre></td></tr></table></figure>
+
+<p>第二种替代方式是相对更常见，但是塔毁坏了一些在JS中的一些模式。<br>在 <a href="http://exploringjs.com/impatient-js/ch_operators.html/ch_booleans.html#falsiness-truthiness" target="_blank" rel="noopener">the chapter on booleans</a>会解释到, 我们会看到现象与本质。</p>
+<h3 id="11-5-排序运算"><a href="#11-5-排序运算" class="headerlink" title="11.5. 排序运算"></a>11.5. 排序运算</h3><p>Table 2: JavaScript’s ordering operators. </p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于等于</td>
+</tr>
+</tbody></table>
+<p>JS的比较运算符规则(tbl. <a href="http://exploringjs.com/impatient-js/ch_operators.html/#tbl:ordering_operators" target="_blank" rel="noopener">2</a>) 对字符串和数字同样生效。</p>
+<p>警告：这些运算符在比较人类语言中的文本（大写、重音等）时效果不佳。有关详细信息，请参阅[字符串章节](<a href="http://exploringjs.com/unatint" target="_blank" rel="noopener">http://exploringjs.com/unatint</a> js/ch_operators.html/ch_strings.html比较字符串)。</p>
+<h3 id="11-6-其他的运算符"><a href="#11-6-其他的运算符" class="headerlink" title="11.6. 其他的运算符"></a>11.6. 其他的运算符</h3><ul>
+<li><p><a href="http://speakingjs.com/es5/ch09.html#comma_operator" target="_blank" rel="noopener">逗号运算符</a>: a, b</p>
+</li>
+<li><p><a href="http://speakingjs.com/es5/ch09.html#void_operator" target="_blank" rel="noopener">void 运算符</a>: void 0</p>
+</li>
+</ul>
+<ul>
+<li>对于布尔，字符串，数组或对象在本书其他章节也有提到。</li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/12/18/%E5%89%8D%E7%AB%AF-babel/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2021/03/02/about/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6e1bd36a2fd1534ebf18',
+  clientSecret: '07d3d9b1d113a099673fe5180fa67c72263a847a',
+  repo: 'blog-comment',
+  owner: 'fidoChou',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['fidoChou'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":250,"vOffset":0},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

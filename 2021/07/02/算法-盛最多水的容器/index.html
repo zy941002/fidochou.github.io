@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>盛最多水的容器 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="数组 双指针," />
+  
+
+  <meta name="description" content="LC:11 算法-盛最多水的容器 [1(left), 8, 6, 2, 5, 4, 8, 3, 7(right)] 方法一：双指针在初始时，左右指针分别指向数组的左右两端，它们可以容纳的水量为   min(1, 7) * 8  因为，由于容纳的水量是由  两个指针指向的数字中较小值 ∗ 指针之间的距离  因此，我们移动 数字较小的那个指针。 (先假设 总是移动数字较小的那个指针的思路是正确的，在走">
+<meta property="og:type" content="article">
+<meta property="og:title" content="盛最多水的容器">
+<meta property="og:url" content="http://jocolorful.com/2021/07/02/%E7%AE%97%E6%B3%95-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="LC:11 算法-盛最多水的容器 [1(left), 8, 6, 2, 5, 4, 8, 3, 7(right)] 方法一：双指针在初始时，左右指针分别指向数组的左右两端，它们可以容纳的水量为   min(1, 7) * 8  因为，由于容纳的水量是由  两个指针指向的数字中较小值 ∗ 指针之间的距离  因此，我们移动 数字较小的那个指针。 (先假设 总是移动数字较小的那个指针的思路是正确的，在走">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-02T01:10:32.000Z">
+<meta property="article:modified_time" content="2022-03-27T04:40:46.314Z">
+<meta property="article:author" content="Jojo">
+<meta property="article:tag" content="数组 双指针">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#方法一：双指针"><span class="toc-text">方法一：双指针</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-算法-盛最多水的容器" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">盛最多水的容器</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.07.02</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">LC:11 算法-盛最多水的容器</a></p>
+<p>[1(left), 8, 6, 2, 5, 4, 8, 3, 7(right)]</p>
+<h1 id="方法一：双指针"><a href="#方法一：双指针" class="headerlink" title="方法一：双指针"></a>方法一：双指针</h1><p>在初始时，左右指针分别指向数组的左右两端，它们可以容纳的水量为 </p>
+<blockquote>
+<p>min(1, 7) * 8</p>
+</blockquote>
+<p>因为，由于容纳的水量是由</p>
+<blockquote>
+<p>两个指针指向的数字中较小值 ∗ 指针之间的距离</p>
+</blockquote>
+<p>因此，我们移动 <font color="red">数字较小的那个指针。</font></p>
+<p>(先假设 总是移动数字较小的那个指针的思路是正确的，在走完流程之后再去进行证明。)</p>
+<p>所以，我们将左指针向右移动：此时可以容纳的水量为: min(8, 7) * 7 = 49</p>
+<p>[1, 8(left), 6, 2, 5, 4, 8, 3, 7(right)]</p>
+<p>(👆由于右指针对应的数字较小，移动右指针：👇)</p>
+<p>[1, 8(left), 6, 2, 5, 4, 8, 3(right), 7] 此时可以容纳的水量为：min(8, 3) * 6 = 18</p>
+<p>（👆 由于右指针对应的数字较小，我们移动右指针：👇）</p>
+<p>[1, 8(left), 6, 2, 5, 4, 8(right), 3, 7] 此时可以容纳的水量为：min(8, 8) * 5 = 40 </p>
+<p>（👆两指针对应的数字相同，我们可以任意移动一个，例如左指针：👇）</p>
+<p>[1, 8, 6(left), 2, 5, 4, 8(right), 3, 7]</p>
+<p>此时可以容纳的水量为 min(6, 8) * 4 = 24。由于左指针对应的数字较小，我们移动左指针，并且可以发现，在这之后左指针对应的数字总是较小，因此我们会一直移动左指针，直到两个指针重合。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/06/30/%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2021/07/05/%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E5%B9%82/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6e1bd36a2fd1534ebf18',
+  clientSecret: '07d3d9b1d113a099673fe5180fa67c72263a847a',
+  repo: 'blog-comment',
+  owner: 'fidoChou',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['fidoChou'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":250,"vOffset":0},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

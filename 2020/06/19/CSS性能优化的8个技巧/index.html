@@ -6,6 +6,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
   <title>CSS 性能优化的 8 个技巧 | Jojo&#39;s World</title>
 
@@ -15,15 +16,15 @@
     <meta name="keywords" content="jojo,前端,户外领队,frontend,nodejs,JavaScript,Outdoor Leader" />
   
 
-  <meta name="description" content="这周周会翼巧同学分享了「内联首屏关键CSS(Critical CSS)」我学习的热情又燃起来了！  祭出原文👉 CSS性能优化的 8 个技巧 翼巧同学使用的是第一种方式（但不是内联，是内嵌），反正我已经知道怎么做的了，来看看优缺点吧！ 关键 CSS优点 内联 CSS 能够使浏览器开始页面渲染的时间提前  缺点 无法缓存 CSS  内嵌样式体积需要较小   异步加载 CSS 通过 script">
+  <meta name="description" content="这周周会翼巧同学分享了「内联首屏关键CSS(Critical CSS)」  祭出原文👉 CSS性能优化的 8 个技巧 翼巧同学使用的是第一种方式（但不是内联，是内嵌），反正我已经知道怎么做的了，来看看优缺点吧！ 关键 CSS优点 内联 CSS 能够使浏览器开始页面渲染的时间提前  缺点 无法缓存 CSS 内嵌样式体积需要较小  异步加载 CSS 通过 script 标签异步创建 link 标签">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS 性能优化的 8 个技巧">
 <meta property="og:url" content="http://jocolorful.com/2020/06/19/CSS%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%848%E4%B8%AA%E6%8A%80%E5%B7%A7/index.html">
 <meta property="og:site_name" content="Jojo&#39;s World">
-<meta property="og:description" content="这周周会翼巧同学分享了「内联首屏关键CSS(Critical CSS)」我学习的热情又燃起来了！  祭出原文👉 CSS性能优化的 8 个技巧 翼巧同学使用的是第一种方式（但不是内联，是内嵌），反正我已经知道怎么做的了，来看看优缺点吧！ 关键 CSS优点 内联 CSS 能够使浏览器开始页面渲染的时间提前  缺点 无法缓存 CSS  内嵌样式体积需要较小   异步加载 CSS 通过 script">
+<meta property="og:description" content="这周周会翼巧同学分享了「内联首屏关键CSS(Critical CSS)」  祭出原文👉 CSS性能优化的 8 个技巧 翼巧同学使用的是第一种方式（但不是内联，是内嵌），反正我已经知道怎么做的了，来看看优缺点吧！ 关键 CSS优点 内联 CSS 能够使浏览器开始页面渲染的时间提前  缺点 无法缓存 CSS 内嵌样式体积需要较小  异步加载 CSS 通过 script 标签异步创建 link 标签">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-19T08:28:58.000Z">
-<meta property="article:modified_time" content="2021-06-19T03:25:49.955Z">
+<meta property="article:modified_time" content="2022-03-27T04:40:46.276Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -147,7 +148,7 @@ ga('send', 'pageview');
   <div class="article-content">
     
       <blockquote>
-<p>这周周会翼巧同学分享了「内联首屏关键CSS(Critical CSS)」我学习的热情又燃起来了！</p>
+<p>这周周会翼巧同学分享了「内联首屏关键CSS(Critical CSS)」</p>
 </blockquote>
 <p>祭出原文👉 <a href="https://juejin.im/post/5ece2a1e6fb9a048021466b0?utm_source=gold_browser_extension" target="_blank" rel="noopener">CSS性能优化的 8 个技巧</a></p>
 <p>翼巧同学使用的是第一种方式（但不是内联，是内嵌），反正我已经知道怎么做的了，来看看优缺点吧！</p>
@@ -155,32 +156,28 @@ ga('send', 'pageview');
 <li>内联 CSS 能够使浏览器开始页面渲染的时间提前</li>
 </ol>
 <h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ol>
-<li><p>无法缓存 CSS</p>
-</li>
-<li><p>内嵌样式体积需要较小</p>
-</li>
+<li>无法缓存 CSS</li>
+<li>内嵌样式体积需要较小</li>
 </ol>
 <h1 id="异步加载-CSS"><a href="#异步加载-CSS" class="headerlink" title="异步加载 CSS"></a>异步加载 CSS</h1><ol>
 <li>通过 script 标签异步创建 link 标签</li>
-<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preload"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"mystyles.css"</span> <span class="hljs-attr">as</span>=<span class="hljs-string">"style"</span> <span class="hljs-attr">onload</span>=<span class="hljs-string">"this.rel='stylesheet'"</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-</li>
+<li></li>
 </ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preload"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"mystyles.css"</span> <span class="hljs-attr">as</span>=<span class="hljs-string">"style"</span> <span class="hljs-attr">onload</span>=<span class="hljs-string">"this.rel='stylesheet'"</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <h1 id="文件压缩"><a href="#文件压缩" class="headerlink" title="文件压缩"></a>文件压缩</h1><h1 id="去除无用-CSS"><a href="#去除无用-CSS" class="headerlink" title="去除无用 CSS"></a>去除无用 CSS</h1><ol>
 <li>保持简单，不要使用嵌套过多过于复杂的选择器</li>
 <li>通配符和属性选择器效率最低，需要匹配的元素最多，尽量避免使用</li>
 <li>不要使用类选择器和 ID 选择器修饰元素标签</li>
 <li>不要为了追求速度而放弃可读性与可维护性</li>
 </ol>
-<p>复习一遍： 为什么CSS选择器是从右向左匹配的</p>
+<p>复习一遍： 为什么 CSS 选择器是从右向左匹配的</p>
 <blockquote>
 <p>CSS 中更多的选择器是不会匹配的，所以在考虑性能问题时，需要考虑的是如何在选择器「不匹配」时提升效率。从右向左匹配就是为了达成这一目的的，通过这一策略能够使得CSS选择器在不匹配的时候效率更高。这样想来，在匹配时多耗费一些性能也能够想的通了</p>
 </blockquote>
-<h1 id="减少使用昂贵的属性"><a href="#减少使用昂贵的属性" class="headerlink" title="减少使用昂贵的属性"></a>减少使用昂贵的属性</h1><h1 id="减少重排和避免重绘"><a href="#减少重排和避免重绘" class="headerlink" title="减少重排和避免重绘"></a>减少重排和避免重绘</h1><h1 id="不要使用-import"><a href="#不要使用-import" class="headerlink" title="不要使用 @import"></a>不要使用 @import</h1><p>使用@import引用的 CSS 文件只有在引用它的那个css文件被「下载、解析」之后，浏览器才会知道还有另外一个 CSS 需要下载，这时才去下载，然后下载后开始解析、构建render tree等一系列操作。这就导致浏览器无法并行下载所需的样式文件。</p>
-<p>直接导致的后果：</p>
-<p>当然是异步加载完的重绘</p>
+<h1 id="减少使用昂贵的属性"><a href="#减少使用昂贵的属性" class="headerlink" title="减少使用昂贵的属性"></a>减少使用昂贵的属性</h1><h1 id="减少重排和避免重绘"><a href="#减少重排和避免重绘" class="headerlink" title="减少重排和避免重绘"></a>减少重排和避免重绘</h1><h1 id="不要使用-import"><a href="#不要使用-import" class="headerlink" title="不要使用 @import"></a>不要使用 @import</h1><p>使用 @import 引用的 CSS 文件只有在引用它的那个css文件被「下载、解析」之后，浏览器才会知道还有另外一个 CSS 需要下载，这时才去下载，然后下载后开始解析、构建render tree等一系列操作。这就导致浏览器无法并行下载所需的样式文件。</p>
+<p>直接导致的后果：当然是异步加载完的重绘</p>
 <p>That’s All !</p>
-<p>犹梦杰同学分享了一个高大上的分享，反正我是听不到太懂？ 我决定周末在家无聊的时候补一下。hiahiahia</p>
 
     
   </div>
@@ -195,7 +192,7 @@ ga('send', 'pageview');
     <a class="show pull-left" href="/2020/06/19/ReadList/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2020/07/01/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E9%87%8F%E5%8C%96%E6%A0%87%E5%87%86%E8%AF%BB%E5%90%8E%E6%84%9F/">
+    <a class="show pull-right" href="/2020/07/01/%E5%89%8D%E7%AB%AF-%E6%80%A7%E8%83%BD%E9%87%8F%E5%8C%96%E6%A0%87%E5%87%86%E8%AF%BB%E5%90%8E%E6%84%9F/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -362,5 +359,5 @@ gitalk.render('gitalk-container')
   }
 </script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":250,"vOffset":0},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":250,"vOffset":0},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
 </html>

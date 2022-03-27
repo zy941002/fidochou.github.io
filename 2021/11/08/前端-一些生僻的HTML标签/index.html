@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>一些生僻的 HTML 标签 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="jojo,前端,户外领队,frontend,nodejs,JavaScript,Outdoor Leader" />
+  
+
+  <meta name="description" content="map 和 area图片上定义一个热点区域，可以关联一个超链接；area 元素仅在 map 元素内部使用。 https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;HTML&#x2F;Element&#x2F;area base 文档根 URL 元素https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;HTML&#x2F;Element&#x2F;base如果指定了以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些生僻的 HTML 标签">
+<meta property="og:url" content="http://jocolorful.com/2021/11/08/%E5%89%8D%E7%AB%AF-%E4%B8%80%E4%BA%9B%E7%94%9F%E5%83%BB%E7%9A%84HTML%E6%A0%87%E7%AD%BE/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="map 和 area图片上定义一个热点区域，可以关联一个超链接；area 元素仅在 map 元素内部使用。 https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;HTML&#x2F;Element&#x2F;area base 文档根 URL 元素https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;HTML&#x2F;Element&#x2F;base如果指定了以">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-08T06:49:01.000Z">
+<meta property="article:modified_time" content="2022-03-27T04:40:46.292Z">
+<meta property="article:author" content="Jojo">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#map-和-area"><span class="toc-text">map 和 area</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#base-文档根-URL-元素"><span class="toc-text">base 文档根 URL 元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#object"><span class="toc-text">object</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#track"><span class="toc-text">track</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-前端-一些生僻的HTML标签" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">一些生僻的 HTML 标签</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.11.08</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/">前端相关</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="map-和-area"><a href="#map-和-area" class="headerlink" title="map 和 area"></a>map 和 area</h1><p>图片上定义一个热点区域，可以关联一个超链接；area 元素仅在 map 元素内部使用。</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area</a></p>
+<h1 id="base-文档根-URL-元素"><a href="#base-文档根-URL-元素" class="headerlink" title="base 文档根 URL 元素"></a>base 文档根 URL 元素</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base</a><br>如果指定了以下任一属性，这个元素必须在其他任何属性是URL的元素之前。例如：<link> 的 href 属性。</p>
+<ol>
+<li>href：用于文档中相对 URL 地址的基础 URL。允许绝对和相对URL。</li>
+<li>target</li>
+</ol>
+<p>值得注意的是：</p>
+<ol>
+<li>多个 base 元素会默认只用第一个。</li>
+<li><a href="https://ogp.me/" target="_blank" rel="noopener">Open Graph（开放图谱协议）</a>不接受 base 元素<br>其实就是一些 Meta 标签，是 facebook 制定的协议。在 facebook 分享链接链接时能够，分享信息呈现出</li>
+</ol>
+<h1 id="object"><a href="#object" class="headerlink" title="object"></a>object</h1><p>object 标签作用跟 embed 相似，也是插入外部资源，由浏览器插件处理。它可以视为 embed 的替代品，有标准化行为，只限于插入少数几种通用资源，没有历史遗留问题，因此更推荐使用。</p>
+<p><a href="https://www.bookstack.cn/read/html-tutorial/spilt.6.docs-multimedia.md" target="_blank" rel="noopener">https://www.bookstack.cn/read/html-tutorial/spilt.6.docs-multimedia.md</a></p>
+<h1 id="track"><a href="#track" class="headerlink" title="track"></a>track</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track</a></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/11/06/%E5%89%8D%E7%AB%AF-Next-js-V12%E7%9A%84%E7%90%86%E8%A7%A3/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2021/12/29/%E7%94%9F%E6%B4%BB-%E5%85%B3%E4%BA%8E2021%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6e1bd36a2fd1534ebf18',
+  clientSecret: '07d3d9b1d113a099673fe5180fa67c72263a847a',
+  repo: 'blog-comment',
+  owner: 'fidoChou',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['fidoChou'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":250,"vOffset":0},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

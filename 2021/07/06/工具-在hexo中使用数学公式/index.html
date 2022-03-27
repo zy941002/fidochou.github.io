@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>在 Hexo 中使用数学公式 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="jojo,前端,户外领队,frontend,nodejs,JavaScript,Outdoor Leader" />
+  
+
+  <meta name="description" content="用法12345var md &#x3D; window.markdownit();md.use(window.markdownitLatex2img,   &amp;#123;style: &quot;filter: opacity(75%);transform:scale(0.75);text-align:center;&quot;&amp;#125; &#x2F;&#x2F;可选);md.render(input.value); 1 数学公式1.1 内联公式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 Hexo 中使用数学公式">
+<meta property="og:url" content="http://jocolorful.com/2021/07/06/%E5%B7%A5%E5%85%B7-%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="用法12345var md &#x3D; window.markdownit();md.use(window.markdownitLatex2img,   &amp;#123;style: &quot;filter: opacity(75%);transform:scale(0.75);text-align:center;&quot;&amp;#125; &#x2F;&#x2F;可选);md.render(input.value); 1 数学公式1.1 内联公式">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-06T13:00:18.000Z">
+<meta property="article:modified_time" content="2022-03-27T04:40:46.298Z">
+<meta property="article:author" content="Jojo">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用法"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-数学公式"><span class="toc-text">1 数学公式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-内联公式"><span class="toc-text">1.1 内联公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-块公式"><span class="toc-text">1.2 块公式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-物理公式"><span class="toc-text">2 物理公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-化学公式"><span class="toc-text">3 化学公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-语法参考"><span class="toc-text">4 语法参考</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-工具-在hexo中使用数学公式" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">在 Hexo 中使用数学公式</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.07.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E9%9B%86%E5%90%88/">工具集合</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> md = <span class="hljs-built_in">window</span>.markdownit();<br>md.use(<span class="hljs-built_in">window</span>.markdownitLatex2img, <br>  &#123;<span class="hljs-attr">style</span>: <span class="hljs-string">"filter: opacity(75%);transform:scale(0.75);text-align:center;"</span>&#125; <span class="hljs-comment">//可选</span><br>);<br>md.render(input.value);<br></code></pre></td></tr></table></figure>
+<h2 id="1-数学公式"><a href="#1-数学公式" class="headerlink" title="1 数学公式"></a>1 数学公式</h2><h3 id="1-1-内联公式"><a href="#1-1-内联公式" class="headerlink" title="1.1 内联公式"></a>1.1 内联公式</h3><p><strong>开头的<code>$</code>必须在其右边紧跟一个非空格字符，而结尾的<code>$</code>必须在其左边紧接一个非空格字符，并且不能紧跟一个数字。</strong></p>
+<ul>
+<li>勾股定理: $a^2+b^2=c^2$</li>
+<li>等差数列求和公式: $S_{n}=n a_{1}+\frac{n(n-1)}{2} d, n \in N^{*}$</li>
+<li>牛顿-莱布尼茨公式: $\int_{a}^{b} f(x) d x=F(b)-F(a)=\left.F(x)\right|_{a} ^{b}$</li>
+<li>二项分布: $P_{n}(k)=C_{n}^{k} p^{k} q^{n-k} \quad k=0,1,2 \ldots \ldots, n$<h3 id="1-2-块公式"><a href="#1-2-块公式" class="headerlink" title="1.2 块公式"></a>1.2 块公式</h3>正态分布$X \sim N(\mu,\sigma^2)$:<br>$$f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$</li>
+</ul>
+<p>斐波那契数列$A_n=A_{n-1}+A_{n-2}$,前后两项的比值逐渐收敛到黄金分割比例<br>$$\lim_{n\to \infty}\frac{A_{n-1}}{A_n}=\frac{\sqrt{5}-1}{2}.$$</p>
+<p>因式分解<br>$$\begin{split}(x−1)(x−3)&amp;=x^2−4x+3 \<br>&amp;=x^2−4x+4−1 \<br>&amp;=(x−2)^2−1<br>\end{split}<br>$$</p>
+<p>狄利克雷函数</p>
+<p>$$<br>D(x)=<br>\begin{cases}<br>1,&amp; x \in Q \<br>0,&amp; x \notin Q<br>\end{cases}<br>$$</p>
+<p>高斯公式<br>$$<br>\iiint_{\Omega}\left(\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z}\right) d v=\iint_{\Sigma} P d y d z+Q d z d x+R d x d y<br>$$</p>
+<p>范德蒙行列式<br>$$D_{n-1}=\left|\begin{array}{cccc}<br>1 &amp; 1 &amp; \dots &amp; 1 \<br>x_{2} &amp; x_{3} &amp; \dots &amp; x_{n} \<br>\vdots &amp; \vdots &amp; &amp; \vdots \<br>x_{2}^{n-2} &amp; x_{3}^{n-2} &amp; \dots &amp; x_{n}^{n-2}<br>\end{array}\right|=\prod_{2 \leq j&lt;i \leq n}\left(x_{i}-x_{j}\right)$$</p>
+<p>线性方程组<br>$$\left{\begin{aligned}<br>a_{11} x_{1}+a_{12} x_{2}+\cdots+a_{1 n} x_{n} &amp;=b_{1} \<br>a_{21} x_{1}+a_{22} x_{2}+\cdots+a_{2 n} x_{n} &amp;=b_{2} \<br>\cdots \cdots \cdots \<br>a_{m 1} x_{1}+a_{m 2} x_{2}+\cdots+a_{m n} x_{n} &amp;=b_{m}<br>\end{aligned}\right.$$</p>
+<h2 id="2-物理公式"><a href="#2-物理公式" class="headerlink" title="2 物理公式"></a>2 物理公式</h2><ul>
+<li>牛顿第一定律: $\sum \vec{F}_{i}=\frac{\mathrm{d} \vec{v}}{\mathrm{d} t}=0$</li>
+<li>牛顿第二定律: $\vec{F}=\frac{\mathrm{d} m}{\mathrm{d} t} \vec{v}+m \frac{\mathrm{d} \vec{v}}{\mathrm{d} t}=\frac{\mathrm{d} m}{\mathrm{d} t} \vec{v}+m \vec{a}=\frac{\mathrm{d} m}{\mathrm{d} t} \vec{v}+m \frac{\mathrm{d}^{2} \vec{r}}{\mathrm{d} t^{2}}$</li>
+<li>牛顿第三定律: $\overrightarrow{F_{12}}=-\overrightarrow{F_{21}}$</li>
+<li>质能守恒: $E=mc^2$</li>
+</ul>
+<p>万有引力定律: $F=\frac{G M m}{r^{2}}$<br>$$G \frac{m M}{(r+h)^{2}}=m \frac{\nu^{2}}{(r+h)}$$<br>基尔霍夫定律<br>$$\left[\frac{\partial\left(\Delta_{r} H_{m}\right)}{\partial T}\right]<em>{p}=\sum</em>{B} v_{B} C_{p, m}(B)$$<br>热力学第二定律<br>$$d S \geq \frac{\delta Q}{T}$$</p>
+<h2 id="3-化学公式"><a href="#3-化学公式" class="headerlink" title="3 化学公式"></a>3 化学公式</h2><p>离子反应与沉淀: $\ce{SO4^2- + Ba^2+ -&gt; BaSO4 v}$</p>
+<p>氮气氢气合成氨<br>$$<br>\ce{N2 + 3H2 &lt;=&gt;T[高温、加压][催化剂] 2NH3}<br>$$</p>
+<p>化学平衡常数:$\mathrm{Zn}+2 \mathrm{HCl}(\mathrm{aq})=\mathrm{H}<em>{2}+\mathrm{ZnCl}</em>{2} \quad(\mathrm{aq})$<br>$$K^{\theta}=\frac{\left[p\left(\mathrm{H}<em>{2}\right) / p^{\theta}\right]\left[c\left(\mathrm{ZnCl}</em>{2}\right)\right]}{c^{2}(\mathrm{HC})}$$</p>
+<h2 id="4-语法参考"><a href="#4-语法参考" class="headerlink" title="4 语法参考"></a>4 语法参考</h2><p><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="noopener">MathJax basic tutorial and quick reference</a></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/07/05/%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E5%B9%82/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2021/07/08/%E7%AE%97%E6%B3%95-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6e1bd36a2fd1534ebf18',
+  clientSecret: '07d3d9b1d113a099673fe5180fa67c72263a847a',
+  repo: 'blog-comment',
+  owner: 'fidoChou',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['fidoChou'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":250,"vOffset":0},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

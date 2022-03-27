@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>Next.js v12的理解 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="jojo,前端,户外领队,frontend,nodejs,JavaScript,Outdoor Leader" />
+  
+
+  <meta name="description" content="https:&#x2F;&#x2F;nextjs.org&#x2F;blog&#x2F;next-12  Rust 编译器：约 3 倍的快速刷新和约 5 倍的构建速度 中间件（beta）：通过配置代码在 Next.js 中实现完全的灵活性 React 18 支持：现在支持原生 Next.js API，以及 Suspense AVIF 支持：选择性压缩 20% 的图像 Bot-aware ISR Fallback：为网络爬虫优化 SEO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Next.js v12的理解">
+<meta property="og:url" content="http://jocolorful.com/2021/11/06/%E5%89%8D%E7%AB%AF-Next-js-V12%E7%9A%84%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="https:&#x2F;&#x2F;nextjs.org&#x2F;blog&#x2F;next-12  Rust 编译器：约 3 倍的快速刷新和约 5 倍的构建速度 中间件（beta）：通过配置代码在 Next.js 中实现完全的灵活性 React 18 支持：现在支持原生 Next.js API，以及 Suspense AVIF 支持：选择性压缩 20% 的图像 Bot-aware ISR Fallback：为网络爬虫优化 SEO">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-06T05:33:49.000Z">
+<meta property="article:modified_time" content="2022-03-27T04:40:46.284Z">
+<meta property="article:author" content="Jojo">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Rust-编译器实现更快的构建和快速刷新"><span class="toc-text">使用 Rust 编译器实现更快的构建和快速刷新</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#中间件"><span class="toc-text">中间件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Preparing-for-React-18"><span class="toc-text">Preparing for React 18</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Server-Side-Streaming"><span class="toc-text">Server-Side Streaming</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#React-Server-Components"><span class="toc-text">React Server Components</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES-模块支持和-URL-导入"><span class="toc-text">ES 模块支持和 URL 导入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bot-Aware-ISR-Fallback"><span class="toc-text">Bot-Aware ISR Fallback</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#静态网站的生成"><span class="toc-text">静态网站的生成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Smaller-images-using-AVIF"><span class="toc-text">Smaller images using AVIF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Output-File-Tracing"><span class="toc-text">Output File Tracing</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Other-Improvements"><span class="toc-text">Other Improvements</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-前端-Next-js-V12的理解" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Next.js v12的理解</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.11.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Node-js/">Node.js</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p><a href="https://nextjs.org/blog/next-12" target="_blank" rel="noopener">https://nextjs.org/blog/next-12</a></p>
+<ol>
+<li>Rust 编译器：约 3 倍的快速刷新和约 5 倍的构建速度</li>
+<li>中间件（beta）：通过配置代码在 Next.js 中实现完全的灵活性</li>
+<li>React 18 支持：现在支持原生 Next.js API，以及 Suspense</li>
+<li><Image />AVIF 支持：选择性压缩 20% 的图像</li>
+<li>Bot-aware ISR Fallback：为网络爬虫优化 SEO</li>
+<li>原生 ES 模块支持：与标准化模块系统保持一致</li>
+<li>URL Imports（alpha）：从任何 URL 导入包，无需安装</li>
+<li>React Server Components (alpha)：立即试用，包括 SSR 流</li>
+</ol>
+<h1 id="使用-Rust-编译器实现更快的构建和快速刷新"><a href="#使用-Rust-编译器实现更快的构建和快速刷新" class="headerlink" title="使用 Rust 编译器实现更快的构建和快速刷新"></a>使用 Rust 编译器实现更快的构建和快速刷新</h1><ol>
+<li>大型代码库的进一步速度提升</li>
+<li>提高了对性能的可观察性</li>
+<li>底层 webpack 改进</li>
+</ol>
+<p>使用 Rust 替代 Babel，包括用于实现转换的全新 Rust CSS 解析器「styled-jsx」，压缩比 Terser 快 7 倍。</p>
+<h1 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h1><p><a href="https://www.youtube.com/watch?v=WlP2TB2ORL4" target="_blank" rel="noopener">中间件 + 边缘节点 = edge function？</a><br><a href="https://vercel.com/features/edge-functions" target="_blank" rel="noopener">edge-functions</a></p>
+<h1 id="Preparing-for-React-18"><a href="#Preparing-for-React-18" class="headerlink" title="Preparing for React 18"></a>Preparing for React 18</h1><p><a href="https://nextjs.org/docs/advanced-features/react-18" target="_blank" rel="noopener">react-18</a></p>
+<p>React 18 的新 feature 包括：Suspense、自动批量更新、startTransition 还有一些新的为服务端渲染准备的流式 API。</p>
+<h2 id="Server-Side-Streaming"><a href="#Server-Side-Streaming" class="headerlink" title="Server-Side Streaming"></a>Server-Side Streaming</h2><p>React 18 中的并发功能包括对服务端 Suspense 和 SSR 流支持的内置支持。这允许使用 HTTP 流来服务器呈现页面。这是 Next.js 12 中的一项实验性功能，但一旦启用，SSR 将使用与中间件相同的严格运行时。</p>
+<h2 id="React-Server-Components"><a href="#React-Server-Components" class="headerlink" title="React Server Components"></a>React Server Components</h2><p>React Server Components 允许我们在服务器上渲染所有内容包括组件本身。这与在服务器上预先生成 HTML 的服务器端呈现有着根本的不同。 <font size="blod">zero client-side JavaScript needed</font>，使页面呈现速度更快。这改善了应用程序的用户体验，将服务器渲染的最佳部分与客户端交互性相结合。</p>
+<h1 id="ES-模块支持和-URL-导入"><a href="#ES-模块支持和-URL-导入" class="headerlink" title="ES 模块支持和 URL 导入"></a>ES 模块支持和 URL 导入</h1><p><a href="https://nextjs.org/docs/api-reference/next.config.js/url-imports" target="_blank" rel="noopener">url-imports</a></p>
+<h1 id="Bot-Aware-ISR-Fallback"><a href="#Bot-Aware-ISR-Fallback" class="headerlink" title="Bot-Aware ISR Fallback"></a>Bot-Aware ISR Fallback</h1><p><a href="https://juejin.cn/post/6977783923099041800" target="_blank" rel="noopener">https://juejin.cn/post/6977783923099041800</a></p>
+<p>静态页面可以在运行时（按需）生成，而不是用 ISR 在构建时生成。使用分析、A/B 测试或其他指标，你可以灵活地对构建时间做出自己的权衡。</p>
+<h2 id="静态网站的生成"><a href="#静态网站的生成" class="headerlink" title="静态网站的生成"></a>静态网站的生成</h2><p>ISR 对于小型网站来说并不总是有意义的。如果你的重新验证期大于重建整个网站所需的时间，你还不如使用传统的静态网站生成。</p>
+<p>ISR（增量静态再生）</p>
+<h1 id="Smaller-images-using-AVIF"><a href="#Smaller-images-using-AVIF" class="headerlink" title="Smaller images using AVIF"></a>Smaller images using AVIF</h1><h1 id="Output-File-Tracing"><a href="#Output-File-Tracing" class="headerlink" title="Output File Tracing"></a>Output File Tracing</h1><h1 id="Other-Improvements"><a href="#Other-Improvements" class="headerlink" title="Other Improvements"></a>Other Improvements</h1>
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/11/06/package.json%20%E5%AD%97%E6%AE%B5%E8%AF%A6%E8%A7%A3/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2021/11/08/%E5%89%8D%E7%AB%AF-%E4%B8%80%E4%BA%9B%E7%94%9F%E5%83%BB%E7%9A%84HTML%E6%A0%87%E7%AD%BE/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6e1bd36a2fd1534ebf18',
+  clientSecret: '07d3d9b1d113a099673fe5180fa67c72263a847a',
+  repo: 'blog-comment',
+  owner: 'fidoChou',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['fidoChou'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":250,"vOffset":0},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>
