@@ -6,7 +6,7 @@
   <link href="http://jocolorful.com/atom.xml" rel="self"/>
   
   <link href="http://jocolorful.com/"/>
-  <updated>2022-03-19T06:21:31.000Z</updated>
+  <updated>2022-03-28T00:50:45.298Z</updated>
   <id>http://jocolorful.com/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>TypeScript 每天起床一早操</title>
+    <link href="http://jocolorful.com/2022/03/28/%E6%AF%8F%E5%A4%A9%E8%B5%B7%E5%BA%8A%E4%B8%80%E6%97%A9%E6%93%8D/"/>
+    <id>http://jocolorful.com/2022/03/28/%E6%AF%8F%E5%A4%A9%E8%B5%B7%E5%BA%8A%E4%B8%80%E6%97%A9%E6%93%8D/</id>
+    <published>2022-03-28T00:10:10.000Z</published>
+    <updated>2022-03-28T00:50:45.298Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;每天起床练体操，理论 + coding 助力小学生茁壮成长！&lt;br&gt;TypeScript 小学生的进击之路：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.typescriptlang.org/zh/play&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;TypeScript 广场&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://juejin.cn/post/6844904184894980104&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;一文读懂 TypeScript 泛型及应用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://juejin.cn/post/7009046640308781063&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;这 30 道 TS 练习题，你能答对几道？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;Q1-我们为什么要使用泛型？使用的参考标准是什么？&quot;&gt;&lt;a href=&quot;#Q1-我们为什么要使用泛型？使用的参考标准是什么？&quot; class=&quot;headerlink&quot; title=&quot;Q1. 我们为什么要使用泛型？使用的参考标准是什么？&quot;&gt;&lt;/a&gt;Q1. 我们为什么要使用泛型？使用的参考标准是什么？&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;当你的「函数」、「接口」、「类」将处理多种数据类型时；&lt;/li&gt;
+&lt;li&gt;当「函数」、「接口」、「类」在多个地方使用该数据类型时。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;Q2-什么叫泛型约束&quot;&gt;&lt;a href=&quot;#Q2-什么叫泛型约束&quot; class=&quot;headerlink&quot; title=&quot;Q2. 什么叫泛型约束&quot;&gt;&lt;/a&gt;Q2. 什么叫泛型约束&lt;/h1&gt;&lt;p&gt;我们可能限制「每个类型变量接受的类型数量」，这就是泛型约束的作用。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="TypeScript" scheme="http://jocolorful.com/tags/TypeScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Node：值得看的文章</title>
     <link href="http://jocolorful.com/2022/03/19/Node-Artical-to-read/"/>
     <id>http://jocolorful.com/2022/03/19/Node-Artical-to-read/</id>
     <published>2022-03-19T06:19:16.000Z</published>
-    <updated>2022-03-19T06:21:31.000Z</updated>
+    <updated>2022-03-28T00:56:13.423Z</updated>
     
     
       
@@ -44,7 +71,7 @@
     <link href="http://jocolorful.com/2022/03/19/%E5%89%8D%E7%AB%AF-somethiing-about-react/"/>
     <id>http://jocolorful.com/2022/03/19/%E5%89%8D%E7%AB%AF-somethiing-about-react/</id>
     <published>2022-03-19T06:09:18.000Z</published>
-    <updated>2022-03-19T06:09:18.000Z</updated>
+    <updated>2022-03-28T00:53:09.209Z</updated>
     
     
     
@@ -57,16 +84,10 @@
     <link href="http://jocolorful.com/2021/12/29/%E7%94%9F%E6%B4%BB-%E5%85%B3%E4%BA%8E2021%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/"/>
     <id>http://jocolorful.com/2021/12/29/%E7%94%9F%E6%B4%BB-%E5%85%B3%E4%BA%8E2021%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</id>
     <published>2021-12-29T02:37:32.000Z</published>
-    <updated>2022-03-27T04:40:46.307Z</updated>
+    <updated>2022-03-28T00:53:35.245Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;p&gt;今天是 2021-12-29，今年在公司呆的最后一天。和同事们聚完餐，就放假在家等待 2022 的到来，戏谑的是我的两天假期居然是前年快过期了的。&lt;/p&gt;</summary>
     
     
     
@@ -78,16 +99,12 @@
     <link href="http://jocolorful.com/2021/11/08/%E5%89%8D%E7%AB%AF-%E4%B8%80%E4%BA%9B%E7%94%9F%E5%83%BB%E7%9A%84HTML%E6%A0%87%E7%AD%BE/"/>
     <id>http://jocolorful.com/2021/11/08/%E5%89%8D%E7%AB%AF-%E4%B8%80%E4%BA%9B%E7%94%9F%E5%83%BB%E7%9A%84HTML%E6%A0%87%E7%AD%BE/</id>
     <published>2021-11-08T06:49:01.000Z</published>
-    <updated>2022-03-27T04:40:46.292Z</updated>
+    <updated>2022-03-28T00:51:50.202Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;map-和-area&quot;&gt;&lt;a href=&quot;#map-和-area&quot; class=&quot;headerlink&quot; title=&quot;map 和 area&quot;&gt;&lt;/a&gt;map 和 area&lt;/h1&gt;&lt;p&gt;图片上定义一个热点区域，可以关联一个超链接；area 元素仅在 map 元素内部使用。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;base-文档根-URL-元素&quot;&gt;&lt;a href=&quot;#base-文档根-URL-元素&quot; class=&quot;headerlink&quot; title=&quot;base 文档根 URL 元素&quot;&gt;&lt;/a&gt;base 文档根 URL 元素&lt;/h1&gt;</summary>
     
     
     
@@ -101,16 +118,10 @@
     <link href="http://jocolorful.com/2021/11/06/%E5%89%8D%E7%AB%AF-Next-js-V12%E7%9A%84%E7%90%86%E8%A7%A3/"/>
     <id>http://jocolorful.com/2021/11/06/%E5%89%8D%E7%AB%AF-Next-js-V12%E7%9A%84%E7%90%86%E8%A7%A3/</id>
     <published>2021-11-06T05:33:49.000Z</published>
-    <updated>2022-03-27T04:40:46.284Z</updated>
+    <updated>2022-03-28T00:52:43.895Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://nextjs.org/blog/next-12&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://nextjs.org/blog/next-12&lt;/a&gt;&lt;/p&gt;</summary>
     
     
     
@@ -145,16 +156,10 @@
     <link href="http://jocolorful.com/2021/07/28/CSS-%E4%BC%AA%E5%85%83%E7%B4%A0/"/>
     <id>http://jocolorful.com/2021/07/28/CSS-%E4%BC%AA%E5%85%83%E7%B4%A0/</id>
     <published>2021-07-28T06:33:08.000Z</published>
-    <updated>2022-03-27T04:40:46.275Z</updated>
+    <updated>2022-03-28T00:55:33.513Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;p&gt;CSS 的伪元素目前一共有八种，孤陋寡闻的我只会「before」和 「after」:&lt;/p&gt;</summary>
     
     
     
@@ -168,16 +173,13 @@
     <link href="http://jocolorful.com/2021/07/22/%E7%AE%97%E6%B3%95-%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     <id>http://jocolorful.com/2021/07/22/%E7%AE%97%E6%B3%95-%E4%BD%8D%E8%BF%90%E7%AE%97/</id>
     <published>2021-07-22T05:51:38.000Z</published>
-    <updated>2022-03-27T04:40:46.312Z</updated>
+    <updated>2022-03-28T00:54:47.405Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;我钟爱位运算，亦如炉石拿着最原始的卡组打着最艰难的怪……&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;从现代计算机中所有的数据二进制的形式存储在设备中。即 0、1 两种状态，计算机对二进制数据进行的运算(+、-、*、/) 都是叫位运算，即将符号位共同参与运算的运算。&lt;/p&gt;</summary>
     
     
     
@@ -191,16 +193,16 @@
     <link href="http://jocolorful.com/2021/07/20/%E7%94%9F%E6%B4%BB-GoforSanya/"/>
     <id>http://jocolorful.com/2021/07/20/%E7%94%9F%E6%B4%BB-GoforSanya/</id>
     <published>2021-07-20T10:13:59.000Z</published>
-    <updated>2022-03-27T04:40:46.304Z</updated>
+    <updated>2022-03-28T00:54:06.825Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;身份证&lt;/li&gt;
+&lt;li&gt;充电宝&lt;/li&gt;
+&lt;li&gt;防水袋&lt;/li&gt;
+&lt;li&gt;防晒物品（冰袖、墨镜、防晒霜、帽子）&lt;/li&gt;
+&lt;li&gt;日用：护肤品、口罩、游泳装备、防虫喷雾、雨衣、拖鞋、睡衣&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
     
@@ -229,16 +231,10 @@
     <link href="http://jocolorful.com/2021/07/16/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E6%80%BB%E7%BB%93/"/>
     <id>http://jocolorful.com/2021/07/16/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E6%80%BB%E7%BB%93/</id>
     <published>2021-07-16T00:58:58.000Z</published>
-    <updated>2022-03-27T04:40:46.315Z</updated>
+    <updated>2022-03-28T00:54:22.295Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;h2 id=&quot;递归：Recusion&quot;&gt;&lt;a href=&quot;#递归：Recusion&quot; class=&quot;headerlink&quot; title=&quot;递归：Recusion&quot;&gt;&lt;/a&gt;递归：Recusion&lt;/h2&gt;</summary>
     
     
     
@@ -252,16 +248,15 @@
     <link href="http://jocolorful.com/2021/07/15/%E7%94%9F%E6%B4%BB-%E7%9B%9B%E5%A4%8F%E5%BD%92%E5%AE%B6/"/>
     <id>http://jocolorful.com/2021/07/15/%E7%94%9F%E6%B4%BB-%E7%9B%9B%E5%A4%8F%E5%BD%92%E5%AE%B6/</id>
     <published>2021-07-15T03:05:46.000Z</published>
-    <updated>2022-03-27T04:40:46.311Z</updated>
+    <updated>2022-03-28T00:53:49.269Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;p style=&quot;text-align:center&quot;&gt;
+苍霭飞云渡，江森楚天沉。&lt;br/&gt;
+光谲影沙西，破岸又一程。
+&lt;/p&gt;
+
+&lt;center&gt;&lt;img src=&quot;/images/生活-归家.jpg&quot;  width=&quot;500px&quot; /&gt;&lt;/center&gt;</summary>
     
     
     
@@ -275,16 +270,10 @@
     <link href="http://jocolorful.com/2021/07/14/%E9%98%85%E8%AF%BB-%E5%92%96%E5%95%A1%E5%92%96%E5%95%A1/"/>
     <id>http://jocolorful.com/2021/07/14/%E9%98%85%E8%AF%BB-%E5%92%96%E5%95%A1%E5%92%96%E5%95%A1/</id>
     <published>2021-07-14T14:33:55.000Z</published>
-    <updated>2022-03-27T04:40:46.317Z</updated>
+    <updated>2022-03-28T00:55:01.627Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://book.douban.com/subject/11594188/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《咖啡咖啡》&lt;/a&gt;&lt;/p&gt;</summary>
     
     
     
@@ -298,16 +287,10 @@
     <link href="http://jocolorful.com/2021/07/14/%E7%AE%97%E6%B3%95-%E9%95%BF%E5%BA%A6%E4%B8%BA3%E7%9A%84%E4%B8%8D%E5%90%8C%E5%9B%9E%E6%96%87%E5%AD%90%E5%BA%8F%E5%88%97/"/>
     <id>http://jocolorful.com/2021/07/14/%E7%AE%97%E6%B3%95-%E9%95%BF%E5%BA%A6%E4%B8%BA3%E7%9A%84%E4%B8%8D%E5%90%8C%E5%9B%9E%E6%96%87%E5%AD%90%E5%BA%8F%E5%88%97/</id>
     <published>2021-07-14T01:42:41.000Z</published>
-    <updated>2021-11-08T06:03:04.000Z</updated>
+    <updated>2022-03-28T00:54:51.224Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/unique-length-3-palindromic-subsequences/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;长度为3的不同回文子序列&lt;/a&gt;&lt;/p&gt;</summary>
     
     
     
@@ -321,16 +304,10 @@
     <link href="http://jocolorful.com/2021/07/13/%E9%98%85%E8%AF%BB-%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%A5%BD%E5%A4%A9%E6%B0%94/"/>
     <id>http://jocolorful.com/2021/07/13/%E9%98%85%E8%AF%BB-%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%A5%BD%E5%A4%A9%E6%B0%94/</id>
     <published>2021-07-13T01:51:22.000Z</published>
-    <updated>2022-03-27T04:40:46.317Z</updated>
+    <updated>2022-03-28T00:55:09.379Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://book.douban.com/subject/2250587/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《一个人的好天气》&lt;/a&gt;是日本作家青山七惠所著。这本书是大学时期英子姐留在实验室里的书。四五年过去了，这本书一直放在我重庆的家里，扉页早已泛黄。&lt;/p&gt;</summary>
     
     
     
@@ -344,16 +321,10 @@
     <link href="http://jocolorful.com/2021/07/08/%E9%98%85%E8%AF%BB-PeterPan/"/>
     <id>http://jocolorful.com/2021/07/08/%E9%98%85%E8%AF%BB-PeterPan/</id>
     <published>2021-07-08T06:36:08.000Z</published>
-    <updated>2022-03-27T04:40:46.316Z</updated>
+    <updated>2022-03-28T00:55:19.590Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://book.douban.com/subject/1386094/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《Peter.Pan》&lt;/a&gt;&lt;/p&gt;</summary>
     
     
     
@@ -367,16 +338,10 @@
     <link href="http://jocolorful.com/2021/07/08/%E7%AE%97%E6%B3%95-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C/"/>
     <id>http://jocolorful.com/2021/07/08/%E7%AE%97%E6%B3%95-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C/</id>
     <published>2021-07-08T01:21:21.000Z</published>
-    <updated>2022-03-27T04:40:46.312Z</updated>
+    <updated>2022-03-28T00:54:31.177Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/add-binary/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;二进制求和&lt;/a&gt;&lt;/p&gt;</summary>
     
     
     
@@ -392,16 +357,10 @@
     <link href="http://jocolorful.com/2021/07/06/%E5%B7%A5%E5%85%B7-%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/"/>
     <id>http://jocolorful.com/2021/07/06/%E5%B7%A5%E5%85%B7-%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</id>
     <published>2021-07-06T13:00:18.000Z</published>
-    <updated>2022-03-27T04:40:46.298Z</updated>
+    <updated>2022-03-28T00:50:24.838Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;用法&quot;&gt;&lt;a href=&quot;#用法&quot; class=&quot;headerlink&quot; title=&quot;用法&quot;&gt;&lt;/a&gt;用法&lt;/h2&gt;</summary>
     
     
     
@@ -415,16 +374,14 @@
     <link href="http://jocolorful.com/2021/07/05/%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
     <id>http://jocolorful.com/2021/07/05/%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E5%B9%82/</id>
     <published>2021-07-05T00:42:42.000Z</published>
-    <updated>2022-03-27T04:40:46.313Z</updated>
+    <updated>2022-03-28T00:54:35.346Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;不会快速幂的我留下了超时的悔恨泪水&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/count-good-numbers/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;统计好数字的数目&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=GbDtCFhq20A&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;快速幂：油管讲解&lt;/a&gt;&lt;/p&gt;</summary>
     
     
     
@@ -432,31 +389,6 @@
     
     
     <category term="快速幂" scheme="http://jocolorful.com/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>盛最多水的容器</title>
-    <link href="http://jocolorful.com/2021/07/02/%E7%AE%97%E6%B3%95-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/"/>
-    <id>http://jocolorful.com/2021/07/02/%E7%AE%97%E6%B3%95-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/</id>
-    <published>2021-07-02T01:10:32.000Z</published>
-    <updated>2022-03-27T04:40:46.314Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="算法" scheme="http://jocolorful.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="数组 双指针" scheme="http://jocolorful.com/tags/%E6%95%B0%E7%BB%84-%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     
   </entry>
   
