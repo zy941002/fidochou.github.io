@@ -14,7 +14,31 @@ html {
 }
 
 body {
-  background: rgba(150, 220, 230, 0.35);
+  background: rgba(150, 220, 230, 0.2);
+}
+
+.content {
+  background: #FFF;
+  margin-top: 0 !important;
+  padding: 50px 22px !important;
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    width: 840px !important;
+  }
+  .toc-article {
+    margin-left: 450px;
+  }
+}
+
+.article-content h1 {
+  font-size: 22px;
+  margin-top: 52px;
+}
+.article-content h2 {
+  font-size: 18px;
+  margin-top:18px;
 }
 
 .article-content blockquote {
@@ -237,11 +261,14 @@ code {
 }
 
 .layout .category-box {
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.category-box .category-list {
+  margin-left: 0;
 }
 
 .layout .category-box .category-list .category-item .category-size {

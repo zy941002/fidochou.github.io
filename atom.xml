@@ -6,7 +6,7 @@
   <link href="http://jocolorful.com/atom.xml" rel="self"/>
   
   <link href="http://jocolorful.com/"/>
-  <updated>2022-03-28T00:50:45.298Z</updated>
+  <updated>2022-03-31T00:46:42.006Z</updated>
   <id>http://jocolorful.com/</id>
   
   <author>
@@ -18,23 +18,13 @@
   
   <entry>
     <title>TypeScript 每天起床一早操</title>
-    <link href="http://jocolorful.com/2022/03/28/%E6%AF%8F%E5%A4%A9%E8%B5%B7%E5%BA%8A%E4%B8%80%E6%97%A9%E6%93%8D/"/>
-    <id>http://jocolorful.com/2022/03/28/%E6%AF%8F%E5%A4%A9%E8%B5%B7%E5%BA%8A%E4%B8%80%E6%97%A9%E6%93%8D/</id>
-    <published>2022-03-28T00:10:10.000Z</published>
-    <updated>2022-03-28T00:50:45.298Z</updated>
+    <link href="http://jocolorful.com/2022/03/28/%E5%89%8D%E7%AB%AF-%E6%AF%8F%E5%A4%A9%E8%B5%B7%E5%BA%8A%E4%B8%80%E6%97%A9%E6%93%8D/"/>
+    <id>http://jocolorful.com/2022/03/28/%E5%89%8D%E7%AB%AF-%E6%AF%8F%E5%A4%A9%E8%B5%B7%E5%BA%8A%E4%B8%80%E6%97%A9%E6%93%8D/</id>
+    <published>2022-03-28T00:10:10.086Z</published>
+    <updated>2022-03-31T00:46:42.006Z</updated>
     
     
-    <summary type="html">&lt;p&gt;每天起床练体操，理论 + coding 助力小学生茁壮成长！&lt;br&gt;TypeScript 小学生的进击之路：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.typescriptlang.org/zh/play&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;TypeScript 广场&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://juejin.cn/post/6844904184894980104&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;一文读懂 TypeScript 泛型及应用&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://juejin.cn/post/7009046640308781063&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;这 30 道 TS 练习题，你能答对几道？&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;Q1-我们为什么要使用泛型？使用的参考标准是什么？&quot;&gt;&lt;a href=&quot;#Q1-我们为什么要使用泛型？使用的参考标准是什么？&quot; class=&quot;headerlink&quot; title=&quot;Q1. 我们为什么要使用泛型？使用的参考标准是什么？&quot;&gt;&lt;/a&gt;Q1. 我们为什么要使用泛型？使用的参考标准是什么？&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;当你的「函数」、「接口」、「类」将处理多种数据类型时；&lt;/li&gt;
-&lt;li&gt;当「函数」、「接口」、「类」在多个地方使用该数据类型时。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&quot;Q2-什么叫泛型约束&quot;&gt;&lt;a href=&quot;#Q2-什么叫泛型约束&quot; class=&quot;headerlink&quot; title=&quot;Q2. 什么叫泛型约束&quot;&gt;&lt;/a&gt;Q2. 什么叫泛型约束&lt;/h1&gt;&lt;p&gt;我们可能限制「每个类型变量接受的类型数量」，这就是泛型约束的作用。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;每天起床练体操，理论 + 实践 助力小学生茁壮成长！TypeScript 小学生的进击之路：&lt;/p&gt;</summary>
     
     
     
@@ -67,15 +57,17 @@
   </entry>
   
   <entry>
-    <title>somethiing-about-react</title>
+    <title>React 资料集</title>
     <link href="http://jocolorful.com/2022/03/19/%E5%89%8D%E7%AB%AF-somethiing-about-react/"/>
     <id>http://jocolorful.com/2022/03/19/%E5%89%8D%E7%AB%AF-somethiing-about-react/</id>
     <published>2022-03-19T06:09:18.000Z</published>
-    <updated>2022-03-28T00:53:09.209Z</updated>
+    <updated>2022-03-29T00:41:56.066Z</updated>
     
     
     
     
+    
+    <category term="React" scheme="http://jocolorful.com/tags/React/"/>
     
   </entry>
   

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>TypeScript 每天起床一早操 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="TypeScript," />
+  
+
+  <meta name="description" content="每天起床练体操，理论 + 实践 助力小学生茁壮成长！TypeScript 小学生的进击之路：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript 每天起床一早操">
+<meta property="og:url" content="http://jocolorful.com/2022/03/28/%E5%89%8D%E7%AB%AF-%E6%AF%8F%E5%A4%A9%E8%B5%B7%E5%BA%8A%E4%B8%80%E6%97%A9%E6%93%8D/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="每天起床练体操，理论 + 实践 助力小学生茁壮成长！TypeScript 小学生的进击之路：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-28T00:10:10.086Z">
+<meta property="article:modified_time" content="2022-03-31T00:46:42.006Z">
+<meta property="article:author" content="Jojo">
+<meta property="article:tag" content="TypeScript">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Q1-泛型-使用的参考标准？"><span class="toc-text">Q1. 泛型 + 使用的参考标准？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q2-什么叫泛型约束"><span class="toc-text">Q2. 什么叫泛型约束</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-确保属性存在"><span class="toc-text">2.1 确保属性存在</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-检查对象上的键是否存在"><span class="toc-text">2.2 检查对象上的键是否存在</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q3：泛型默认类型"><span class="toc-text">Q3：泛型默认类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q4：泛型条件类型"><span class="toc-text">Q4：泛型条件类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q5：泛型工具"><span class="toc-text">Q5：泛型工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-Partial"><span class="toc-text">5.1 Partial</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-前端-每天起床一早操" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">TypeScript 每天起床一早操</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2022.03.28</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>每天起床练体操，理论 + 实践 助力小学生茁壮成长！TypeScript 小学生的进击之路：</p>
+<a id="more"></a>
+<ul>
+<li><a href="https://www.typescriptlang.org/zh/play" target="_blank" rel="noopener">TypeScript 广场</a></li>
+<li><a href="https://juejin.cn/post/6844904184894980104" target="_blank" rel="noopener">一文读懂 TypeScript 泛型及应用</a></li>
+<li><a href="https://juejin.cn/post/7009046640308781063" target="_blank" rel="noopener">这 30 道 TS 练习题，你能答对几道？</a></li>
+</ul>
+<h1 id="Q1-泛型-使用的参考标准？"><a href="#Q1-泛型-使用的参考标准？" class="headerlink" title="Q1. 泛型 + 使用的参考标准？"></a>Q1. 泛型 + 使用的参考标准？</h1><ol>
+<li>当你的「函数」、「接口」、「类」将处理多种<font color="red">数据类型</font>时；</li>
+<li>当「函数」、「接口」、「类」在多个地方使用该数据类型时。</li>
+</ol>
+<h1 id="Q2-什么叫泛型约束"><a href="#Q2-什么叫泛型约束" class="headerlink" title="Q2. 什么叫泛型约束"></a>Q2. 什么叫泛型<font color="red">约束</font></h1><p>我们可能限制「每个<font color="red">类型变量</font>接受的<font color="red">类型数量</font>」，这就是泛型约束的作用。</p>
+<h2 id="2-1-确保属性存在"><a href="#2-1-确保属性存在" class="headerlink" title="2.1 确保属性存在"></a>2.1 确保属性存在</h2><p>我们需要做的就是让「类型变量」 <code>extends</code> 一个含有我们所需属性的接口(可以思考一下？为什么是接口呢？type 行不行….)</p>
+<p>答案是可以的，但是什么时候继承 interface，什么时候继承 type 呢？</p>
+<p>使用逗号来实现多个继承：<code>&lt;T extends Length, Type2, Type3&gt;</code></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">interface</span> Length &#123;<br>  length: <span class="hljs-built_in">number</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">identity</span>&lt;<span class="hljs-title">T</span> <span class="hljs-title">extends</span> <span class="hljs-title">Length</span>&gt;(<span class="hljs-params">arg: T</span>): <span class="hljs-title">T</span> </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(arg.length); <span class="hljs-comment">// 可以获取length属性</span><br>  <span class="hljs-keyword">return</span> arg;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>比如：数据库的某个 id 值一定要存在？</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">interface</span> IxdatabseInterface &#123;<br>  id: <span class="hljs-built_in">number</span>;<br>&#125;<br><br><span class="hljs-keyword">class</span>  Ixdatabse&lt;T <span class="hljs-keyword">extends</span> IxdatabseInterface&gt; &#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-2-检查对象上的键是否存在"><a href="#2-2-检查对象上的键是否存在" class="headerlink" title="2.2 检查对象上的键是否存在"></a>2.2 检查对象上的键是否存在</h2><p>TypeScript 2.1  版本引入了 <code>keyof</code> 操作符，该操作符可以用于获取某种类型的「所有键」，其返回类型是「联合类型」</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">interface</span> Person &#123;<br>  name: <span class="hljs-built_in">string</span>;<br>  age: <span class="hljs-built_in">number</span>;<br>  location: <span class="hljs-built_in">string</span>;<br>&#125;<br><br><span class="hljs-keyword">type</span> K1 = keyof Person; <span class="hljs-comment">// "name" | "age" | "location"</span><br><span class="hljs-keyword">type</span> K2 = keyof Person[];  <span class="hljs-comment">// number | "length" | "push" | "concat" | ...</span><br><span class="hljs-keyword">type</span> K3 = keyof &#123; [x: <span class="hljs-built_in">string</span>]: Person &#125;;  <span class="hljs-comment">// string | number</span><br><span class="hljs-built_in">console</span>.log(K1)<br><span class="hljs-string">'K1'</span> only refers to a <span class="hljs-keyword">type</span>, but is being used <span class="hljs-keyword">as</span> a value here.<br><span class="hljs-built_in">console</span>.log(Person)<br><br><span class="hljs-string">'Person'</span> only refers to a <span class="hljs-keyword">type</span>, but is being used <span class="hljs-keyword">as</span> a value here.<br>说明类型是不能作为值打印出来<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">enum</span> Difficulty &#123;<br>  Easy,<br>  Intermediate,<br>  Hard<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getProperty</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">K</span> <span class="hljs-title">extends</span> <span class="hljs-title">keyof</span> <span class="hljs-title">T</span>&gt;(<span class="hljs-params">obj: T, key: K</span>): <span class="hljs-title">T</span>[<span class="hljs-title">K</span>] </span>&#123;<br>  <span class="hljs-keyword">return</span> obj[key];<br>&#125;<br><br><span class="hljs-keyword">let</span> tsInfo = &#123;<br>  name: <span class="hljs-string">"Typescript"</span>,<br>  supersetOf: <span class="hljs-string">"Javascript"</span>,<br>  difficulty: Difficulty.Intermediate<br>&#125;<br> <br><span class="hljs-keyword">let</span> difficulty: Difficulty = <br>  getProperty(tsInfo, <span class="hljs-string">'difficulty'</span>); <span class="hljs-comment">// OK</span><br><br><span class="hljs-keyword">let</span> supersetOf: <span class="hljs-built_in">string</span> = <br>  getProperty(tsInfo, <span class="hljs-string">'superset_of'</span>); <span class="hljs-comment">// Error</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="Q3：泛型默认类型"><a href="#Q3：泛型默认类型" class="headerlink" title="Q3：泛型默认类型"></a>Q3：泛型默认类型</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">interface</span> A&lt;T = string&gt; &#123;<br>  name: T<br>&#125;<br><br><span class="hljs-keyword">const</span> strA: A = &#123; name: <span class="hljs-string">"Semlinker"</span> &#125;;<br><span class="hljs-keyword">const</span> numB: A&lt;<span class="hljs-built_in">number</span>&gt; = &#123; name: <span class="hljs-number">101</span> &#125;;<br><span class="hljs-comment">// 要默认参数干啥...</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="Q4：泛型条件类型"><a href="#Q4：泛型条件类型" class="headerlink" title="Q4：泛型条件类型"></a>Q4：泛型条件类型</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">T extends U ? X : Y<br></code></pre></td></tr></table></figure>
+
+<p>以上表达式的意思是：若 T 能够赋值给 U，那么类型是 X，否则为 Y。在条件类型表达式中，我们通常还会结合 infer 关键字，实现类型抽取：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">interface</span> Dictionary&lt;T = any&gt; &#123;<br>  [key: <span class="hljs-built_in">string</span>]: T;<br>&#125;<br> <br><span class="hljs-keyword">type</span> StrDict = Dictionary&lt;<span class="hljs-built_in">string</span>&gt;<br><br><span class="hljs-keyword">type</span> DictMember&lt;T&gt; = T <span class="hljs-keyword">extends</span> Dictionary&lt;infer V&gt; ? V : never<br><span class="hljs-keyword">type</span> StrDictMember = DictMember&lt;StrDict&gt; <span class="hljs-comment">// string</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="Q5：泛型工具"><a href="#Q5：泛型工具" class="headerlink" title="Q5：泛型工具"></a>Q5：泛型工具</h1><p>为了方便开发者 TypeScript 内置了一些常用的工具类型，比如 Partial、Required、Readonly、Record 和 ReturnType 等。</p>
+<h2 id="5-1-Partial"><a href="#5-1-Partial" class="headerlink" title="5.1 Partial"></a>5.1 Partial</h2><p>Partial<T> 的作用就是将某个类型里的属性全部变为可选项 ?。</p>
+
+    
+  </div>
+
+</article>
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2022/03/19/Node-Artical-to-read/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6e1bd36a2fd1534ebf18',
+  clientSecret: '07d3d9b1d113a099673fe5180fa67c72263a847a',
+  repo: 'blog-comment',
+  owner: 'fidoChou',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['fidoChou'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":90,"vOffset":0},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>
