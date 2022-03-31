@@ -14,13 +14,14 @@ html {
 }
 
 body {
-  background: rgba(150, 220, 230, 0.2);
+  background: rgba(150, 220, 230, 1);
 }
 
 .content {
   background: #FFF;
   margin-top: 0 !important;
   padding: 50px 22px !important;
+  border-radius: 4px;
 }
 
 @media screen and (min-width: 768px) {
