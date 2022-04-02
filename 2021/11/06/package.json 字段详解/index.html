@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-我不知道的那些 package.json 字段">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>package.json 字段详解 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,Frontend,Nodejs,JavaScript" />
+  
+
+  <meta name="description" content="&amp;#123;  &quot;name&quot;: &quot;test-project&quot;,  &quot;version&quot;: &quot;1.0.0&quot;,  &quot;description&quot;: &quot;A test-project project&quot;,  &quot;main&quot;: &quot;src&#x2F;main.js&quot;,  &quot;private&quot;: true,  &quot;scripts&quot;: &amp;#123;&amp;#125;,  &quot;dependencies&quot;: &amp;#123;&amp;#125;,  &quot;devD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="package.json 字段详解">
+<meta property="og:url" content="http://jocolorful.com/2021/11/06/package.json%20%E5%AD%97%E6%AE%B5%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="&amp;#123;  &quot;name&quot;: &quot;test-project&quot;,  &quot;version&quot;: &quot;1.0.0&quot;,  &quot;description&quot;: &quot;A test-project project&quot;,  &quot;main&quot;: &quot;src&#x2F;main.js&quot;,  &quot;private&quot;: true,  &quot;scripts&quot;: &amp;#123;&amp;#125;,  &quot;dependencies&quot;: &amp;#123;&amp;#125;,  &quot;devD">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-06T00:49:34.000Z">
+<meta property="article:modified_time" content="2022-03-27T04:40:46.281Z">
+<meta property="article:author" content="Jojo">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#name-字段"><span class="toc-text">name 字段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#version"><span class="toc-text">version</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#engines-和-engineStrict"><span class="toc-text">engines 和 engineStrict</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#type"><span class="toc-text">type</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#exports"><span class="toc-text">exports</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="我不知道的那些 package.json 字段-package.json 字段详解" class="article article-type-我不知道的那些 package.json 字段" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">package.json 字段详解</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.11.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"test-project"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"description"</span>: <span class="string">"A test-project project"</span>,</span><br><span class="line">  <span class="attr">"main"</span>: <span class="string">"src/main.js"</span>,</span><br><span class="line">  <span class="attr">"private"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">"devDependencies"</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">"engines"</span>: &#123;</span><br><span class="line">    <span class="attr">"node"</span>: <span class="string">"&gt;= 6.0.0"</span>,</span><br><span class="line">    <span class="attr">"npm"</span>: <span class="string">"&gt;= 3.0.0"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"browserslist"</span>: [<span class="string">"&gt; 1%"</span>, <span class="string">"last 2 versions"</span>, <span class="string">"not ie &lt;= 8"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="name-字段"><a href="#name-字段" class="headerlink" title="name 字段"></a>name 字段</h1><p>如果有组织，一般都是「@org/package-name」的命名，（比如 @babel/cli）值得注意的是这里 packege-name 不再支持大写，需要以「_」或「-」命名</p>
+<h1 id="version"><a href="#version" class="headerlink" title="version"></a>version</h1><p>需要遵循 <a href="https://semver.org/" target="_blank" rel="noopener">semver</a>，简单来说对于版本「A.B.C」</p>
+<p>A 版本是 Major （主要）版本，一般会有比较大的 breaking change<br>B 版本是 Minor （次要）版本，其发版是包含新的 feature<br>C 版本是 Patch（补丁） 版本，bugfix 版本</p>
+<h1 id="engines-和-engineStrict"><a href="#engines-和-engineStrict" class="headerlink" title="engines 和 engineStrict"></a>engines 和 engineStrict</h1><p><strike>目前已经 Node 弃用</strike>，但是会发出警告。<br>可以使用来严格控制 Node 的版本</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123; </span><br><span class="line">  <span class="attr">"engines"</span> : &#123; </span><br><span class="line">    <span class="attr">"npm"</span>: <span class="string">"please-use-yarn"</span>,</span><br><span class="line">    <span class="attr">"yarn"</span>: <span class="string">"&gt;= 1.17.3"</span>,</span><br><span class="line">    <span class="attr">"node"</span>: <span class="string">"&gt;= 12.5.0"</span></span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="type"><a href="#type" class="headerlink" title="type"></a>type</h1><p>在 JS 的世界中，存在着两种影响力最大的模块规范: CommonJS Modules 以及 ECMAScript Modules。Node.js 从 v12 起就全部支持了</p>
+<p>.js .cjs 文件默认以 CommonJS Modules 执行，.mjs 则默认以 ECMAScript Modules 执行。</p>
+<p>而 「type」 字段的出现让我们更好得决定 .js 文件被哪种模块规范执行，它的值有两个，分别是 「module」 和 「commonjs」。</p>
+<h1 id="exports"><a href="#exports" class="headerlink" title="exports"></a>exports</h1><p>「exports」 字段允许你通过引用自己的 package-name 来定义 package 的入口文件，举个例子：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"pkg"</span>,</span><br><span class="line">  <span class="attr">"exports"</span>: &#123;</span><br><span class="line">    <span class="attr">"."</span>: <span class="string">"./main.mjs"</span>,</span><br><span class="line">    <span class="attr">"./foo"</span>: <span class="string">"./foo.js"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上可以被解读为：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"exports"</span>: &#123;</span><br><span class="line">    <span class="attr">"pkg"</span>: <span class="string">"pkg/main.mjs"</span>,</span><br><span class="line">    <span class="attr">"pkg/foo"</span>: <span class="string">"pkg/foo.js"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从 Node.js v12 开始被支持，并作为 「main」 字段的替代方案。他最大的一个特性就是 「条件导出（Conditional Exports）」，当该 package 被导入时，能够判断被导入时的模块环境，从而执行不同的文件，简而言之就是，我们如果使用 import 命令，入口会加载 ECMAScript Modules 文件，如果使用 require 命令，入口则加载 CommonJS Modules 文件。</p>
+<p>注意：<font color=red>对于所有在「exports」中定义的路径都必须是绝对路径。即 ./ 的形式。</font></p>
+
+    
+  </div>
+
+</article>
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/07/28/CSS-%E4%BC%AA%E5%85%83%E7%B4%A0/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2021/11/06/%E5%89%8D%E7%AB%AF-Next-js-V12%E7%9A%84%E7%90%86%E8%A7%A3/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-我不知道的那些 package.json 字段">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6e1bd36a2fd1534ebf18',
+  clientSecret: '07d3d9b1d113a099673fe5180fa67c72263a847a',
+  repo: 'blog-comment',
+  owner: 'fidoChou',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['fidoChou'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":90,"vOffset":0},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

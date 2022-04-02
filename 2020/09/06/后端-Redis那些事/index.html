@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>Redis 那些事 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Redis," />
+  
+
+  <meta name="description" content="纸上得来终觉浅，绝知此事要躬行  2008 年，一家意大利创业公司嫌弃 MySQL 的性能，所以就自己搞了套数据库：Redis。这个个人开发的数据库究竟有哪些特性吸引着开发者？我将一一研读探秘：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis 那些事">
+<meta property="og:url" content="http://jocolorful.com/2020/09/06/%E5%90%8E%E7%AB%AF-Redis%E9%82%A3%E4%BA%9B%E4%BA%8B/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="纸上得来终觉浅，绝知此事要躬行  2008 年，一家意大利创业公司嫌弃 MySQL 的性能，所以就自己搞了套数据库：Redis。这个个人开发的数据库究竟有哪些特性吸引着开发者？我将一一研读探秘：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://jocolorful.com/images/hash.png">
+<meta property="article:published_time" content="2020-09-06T04:46:47.000Z">
+<meta property="article:modified_time" content="2022-03-28T00:50:39.428Z">
+<meta property="article:author" content="Jojo">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jocolorful.com/images/hash.png">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#特性"><span class="toc-text">特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#存储结构"><span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内容存储与持久化"><span class="toc-text">内容存储与持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#功能丰富"><span class="toc-text">功能丰富</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单稳定"><span class="toc-text">简单稳定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#入门"><span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串类型"><span class="toc-text">字符串类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#散列类型"><span class="toc-text">散列类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表类型"><span class="toc-text">列表类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集合类型"><span class="toc-text">集合类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有序集合"><span class="toc-text">有序集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型对比"><span class="toc-text">类型对比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些高级用法"><span class="toc-text">一些高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#事务"><span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务的错误："><span class="toc-text">事务的错误：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WATCH"><span class="toc-text">WATCH</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过期时间"><span class="toc-text">过期时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问频次限制"><span class="toc-text">访问频次限制</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-后端-Redis那些事" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Redis 那些事</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.09.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E7%9B%B8%E5%85%B3/">后端相关</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>纸上得来终觉浅，绝知此事要躬行</p>
+</blockquote>
+<p>2008 年，一家意大利创业公司嫌弃 MySQL 的性能，所以就自己搞了套数据库：Redis。这个个人开发的数据库究竟有哪些特性吸引着开发者？我将一一研读探秘：</p>
+<a id="more"></a>
+
+<h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>Redis 的全称是 Remote Dictionary Server（远程字典服务器）</p>
+<p>Redis 的键值除了是字符串还可以是其他数据类型：</p>
+<ol>
+<li>字符串</li>
+<li>散列</li>
+<li>列表</li>
+<li>集合</li>
+<li>有序集合</li>
+</ol>
+<h2 id="内容存储与持久化"><a href="#内容存储与持久化" class="headerlink" title="内容存储与持久化"></a>内容存储与持久化</h2><p>所有的数据都存储在内存中，内存的读写速度快于硬盘，一秒内可读写超过十万个键值。</p>
+<h2 id="功能丰富"><a href="#功能丰富" class="headerlink" title="功能丰富"></a>功能丰富</h2><p>键值的 TTL 、单线程模型、可实现队列</p>
+<h2 id="简单稳定"><a href="#简单稳定" class="headerlink" title="简单稳定"></a>简单稳定</h2><h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><h2 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h2><p>字符串类型是 Redis 中最基本的类型，它能存储任何形式的字符串，包括二进制数据。是其他 4 种数据类型的基础，一个字符串类型键最大哦的容量是 512 MB。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">SET key value</span><br><span class="line">GET key</span><br></pre></td></tr></table></figure>
+
+<h2 id="散列类型"><a href="#散列类型" class="headerlink" title="散列类型"></a>散列类型</h2><p>散列即 hash，其存储了字段 field 和 字段值的映射，「但字段值只能是字符串」，不支持其他数据类型。所以散列类型不能嵌套其他数据类型。</p>
+<img src="/images/hash.png"  width="500px"/>
+
+<p>命名规范一般遵守：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">key: 对象类型:id</span><br><span class="line">field: 属性</span><br><span class="line">value: 字段值</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">HSET key field value</span><br><span class="line">HGET key field</span><br></pre></td></tr></table></figure>
+
+<h2 id="列表类型"><a href="#列表类型" class="headerlink" title="列表类型"></a>列表类型</h2><p>Redis 列表类型内部使用双向链表（double linked list）实现，越接近两端速度越快，常用操作是两列表两端添加元素，或者获取列表片段。列表类型适合用来记录日志或者网站新鲜事。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">LPUSH key value or RPUSH key value</span><br></pre></td></tr></table></figure>
+
+<h2 id="集合类型"><a href="#集合类型" class="headerlink" title="集合类型"></a>集合类型</h2><p>集合：不保证顺序、唯一</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">SADD key member</span><br><span class="line">SREM key member</span><br></pre></td></tr></table></figure>
+<h2 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h2><ol>
+<li>内部是通过散列表和跳跃表实现的，所以即使读取中间的数据速度也很快（O(log(N))）</li>
+<li>列表对于位置的调整不太方便，但有序集合可以（更改元素分数即可）</li>
+<li>有序集合更消耗内存</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ZADD key score memeber</span><br></pre></td></tr></table></figure>
+
+<h2 id="类型对比"><a href="#类型对比" class="headerlink" title="类型对比"></a>类型对比</h2><table>
+<thead>
+<tr>
+<th align="left">数据类型</th>
+<th align="left">使用场景</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">string</td>
+<td align="left">用于存储普通数据，int，string等等类型的基本类型数据</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">hash</td>
+<td align="left">通常用于存储数据对象类型</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">用于存储一些有序列表</td>
+<td align="left">双端操作较快，适用于日志、 可实现队列（其实我也没实践过，哭</td>
+</tr>
+<tr>
+<td align="left">set</td>
+<td align="left">无序集合</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">sort set</td>
+<td align="left">有序集合</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>有些关于 Redis Key 命名的设计规范，我借鉴了 <a href="https://www.infoq.cn/article/lxpytc3KckJPi72E8L3P" target="_blank" rel="noopener">Redis 开发设计规范及案例分析</a> 做了以下总结，并且在实际场景中有所运用</p>
+<ol>
+<li>可读性： 以业务名为前缀，用冒号分隔，可使用业务名：子业务名：id 的结构命名，子业务下多单词可再用下划线分隔。</li>
+<li>简洁性：这里需要控制 key 的长度，key 的占用内存不容忽视。</li>
+<li>不包含转义：不包含空格、换行、单双引号以及其他转义字符。</li>
+</ol>
+<h1 id="一些高级用法"><a href="#一些高级用法" class="headerlink" title="一些高级用法"></a>一些高级用法</h1><h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><p>事务是「一组命令」的集合：要么执行，要么都不执行。只有所有的命令都执行完成才能得到每个结果的返回值。</p>
+<h3 id="事务的错误："><a href="#事务的错误：" class="headerlink" title="事务的错误："></a>事务的错误：</h3><ol>
+<li>语法错误：只要有一个错误就会不会执行。</li>
+<li>运行错误：如果某条命令错误，那么其他命令会继续执行。（Redis 并没有事务回滚 rollback 的功能</li>
+</ol>
+<h3 id="WATCH"><a href="#WATCH" class="headerlink" title="WATCH"></a>WATCH</h3><p>防止竞态：在 GET 获得键值后不被其他客户端修改。直到函数完成后才允许其他客户端修改。</p>
+<p>请出事务家族的另外一位成员「WATCH」</p>
+<p>WATCH 命令可以监控一个或者多个键，一旦其中一个键被修改或删除之后的事务就不再执行。监控直到 EXEC 执行。</p>
+<h2 id="过期时间"><a href="#过期时间" class="headerlink" title="过期时间"></a>过期时间</h2><p>通过 EXPIRE 设置某个 key 的过期时间</p>
+<h2 id="访问频次限制"><a href="#访问频次限制" class="headerlink" title="访问频次限制"></a>访问频次限制</h2>
+    
+  </div>
+
+</article>
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/09/06/%E7%94%9F%E6%B4%BB-Hackathon/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/09/27/%E7%94%9F%E6%B4%BB-%E5%85%B3%E4%BA%8E%E7%96%AF%E7%8B%82%E8%BE%93%E5%87%BA%E4%B8%8E%E6%91%B8%F0%9F%90%9F/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6e1bd36a2fd1534ebf18',
+  clientSecret: '07d3d9b1d113a099673fe5180fa67c72263a847a',
+  repo: 'blog-comment',
+  owner: 'fidoChou',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['fidoChou'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":90,"vOffset":0},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

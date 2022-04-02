@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>比特位计数 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="位运算 动态规划," />
+  
+
+  <meta name="description" content="LC338: 比特位计数 方法一：Brian Kernighan 算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="比特位计数">
+<meta property="og:url" content="http://jocolorful.com/2021/06/23/%E7%AE%97%E6%B3%95-%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="LC338: 比特位计数 方法一：Brian Kernighan 算法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://jocolorful.com/images/Brian-Kernighan.jpeg">
+<meta property="article:published_time" content="2021-06-23T01:37:09.000Z">
+<meta property="article:modified_time" content="2022-03-28T00:54:19.322Z">
+<meta property="article:author" content="Jojo">
+<meta property="article:tag" content="位运算 动态规划">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jocolorful.com/images/Brian-Kernighan.jpeg">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法一：Brian-Kernighan-算法"><span class="toc-text">方法一：Brian Kernighan 算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法二：dp-最高有效位"><span class="toc-text">方法二：dp 最高有效位</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-算法-比特位计数" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">比特位计数</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.06.23</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p><a href="https://leetcode-cn.com/problems/counting-bits/" target="_blank" rel="noopener">LC338: 比特位计数</a></p>
+<h2 id="方法一：Brian-Kernighan-算法"><a href="#方法一：Brian-Kernighan-算法" class="headerlink" title="方法一：Brian Kernighan 算法"></a>方法一：Brian Kernighan 算法</h2><a id="more"></a>
+<p>算法：对任何一个数 n，n &amp; ( n − 1 ) 的结果是 n 的比特位<font color="red">最右端的 1 </font>变为 0。</p>
+<p>例如，n = 12 , n − 1 = 11 , 11 &amp; 12 = 8 </p>
+<center><img src="/images/Brian-Kernighan.jpeg" width="600px" /></center>
+
+<p>解释：结果 8 的 2 进制中，右边第三位为 1，因此经过 「Brian Kernighan」计算变为了 0</p>
+<p>因此只要重复计算对 n 进行重复计算, 直到 n 为 0，其中操作的次数，即为 1 的个数</p>
+<p>伪代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while (n &gt; 0)</span><br><span class="line">  n &#x3D; n &amp; (n - 1)</span><br><span class="line">  count ++</span><br></pre></td></tr></table></figure>
+
+<p><strong>位运算：妙不可言！</strong></p>
+<h2 id="方法二：dp-最高有效位"><a href="#方法二：dp-最高有效位" class="headerlink" title="方法二：dp 最高有效位"></a>方法二：dp 最高有效位</h2><p>最高有效位：对于正整数 x 而言，如果存在最大的正整数满足： </p>
+<p><code>y &lt;= x 并且 y 是 2 的整数次幂</code></p>
+<p>则称 y 为 x 的最高有效位。</p>
+<p>最高有效位的特性包括：</p>
+<ul>
+<li>最高位是 1，其余位均为 0，因此 y &amp; (y - 1) = 0</li>
+</ul>
+<p>如何判断一个正整数是不是 2 的整数次幂，可以利用方法一提到的位与运算的性质，如果正整数 y 是 2的整数次幂，则 y 的二进制中只有最高位是 1，其余为 0.<br>因此当且仅当 <code>y &amp; (y - 1)  = 0</code>， y 为 2 的整数次幂</p>
+<p>对于题目</p>
+<ul>
+<li>如果 i &amp; (i - 1) = 0，则令 highBit =i，更新当前的最高有效位</li>
+<li>i 比 i - highBit 的「一比特数」多 1，由于是从小到大遍历每个整数，因此遍历到 i 时，i − highBit 的「一比特数」已知。</li>
+</ul>
+<p>看不懂 QAQ</p>
+
+    
+  </div>
+
+</article>
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/06/21/Node-debugger/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2021/06/23/%E5%B7%A5%E5%85%B7%E9%9B%86/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6e1bd36a2fd1534ebf18',
+  clientSecret: '07d3d9b1d113a099673fe5180fa67c72263a847a',
+  repo: 'blog-comment',
+  owner: 'fidoChou',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['fidoChou'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":90,"vOffset":0},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

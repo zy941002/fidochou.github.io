@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>用React Hooks 搭一个 TodoList | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="React," />
+  
+
+  <meta name="description" content="用 React Hooks 搭一个 TodoList作为一个爱折腾的前端，今天讲点新东西: React Hooks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用React Hooks 搭一个 TodoList">
+<meta property="og:url" content="http://jocolorful.com/2019/01/22/%E5%89%8D%E7%AB%AF-ReactHooks/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="用 React Hooks 搭一个 TodoList作为一个爱折腾的前端，今天讲点新东西: React Hooks">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-01-22T04:46:47.000Z">
+<meta property="article:modified_time" content="2022-03-28T00:52:56.902Z">
+<meta property="article:author" content="Jojo">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#用-React-Hooks-搭一个-TodoList"><span class="toc-text">用 React Hooks 搭一个 TodoList</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Hooks"><span class="toc-text">什么是Hooks?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hooks类型"><span class="toc-text">Hooks类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hooks类型-1"><span class="toc-text">Hooks类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#讲讲优势"><span class="toc-text">讲讲优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在-prod-环境暂不要使用"><span class="toc-text">在 prod 环境暂不要使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#来-Build-一个-Todo-List"><span class="toc-text">来 Build 一个 Todo List</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Setup"><span class="toc-text">Setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写一个-TodoForm-的组件"><span class="toc-text">写一个 TodoForm 的组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useState"><span class="toc-text">useState</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在-Forms-中使用-useState"><span class="toc-text">在 Forms 中使用 useState</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在-Todos中-使用useState"><span class="toc-text">在 Todos中 使用useState</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TodoList-组件"><span class="toc-text">TodoList 组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#增加-Todo"><span class="toc-text">增加 Todo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除-Todo"><span class="toc-text">删除 Todo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abstracting-Form-Input-useState"><span class="toc-text">Abstracting Form Input useState</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#other"><span class="toc-text">other</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-前端-ReactHooks" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">用React Hooks 搭一个 TodoList</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.01.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/">前端相关</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="用-React-Hooks-搭一个-TodoList"><a href="#用-React-Hooks-搭一个-TodoList" class="headerlink" title="用 React Hooks 搭一个 TodoList"></a>用 React Hooks 搭一个 TodoList</h1><p>作为一个爱折腾的前端，今天讲点新东西: React Hooks</p>
+<a id="more"></a>
+<h2 id="什么是Hooks"><a href="#什么是Hooks" class="headerlink" title="什么是Hooks?"></a>什么是Hooks?</h2><p>Hooks简单来说就是一系列的函数。你可以不用ES6的 classes component的语法；在function component(纯函数)同样可以获取到同样可以获取到React的一些特性，比如state和生命周期，excited？所以呢，我们不叫这些组件叫「无状态组件」了，「函数组件」is preferable～</p>
+<h3 id="Hooks类型"><a href="#Hooks类型" class="headerlink" title="Hooks类型"></a>Hooks类型</h3><ul>
+<li>State hooks<br>Hooks简单来说就是一系列的函数。你可以不用ES6的 classes component的语法；在function component(纯函数)同样可以获取到同样可以获取到React的一些特性，比如state和生命周期，excited？所以呢，我们不叫这些组件叫<code>无状态组件</code>了，<code>函数组件</code>is preferable～</li>
+</ul>
+<h3 id="Hooks类型-1"><a href="#Hooks类型-1" class="headerlink" title="Hooks类型"></a>Hooks类型</h3><ul>
+<li>State hooks</li>
+<li>Effect hooks</li>
+<li>Custom hooks</li>
+</ul>
+<h3 id="讲讲优势"><a href="#讲讲优势" class="headerlink" title="讲讲优势"></a>讲讲优势</h3><ul>
+<li>隔离了有状态的业务逻辑，更利于测试</li>
+<li>不用 render props 或者通过 Hoc(higher-order components) 包装，也可以共享有状态的业务逻辑</li>
+<li>函数组件没有生命周期</li>
+<li>避免了ES6 的 class 语法，jsx 的 class 很诡异，并不是真正意义上的「类」。</li>
+</ul>
+<p>更多细节请参考：<a href="https://reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">Hooks简介</a></p>
+<h3 id="在-prod-环境暂不要使用"><a href="#在-prod-环境暂不要使用" class="headerlink" title="在 prod 环境暂不要使用"></a>在 prod 环境暂不要使用</h3><p>Hooks 还在 alpha 阶段，他们的 API 随时都有可能变。在稳定之前，你可以跑跑Demo，边缘项目玩一玩~</p>
+<h2 id="来-Build-一个-Todo-List"><a href="#来-Build-一个-Todo-List" class="headerlink" title="来 Build 一个 Todo List"></a>来 Build 一个 Todo List</h2><p>我们只要做一下事情就好了</p>
+<ul>
+<li>展示你的Todos</li>
+<li>新增一个Todo</li>
+<li>删除一个Todo</li>
+</ul>
+<p>easy?</p>
+<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><ol>
+<li>使用「create-react-app」初始化项目</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">create-react-app todo-hooks</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>升级 package.json 的 react 和 react-dom，这里使用了 antd，让我们的 TodoUI 更加好看。Antd 的具体配置请移步<a href="https://ant.design/docs/react/use-with-create-react-app-cn" target="_blank" rel="noopener">antd文档</a></li>
+</ol>
+<p>package.json:</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">  "antd": "^3.12.4",</span><br><span class="line">  "react": "16.7.0-alpha.0 - next",</span><br><span class="line">  "react-dom": "16.7.0-alpha.0 - next",</span><br><span class="line">  "react-scripts": "2.1.3"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>升级package.json的 react 和 react-dom，这里使用了antd，让我们的TodoUI更加好看。Antd 的具体配置请移步<a href="https://ant.design/docs/react/use-with-create-react-app-cn" target="_blank" rel="noopener">antd文档</a></li>
+</ol>
+<p>package.json:</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">  "antd": "^3.12.4",</span><br><span class="line">  "react": "16.7.0-alpha.0 - next",</span><br><span class="line">  "react-dom": "16.7.0-alpha.0 - next",</span><br><span class="line">  "react-scripts": "2.1.3"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="写一个-TodoForm-的组件"><a href="#写一个-TodoForm-的组件" class="headerlink" title="写一个 TodoForm 的组件"></a>写一个 TodoForm 的组件</h3><p>之前就说过，Hooks就是一个函数。来，开始我们的第一个Hooks：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Form, Button, Input &#125; <span class="keyword">from</span> <span class="string">'antd'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TodoForm = <span class="function">(<span class="params">&#123; saveTodo &#125;</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Form layout=<span class="string">"inline"</span>&gt;</span><br><span class="line">      &lt;Form.Item&gt;</span><br><span class="line">        &lt;Input  style=&#123;&#123; <span class="attr">width</span>: <span class="number">300</span> &#125;&#125; placeholder=<span class="string">"Add todo"</span>/&gt;</span><br><span class="line">      &lt;<span class="regexp">/Form.Item&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Form.Item&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Button type="primary" htmlType="submit" &gt;Add&lt;/</span>Button&gt;</span><br><span class="line">      &lt;<span class="regexp">/Form.Item&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>Form&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TodoForm;</span><br></pre></td></tr></table></figure>
+
+<p>这看起来和「无状态」的组件没什么两样，接下来为这个 Hooks 添砖加瓦:</p>
+<h3 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">const</span> [value, setValue] = useState(<span class="string">''</span>);</span><br></pre></td></tr></table></figure>
+
+<p>useState是一个函数，它可以返回state的初始状态并且返回一个数组。数组的第一项返回了当前的state值，第二项是正在更新的函数。用ES6的解构复制为它们命名: value,和setValue。</p>
+<h3 id="在-Forms-中使用-useState"><a href="#在-Forms-中使用-useState" class="headerlink" title="在 Forms 中使用 useState"></a>在 Forms 中使用 useState</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Form, Button, Input &#125; <span class="keyword">from</span> <span class="string">'antd'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TodoForm = <span class="function">(<span class="params">&#123; saveTodo &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [value, setValue] = useState(<span class="string">''</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Form</span><br><span class="line">      layout=<span class="string">"inline"</span></span><br><span class="line">      onSubmit=&#123;event =&gt; &#123;</span><br><span class="line">        event.preventDefault();</span><br><span class="line">        saveTodo(value);</span><br><span class="line">    &#125;&#125;&gt;</span><br><span class="line">      &lt;Form.Item&gt;</span><br><span class="line">        &lt;Input</span><br><span class="line">          style=&#123;&#123; <span class="attr">width</span>: <span class="number">300</span> &#125;&#125;</span><br><span class="line">          placeholder=<span class="string">"Add todo"</span></span><br><span class="line">          onChange=&#123;event =&gt; &#123;</span><br><span class="line">            setValue(event.target.value);</span><br><span class="line">          &#125;&#125;</span><br><span class="line">          value=&#123;value&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;<span class="regexp">/Form.Item&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Form.Item&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Button type="primary" htmlType="submit" &gt;Add&lt;/</span>Button&gt;</span><br><span class="line">      &lt;<span class="regexp">/Form.Item&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>Form&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TodoForm;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在-Todos中-使用useState"><a href="#在-Todos中-使用useState" class="headerlink" title="在 Todos中 使用useState"></a>在 Todos中 使用useState</h3><p>我们的 todos 也需要状态。在 index.js中 初始化 todo，最开始的状态应该是一个空数组：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"><span class="keyword">import</span> TodoForm <span class="keyword">from</span> <span class="string">'./TodoFroms'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App =<span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [todos, setTodos] = useState([]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">      &lt;header className=<span class="string">"App-header"</span>&gt;</span><br><span class="line">        &lt;TodoForm /&gt;</span><br><span class="line">      &lt;<span class="regexp">/header&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<h3 id="TodoList-组件"><a href="#TodoList-组件" class="headerlink" title="TodoList 组件"></a>TodoList 组件</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> TodoList = <span class="function">(<span class="params">&#123; todos, deleteTodo &#125;</span>) =&gt;</span> (</span><br><span class="line">  &lt;div className=<span class="string">"ant-col-12 code-boxes-col-1-1"</span>&gt;</span><br><span class="line">    &lt;List</span><br><span class="line">      bordered</span><br><span class="line">      itemLayout=<span class="string">"horizontal"</span></span><br><span class="line">      dataSource=&#123;todos&#125;</span><br><span class="line">      renderItem=&#123;(todo)=&gt; (</span><br><span class="line">        &lt;List.Item&gt;</span><br><span class="line">          &lt;div&gt;&#123;todo&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>List.Item&gt;)&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+<p>Todo List接受两个props:</p>
+<ul>
+<li>todos: 用来展示todo的数组</li>
+<li>deleteTodo: 点击删除按钮可以触发这个函数，通过index 值来找到将要被删除的todo</li>
+</ul>
+<p>加入你的 app</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;TodoForm /&gt;</span><br><span class="line">&lt;TodoList todos=&#123;todos&#125;/&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="增加-Todo"><a href="#增加-Todo" class="headerlink" title="增加 Todo"></a>增加 Todo</h3><p>在appjs文件中，为 TodoForm 增加 saveTodo 的 props</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"> &lt;TodoForm saveTodo=&#123;value =&gt; &#123;</span><br><span class="line">  	<span class="keyword">const</span> todoText = value.trim();</span><br><span class="line">  	<span class="keyword">if</span> (todoText) &#123;</span><br><span class="line">  		setTodos([...todos, todoText]);</span><br><span class="line">  	&#125;</span><br><span class="line">  &#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="删除-Todo"><a href="#删除-Todo" class="headerlink" title="删除 Todo"></a>删除 Todo</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  &#123;todo&#125;</span><br><span class="line">  &lt;Button</span><br><span class="line">    onClick=&#123;() =&gt; &#123;deleteTodo(index);&#125;&#125;</span><br><span class="line">    icon=<span class="string">"delete"</span> type=<span class="string">"primary"</span>&gt;Delete</span><br><span class="line">  &lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在父组件注册</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line">&lt;TodoList</span><br><span class="line">  todos=&#123;todos&#125;</span><br><span class="line">  deleteTodo=&#123;todoIndex =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> newTodos = todos</span><br><span class="line">      .filter(<span class="function">(<span class="params">_, index</span>) =&gt;</span> index !== todoIndex);</span><br><span class="line">      setTodos(newTodos);</span><br><span class="line">  &#125;&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<p>看起来和一般的组件也没什么两样?</p>
+<h3 id="Abstracting-Form-Input-useState"><a href="#Abstracting-Form-Input-useState" class="headerlink" title="Abstracting Form Input useState"></a>Abstracting Form Input useState</h3><p>开始改造我们的 form</p>
+<p>新建一个 useInputState.js 的文件</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> initialValue =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [value, setValue] = useState(initialValue);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    value,</span><br><span class="line">    onChange: <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">      setValue(event.target.value);</span><br><span class="line">    &#125;,</span><br><span class="line">    reset: <span class="function"><span class="params">()</span> =&gt;</span> setValue(<span class="string">''</span>)</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>现在我们的<code>TodoForm.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Form, Button, Input &#125; <span class="keyword">from</span> <span class="string">'antd'</span>;</span><br><span class="line"><span class="keyword">import</span> useInputState <span class="keyword">from</span> <span class="string">'./useInputState'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TodoForm = <span class="function">(<span class="params">&#123; saveTodo &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">const</span> &#123; value, onChange &#125; = useInputState(<span class="string">''</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Form</span><br><span class="line">      layout=<span class="string">"inline"</span></span><br><span class="line">      onSubmit=&#123;event =&gt; &#123;</span><br><span class="line">        event.preventDefault();</span><br><span class="line">        saveTodo(value);</span><br><span class="line">      &#125;&#125;&gt;</span><br><span class="line">      &lt;Form.Item&gt;</span><br><span class="line">        &lt;Input</span><br><span class="line">          style=&#123;&#123; <span class="attr">width</span>: <span class="number">300</span> &#125;&#125;</span><br><span class="line">          placeholder=<span class="string">"Add todo"</span></span><br><span class="line">          onChange=&#123;event =&gt; &#123;</span><br><span class="line">            onChange(event.target.value);</span><br><span class="line">          &#125;&#125;</span><br><span class="line">          value=&#123;value&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;<span class="regexp">/Form.Item&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Form.Item&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Button type="primary" htmlType="submit" &gt;Add&lt;/</span>Button&gt;</span><br><span class="line">      &lt;<span class="regexp">/Form.Item&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>Form&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TodoForm;</span><br></pre></td></tr></table></figure>
+<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><p>当然除了 userState，Hooks 还提供了 <code>useEffect</code>、 <code>useContext</code>、 <code>useRef</code><br>Enjoy：）</p>
+
+    
+  </div>
+
+</article>
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/01/22/%E5%89%8D%E7%AB%AF-RN%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/01/27/Nginx/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6e1bd36a2fd1534ebf18',
+  clientSecret: '07d3d9b1d113a099673fe5180fa67c72263a847a',
+  repo: 'blog-comment',
+  owner: 'fidoChou',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['fidoChou'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":90,"vOffset":0},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

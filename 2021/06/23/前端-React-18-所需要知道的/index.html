@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>React18 所需要知道的 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="React," />
+  
+
+  <meta name="description" content="What You Need to Know About React 18 自动的批量更新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React18 所需要知道的">
+<meta property="og:url" content="http://jocolorful.com/2021/06/23/%E5%89%8D%E7%AB%AF-React-18-%E6%89%80%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="What You Need to Know About React 18 自动的批量更新">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-23T07:29:35.000Z">
+<meta property="article:modified_time" content="2022-03-28T00:52:54.259Z">
+<meta property="article:author" content="Jojo">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#自动的批量更新"><span class="toc-text">自动的批量更新</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#不需要批量更新"><span class="toc-text">不需要批量更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SSR-support-for-Suspense"><span class="toc-text">SSR support for Suspense</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Transition"><span class="toc-text">Transition</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-前端-React-18-所需要知道的" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">React18 所需要知道的</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.06.23</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/">前端相关</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p><a href="https://javascript.plainenglish.io/what-you-need-to-know-about-react-18-54070f6bc4a1" target="_blank" rel="noopener">What You Need to Know About React 18</a></p>
+<h1 id="自动的批量更新"><a href="#自动的批量更新" class="headerlink" title="自动的批量更新"></a>自动的批量更新</h1><a id="more"></a>
+<p>批量更新：React 会尝试将同一上下文中触发的多个更新合并为一个好处是：</p>
+<ol>
+<li>避免页面重复渲染</li>
+<li>状态按顺序处理，不会出现竞争态问题，最终触发渲染的是异步流程。</li>
+</ol>
+<p>但值得注意的是，在一<font color="red">异步的方法回调</font>中，React 并不能进行批量更新。<br>（这里可以尝试用看似同步的方式调用 async/await 的调用，是什么效果）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// this code will be re-render-twice</span></span><br><span class="line"><span class="keyword">const</span> handleClick =<span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">  fetch().then().catch(<span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">    setCount(<span class="function"><span class="params">c</span> =&gt;</span> c+<span class="number">1</span>)</span><br><span class="line">    setF(<span class="function"><span class="params">f</span>=&gt;</span> !f)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解释：React 的批量更新只在浏览器的 event 中生效（比如点击时间），但是上面的代码更新状态是事件已经处理完成，在 fetch 的回调中。<br>那么V18 以后，状态管理无论是在哪里，只会被更新一次。</p>
+<h2 id="不需要批量更新"><a href="#不需要批量更新" class="headerlink" title="不需要批量更新"></a>不需要批量更新</h2><p>使用 <code>flushSync</code> 去重新渲染组件</p>
+<h1 id="SSR-support-for-Suspense"><a href="#SSR-support-for-Suspense" class="headerlink" title="SSR support for Suspense"></a>SSR support for Suspense</h1><p>对典型 SSR 的基本扩展。在一个典型的 React SSR 应用中，流程基本上是：</p>
+<ol>
+<li>服务端获取 UI 相关的展示数据</li>
+<li>服务端渲染整个 APP 的 HTML 发送给客户端</li>
+<li>客户端除了 HTML 以外，还需下载 JS bundle 部分</li>
+<li>在最后一步，客户端连接 JS 的逻辑和 HTML 绑定。（称之为：脱水）</li>
+</ol>
+<p>缺点：在下一步可以开始之前，整个应用程序的每个步骤都必须立即完成。这样会导致在初始化时加载时长变慢。</p>
+<p>React 18 中     <code>&lt;Suspense&gt;</code> 组件已经以这样的方式进行了革命性的变更：</p>
+<p>它将应用程序分解为更小的独立单元，这些单元再经历上面提及的每一部分。</p>
+<p>因此：这样一旦用户看到内容，都将是可交互的。</p>
+<h1 id="Transition"><a href="#Transition" class="headerlink" title="Transition"></a>Transition</h1><p>这是即将发布的令人难以置信的功能。它可以让用户解决大屏幕频繁更新的问题。<br>例如，考虑在过滤数据列表的输入字段中键入。您需要将字段的值存储在 state 中，以便您可以过滤数据并控制该输入字段的值。您的代码可能如下所示：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Update the input value and search results</span></span><br><span class="line">setSearchQuery(input)</span><br></pre></td></tr></table></figure>
+
+<p>在这里，每当用户键入一个字符时，我们都会更新输入值并使用新值来搜索列表并显示结果。</p>
+<p>对于大屏幕更新，这可能会导致页面在呈现所有内容时出现延迟，从而使打字或其他交互感觉缓慢且无响应。即使列表不是太长，列表项本身也可能很复杂，每次击键都不同，并且可能没有明确的方法来优化它们的呈现.</p>
+<p>从概念上讲，问题在于需要进行两种不同的更新。</p>
+<p>第一次是紧急更新，用于更改输入字段的值<br>第二个是显示搜索结果的不太紧急的更新</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; Urgent: Show what was typed</span><br><span class="line">setInputValue(input)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Not urgent: Show the results</span><br><span class="line">setSearchQuery(input)</span><br></pre></td></tr></table></figure>
+
+<p>新的 <code>startTransition</code> API 通过让您能够将更新标记为「过渡」来解决这个问题：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &#123; startTransition &#125; from &#39;react&#39;;</span><br><span class="line">&#x2F;&#x2F; Urgent: Show what was typed</span><br><span class="line">setInputValue(input);</span><br><span class="line">&#x2F;&#x2F; Mark any state updates inside as transitions</span><br><span class="line">startTransition(() &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; Transition: Show the results</span><br><span class="line">  setSearchQuery(input);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+    
+  </div>
+
+</article>
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/06/23/%E5%B7%A5%E5%85%B7%E9%9B%86/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2021/06/25/%E7%AE%97%E6%B3%95-%E7%BB%9F%E8%AE%A1%E5%AD%97%E5%85%B8%E5%BA%8F%E5%85%83%E9%9F%B3%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%95%B0%E7%9B%AE/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6e1bd36a2fd1534ebf18',
+  clientSecret: '07d3d9b1d113a099673fe5180fa67c72263a847a',
+  repo: 'blog-comment',
+  owner: 'fidoChou',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['fidoChou'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":90,"vOffset":0},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>
