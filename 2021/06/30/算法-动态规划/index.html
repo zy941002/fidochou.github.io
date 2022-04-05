@@ -89,7 +89,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
 </head>
 
 <body>
@@ -181,7 +181,7 @@ ga('send', 'pageview');
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">cost</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> minCostClimbingStairs = <span class="function"><span class="keyword">function</span>(<span class="params">cost</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!cost || !cost.length) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> dp = []</span><br><span class="line">  dp[<span class="number">0</span>] = cost[<span class="number">0</span>]</span><br><span class="line">  dp[<span class="number">1</span>] = cost[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">2</span>; i &lt; cost.length; i++) &#123;</span><br><span class="line">    dp[i] = <span class="built_in">Math</span>.min(dp[i - <span class="number">2</span>], dp[i - <span class="number">1</span>]) + cost[i]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.min(dp[dp.length - <span class="number">2</span>], dp[dp.length - <span class="number">1</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     
   </div>
 

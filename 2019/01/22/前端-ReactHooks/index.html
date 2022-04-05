@@ -89,7 +89,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
 </head>
 
 <body>
@@ -225,7 +225,7 @@ ga('send', 'pageview');
 <p>现在我们的<code>TodoForm.js</code>:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Form, Button, Input &#125; <span class="keyword">from</span> <span class="string">'antd'</span>;</span><br><span class="line"><span class="keyword">import</span> useInputState <span class="keyword">from</span> <span class="string">'./useInputState'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TodoForm = <span class="function">(<span class="params">&#123; saveTodo &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">const</span> &#123; value, onChange &#125; = useInputState(<span class="string">''</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Form</span><br><span class="line">      layout=<span class="string">"inline"</span></span><br><span class="line">      onSubmit=&#123;event =&gt; &#123;</span><br><span class="line">        event.preventDefault();</span><br><span class="line">        saveTodo(value);</span><br><span class="line">      &#125;&#125;&gt;</span><br><span class="line">      &lt;Form.Item&gt;</span><br><span class="line">        &lt;Input</span><br><span class="line">          style=&#123;&#123; <span class="attr">width</span>: <span class="number">300</span> &#125;&#125;</span><br><span class="line">          placeholder=<span class="string">"Add todo"</span></span><br><span class="line">          onChange=&#123;event =&gt; &#123;</span><br><span class="line">            onChange(event.target.value);</span><br><span class="line">          &#125;&#125;</span><br><span class="line">          value=&#123;value&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;<span class="regexp">/Form.Item&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Form.Item&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Button type="primary" htmlType="submit" &gt;Add&lt;/</span>Button&gt;</span><br><span class="line">      &lt;<span class="regexp">/Form.Item&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>Form&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TodoForm;</span><br></pre></td></tr></table></figure>
 <h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><p>当然除了 userState，Hooks 还提供了 <code>useEffect</code>、 <code>useContext</code>、 <code>useRef</code><br>Enjoy：）</p>
-
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     
   </div>
 
@@ -233,10 +233,10 @@ ga('send', 'pageview');
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2019/01/22/%E5%89%8D%E7%AB%AF-RN%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/">
+    <a class="show pull-left" href="/2017/08/22/%E5%89%8D%E7%AB%AF-clean-code-javascript/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2019/01/27/Nginx/">
+    <a class="show pull-right" href="/2019/01/22/%E5%89%8D%E7%AB%AF-RN%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>

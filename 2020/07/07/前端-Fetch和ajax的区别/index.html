@@ -88,7 +88,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
 </head>
 
 <body>
@@ -158,7 +158,7 @@ ga('send', 'pageview');
 <li>按照 MDN 的说法，fetch 只有在遇到网络错误的时候才会 reject 这个 promise，比如用户断网或请求地址的域名无法解析等。只要服务器能够返回 HTTP 响应（甚至只是 CORS preflight 的 OPTIONS 响应），promise 一定是 resolved 的状态。</li>
 </ol>
 <h1 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var xml&#x3D;new XMLHttpRequest();</span><br><span class="line">    xml.open(&#39;GET&#39;,&#39;a.json&#39;,true);  &#x2F;&#x2F;第三个参数表示是否异步</span><br><span class="line">    xml.send(null);&#x2F;&#x2F;参数为要给服务器传递的参数  若只是单纯的向服务器取数据  则传递null</span><br><span class="line">  xml.onreadystatechange&#x3D;function () &#123;</span><br><span class="line">      if(xml.readyState&#x3D;&#x3D;4)&#123;</span><br><span class="line">          console.log(11)</span><br><span class="line">          if(xml.status&#x3D;&#x3D;200)&#123;</span><br><span class="line">              console.log(xml.responseText)</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     
   </div>
 
@@ -166,10 +166,10 @@ ga('send', 'pageview');
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2020/07/07/2020-POST/">
+    <a class="show pull-left" href="/2020/07/01/%E5%89%8D%E7%AB%AF-%E6%80%A7%E8%83%BD%E9%87%8F%E5%8C%96%E6%A0%87%E5%87%86%E8%AF%BB%E5%90%8E%E6%84%9F/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2020/07/09/%E5%89%8D%E7%AB%AF-catch-error/">
+    <a class="show pull-right" href="/2020/07/07/2020-POST/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
