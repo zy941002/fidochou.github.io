@@ -12,6 +12,7 @@ body {
 }
 
 .content {
+  min-height: 80vh;
   background: #FFF;
   margin-top: 0 !important;
   border-radius: 4px;
