@@ -299,12 +299,12 @@ const gitalk = new Gitalk({
   clientID: '23777d3de153b2983f60',
   clientSecret: '3a0cc477d8dd2b8d5684d34b8c957990a05f13ff',
   repo: 'blog-comment',
-  owner: 'fidoChou',
+  owner: 'zy941002',
   // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
   // 50个字符串则会报错.
   // id: location.pathname.split('/').pop().substring(0, 49),
   id: md5(location.pathname),
-  admin: ['fidoChou'],
+  admin: ['zy941002'],
   // facebook-like distraction free mode
   distractionFreeMode: false
 })
