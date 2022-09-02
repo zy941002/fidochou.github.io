@@ -307,6 +307,33 @@ ga('send', 'pageview');
     
     
 
+  <div id="gitment-comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+    (function () {
+      var gitment = new Gitment({
+        owner: 'fidoChou',
+        repo: 'https://github.com/fidoChou/blog-comment.git',
+        oauth: {
+          client_id: '6e1bd36a2fd1534ebf18',
+          client_secret: '7bc12b47ad2a14669ec8eb1e0746201f3642cad1'
+        },
+        
+        
+        
+        
+        
+        
+        
+        
+      })
+      gitment.render('gitment-comments')
+    })()
+  </script>
+
+
+
     
 
     
