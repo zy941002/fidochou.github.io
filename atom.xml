@@ -6,7 +6,7 @@
   <link href="http://jocolorful.com/atom.xml" rel="self"/>
   
   <link href="http://jocolorful.com/"/>
-  <updated>2022-08-29T07:41:40.967Z</updated>
+  <updated>2022-09-03T03:48:55.619Z</updated>
   <id>http://jocolorful.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>蛤蟆医生去看心理学</title>
+    <link href="http://jocolorful.com/2022/09/03/%E9%98%85%E8%AF%BB-%E8%9B%A4%E8%9F%86%E5%8C%BB%E7%94%9F%E5%8E%BB%E7%9C%8B%E5%BF%83%E7%90%86%E5%AD%A6/"/>
+    <id>http://jocolorful.com/2022/09/03/%E9%98%85%E8%AF%BB-%E8%9B%A4%E8%9F%86%E5%8C%BB%E7%94%9F%E5%8E%BB%E7%9C%8B%E5%BF%83%E7%90%86%E5%AD%A6/</id>
+    <published>2022-09-03T02:00:09.000Z</published>
+    <updated>2022-09-03T03:48:55.619Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="阅读" scheme="http://jocolorful.com/categories/%E9%98%85%E8%AF%BB/"/>
+    
+    
+    <category term="心理学" scheme="http://jocolorful.com/tags/%E5%BF%83%E7%90%86%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>我的学习清单</title>
@@ -378,25 +403,6 @@
     
     <category term="阅读" scheme="http://jocolorful.com/categories/%E9%98%85%E8%AF%BB/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>二进制求和</title>
-    <link href="http://jocolorful.com/2021/07/08/%E7%AE%97%E6%B3%95-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C/"/>
-    <id>http://jocolorful.com/2021/07/08/%E7%AE%97%E6%B3%95-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C/</id>
-    <published>2021-07-08T01:21:21.000Z</published>
-    <updated>2022-04-09T04:50:12.347Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/add-binary/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;二进制求和&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="算法" scheme="http://jocolorful.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="位运算" scheme="http://jocolorful.com/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
   </entry>
   
