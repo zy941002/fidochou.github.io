@@ -6,7 +6,7 @@
   <link href="http://jocolorful.com/atom.xml" rel="self"/>
   
   <link href="http://jocolorful.com/"/>
-  <updated>2022-09-03T07:00:13.739Z</updated>
+  <updated>2022-09-09T10:14:27.341Z</updated>
   <id>http://jocolorful.com/</id>
   
   <author>
@@ -17,11 +17,160 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>晴雅集</title>
+    <link href="http://jocolorful.com/2022/09/09/%E6%99%B4%E9%9B%85%E9%9B%86-a/"/>
+    <id>http://jocolorful.com/2022/09/09/%E6%99%B4%E9%9B%85%E9%9B%86-a/</id>
+    <published>2022-09-09T10:07:30.000Z</published>
+    <updated>2022-09-09T10:14:27.341Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="晴雅集" scheme="http://jocolorful.com/categories/%E6%99%B4%E9%9B%85%E9%9B%86/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>工具</title>
+    <link href="http://jocolorful.com/2022/09/09/%E5%B7%A5%E5%85%B7-a/"/>
+    <id>http://jocolorful.com/2022/09/09/%E5%B7%A5%E5%85%B7-a/</id>
+    <published>2022-09-09T09:55:19.000Z</published>
+    <updated>2022-09-09T10:14:22.645Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>算法</title>
+    <link href="http://jocolorful.com/2022/09/09/%E7%AE%97%E6%B3%95-a/"/>
+    <id>http://jocolorful.com/2022/09/09/%E7%AE%97%E6%B3%95-a/</id>
+    <published>2022-09-09T09:31:46.000Z</published>
+    <updated>2022-09-09T10:02:30.423Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>生活随感</title>
+    <link href="http://jocolorful.com/2022/09/09/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F-a/"/>
+    <id>http://jocolorful.com/2022/09/09/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F-a/</id>
+    <published>2022-09-09T09:13:40.000Z</published>
+    <updated>2022-09-09T09:55:00.783Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>阅读-a</title>
+    <link href="http://jocolorful.com/2022/09/09/%E9%98%85%E8%AF%BB-a/"/>
+    <id>http://jocolorful.com/2022/09/09/%E9%98%85%E8%AF%BB-a/</id>
+    <published>2022-09-09T09:10:39.000Z</published>
+    <updated>2022-09-09T10:14:22.646Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>前端</title>
+    <link href="http://jocolorful.com/2022/09/09/%E5%89%8D%E7%AB%AF-a/"/>
+    <id>http://jocolorful.com/2022/09/09/%E5%89%8D%E7%AB%AF-a/</id>
+    <published>2022-09-09T08:52:54.000Z</published>
+    <updated>2022-09-09T10:14:22.646Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js</title>
+    <link href="http://jocolorful.com/2022/09/09/Node.js-a/"/>
+    <id>http://jocolorful.com/2022/09/09/Node.js-a/</id>
+    <published>2022-09-09T08:35:26.000Z</published>
+    <updated>2022-09-09T10:14:22.646Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>蛤蟆医生去看心理学</title>
     <link href="http://jocolorful.com/2022/09/03/%E9%98%85%E8%AF%BB-%E8%9B%A4%E8%9F%86%E5%8C%BB%E7%94%9F%E5%8E%BB%E7%9C%8B%E5%BF%83%E7%90%86%E5%AD%A6/"/>
     <id>http://jocolorful.com/2022/09/03/%E9%98%85%E8%AF%BB-%E8%9B%A4%E8%9F%86%E5%8C%BB%E7%94%9F%E5%8E%BB%E7%9C%8B%E5%BF%83%E7%90%86%E5%AD%A6/</id>
     <published>2022-09-03T02:00:09.000Z</published>
-    <updated>2022-09-03T07:00:13.739Z</updated>
+    <updated>2022-09-03T07:40:03.871Z</updated>
     
     
       
@@ -38,27 +187,6 @@
     
     
     <category term="心理学" scheme="http://jocolorful.com/tags/%E5%BF%83%E7%90%86%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的学习清单</title>
-    <link href="http://jocolorful.com/2022/07/18/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/"/>
-    <id>http://jocolorful.com/2022/07/18/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/</id>
-    <published>2022-07-18T12:53:17.000Z</published>
-    <updated>2022-08-29T07:41:40.967Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
     
   </entry>
   
@@ -88,7 +216,7 @@
     <link href="http://jocolorful.com/2022/05/29/%E6%99%B4%E9%9B%85%E9%9B%86-2022/"/>
     <id>http://jocolorful.com/2022/05/29/%E6%99%B4%E9%9B%85%E9%9B%86-2022/</id>
     <published>2022-05-29T06:43:59.000Z</published>
-    <updated>2022-05-29T07:05:48.779Z</updated>
+    <updated>2022-09-09T07:39:06.947Z</updated>
     
     
       
@@ -187,7 +315,7 @@
     <link href="http://jocolorful.com/2021/11/08/%E5%89%8D%E7%AB%AF-%E4%B8%80%E4%BA%9B%E7%94%9F%E5%83%BB%E7%9A%84HTML%E6%A0%87%E7%AD%BE/"/>
     <id>http://jocolorful.com/2021/11/08/%E5%89%8D%E7%AB%AF-%E4%B8%80%E4%BA%9B%E7%94%9F%E5%83%BB%E7%9A%84HTML%E6%A0%87%E7%AD%BE/</id>
     <published>2021-11-08T06:49:01.000Z</published>
-    <updated>2022-03-28T00:51:50.202Z</updated>
+    <updated>2022-09-09T09:57:52.370Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;map-和-area&quot;&gt;&lt;a href=&quot;#map-和-area&quot; class=&quot;headerlink&quot; title=&quot;map 和 area&quot;&gt;&lt;/a&gt;map 和 area&lt;/h1&gt;&lt;p&gt;图片上定义一个热点区域，可以关联一个超链接；area 元素仅在 map 元素内部使用。&lt;/p&gt;
@@ -196,7 +324,7 @@
     
     
     
-    <category term="前端相关" scheme="http://jocolorful.com/categories/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/"/>
+    <category term="前端" scheme="http://jocolorful.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
   </entry>
@@ -219,11 +347,11 @@
   </entry>
   
   <entry>
-    <title>package.json 字段详解</title>
+    <title>package.json 字段</title>
     <link href="http://jocolorful.com/2021/11/06/package.json%20%E5%AD%97%E6%AE%B5%E8%AF%A6%E8%A7%A3/"/>
     <id>http://jocolorful.com/2021/11/06/package.json%20%E5%AD%97%E6%AE%B5%E8%AF%A6%E8%A7%A3/</id>
     <published>2021-11-06T00:49:34.000Z</published>
-    <updated>2022-03-27T04:40:46.281Z</updated>
+    <updated>2022-09-09T08:50:25.768Z</updated>
     
     
       
@@ -236,6 +364,8 @@
     
     
     
+    <category term="Node.js" scheme="http://jocolorful.com/categories/Node-js/"/>
+    
     
   </entry>
   
@@ -244,14 +374,14 @@
     <link href="http://jocolorful.com/2021/07/28/CSS-%E4%BC%AA%E5%85%83%E7%B4%A0/"/>
     <id>http://jocolorful.com/2021/07/28/CSS-%E4%BC%AA%E5%85%83%E7%B4%A0/</id>
     <published>2021-07-28T06:33:08.000Z</published>
-    <updated>2022-03-28T00:55:33.513Z</updated>
+    <updated>2022-09-09T09:59:11.180Z</updated>
     
     
     <summary type="html">&lt;p&gt;CSS 的伪元素目前一共有八种，孤陋寡闻的我只会「before」和 「after」:&lt;/p&gt;</summary>
     
     
     
-    <category term="漂亮的 CSS" scheme="http://jocolorful.com/categories/%E6%BC%82%E4%BA%AE%E7%9A%84-CSS/"/>
+    <category term="前端" scheme="http://jocolorful.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
   </entry>
@@ -281,7 +411,7 @@
     <link href="http://jocolorful.com/2021/07/20/%E7%94%9F%E6%B4%BB-GoforSanya/"/>
     <id>http://jocolorful.com/2021/07/20/%E7%94%9F%E6%B4%BB-GoforSanya/</id>
     <published>2021-07-20T10:13:59.000Z</published>
-    <updated>2022-03-28T00:54:06.825Z</updated>
+    <updated>2022-09-09T09:54:22.838Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;ul&gt;
@@ -295,113 +425,6 @@
     
     
     <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>递归总结</title>
-    <link href="http://jocolorful.com/2021/07/16/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E6%80%BB%E7%BB%93/"/>
-    <id>http://jocolorful.com/2021/07/16/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E6%80%BB%E7%BB%93/</id>
-    <published>2021-07-16T00:58:58.000Z</published>
-    <updated>2022-03-28T00:54:22.295Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;h2 id=&quot;递归：Recusion&quot;&gt;&lt;a href=&quot;#递归：Recusion&quot; class=&quot;headerlink&quot; title=&quot;递归：Recusion&quot;&gt;&lt;/a&gt;递归：Recusion&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="算法" scheme="http://jocolorful.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>盛夏归家</title>
-    <link href="http://jocolorful.com/2021/07/15/%E7%94%9F%E6%B4%BB-%E7%9B%9B%E5%A4%8F%E5%BD%92%E5%AE%B6/"/>
-    <id>http://jocolorful.com/2021/07/15/%E7%94%9F%E6%B4%BB-%E7%9B%9B%E5%A4%8F%E5%BD%92%E5%AE%B6/</id>
-    <published>2021-07-15T03:05:46.000Z</published>
-    <updated>2022-03-28T00:53:49.269Z</updated>
-    
-    
-    <summary type="html">&lt;p style=&quot;text-align:center&quot;&gt;
-苍霭飞云渡，江森楚天沉。&lt;br/&gt;
-光谲影沙西，破岸又一程。
-&lt;/p&gt;
-
-&lt;center&gt;&lt;img src=&quot;/images/生活-归家.jpg&quot;  width=&quot;500px&quot; /&gt;&lt;/center&gt;</summary>
-    
-    
-    
-    <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>咖啡咖啡</title>
-    <link href="http://jocolorful.com/2021/07/14/%E9%98%85%E8%AF%BB-%E5%92%96%E5%95%A1%E5%92%96%E5%95%A1/"/>
-    <id>http://jocolorful.com/2021/07/14/%E9%98%85%E8%AF%BB-%E5%92%96%E5%95%A1%E5%92%96%E5%95%A1/</id>
-    <published>2021-07-14T14:33:55.000Z</published>
-    <updated>2022-09-02T05:59:55.851Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://book.douban.com/subject/11594188/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《咖啡咖啡》&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="阅读" scheme="http://jocolorful.com/categories/%E9%98%85%E8%AF%BB/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>长度为3的不同回文子序列</title>
-    <link href="http://jocolorful.com/2021/07/14/%E7%AE%97%E6%B3%95-%E9%95%BF%E5%BA%A6%E4%B8%BA3%E7%9A%84%E4%B8%8D%E5%90%8C%E5%9B%9E%E6%96%87%E5%AD%90%E5%BA%8F%E5%88%97/"/>
-    <id>http://jocolorful.com/2021/07/14/%E7%AE%97%E6%B3%95-%E9%95%BF%E5%BA%A6%E4%B8%BA3%E7%9A%84%E4%B8%8D%E5%90%8C%E5%9B%9E%E6%96%87%E5%AD%90%E5%BA%8F%E5%88%97/</id>
-    <published>2021-07-14T01:42:41.000Z</published>
-    <updated>2022-03-28T00:54:51.224Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/unique-length-3-palindromic-subsequences/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;长度为3的不同回文子序列&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="算法" scheme="http://jocolorful.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>一个人的好天气</title>
-    <link href="http://jocolorful.com/2021/07/13/%E9%98%85%E8%AF%BB-%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%A5%BD%E5%A4%A9%E6%B0%94/"/>
-    <id>http://jocolorful.com/2021/07/13/%E9%98%85%E8%AF%BB-%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%A5%BD%E5%A4%A9%E6%B0%94/</id>
-    <published>2021-07-13T01:51:22.000Z</published>
-    <updated>2022-09-02T05:59:54.663Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://book.douban.com/subject/2250587/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《一个人的好天气》&lt;/a&gt;是日本作家青山七惠所著。这本书是大学时期英子姐留在实验室里的书。四五年过去了，这本书一直放在我重庆的家里，扉页早已泛黄。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="阅读" scheme="http://jocolorful.com/categories/%E9%98%85%E8%AF%BB/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Peter.Pan</title>
-    <link href="http://jocolorful.com/2021/07/08/%E9%98%85%E8%AF%BB-PeterPan/"/>
-    <id>http://jocolorful.com/2021/07/08/%E9%98%85%E8%AF%BB-PeterPan/</id>
-    <published>2021-07-08T06:36:08.000Z</published>
-    <updated>2022-03-28T00:55:19.590Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://book.douban.com/subject/1386094/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《Peter.Pan》&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="阅读" scheme="http://jocolorful.com/categories/%E9%98%85%E8%AF%BB/"/>
     
     
   </entry>

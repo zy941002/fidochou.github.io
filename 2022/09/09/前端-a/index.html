@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>前端 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,Frontend,Nodejs,JavaScript" />
+  
+
+  <meta name="description" content="HTML 一些生僻的 HTML 标签 Web 的存储 微前端相关知识 fecth 和 ajax 的区别 各类路由的优缺点 离线存储 iFrame 跨域处理  CSS BFC 伪元素 CSS 性能优化的 8 个技巧 CSS 加载会造成阻塞吗？ 令人迷茫的 CSS 单位  Javascript Javascript 整洁之道 JS 的内存管理 事件循环  React React 18 所需要知道的 用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端">
+<meta property="og:url" content="http://jocolorful.com/2022/09/09/%E5%89%8D%E7%AB%AF-a/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="HTML 一些生僻的 HTML 标签 Web 的存储 微前端相关知识 fecth 和 ajax 的区别 各类路由的优缺点 离线存储 iFrame 跨域处理  CSS BFC 伪元素 CSS 性能优化的 8 个技巧 CSS 加载会造成阻塞吗？ 令人迷茫的 CSS 单位  Javascript Javascript 整洁之道 JS 的内存管理 事件循环  React React 18 所需要知道的 用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-09T08:52:54.000Z">
+<meta property="article:modified_time" content="2022-09-09T10:14:22.646Z">
+<meta property="article:author" content="Jojo">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML"><span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS"><span class="toc-text">CSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Javascript"><span class="toc-text">Javascript</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React"><span class="toc-text">React</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CI-CD"><span class="toc-text">CI&#x2F;CD</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#性能优化"><span class="toc-text">性能优化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安全"><span class="toc-text">安全</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#监控"><span class="toc-text">监控</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#协议"><span class="toc-text">协议</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-前端-a" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">前端</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2022.09.09</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><ul>
+<li><a href="/2021/11/08/%E5%89%8D%E7%AB%AF-%E4%B8%80%E4%BA%9B%E7%94%9F%E5%83%BB%E7%9A%84HTML%E6%A0%87%E7%AD%BE/">一些生僻的 HTML 标签</a></li>
+<li><a href="/2019/01/29/%E5%89%8D%E7%AB%AF-Web%E5%AD%98%E5%82%A8/">Web 的存储</a></li>
+<li><a href="/2021/06/14/%E5%89%8D%E7%AB%AF-%E5%BE%AE%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">微前端相关知识</a></li>
+<li><a href="/2020/07/07/%E5%89%8D%E7%AB%AF-Fetch%E5%92%8Cajax%E7%9A%84%E5%8C%BA%E5%88%AB/">fecth 和 ajax 的区别</a></li>
+<li><a href="/2019/07/21/%E5%89%8D%E7%AB%AF-%E5%90%84%E7%B1%BB%E8%B7%AF%E7%94%B1%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9/">各类路由的优缺点</a></li>
+<li><a href="/2019/04/19/%E5%89%8D%E7%AB%AF-%E7%A6%BB%E7%BA%BF%E5%AD%98%E5%82%A8/">离线存储</a></li>
+<li><a href="/2019/01/30/%E5%89%8D%E7%AB%AF-iframe/">iFrame</a></li>
+<li><a href="/2019/01/29/%E5%89%8D%E7%AB%AF-%E8%B7%A8%E5%9F%9F%E7%AF%87/">跨域处理</a></li>
+</ul>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><ul>
+<li><a href="/2019/01/29/CSS-BFC/">BFC</a></li>
+<li><a href="/2021/07/28/CSS-%E4%BC%AA%E5%85%83%E7%B4%A0/">伪元素</a></li>
+<li><a href="/2020/06/19/CSS-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%848%E4%B8%AA%E6%8A%80%E5%B7%A7/">CSS 性能优化的 8 个技巧</a></li>
+<li><a href="/2020/05/25/CSS%20%E5%8A%A0%E8%BD%BD%E4%BC%9A%E9%80%A0%E6%88%90%E9%98%BB%E5%A1%9E%E5%90%97/">CSS 加载会造成阻塞吗？</a></li>
+<li><a href="/2019/01/29/CSS-%E4%BB%A4%E4%BA%BA%E8%BF%B7%E8%8C%AB%E7%9A%84px/">令人迷茫的 CSS 单位</a></li>
+</ul>
+<h1 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h1><ul>
+<li><a href="/2017/08/22/%E5%89%8D%E7%AB%AF-clean-code-javascript/">Javascript 整洁之道</a></li>
+<li><a href="/2019/01/29/%E5%89%8D%E7%AB%AF-%E5%86%85%E5%AD%98/">JS 的内存管理</a></li>
+<li><a href="/2019/01/30/%E5%89%8D%E7%AB%AF-Node/">事件循环</a></li>
+</ul>
+<h1 id="React"><a href="#React" class="headerlink" title="React"></a>React</h1><ul>
+<li><a href="/2021/06/23/%E5%89%8D%E7%AB%AF-React-18-%E6%89%80%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84/">React 18 所需要知道的</a></li>
+<li><a href="/2019/01/22/%E5%89%8D%E7%AB%AF-ReactHooks/">用React Hooks 搭一个 TodoList</a></li>
+</ul>
+<h1 id="CI-CD"><a href="#CI-CD" class="headerlink" title="CI/CD"></a>CI/CD</h1><ul>
+<li><a href="/2020/12/18/%E5%89%8D%E7%AB%AF-babel/">Babel</a></li>
+<li><a href="/2019/01/27/Nginx/">Nginx 命令记录</a></li>
+</ul>
+<h1 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h1><ul>
+<li><a href="/2020/07/01/%E5%89%8D%E7%AB%AF-%E6%80%A7%E8%83%BD%E9%87%8F%E5%8C%96%E6%A0%87%E5%87%86%E8%AF%BB%E5%90%8E%E6%84%9F/">前端性能量化标准读后感</a></li>
+<li><a href="/2019/01/22/%E5%89%8D%E7%AB%AF-RN%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/">RN - 性能优化手段</a></li>
+</ul>
+<h1 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h1><ul>
+<li><a href="/2021/03/30/%E5%89%8D%E7%AB%AF-CSP/">CSP</a></li>
+</ul>
+<h1 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h1><ul>
+<li><a href="/2020/07/09/%E5%89%8D%E7%AB%AF-catch-error/">如何优雅地处理前端异常？</a></li>
+</ul>
+<h1 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h1><ul>
+<li><a href="/2019/01/29/%E5%89%8D%E7%AB%AF-Https/">HTTPS 使用与原理</a></li>
+</ul>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    
+  </div>
+
+</article>
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2022/09/09/Node.js-a/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2022/09/09/%E9%98%85%E8%AF%BB-a/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+    <div id="comment" class="vcomment" ></div>
+    <script>
+        var notify = 'false' == true ? true : false;
+        var verify = 'true' == true ? true : false;
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+            return GUEST_INFO.indexOf(item) > -1
+        });
+        guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+        window.valine = new Valine({
+            el: '.vcomment',
+            notify: notify,
+            verify: verify,
+            appId: "svQWH7m2962Cn42ZT1mvWnCP-gzGzoHsz",
+            appKey: "FvyIr8AWsURL7tzacZHxOE39",
+            avatar:'mm',
+            placeholder: "Just go go",
+            guest_info:guest_info,
+            pageSize:'10'
+        });
+    </script>
+  
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":90,"vOffset":0},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

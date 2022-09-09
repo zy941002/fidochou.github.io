@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>搬砖公主折腾记 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,Frontend,Nodejs,JavaScript" />
+  
+
+  <meta name="description" content="前言这也不知道是我第几次折腾博客了，希望是最后一次！我的博客是基于 Hexo 的静态页面生成在不断折腾博客的时候，我总结了几个坑👇  源文件经常丢失。 图片存储在七牛云，强依赖第三方过了几年有些图片已经不能正常显示。🤦‍♀️ 能动性不强，一年也就更个两三篇。 主题常常跑偏…  回归之路 给自己提问：为什么要重新记录这个博客？我是否能够坚持？  记录这个博客的原因很简单：  换电脑需要配置一些环">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搬砖公主折腾记">
+<meta property="og:url" content="http://jocolorful.com/2020/05/11/%E7%94%9F%E6%B4%BB-%E6%90%AC%E7%A0%96%E5%85%AC%E4%B8%BB%E6%8A%98%E8%85%BE%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="前言这也不知道是我第几次折腾博客了，希望是最后一次！我的博客是基于 Hexo 的静态页面生成在不断折腾博客的时候，我总结了几个坑👇  源文件经常丢失。 图片存储在七牛云，强依赖第三方过了几年有些图片已经不能正常显示。🤦‍♀️ 能动性不强，一年也就更个两三篇。 主题常常跑偏…  回归之路 给自己提问：为什么要重新记录这个博客？我是否能够坚持？  记录这个博客的原因很简单：  换电脑需要配置一些环">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-11T06:40:32.000Z">
+<meta property="article:modified_time" content="2022-04-09T04:54:28.948Z">
+<meta property="article:author" content="Jojo">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回归之路"><span class="toc-text">回归之路</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-生活-搬砖公主折腾记" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">搬砖公主折腾记</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.05.11</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/">生活随感</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这也不知道是我第几次折腾博客了，希望是最后一次！<br>我的博客是基于 Hexo 的静态页面生成<br>在不断折腾博客的时候，我总结了几个坑👇</p>
+<ol>
+<li>源文件经常丢失。</li>
+<li>图片存储在七牛云，强依赖第三方过了几年有些图片已经不能正常显示。🤦‍♀️</li>
+<li>能动性不强，一年也就更个两三篇。</li>
+<li>主题常常跑偏…</li>
+</ol>
+<h1 id="回归之路"><a href="#回归之路" class="headerlink" title="回归之路"></a>回归之路</h1><blockquote>
+<p>给自己提问：为什么要重新记录这个博客？我是否能够坚持？</p>
+</blockquote>
+<p>记录这个博客的原因很简单：</p>
+<ol>
+<li><p>换电脑需要配置一些环境时，我希望能够有一份完善的配置记录，我能够无脑 copy 配置。</p>
+</li>
+<li><p>作为一名前端开发，我希望能够有技术沉淀。将近三年的开发经验让我养成了「问为什么」的习惯。我希望我弄能掌握每个知识点。当然我的我的脸皮足够厚，即便到了第三个工作的年头，我依旧承认有些 HTML 的属性我并不是完全掌握。</p>
+</li>
+<li><p>我能够坚持吗？hhhh，我自己都持怀疑态度，也许有人监督会好一些吧。但是我希望每一篇文章都足够高质量并且用心，有时候并不是为了产出而产出。可能会记更多 bug 以及思考之类的？</p>
+</li>
+</ol>
+<p>暂时只想到这些吧，源文件的丢失导致我得重新生成把以前的博客整理一下</p>
+<p>当然，我希望我的博客不仅仅只有技术，这里也融入了我对生活的态度。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    
+  </div>
+
+</article>
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/05/11/%E5%B7%A5%E5%85%B7-iTerm2/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/05/23/%E5%B7%A5%E5%85%B7-%E5%AE%9E%E7%94%A8Demo%E6%95%B4%E7%90%86/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+    <div id="comment" class="vcomment" ></div>
+    <script>
+        var notify = 'false' == true ? true : false;
+        var verify = 'true' == true ? true : false;
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+            return GUEST_INFO.indexOf(item) > -1
+        });
+        guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+        window.valine = new Valine({
+            el: '.vcomment',
+            notify: notify,
+            verify: verify,
+            appId: "svQWH7m2962Cn42ZT1mvWnCP-gzGzoHsz",
+            appKey: "FvyIr8AWsURL7tzacZHxOE39",
+            avatar:'mm',
+            placeholder: "Just go go",
+            guest_info:guest_info,
+            pageSize:'10'
+        });
+    </script>
+  
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":90,"vOffset":0},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>
