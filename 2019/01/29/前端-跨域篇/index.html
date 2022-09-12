@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
-  <title>跨域处理 | Jojo&#39;s World</title>
+  <title>跨域 | Jojo&#39;s World</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -16,15 +16,15 @@
     <meta name="keywords" content="前端,Frontend,Nodejs,JavaScript" />
   
 
-  <meta name="description" content="同源策略但是浏览器处于对安全方面的考虑，不允许跨域调用其他域下的东西。">
+  <meta name="description" content="一 同源策略浏览器处于对安全方面的考虑，不允许跨域调用其他域下的资源。当 协议，域名，端口相同的时候才算是同一个域名，否则均认为需要做跨域的处理。可以通过以下脚本开启一个运行跨域的浏览器： open -n -a &#x2F;Applications&#x2F;Google\ Chrome.app&#x2F;Contents&#x2F;MacOS&#x2F;Google\ Chrome --args --user-data-dir&#x3D;&quot;&#x2F;tmp&#x2F;ch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="跨域处理">
+<meta property="og:title" content="跨域">
 <meta property="og:url" content="http://jocolorful.com/2019/01/29/%E5%89%8D%E7%AB%AF-%E8%B7%A8%E5%9F%9F%E7%AF%87/index.html">
 <meta property="og:site_name" content="Jojo&#39;s World">
-<meta property="og:description" content="同源策略但是浏览器处于对安全方面的考虑，不允许跨域调用其他域下的东西。">
+<meta property="og:description" content="一 同源策略浏览器处于对安全方面的考虑，不允许跨域调用其他域下的资源。当 协议，域名，端口相同的时候才算是同一个域名，否则均认为需要做跨域的处理。可以通过以下脚本开启一个运行跨域的浏览器： open -n -a &#x2F;Applications&#x2F;Google\ Chrome.app&#x2F;Contents&#x2F;MacOS&#x2F;Google\ Chrome --args --user-data-dir&#x3D;&quot;&#x2F;tmp&#x2F;ch">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-01-29T04:46:47.000Z">
-<meta property="article:modified_time" content="2022-09-09T09:58:19.441Z">
+<meta property="article:modified_time" content="2022-09-12T06:20:16.279Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -101,7 +101,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#同源策略"><span class="toc-text">同源策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#方法"><span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#优点："><span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CORS："><span class="toc-text">CORS：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#两种请求"><span class="toc-text">两种请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单请求"><span class="toc-text">简单请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非简单请求"><span class="toc-text">非简单请求</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一-同源策略"><span class="toc-text">一 同源策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二-CORS："><span class="toc-text">二 CORS：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单请求-simple-request"><span class="toc-text">简单请求(simple request)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-基本流程"><span class="toc-text">2.1 基本流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-withCredentials-属性"><span class="toc-text">2.2 withCredentials 属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非简单请求（not-so-simple-request）"><span class="toc-text">非简单请求（not-so-simple request）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#预检请求"><span class="toc-text">预检请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预检响应"><span class="toc-text">预检响应</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三-JSONP（Json-with-padding）"><span class="toc-text">三 JSONP（Json with padding）</span></a></li></ol>
   </div>
 
 
@@ -109,7 +109,7 @@ ga('send', 'pageview');
 <div class="content content-post LEFT">
    <article id="post-前端-跨域篇" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">跨域处理</h1>
+    <h1 class="post-title">跨域</h1>
 
     <div class="article-meta">
       <span>
@@ -147,38 +147,46 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <h1 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h1><p>但是浏览器处于对安全方面的考虑，不允许跨域调用其他域下的东西。</p>
-<a id="more"></a>
-<p>当协议，域名，端口相同的时候才算是同一个域名，否则均认为需要做跨域的处理。</p>
-<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>Jsonp, json with padding</p>
-<h2 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h2><ul>
-<li>它支持 GET 请求而不支持 POST 等其它类行的 HTTP 请求。</li>
-</ul>
-<h2 id="CORS："><a href="#CORS：" class="headerlink" title="CORS："></a>CORS：</h2><h3 id="两种请求"><a href="#两种请求" class="headerlink" title="两种请求"></a>两种请求</h3><p>简单请求(simple request)</p>
-<p>非简单请求（not-so-simple request）</p>
-<p>后端设置：Access-Control-Allow-Origin</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1) 请求方法是以下三种方法之一：</span><br><span class="line">HEAD</span><br><span class="line">GET</span><br><span class="line">POST</span><br><span class="line"></span><br><span class="line">2）HTTP的头信息不超出以下几种字段：</span><br><span class="line">Accept</span><br><span class="line">Accept-Language</span><br><span class="line">Content-Language</span><br><span class="line">Last-Event-ID</span><br><span class="line">Content-Type：只限于三个值application&#x2F;x-www-form-urlencoded、multipart&#x2F;form-data、text&#x2F;plain</span><br></pre></td></tr></table></figure>
+      <h1 id="一-同源策略"><a href="#一-同源策略" class="headerlink" title="一 同源策略"></a>一 同源策略</h1><p>浏览器处于对安全方面的考虑，不允许跨域调用其他域下的资源。当 <font color="red">协议，域名，端口</font>相同的时候才算是同一个域名，否则均认为需要做跨域的处理。<br>可以通过以下脚本开启一个运行跨域的浏览器：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security</span><br></pre></td></tr></table></figure>
 
-<h2 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h2><ol>
-<li><p>浏览器发现是跨域的话，会自动加上origin 字段</p>
-</li>
-<li><p>如果Origin指定的源，不在许可范围内，服务器会返回一个正常的HTTP回应。然后浏览器发现，浏览器发现，这个回应的头信息没有包含Access-Control-Allow-Origin字段（详见下文），就知道出错了，从而抛出一个错误，被XMLHttpRequest的onerror回调函数捕获。注意，这种错误无法通过状态码识别，因为HTTP回应的状态码有可能是200。</p>
-</li>
+<h1 id="二-CORS："><a href="#二-CORS：" class="headerlink" title="二 CORS："></a>二 CORS：</h1><h2 id="简单请求-simple-request"><a href="#简单请求-simple-request" class="headerlink" title="简单请求(simple request)"></a>简单请求(simple request)</h2><ol>
+<li>请求方法是三种之一：HEAD、GET、POST</li>
+<li>HTTP的头信息不超出以下几种字段：Accept、Accept-Language、Content-Language、Last-Event-ID</li>
+<li>Content-Type 只限于三个值：application/x-www-form-urlencoded、multipart/form-data、text/plain</li>
 </ol>
-<ol start="3">
-<li>如果Origin指定的域名在许可范围内，服务器返回的响应，会多出几个头信息字段。</li>
+<h3 id="2-1-基本流程"><a href="#2-1-基本流程" class="headerlink" title="2.1 基本流程"></a>2.1 基本流程</h3><ol>
+<li>浏览器发现是跨域的话，会自动加上<code>Origin</code> 字段；</li>
+<li>如果 <code>Origin</code> 指定的源，不在许可范围内，服务器会返回一个正常的 HTTP 回应。浏览器发现，这个回应的头信息没有包含 <code>Access-Control-Allow-Origin</code>字段，会抛出一个错误，可以被 XMLHttpRequest 的 onerror 回调函数捕获。但这种错误无法通过状态码识别，因为 HTTP 回应的状态码有可能是 200；</li>
+<li>如果 <code>Origin</code> 指定的域名在许可范围内，服务器返回的响应会多出几个头信息字段。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Access-Control-Allow-Origin: http:&#x2F;&#x2F;api.bob.com</span><br><span class="line">Access-Control-Allow-Credentials: true &#x2F;&#x2F; 服务器明确许可，可以发送cookie</span><br><span class="line">Access-Control-Expose-Headers: FooBar</span><br><span class="line">Content-Type: text&#x2F;html; charset&#x3D;utf-8</span><br></pre></td></tr></table></figure>
-<p>Credentials：</p>
-<p>3.2 withCredentials 属性<br>开发者必须要使这个字段为true才可以。<br>xhr.withCredentials = true;</p>
-<p>需要注意的是，如果要发送Cookie，Access-Control-Allow-Origin就不能设为星号，必须指定明确的、与请求网页一致的域名。同时，Cookie依然遵循同源政策，只有用服务器域名设置的Cookie才会上传，其他域名的Cookie并不会上传，且（跨源）原网页代码中的document.cookie也无法读取服务器域名下的Cookie。</p>
-<h2 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h2><p>方法：PUT或DELETE<br>Content-Type字段的类型是application/json</p>
-<p>加一次HTTP查询请求，称为”预检”请求（preflight）。浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的XMLHttpRequest请求，否则就报错。</p>
-<p>“预检”请求用的请求方法是OPTIONS，表示这个请求是用来询问的。头信息里面，关键字段是Origin，表示请求来自哪个源。</p>
-<p>除了Origin字段，”预检”请求的头信息包括两个特殊字段。</p>
-<pre><code>Access-Control-Request-Method
-Access-Control-Request-Headers</code></pre><p>Access-Control-Allow-Origin字段，表示<a href="http://api.bob.com可以请求数据。该字段也可以设为星号，表示同意任意跨源请求。" target="_blank" rel="noopener">http://api.bob.com可以请求数据。该字段也可以设为星号，表示同意任意跨源请求。</a></p>
-<p>Access-Control-Max-Age</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Access-Control-Allow-Origin: http://api.bob.com  //该字段是必须的。它的值要么是请求时Origin字段的值，要么是一个 *，表示接受任意域名的请求。</span><br><span class="line">Access-Control-Allow-Credentials: true // 该字段可选。它的值是一个布尔值，表示是否允许发送Cookie。服务器明确许可，可以发送 cookie</span><br><span class="line">Access-Control-Expose-Headers: FooBar</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-withCredentials-属性"><a href="#2-2-withCredentials-属性" class="headerlink" title="2.2 withCredentials 属性"></a>2.2 withCredentials 属性</h3><p>CORS 请求默认不发送 cookie 和 HTTP 认证信息。如果要把 cookie 发到服务器，一方面要服务器同意，指定 <code>Access-Control-Allow-Credentials</code>字段：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Access-Control-Allow-Credentials: true</span><br></pre></td></tr></table></figure>
+<p>另一方面，开发者必须在 Ajax 请求中打开 withCredentials 属性：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.withCredentials = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Attention：</strong> 如果要发送 cookie，<code>Access-Control-Allow-Origin</code> 就不能设为星号，必须指定明确的、与请求网页一致的域名。同时，cookie 依然遵循同源政策，只有用服务器域名设置的 cookie 才会上传，其他域名的 cookie 并不会上传，且（跨源）原网页代码中的 document.cookie 也无法读取服务器域名下的  cookie。</p>
+<h2 id="非简单请求（not-so-simple-request）"><a href="#非简单请求（not-so-simple-request）" class="headerlink" title="非简单请求（not-so-simple request）"></a>非简单请求（not-so-simple request）</h2><ol>
+<li>方法：PUT 或 DELETE</li>
+<li>Content-Type:application/json</li>
+</ol>
+<h3 id="预检请求"><a href="#预检请求" class="headerlink" title="预检请求"></a>预检请求</h3><p>如果浏览器发现这是一个非简单请求，就自动发出一个「预检请求（preflight）」。浏览器先询问服务器：当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些 HTTP 方法和头信息字段。只有得到肯定答复，浏览器才会发出正式的 XMLHttpRequest 请求否则就报错。「预检」请求用的请求方法是 OPTIONS，表示这个请求是用来询问的。头信息里面，关键字段是 <code>Origin</code>，表示请求来自哪个源。</p>
+<p>除了<code>Origin</code>字段，预检请求的头信息包括两个特殊字段：<code>Access-Control-Request-Method</code>、<code>Access-Control-Request-Headers</code></p>
+<h2 id="预检响应"><a href="#预检响应" class="headerlink" title="预检响应"></a>预检响应</h2><ol>
+<li><code>AAccess-Control-Allow-Methods</code></li>
+<li><code>Access-Control-Allow-Headers</code></li>
+<li><code>Access-Control-Allow-Credentials</code></li>
+<li><code>Access-Control-Max-Age</code></li>
+</ol>
+<h1 id="三-JSONP（Json-with-padding）"><a href="#三-JSONP（Json-with-padding）" class="headerlink" title="三 JSONP（Json with padding）"></a>三 JSONP（Json with padding）</h1><p>w3schools： <a href="https://www.w3schools.com/js/js_json_jsonp.asp" target="_blank" rel="noopener">https://www.w3schools.com/js/js_json_jsonp.asp</a></p>
+<p>在进行 Ajax 请求时，由于同源策略不能进行跨域请求，而<code>&lt;script&gt;</code>标签的 src 属性却可以加载跨域的 JavaScript 脚本，JSONP 就是利用这一特性实现的。与普通的 Ajax 请求不同，在使用 JSONP 进行跨域请求时，服务器不再返回 JSON 格式的数据，而是返回一段调用某个函数的 JavaScript 代码，在 src 属性中调用来实现跨域。</p>
+<p>JSONP 的优点是兼容性好，在一些老旧的浏览器种也可以运行，但它的缺点也非常明显：</p>
+<ul>
+<li>只能进行 GET 请求；</li>
+<li>XSS 攻击</li>
+</ul>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     
   </div>

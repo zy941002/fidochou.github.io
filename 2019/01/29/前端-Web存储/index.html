@@ -13,20 +13,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="混合开发," />
+    <meta name="keywords" content="前端,Frontend,Nodejs,JavaScript" />
   
 
-  <meta name="description" content="客户端Cookie">
+  <meta name="description" content="一、客户端 cookie">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Web 的存储">
 <meta property="og:url" content="http://jocolorful.com/2019/01/29/%E5%89%8D%E7%AB%AF-Web%E5%AD%98%E5%82%A8/index.html">
 <meta property="og:site_name" content="Jojo&#39;s World">
-<meta property="og:description" content="客户端Cookie">
+<meta property="og:description" content="一、客户端 cookie">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-01-29T04:46:47.000Z">
-<meta property="article:modified_time" content="2022-09-09T09:58:19.439Z">
+<meta property="article:modified_time" content="2022-09-10T02:29:38.158Z">
 <meta property="article:author" content="Jojo">
-<meta property="article:tag" content="混合开发">
 <meta name="twitter:card" content="summary">
 
   
@@ -102,7 +101,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#客户端Cookie"><span class="toc-text">客户端Cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#确定"><span class="toc-text">确定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#服务器端-Session"><span class="toc-text">服务器端 Session</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Webstorage"><span class="toc-text">Webstorage</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、客户端-cookie"><span class="toc-text">一、客户端 cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-text">定义:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#限制"><span class="toc-text">限制:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、服务器端-session"><span class="toc-text">二、服务器端 session</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sessionID-定义"><span class="toc-text">sessionID 定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、Webstorage"><span class="toc-text">三、Webstorage</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义-1"><span class="toc-text">定义:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#localStorage"><span class="toc-text">localStorage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sessionStorage"><span class="toc-text">sessionStorage</span></a></li></ol></li></ol>
   </div>
 
 
@@ -148,25 +147,34 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <h1 id="客户端Cookie"><a href="#客户端Cookie" class="headerlink" title="客户端Cookie"></a>客户端Cookie</h1><a id="more"></a>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
-<li>通过良好的编程，控制保存在cookie中的session对象的大小。</li>
-<li>通过加密和安全传输技术（SSL），减少cookie被破解的可能性。</li>
-<li>只在cookie中存放不敏感数据，即使被盗也不会有重大损失。</li>
-<li>控制cookie的生命期，使之不会永远有效。偷盗者很可能拿到一个过期的cookie。</li>
+      <h1 id="一、客户端-cookie"><a href="#一、客户端-cookie" class="headerlink" title="一、客户端 cookie"></a>一、客户端 cookie</h1><a id="more"></a>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义:"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/cookies" target="_blank" rel="noopener">定义:</a></h2><p>cookie 是小量信息，由网络服务器发送出来以存储在网络浏览器上，从而下次这位独一无二的访客又回到该网络服务器时，可从该浏览器读回此信息。浏览器可以记住这位访客的特定信息，如上次访问的位置、花费的时间或用户首选项（如样式表）。cookie 是个存储在浏览器目录的文本文件，当浏览器运行时，存储在 RAM 中。一旦你从该网站或网络服务器退出，cookie 也可存储在计算机的硬驱上。当访客结束其浏览器对话时，即终止的所有 cookie。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项:"></a>注意事项:</h2><ol>
+<li>通过良好的编程，控制保存在 cookie 中的 session 对象的大小；</li>
+<li>通过加密和安全传输技术（SSL），减少 cookie 被破解的可能性；</li>
+<li>只在 cookie 中存放不敏感数据，即使被盗也不会有重大损失；</li>
+<li>控制 cookie 的生命期，使之不会永远有效。偷盗者很可能拿到一个过期的 cookie。</li>
 </ol>
-<h2 id="确定"><a href="#确定" class="headerlink" title="确定"></a>确定</h2><ol>
-<li><code>Cookie</code>数量和长度的限制。每个domain最多只能有20条cookie，每个cookie长度不能超过4KB，否则会被截掉。<ol start="2">
-<li>安全性问题：如果cookie被人拦截 ,他只要原样转发cookie就可以达到目的了。邮箱</li>
-<li>隐私问题：隐私浏览模式，浏览器关闭之后，期间所有的 cookie 都消失。</li>
-<li></li>
+<h2 id="限制"><a href="#限制" class="headerlink" title="限制:"></a>限制:</h2><ol>
+<li>数量和长度的限制：每个 domain 最多只能有 20 条 cookie，每个 cookie 长度不能超过 4KB，否则会被截掉；</li>
+<li>安全性问题：如果 cookie 被人拦截，他只要原样转发 cookie 就可以达到目的了；</li>
+<li>隐私问题：隐私浏览模式，浏览器关闭之后，期间所有的  cookie 都消失。</li>
 </ol>
-</li>
+<h1 id="二、服务器端-session"><a href="#二、服务器端-session" class="headerlink" title="二、服务器端 session"></a>二、服务器端 session</h1><p>session：称为「会话控制」。session 对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的 Web 页之间跳转时，存储在 session 对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。当用户请求来自应用程序的 Web 页时，如果该用户还没有会话，则 Web 服务器将自动创建一个 session 对象。当会话过期或被放弃后，服务器将终止该会话。</p>
+<p>因为很多第三方可以获取到这个 cookie，服务器无法判断 cookie 是不是真实用户发送的，所以 cookie 可以伪造，伪造 cookie 实现登录进行一些 HTTP 请求。如果从安全性上来讲，session 比 cookie 安全性稍微高一些，我们先要知道一个概念– sessionID：</p>
+<h2 id="sessionID-定义"><a href="#sessionID-定义" class="headerlink" title="sessionID 定义"></a><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/sessions" target="_blank" rel="noopener">sessionID 定义</a></h2><p>客户端第一次请求服务器的时候，服务器会为客户端创建一个 session，并将通过特殊算法算出一个 session 的 ID，下次请求资源时（session 未过期），浏览器会将 sessionID(实质是 cookie)放置到请求头中，服务器接收到请求后就得到该请求的 sessionID，服务器找到该 ID 的 session 返还给请求者使用。</p>
+<h1 id="三、Webstorage"><a href="#三、Webstorage" class="headerlink" title="三、Webstorage"></a>三、Webstorage</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义:"></a><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API" target="_blank" rel="noopener">定义:</a></h2><p>使用 HTML5 可以在本地存储用户的浏览数据。早些时候，本地存储使用的是 cookie。但是 Web 存储需要更加的安全与快速，这些数据不会被保存在服务器上，但是这些数据只用于用户请求网站数据上。它也可以存储大量的数据，而不影响网站的性能。数据以 键/值 对存在, Web 网页的数据只允许该网页访问使用。</p>
+<ul>
+<li>提供一种在 C sookie 之外存储会话数据的途径。</li>
+<li>提供一种存储大量可以跨会话存在的数据的机制。</li>
+</ul>
+<h2 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h2><p>localStorage的生命周期是永久性的。假若使用 localStorage 存储数据，即使关闭浏览器，也不会让数据消失，除非主动的去删除数据，使用的方法如上所示。localStorage有length属性，可以查看其有多少条记录的数据。</p>
+<h2 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h2><p>sessionStorage 的生命周期是在浏览器关闭前。也就是说，在整个浏览器未关闭前，其数据一直都是存在的。sessionStorage 也有length属性，其基本的判断和使用方法和 localStorage 的使用是一致的。需要注意的有以下几点：</p>
+<ol>
+<li>页面刷新不会消除数据；</li>
+<li>只有在当前页面打开的链接，才可以访 sessionStorage 的数据；</li>
+<li>使用 window.open 打开页面和改变 localtion.href 方式都可以获取到 sessionStorage 内部的数据。</li>
 </ol>
-<h1 id="服务器端-Session"><a href="#服务器端-Session" class="headerlink" title="服务器端 Session"></a>服务器端 Session</h1><p>与盗取用户名、密码登陆用户帐户的方式有所不同，Session劫持是一种通过窃取用户的SessionID，使用该SessionID登录目标账户的攻击方法。此时攻击者实际上是使用了目标账户的有效Session。如果SessionID是保存在Cookie中的，则这种攻击可以成为Cookie劫持。</p>
-<h1 id="Webstorage"><a href="#Webstorage" class="headerlink" title="Webstorage"></a>Webstorage</h1><p>不与服务器又交互</p>
-<p>localStorage</p>
-<p>sessionStorage</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     
   </div>
