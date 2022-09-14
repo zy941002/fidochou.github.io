@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
-  <title>JS 的内存管理 | Jojo&#39;s World</title>
+  <title>V8 的内存管理 | Jojo&#39;s World</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -16,17 +16,24 @@
     <meta name="keywords" content="前端,Frontend,Nodejs,JavaScript" />
   
 
-  <meta name="description" content="垃圾回收机制JS内存空间分为栈(stack)、堆(heap)、池(一般也会归类为栈中)。 其中栈存放变量，堆存放复杂对象，池存放常量。 存储位置不同 原始数据类型直接存储在栈(stack)中的简单数据段，占据空间小、大小固定，属于被频繁使用数据，所以放入栈中存储；  引用数据类型存储在堆(heap)中的对象,占据空间大、大小不固定。如果存储在栈中，将会影响程序运行的性能；引用数据类型在栈中存储了指">
+  <meta name="description" content="一、内存是什么？内存(Memory)是计算机的重要部件，也称内存储器和主存储器，它用于暂时存放 CPU中 的运算数据，以及与硬盘等外部存储器交换的数据。它是外存与CPU进行沟通的桥梁，计算机中所有程序的运行都在内存中进行，内存性能的强弱影响计算机整体发挥的水平。只要计算机开始运行，操作系统就会把需要运算的数据从内存调到 CPU 中进行运算，当运算完成，CPU 将结果传送出来。 如下图，我的电脑配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS 的内存管理">
+<meta property="og:title" content="V8 的内存管理">
 <meta property="og:url" content="http://jocolorful.com/2019/01/29/%E5%89%8D%E7%AB%AF-%E5%86%85%E5%AD%98/index.html">
 <meta property="og:site_name" content="Jojo&#39;s World">
-<meta property="og:description" content="垃圾回收机制JS内存空间分为栈(stack)、堆(heap)、池(一般也会归类为栈中)。 其中栈存放变量，堆存放复杂对象，池存放常量。 存储位置不同 原始数据类型直接存储在栈(stack)中的简单数据段，占据空间小、大小固定，属于被频繁使用数据，所以放入栈中存储；  引用数据类型存储在堆(heap)中的对象,占据空间大、大小不固定。如果存储在栈中，将会影响程序运行的性能；引用数据类型在栈中存储了指">
+<meta property="og:description" content="一、内存是什么？内存(Memory)是计算机的重要部件，也称内存储器和主存储器，它用于暂时存放 CPU中 的运算数据，以及与硬盘等外部存储器交换的数据。它是外存与CPU进行沟通的桥梁，计算机中所有程序的运行都在内存中进行，内存性能的强弱影响计算机整体发挥的水平。只要计算机开始运行，操作系统就会把需要运算的数据从内存调到 CPU 中进行运算，当运算完成，CPU 将结果传送出来。 如下图，我的电脑配置">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://jocolorful.com/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/0.png">
+<meta property="og:image" content="http://jocolorful.com/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/1.png">
+<meta property="og:image" content="http://jocolorful.com/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/2.png">
+<meta property="og:image" content="http://jocolorful.com/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/3.png">
+<meta property="og:image" content="http://jocolorful.com/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/4.png">
+<meta property="og:image" content="http://jocolorful.com/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/5.png">
 <meta property="article:published_time" content="2019-01-29T04:46:47.000Z">
-<meta property="article:modified_time" content="2022-09-09T09:58:19.441Z">
+<meta property="article:modified_time" content="2022-09-14T05:00:51.950Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jocolorful.com/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/0.png">
 
   
 
@@ -101,7 +108,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾回收机制"><span class="toc-text">垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#存储位置不同"><span class="toc-text">存储位置不同</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JS的内存分配"><span class="toc-text">JS的内存分配</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#当内存不再需要使用时释放"><span class="toc-text">当内存不再需要使用时释放</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#标记清除"><span class="toc-text">标记清除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用计数"><span class="toc-text">引用计数</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、内存是什么？"><span class="toc-text">一、内存是什么？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、V8-内存大小以及原因？"><span class="toc-text">二、V8 内存大小以及原因？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、V8-内存分配的时机？"><span class="toc-text">三、V8 内存分配的时机？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、内存与-GC-理论知识"><span class="toc-text">四、内存与 GC 理论知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-内存结构概览"><span class="toc-text">4.1 内存结构概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-新生代"><span class="toc-text">4.2 新生代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-对象晋升"><span class="toc-text">4.3 对象晋升</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-老生代"><span class="toc-text">4.4 老生代</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-引用计数"><span class="toc-text">1. 引用计数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-标记清除"><span class="toc-text">2. 标记清除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-标记整理"><span class="toc-text">3. 标记整理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、全停顿"><span class="toc-text">五、全停顿</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Orinoco-优化"><span class="toc-text">Orinoco 优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#增量标记（Incremental-marking）"><span class="toc-text">增量标记（Incremental marking）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#惰性清理-Lazy-sweeping"><span class="toc-text">惰性清理(Lazy sweeping)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并发-Concurrent"><span class="toc-text">并发(Concurrent)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并行"><span class="toc-text">并行</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、V8当前的垃圾回收机制"><span class="toc-text">六、V8当前的垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#副垃圾回收器"><span class="toc-text">副垃圾回收器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主垃圾回收器"><span class="toc-text">主垃圾回收器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
   </div>
 
 
@@ -109,7 +116,7 @@ ga('send', 'pageview');
 <div class="content content-post LEFT">
    <article id="post-前端-内存" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">JS 的内存管理</h1>
+    <h1 class="post-title">V8 的内存管理</h1>
 
     <div class="article-meta">
       <span>
@@ -147,33 +154,88 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <h1 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h1><p>JS内存空间分为栈(stack)、堆(heap)、池(一般也会归类为栈中)。 其中栈存放变量，堆存放复杂对象，池存放常量。</p>
-<h2 id="存储位置不同"><a href="#存储位置不同" class="headerlink" title="存储位置不同"></a>存储位置不同</h2><ul>
-<li><p>原始数据类型直接存储在栈(stack)中的简单数据段，占据空间小、大小固定，属于被频繁使用数据，所以放入栈中存储；</p>
-</li>
-<li><p>引用数据类型存储在堆(heap)中的对象,占据空间大、大小不固定。如果存储在栈中，将会影响程序运行的性能；<font color="red">引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体</font></p>
-<a id="more"></a>
-
-
-</li>
-</ul>
-<p>不管是任何的程序语言<br>内存生命周期</p>
+      <h1 id="一、内存是什么？"><a href="#一、内存是什么？" class="headerlink" title="一、内存是什么？"></a>一、内存是什么？</h1><p><strong>内存(Memory)</strong>是<a href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA/140338?fromModule=lemma_inlink" target="_blank" rel="noopener">计算机</a>的重要部件，也称<a href="https://baike.baidu.com/item/%E5%86%85%E5%AD%98%E5%82%A8%E5%99%A8/834392?fromModule=lemma_inlink" target="_blank" rel="noopener">内存储器</a>和<a href="https://baike.baidu.com/item/%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8/10635399?fromModule=lemma_inlink" target="_blank" rel="noopener">主存储器</a>，它用于暂时存放 CPU中 的运算数据，以及与<a href="https://baike.baidu.com/item/%E7%A1%AC%E7%9B%98/159825?fromModule=lemma_inlink" target="_blank" rel="noopener">硬盘</a>等<a href="https://baike.baidu.com/item/%E5%A4%96%E9%83%A8%E5%AD%98%E5%82%A8%E5%99%A8/4843180?fromModule=lemma_inlink" target="_blank" rel="noopener">外部存储器</a>交换的数据。它是<a href="https://baike.baidu.com/item/%E5%A4%96%E5%AD%98/2445612?fromModule=lemma_inlink" target="_blank" rel="noopener">外存</a>与<a href="https://baike.baidu.com/item/CPU/120556?fromModule=lemma_inlink" target="_blank" rel="noopener">CPU</a>进行沟通的桥梁，计算机中所有程序的运行都在内存中进行，内存性能的强弱影响计算机整体发挥的水平。只要计算机开始运行，<a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192?fromModule=lemma_inlink" target="_blank" rel="noopener">操作系统</a><br>就会把需要运算的数据从内存调到 CPU 中进行运算，当运算完成，CPU 将结果传送出来。</p>
+<p>如下图，我的电脑配置是 8G、通过「活动监视器」能够查看各个应用程序的内存占用。</p>
+<p><img src="/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/0.png" alt="Untitled"></p>
+<h1 id="二、V8-内存大小以及原因？"><a href="#二、V8-内存大小以及原因？" class="headerlink" title="二、V8 内存大小以及原因？"></a>二、V8 内存大小以及原因？</h1><p>V8 引擎在<code>64</code>位系统下最多只能使用约<code>1.4GB</code>的内存，在<code>32</code>位系统下最多只能使用约<code>0.7GB</code>的内存。在这样的限制下，必然会导致在 Node 中无法直接操作大内存对象，比如将一个<code>2GB</code>大小的文件全部读入内存进行字符串分析处理，即使物理内存高达<code>32GB</code>也无法充分利用计算机的内存资源，那么为什么会有这种限制呢？</p>
 <ol>
-<li>分配你所需要的内存</li>
-<li>使用分配到的内存（读、写）</li>
-<li>不需要时将其释放\归还</li>
+<li>V8 引擎的设计之初，起初只是作为浏览器端 JavaScript 的执行环境，在浏览器端我们其实很少会遇到使用大量内存的场景，因此也就没有必要将最大内存设置得过高；</li>
+<li><code>JS单线程机制</code>：作为浏览器的脚本语言，JS 的主要用途是与用户交互以及操作 DOM，那么这也决定了其作为单线程的本质，单线程意味着执行的代码必须按顺序执行，在同一时间只能处理一个任务。试想如果 JS 是多线程的，一个线程在删除 DOM 元素的同时，另一个线程对该元素进行修改操作，那么必然会导致复杂的同步问题。既然 JS 是单线程的，那么也就意味着在 V8 执行垃圾回收时，程序中的其他各种逻辑都要进入暂停等待阶段，直到垃圾回收结束后才会再次重新执行 JS 逻辑。因此，由于 JS 的单线程机制，垃圾回收的过程阻碍主线程逻辑的执行；</li>
+<li><code>垃圾回收机制</code>：垃圾回收本身也是一件非常耗时的操作，假设 V8 的堆内存为<code>1.5G</code>，那么V8做一次小的垃圾回收需要 50ms以上，而做一次非增量式回收甚至需要 1s 以上，可见其耗时之久，而在这 1s 的时间内，浏览器一直处于等待的状态，会失去对用户的响应，如果有动画正在运行，也会造成动画卡顿掉帧的情况，严重影响应用程序的性能。因此如果内存使用过高，那么必然会导致垃圾回收的过程缓慢，也就会导致主线程的等待时间越长，浏览器也就越长时间得不到响应。</li>
 </ol>
-<h1 id="JS的内存分配"><a href="#JS的内存分配" class="headerlink" title="JS的内存分配"></a>JS的内存分配</h1><ol>
+<p>基于以上，V8 引擎为了减少对应用的性能造成的影响，采用了一种比较粗暴的手段，那就是直接限制堆内存的大小，毕竟在浏览器端一般也不会遇到需要操作几个 G 内存这样的场景。但是在Node 端，涉及到的 <code>I/O</code> 操作可能会比浏览器端更加复杂多样，因此更有可能出现内存溢出的情况。不过 V8 为我们提供了可配置项来让我们手动地调整内存大小， Node 初始化的时候进行配置，我们可以通过如下方式来手动设置：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 设置新生代内存中单个半空间的内存最小值，单位MB</span></span><br><span class="line">node --min-semi-space-size=<span class="number">1024</span> xxx.js</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置新生代内存中单个半空间的内存最大值，单位MB</span></span><br><span class="line">node --max-semi-space-size=<span class="number">1024</span> xxx.js</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置老生代内存最大值，单位MB</span></span><br><span class="line">node --max-old-space-size=<span class="number">2048</span> xxx.js</span><br></pre></td></tr></table></figure>
+
+<p>通过以上方法便可以手动放宽 V8 引擎所使用的内存限制，同时node也为我们提供了<code>process.memoryUsage()</code>方法来让我们可以查看当前 Node 进程所占用的实际内存大小。</p>
+<h1 id="三、V8-内存分配的时机？"><a href="#三、V8-内存分配的时机？" class="headerlink" title="三、V8 内存分配的时机？"></a>三、V8 内存分配的时机？</h1><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&gt; process.memoryUsage()</span><br><span class="line">&#123;</span><br><span class="line">  rss: <span class="number">27508736</span>,      <span class="comment">// 表示驻留集大小，是给这个 Node 进程分配了多少物理内存，这些物理内存中包含堆，栈和代码片段。对象，闭包等存于堆内存，变量存于栈内存，实际的JavaScript源代码存于代码段内存。使用Worker线程时，rss将会是一个对整个进程有效的值，而其他字段则只针对当前线程。</span></span><br><span class="line">  heapTotal: <span class="number">6668288</span>, <span class="comment">//表示V8当前申请到的堆内存总大小。</span></span><br><span class="line">  heapUsed: <span class="number">4847376</span>,  <span class="comment">// 表示当前内存使用量</span></span><br><span class="line">  external: <span class="number">900930</span>,   <span class="comment">// 表示 V8 内部的 C++ 对象所占用的内存。</span></span><br><span class="line">  arrayBuffers: <span class="number">11158</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
 <li>值的初始化</li>
 <li>通过函数调用分配内存</li>
 </ol>
-<h1 id="当内存不再需要使用时释放"><a href="#当内存不再需要使用时释放" class="headerlink" title="当内存不再需要使用时释放"></a>当内存不再需要使用时释放</h1><p>高级语言设置了垃圾回收器，追踪内存的实用</p>
-<h2 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h2><p>垃圾收集器在运行时会给存储在内存中的所有变量都加上一个标记,然后检查哪些变量还在环境中使用,将去掉这些变量的标记,检查哪些变量被环境中的变量说引用,也去掉这些变量的标记,最后剩下的这些带有标记的变量将会是”准备被清理的变量”</p>
-<h2 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h2><p>这是一种不太常用的垃圾回收机制,声明一个变量时,并将一个引用类型的值A赋给该变量,这时引用计数的次数会加一.而如果变量又指向了另外一个引用类型的值B时,这时A其实已经没有变量来引用,A的引用次数会减一.</p>
+<h1 id="四、内存与-GC-理论知识"><a href="#四、内存与-GC-理论知识" class="headerlink" title="四、内存与 GC 理论知识"></a>四、内存与 GC 理论知识</h1><h2 id="4-1-内存结构概览"><a href="#4-1-内存结构概览" class="headerlink" title="4.1 内存结构概览"></a>4.1 内存结构概览</h2><p>V8的垃圾回收策略主要是基于<code>分代式垃圾回收机制</code>，其根据<strong>对象的存活时间</strong>将内存的垃圾回收进行不同的分代，然后对不同的分代采用不同的垃圾回收算法。</p>
+<p>在 V8 引擎的堆结构组成中，一共包含以下几个部分， 回收的过程主要出现在<code>新生代</code>和<code>老生代</code></p>
+<ul>
+<li><code>新生代(new_space)</code>：大多数的对象开始都会被分配在这里，这个区域相对较小但是垃圾回收特别频繁，该区域被分为两半：一半用来分配内存，另一半用于在垃圾回收时将需要保留的对象复制过来；</li>
+<li><code>老生代(old_space)</code>：新生代中的对象在存活一段时间后就会被转移到老生代内存区，相对于新生代该内存区域的<strong>垃圾回收频率较低</strong>。老生代又分为<code>老生代指针区</code>和<code>老生代数据区</code>，前者包含大多数可能存在指向其他对象的指针的对象，后者只保存原始数据对象，这些对象没有指向其他对象的指针；</li>
+<li>大对象区(large_object_space)：存放体积超越其他区域大小的对象，每个对象都会有自己的内存，垃圾回收不会移动大对象区；</li>
+<li>代码区(code_space)：代码对象，会被分配在这里，唯一拥有执行权限的内存区域；</li>
+<li>map区(map_space)：存放 Cell 和 Map，每个区域都是存放相同大小的元素，结构简单。</li>
+</ul>
+<p><img src="/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/1.png" alt="Untitled"></p>
+<p>上图中的带斜纹的区域代表暂未使用的内存，新生代(new_space)被划分为了两个部分，其中一部分叫做inactive new space，表示暂未激活的内存区域，另一部分为激活状态。</p>
+<h2 id="4-2-新生代"><a href="#4-2-新生代" class="headerlink" title="4.2 新生代"></a>4.2 新生代</h2><p>在V8引擎的内存结构中，新生代主要用于存放存活时间较短的对象。新生代内存是由两个<code>semispace(半空间)</code>构成的，内存最大值在<code>64</code>位系统和<code>32</code>位系统上分别为<code>32MB</code>和<code>16MB</code>，在新生代的垃圾回收过程中主要采用了<code>Scavenge</code>算法。</p>
+<p><code>Scavange算法</code>将新生代堆分为两部分，分别叫<code>from-space</code> 和<code>to-space</code>，工作方式也很简单，就是将<code>from-space</code> 中存活的活动对象复制到<code>to-space</code> 中，并将这些对象的内存有序的排列起来，然后将<code>from-space</code> 中的非活动对象的内存进行释放，完成之后，将<code>from space</code> 和<code>to space</code>进行互换，这样可以使得新生代中的这两块区域可以重复利用。</p>
+<p><img src="/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/2.png" alt="Untitled"></p>
+<p>具体步骤为以下4步：</p>
 <ol>
-<li>如果没有引用指向该对象（零引用），对象将被垃圾回收机制回收</li>
+<li>标记活动对象和非活动对象</li>
+<li>复制<code>from-space</code>的活动对象到<code>to-space</code>中并进行排序</li>
+<li>清除<code>from-space</code>中的非活动对象</li>
+<li>将<code>from-space</code>和<code>to-space</code>进行角色互换，以便下一次 <code>Scavenge算法</code> 垃圾回收</li>
 </ol>
-<p>限制：循环引用</p>
+<p>通过以上流程，<code>Scavenge</code> 算法的垃圾回收过程主要就是将存活对象在<code>From</code>空间和<code>To</code>空间之间进行复制，同时完成两个空间之间的<strong>角色互换</strong>，因此该算法的缺点也比较明显，<strong>浪费了一半的内存用于复制。</strong></p>
+<h2 id="4-3-对象晋升"><a href="#4-3-对象晋升" class="headerlink" title="4.3 对象晋升"></a>4.3 <strong>对象晋升</strong></h2><p>当一个对象在经过多次复制之后依旧存活，那么它会被认为是一个生命周期较长的对象，在下一次进行垃圾回收时，该对象会被直接转移到老生代中，这种对象从新生代转移到老生代的过程我们称之为<code>晋升</code>。<br>对象晋升的条件主要有以下两个：</p>
+<ul>
+<li>对象是否经历过一次<code>Scavenge</code>算法；</li>
+<li><code>To</code>空间的内存占比是否已经超过<code>25%</code>，如果内存使用过高甚至溢出，则会影响后续对象的分配，因此超过这个限制之后对象会被直接转移到老生代来进行管理。</li>
+</ul>
+<h2 id="4-4-老生代"><a href="#4-4-老生代" class="headerlink" title="4.4 老生代"></a>4.4 <strong>老生代</strong></h2><p>在老生代中，因为管理着大量的存活对象，如果依旧使用<code>Scavenge</code>算法的话，会浪费一半的内存，因此已经不再使用<code>Scavenge</code>算法，而是采用新的算法<code>Mark-Sweep(标记清除)</code>和<code>Mark-Compact(标记整理)</code>来进行管理。</p>
+<h3 id="1-引用计数"><a href="#1-引用计数" class="headerlink" title="1. 引用计数"></a>1. 引用计数</h3><p>该算法的原理比较简单，就是看对象是否还有其他引用指向它，如果没有指向该对象的引用，则该对象会被视为垃圾并被垃圾回收器回收。但循环引用的场景下会出现一些问题：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> a = &#123;&#125;;</span><br><span class="line">    <span class="keyword">let</span> b = &#123;&#125;;</span><br><span class="line">    a.a1 = b;</span><br><span class="line">    b.b1 = a;</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
+
+<p>在<code>foo</code>函数执行完毕后，函数的作用域已经被销毁，作用域中包含的变量<code>a</code>和<code>b</code>本应该可以被回收，但是因为采用了<code>引用计数</code>的算法，两个变量均存在指向自身的引用，因此依旧无法被回收，导致内存泄漏。</p>
+<h3 id="2-标记清除"><a href="#2-标记清除" class="headerlink" title="2. 标记清除"></a>2. 标记清除</h3><p>因此为了<strong>避免循环引用导致的内存泄漏问题</strong>，截至2012年所有的现代浏览器均放弃了这种算法，转而采用新的<code>Mark-Sweep(标记清除)</code>和<code>Mark-Compact(标记整理)</code>算法。在上面循环引用的例子中，因为变量<code>a</code>和变量<code>b</code>无法从<code>window</code>全局对象访问到，因此无法对其进行标记，所以无法回收。</p>
+<p><code>Mark-Sweep(标记清除)</code>分为<code>标记</code>和<code>清除</code>两个阶段，在标记阶段会遍历堆中的所有对象，然后标记活着的对象，在清除阶段中，会将死亡的对象进行清除。<code>Mark-Sweep</code><strong>算法主要是通过判断某个对象是否可以被访问到，从而知道该对象是否应该被回收</strong>，具体步骤如下：</p>
+<p>垃圾回收器会在内部构建一个<code>根列表</code>，用于从根节点出发去寻找那些可以被访问到的变量。比如在JavaScript中，<code>window</code>全局对象可以看成一个根节点。然后，垃圾回收器从所有根节点出发，遍历其可以访问到的子节点，并将其标记为活动的，根节点不能到达的地方即为非活动的，将会被视为垃圾。最后，垃圾回收器将会释放所有非活动的内存块，并将其归还给操作系统。</p>
+<p><strong>以下几种情况都可以作为根节点：</strong></p>
+<ol>
+<li>全局对象</li>
+<li>本地函数的局部变量和参数</li>
+<li>当前嵌套调用链上的其他函数的变量和参数</li>
+</ol>
+<p>但是 Mark-Sweep 算法存在一个问题，就是在经历过一次标记清除后，内存空间可能会出现不连续的状态，因为我们所清理的对象的内存地址可能不是连续的，所以就会出现内存碎片的问题，导致后面如果需要分配一个大对象而空闲内存不足以分配，就会提前触发垃圾回收，而这次垃圾回收其实是没必要的，因为我们确实有很多空闲内存，只不过是不连续的。</p>
+<h3 id="3-标记整理"><a href="#3-标记整理" class="headerlink" title="3. 标记整理"></a>3. 标记整理</h3><p><strong>为了解决这种内存碎片的问题，</strong><code>Mark-Compact(标记整理)</code>算法被提了出来，该算法主要就是用来解决内存的碎片化问题的，回收过程中将死亡对象清除后，<strong>在整理的过程中，会将活动的对象往堆内存的一端进行移动，移动完成后再清理掉边界外的全部内存</strong>，我们可以用如下流程图来表示：</p>
+<p><img src="/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/3.png" alt="Untitled"></p>
+<h1 id="五、全停顿"><a href="#五、全停顿" class="headerlink" title="五、全停顿"></a>五、全停顿</h1><p>JS 代码的运行要用到 JS 引擎，垃圾回收也要用到 JS 引擎，那如果这两者同时进行了，发生冲突了咋办呢？答案是，<code>垃圾回收优先于代码执行</code>，会先停止代码的执行，等到垃圾回收完毕，再执行JS代码。这个过程，称为<code>全停顿</code>；</p>
+<p>由于新生代空间小，并且存活对象少，再配合<code>Scavenge算法</code>，停顿时间较短。但是老生代就不一样了，某些情况活动对象比较多的时候，停顿时间就会较长，使得页面出现了<code>卡顿现象</code>。</p>
+<h2 id="Orinoco-优化"><a href="#Orinoco-优化" class="headerlink" title="Orinoco 优化"></a><strong><strong>Orinoco 优化</strong></strong></h2><h3 id="增量标记（Incremental-marking）"><a href="#增量标记（Incremental-marking）" class="headerlink" title="增量标记（Incremental marking）"></a>增量标记（<strong><strong>Incremental marking</strong></strong>）</h3><p>即将原本需要一次性遍历堆内存的操作改为增量标记的方式，<strong>先标记堆内存中的一部分对象，然后暂停，将执行权重新交给 JS 主线程</strong>，待主线程任务执行完毕后再从原来暂停标记的地方继续标记，直到标记完整个堆内存。这个理念其实有点像<code>React</code>框架中的<code>Fiber</code>架构，只有在浏览器的空闲时间才会去遍历<code>Fiber Tree</code>执行对应的任务，否则延迟执行，尽可能少地影响主线程的任务，避免应用卡顿，提升应用性能。</p>
+<h3 id="惰性清理-Lazy-sweeping"><a href="#惰性清理-Lazy-sweeping" class="headerlink" title="惰性清理(Lazy sweeping)"></a>惰性清理(Lazy sweeping)</h3><p>上面说了，增量标记只是针对<code>标记</code>阶段，而惰性清理就是针对<code>清除</code>阶段了。在增量标记之后，要进行清理非活动对象的时候，垃圾回收器发现了其实就算是不清理，剩余的空间也足以让JS代码跑起来，所以就<code>延迟了清理</code>，让JS代码先执行，或者<code>只清理部分垃圾</code>，而不清理全部。这个优化就叫做<code>惰性清理</code>。</p>
+<p>整理标记和惰性清理的出现，大大改善了<code>全停顿</code>现象。但是问题也来了：增量标记是<code>标记一点，JS运行一段</code>，那如果你前脚刚标记一个对象为活动对象，后脚JS代码就把此对象设置为非活动对象，或者反过来，前脚没有标记一个对象为活动对象，后脚JS代码就把此对象设置为活动对象。总结起来就是：标记和代码执行的穿插，有可能造成<code>对象引用改变，标记错误</code>现象。这就需要使用<code>写屏障</code>技术来记录这些引用关系的变化</p>
+<h3 id="并发-Concurrent"><a href="#并发-Concurrent" class="headerlink" title="并发(Concurrent)"></a>并发(Concurrent)</h3><p>并发式 GC 允许在在垃圾回收的同时不需要将主线程挂起，两者可以同时进行，只有在个别时候需要短暂停下来让垃圾回收器做一些特殊的操作。但是这种方式也要面对增量回收的问题，就是在垃圾回收过程中，由于 JavaScript 代码在执行，堆中的对象的引用关系随时可能会变化，所以也要进行<code>写屏障</code>操作。</p>
+<p><img src="/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/4.png" alt="Untitled"></p>
+<h3 id="并行"><a href="#并行" class="headerlink" title="并行"></a><strong><strong>并行</strong></strong></h3><p>并行式 GC 主线程和辅助线程同时执行同样的GC工作，这样可以让辅助线程来分担主线程的 GC ，使得垃圾回收所耗费的时间等于总时间除以参与的线程数量（加上一些同步开销）。</p>
+<h1 id="六、V8当前的垃圾回收机制"><a href="#六、V8当前的垃圾回收机制" class="headerlink" title="六、V8当前的垃圾回收机制"></a>六、<strong><strong>V8当前的垃圾回收机制</strong></strong></h1><p>2011年，V8应用了<code>增量标记机制</code>。直至2018年，Chrome64和Node.js V10启动<code>并发标记（Concurrent）</code>，同时在并发的基础上添加<code>并行（Parallel）技术</code>，使垃圾回收时间大幅度缩短。</p>
+<h2 id="副垃圾回收器"><a href="#副垃圾回收器" class="headerlink" title="副垃圾回收器"></a><strong><strong>副垃圾回收器</strong></strong></h2><p>V8 在新生代垃圾回收中，使用并行（parallel）机制，在整理排序阶段，也就是将活动对象从<code>from-to</code>复制到<code>space-to</code>的时候，启用多个辅助线程，并行的进行整理。由于多个线程竞争一个新生代的堆的内存资源，可能出现有某个活动对象被多个线程进行复制操作的问题，为了解决这个问题，V8 在第一个线程对活动对象进行复制并且复制完成后，都必须去维护复制这个活动对象后的指针转发地址，以便于其他协助线程可以找到该活动对象后可以判断该活动对象是否已被复制。</p>
+<p><img src="/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/5.png" alt="Untitled"></p>
+<h2 id="主垃圾回收器"><a href="#主垃圾回收器" class="headerlink" title="主垃圾回收器"></a>主<strong><strong>垃圾回收器</strong></strong></h2><p>V8在老生代垃圾回收中，如果堆中的内存大小超过某个阈值之后，会启用并发（Concurrent）标记任务。每个辅助线程都会去追踪每个标记到的对象的指针以及对这个对象的引用，而在 JavaScript 代码执行时候，并发标记也在后台的辅助进程中进行，当堆中的某个对象指针被JavaScript代码修改的时候，写入屏障（<a href="https://link.segmentfault.com/?url=https%3A%2F%2Flink.zhihu.com%2F%3Ftarget%3Dhttps%253A%2F%2Fdl.acm.org%2Fcitation.cfm%253Fid%253D2025255" target="_blank" rel="noopener">write barriers</a>）技术会在辅助线程在进行并发标记的时候进行追踪。</p>
+<p>当并发标记完成或者动态分配的内存到达极限的时候，主线程会执行最终的快速标记步骤，这个时候主线程会挂起，主线程会再一次的扫描根集以确保所有的对象都完成了标记，由于辅助线程已经标记过活动对象，主线程的本次扫描只是进行 check 操作，确认完成之后，某些辅助线程会进行清理内存操作，某些辅助进程会进行内存整理操作，由于都是并发，并不会影响主线程 JavaScript 代码的执行。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="https://juejin.cn/post/6844904016325902344" target="_blank" rel="noopener">一文搞懂V8引擎的垃圾回收</a></li>
+<li><a href="https://segmentfault.com/a/1190000041218998" target="_blank" rel="noopener">赠你13张图，助你20分钟打败了「V8垃圾回收机制」！！！</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/33816534" target="_blank" rel="noopener">V8 内存浅析</a></li>
+<li><a href="http://newhtml.net/v8-garbage-collection/" target="_blank" rel="noopener">V8 之旅：垃圾回收器</a></li>
+</ol>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     
   </div>
@@ -350,5 +412,5 @@ ga('send', 'pageview');
   }
 </script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":200,"height":300,"hOffset":90,"vOffset":0},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":200,"height":300,"hOffset":90,"vOffset":0},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
 </html>
