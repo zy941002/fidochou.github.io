@@ -16,12 +16,12 @@
     <meta name="keywords" content="前端,Frontend,Nodejs,JavaScript" />
   
 
-  <meta name="description" content="一、内存是什么？内存(Memory)是计算机的重要部件，也称内存储器和主存储器，它用于暂时存放 CPU中 的运算数据，以及与硬盘等外部存储器交换的数据。它是外存与CPU进行沟通的桥梁，计算机中所有程序的运行都在内存中进行，内存性能的强弱影响计算机整体发挥的水平。只要计算机开始运行，操作系统就会把需要运算的数据从内存调到 CPU 中进行运算，当运算完成，CPU 将结果传送出来。 如下图，我的电脑配置">
+  <meta name="description" content="一、内存是什么？内存(Memory)是计算机的重要部件，也称内存储器和主存储器，它用于暂时存放 CPU中 的运算数据，以及与硬盘等外部存储器交换的数据。它是外存与CPU进行沟通的桥梁，计算机中所有程序的运行都在内存中进行，内存性能的强弱影响计算机整体发挥的水平。只要计算机开始运行，操作系统 就会把需要运算的数据从内存调到 CPU 中进行运算，当运算完成，CPU 将结果传送出来。 如下图，我的电脑配">
 <meta property="og:type" content="article">
 <meta property="og:title" content="V8 的内存管理">
 <meta property="og:url" content="http://jocolorful.com/2019/01/29/%E5%89%8D%E7%AB%AF-%E5%86%85%E5%AD%98/index.html">
 <meta property="og:site_name" content="Jojo&#39;s World">
-<meta property="og:description" content="一、内存是什么？内存(Memory)是计算机的重要部件，也称内存储器和主存储器，它用于暂时存放 CPU中 的运算数据，以及与硬盘等外部存储器交换的数据。它是外存与CPU进行沟通的桥梁，计算机中所有程序的运行都在内存中进行，内存性能的强弱影响计算机整体发挥的水平。只要计算机开始运行，操作系统就会把需要运算的数据从内存调到 CPU 中进行运算，当运算完成，CPU 将结果传送出来。 如下图，我的电脑配置">
+<meta property="og:description" content="一、内存是什么？内存(Memory)是计算机的重要部件，也称内存储器和主存储器，它用于暂时存放 CPU中 的运算数据，以及与硬盘等外部存储器交换的数据。它是外存与CPU进行沟通的桥梁，计算机中所有程序的运行都在内存中进行，内存性能的强弱影响计算机整体发挥的水平。只要计算机开始运行，操作系统 就会把需要运算的数据从内存调到 CPU 中进行运算，当运算完成，CPU 将结果传送出来。 如下图，我的电脑配">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://jocolorful.com/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/0.png">
 <meta property="og:image" content="http://jocolorful.com/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/1.png">
@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://jocolorful.com/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/4.png">
 <meta property="og:image" content="http://jocolorful.com/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/5.png">
 <meta property="article:published_time" content="2019-01-29T04:46:47.000Z">
-<meta property="article:modified_time" content="2022-09-14T05:00:51.950Z">
+<meta property="article:modified_time" content="2022-09-14T05:05:35.207Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://jocolorful.com/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/0.png">
@@ -154,7 +154,7 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <h1 id="一、内存是什么？"><a href="#一、内存是什么？" class="headerlink" title="一、内存是什么？"></a>一、内存是什么？</h1><p><strong>内存(Memory)</strong>是<a href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA/140338?fromModule=lemma_inlink" target="_blank" rel="noopener">计算机</a>的重要部件，也称<a href="https://baike.baidu.com/item/%E5%86%85%E5%AD%98%E5%82%A8%E5%99%A8/834392?fromModule=lemma_inlink" target="_blank" rel="noopener">内存储器</a>和<a href="https://baike.baidu.com/item/%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8/10635399?fromModule=lemma_inlink" target="_blank" rel="noopener">主存储器</a>，它用于暂时存放 CPU中 的运算数据，以及与<a href="https://baike.baidu.com/item/%E7%A1%AC%E7%9B%98/159825?fromModule=lemma_inlink" target="_blank" rel="noopener">硬盘</a>等<a href="https://baike.baidu.com/item/%E5%A4%96%E9%83%A8%E5%AD%98%E5%82%A8%E5%99%A8/4843180?fromModule=lemma_inlink" target="_blank" rel="noopener">外部存储器</a>交换的数据。它是<a href="https://baike.baidu.com/item/%E5%A4%96%E5%AD%98/2445612?fromModule=lemma_inlink" target="_blank" rel="noopener">外存</a>与<a href="https://baike.baidu.com/item/CPU/120556?fromModule=lemma_inlink" target="_blank" rel="noopener">CPU</a>进行沟通的桥梁，计算机中所有程序的运行都在内存中进行，内存性能的强弱影响计算机整体发挥的水平。只要计算机开始运行，<a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192?fromModule=lemma_inlink" target="_blank" rel="noopener">操作系统</a><br>就会把需要运算的数据从内存调到 CPU 中进行运算，当运算完成，CPU 将结果传送出来。</p>
+      <h1 id="一、内存是什么？"><a href="#一、内存是什么？" class="headerlink" title="一、内存是什么？"></a>一、内存是什么？</h1><p><strong>内存(Memory)</strong>是<a href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA/140338?fromModule=lemma_inlink" target="_blank" rel="noopener">计算机</a>的重要部件，也称<a href="https://baike.baidu.com/item/%E5%86%85%E5%AD%98%E5%82%A8%E5%99%A8/834392?fromModule=lemma_inlink" target="_blank" rel="noopener">内存储器</a>和<a href="https://baike.baidu.com/item/%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8/10635399?fromModule=lemma_inlink" target="_blank" rel="noopener">主存储器</a>，它用于暂时存放 CPU中 的运算数据，以及与<a href="https://baike.baidu.com/item/%E7%A1%AC%E7%9B%98/159825?fromModule=lemma_inlink" target="_blank" rel="noopener">硬盘</a>等<a href="https://baike.baidu.com/item/%E5%A4%96%E9%83%A8%E5%AD%98%E5%82%A8%E5%99%A8/4843180?fromModule=lemma_inlink" target="_blank" rel="noopener">外部存储器</a>交换的数据。它是<a href="https://baike.baidu.com/item/%E5%A4%96%E5%AD%98/2445612?fromModule=lemma_inlink" target="_blank" rel="noopener">外存</a>与<a href="https://baike.baidu.com/item/CPU/120556?fromModule=lemma_inlink" target="_blank" rel="noopener">CPU</a>进行沟通的桥梁，计算机中所有程序的运行都在内存中进行，内存性能的强弱影响计算机整体发挥的水平。只要计算机开始运行，<a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192?fromModule=lemma_inlink" target="_blank" rel="noopener">操作系统</a> 就会把需要运算的数据从内存调到 CPU 中进行运算，当运算完成，CPU 将结果传送出来。</p>
 <p>如下图，我的电脑配置是 8G、通过「活动监视器」能够查看各个应用程序的内存占用。</p>
 <p><img src="/images/V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/0.png" alt="Untitled"></p>
 <h1 id="二、V8-内存大小以及原因？"><a href="#二、V8-内存大小以及原因？" class="headerlink" title="二、V8 内存大小以及原因？"></a>二、V8 内存大小以及原因？</h1><p>V8 引擎在<code>64</code>位系统下最多只能使用约<code>1.4GB</code>的内存，在<code>32</code>位系统下最多只能使用约<code>0.7GB</code>的内存。在这样的限制下，必然会导致在 Node 中无法直接操作大内存对象，比如将一个<code>2GB</code>大小的文件全部读入内存进行字符串分析处理，即使物理内存高达<code>32GB</code>也无法充分利用计算机的内存资源，那么为什么会有这种限制呢？</p>

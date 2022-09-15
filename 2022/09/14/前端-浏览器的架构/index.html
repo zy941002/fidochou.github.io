@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>浏览器的原理 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,Frontend,Nodejs,JavaScript" />
+  
+
+  <meta name="description" content="一、前置知识在讲浏览器架构之前，需要理解进程和线程两个概念：  进程（process）是程序在执行过程中分配和管理资源的基本单位； 线程（thread）是 CPU 调度和分派的基本单位，它可与同属一个进程的其他的线程共享进程所拥有的全部资源。  浏览器属于一个应用程序，而应用程序的一次执行，可以理解为计算机启动了一个进程，进程启动后，CPU 会给该进程分配相应的内存空间，当我们的进程得到了内存之后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器的原理">
+<meta property="og:url" content="http://jocolorful.com/2022/09/14/%E5%89%8D%E7%AB%AF-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%9E%B6%E6%9E%84/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="一、前置知识在讲浏览器架构之前，需要理解进程和线程两个概念：  进程（process）是程序在执行过程中分配和管理资源的基本单位； 线程（thread）是 CPU 调度和分派的基本单位，它可与同属一个进程的其他的线程共享进程所拥有的全部资源。  浏览器属于一个应用程序，而应用程序的一次执行，可以理解为计算机启动了一个进程，进程启动后，CPU 会给该进程分配相应的内存空间，当我们的进程得到了内存之后">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/0.png">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/1.png">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/2.png">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/3.png">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/4.png">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/5.png">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/6.png">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/7.png">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/8.png">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/9.png">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/10.png">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/11.png">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/12.png">
+<meta property="og:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/13.png">
+<meta property="article:published_time" content="2022-09-14T07:16:37.000Z">
+<meta property="article:modified_time" content="2022-09-15T06:20:13.141Z">
+<meta property="article:author" content="Jojo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jocolorful.com/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/0.png">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、前置知识"><span class="toc-text">一、前置知识</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、浏览器的多进程架构"><span class="toc-text">二、浏览器的多进程架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、多进程架构的好处"><span class="toc-text">三、多进程架构的好处</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、多进程架构的优化"><span class="toc-text">四、多进程架构的优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-浏览器的进程模式"><span class="toc-text">4.1 浏览器的进程模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-使用-Process-per-site-instance的原因"><span class="toc-text">4.2 使用 Process-per-site-instance的原因</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、导航过程"><span class="toc-text">五、导航过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-处理输入"><span class="toc-text">5.1  处理输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-开始导航"><span class="toc-text">5.2 开始导航</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-读取响应"><span class="toc-text">5.3 读取响应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-网页加载过程"><span class="toc-text">5.4 网页加载过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-提交导航"><span class="toc-text">5.5 提交导航</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-初始化加载完成"><span class="toc-text">5.6 初始化加载完成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、网页渲染原理"><span class="toc-text">六、网页渲染原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-构建DOM"><span class="toc-text">6.1 构建DOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-子资源加载"><span class="toc-text">6.2 子资源加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-JavaScript-的下载与执行"><span class="toc-text">6.3 JavaScript 的下载与执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-样式计算-Style-calculation"><span class="toc-text">6.4 样式计算 - Style calculation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-5-布局-Layout"><span class="toc-text">6.5 布局 - Layout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-5-绘制-Paint"><span class="toc-text">6.5 绘制 - Paint</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-5-合成-Compositing"><span class="toc-text">6.5 合成 - Compositing</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#七、浏览器对事件的处理"><span class="toc-text">七、浏览器对事件的处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#渲染进程中合成器线程接收事件"><span class="toc-text">渲染进程中合成器线程接收事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找事件的目标对象（event-target）"><span class="toc-text">查找事件的目标对象（event target）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器对事件的优化"><span class="toc-text">浏览器对事件的优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关参考链接"><span class="toc-text">相关参考链接</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-前端-浏览器的架构" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">浏览器的原理</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2022.09.14</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="一、前置知识"><a href="#一、前置知识" class="headerlink" title="一、前置知识"></a>一、前置知识</h1><p>在讲浏览器架构之前，需要理解进程和线程两个概念：</p>
+<ol>
+<li>进程（process）是程序在执行过程中分配和管理资源的基本单位；</li>
+<li>线程（thread）是 CPU 调度和分派的基本单位，它可与同属一个进程的其他的线程共享进程所拥有的全部资源。</li>
+</ol>
+<p>浏览器属于一个应用程序，而应用程序的一次执行，可以理解为计算机启动了一个进程，进程启动后，<strong>CPU 会给该进程分配相应的内存空间</strong>，当我们的进程得到了内存之后，就可以使用线程进行资源调度，进而完成我们应用程序的功能。 而在应用程序中，为了满足功能的需要，启动的进程会创建另外的新的进程来处理其他任务，这些创建出来的新的进程拥有全新的独立的内存空间，不能与原来的进程争夺内存，如果这些进程之间需要通信，可以通过 I<strong>PC 机制（Inter Process Communication）</strong>来进行。</p>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/0.png" alt="Untitled"></p>
+<p>很多应用程序都会采取这种多进程的方式来工作，因为进程和进程之间是互相独立的它们<code>互不影响</code>，也就是说，当其中一个进程挂掉了之后，不会影响到其他进程的执行，只需要重启挂掉的进程就可以恢复运行。</p>
+<h1 id="二、浏览器的多进程架构"><a href="#二、浏览器的多进程架构" class="headerlink" title="二、浏览器的多进程架构"></a>二、<strong><strong>浏览器的多进程架构</strong></strong></h1><p>不同的浏览器使用不同的架构，以 Chrome 为例，主要的进程有4个：</p>
+<ol>
+<li>浏览器进程 (Browser Process)：负责浏览器的TAB的前进、后退、地址栏、书签栏的工作和处理浏览器的一些不可见的底层操作，比如网络请求和文件访问；</li>
+<li>渲染进程 (Renderer Process)：负责一个 Tab 内的显示相关的工作，也称渲染引擎；</li>
+<li>插件进程 (Plugin Process)：负责控制网页使用到的插件；</li>
+<li>GPU进程 (GPU Process)：负责处理整个应用程序的 GPU 任务。</li>
+</ol>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/1.png" alt="Untitled"></p>
+<p>首先，当我们是要浏览一个网页，我们会在浏览器的地址栏里输入 URL：</p>
+<ol>
+<li><code>Browser Process</code> 会向这个URL发送请求，获取这个 URL 的HTML内容，然后将 HTML 交给<code>Renderer Process</code>；</li>
+<li><code>Renderer Process</code> 解析HTML内容，解析遇到需要<strong>请求网络的资源</strong>又返回来交给<code>Browser Process</code>进行加载，同时通知<code>Browser Process</code>需要<code>Plugin Process</code>加载插件资源，执行插件代码；</li>
+<li>解析完成后，<code>Renderer Process</code>计算得到图像帧，并将这些图像帧交给<code>GPU Process</code>；</li>
+<li><code>GPU Process</code>将其转化为图像显示屏幕。</li>
+</ol>
+<h1 id="三、多进程架构的好处"><a href="#三、多进程架构的好处" class="headerlink" title="三、多进程架构的好处"></a>三、<strong><strong>多进程架构的好处</strong></strong></h1><ol>
+<li><strong>更高的容错性</strong>：当今 WEB 应用中，HTML/JavaScript/CSS 日益复杂，这些跑在渲染引擎的代码频繁的出现 BUG，而有些 BUG 会直接导致渲染引擎崩溃，多进程架构使得每一个渲染引擎运行在各自的进程中，相互之间不受影响，也就是说，当其中一个页面崩溃挂掉之后，其他页面还可以正常的运行不收影响；</li>
+<li><strong>更高的安全性和沙盒性（sanboxing）</strong>：渲染引擎会经常性的在网络上遇到不可信、甚至是恶意的代码，它们会利用这些漏洞在你的电脑上安装恶意的软件。针对这一问题，浏览器对不同进程限制了不同的权限，并为其提供沙盒运行环境，使其更安全更可靠；</li>
+<li><strong>更快的响应速度</strong>：在单进程的架构中，各个任务相互竞争抢夺 CPU 资源，使得浏览器响应速度变慢，而多进程架构正好规避了这一缺点。</li>
+</ol>
+<h1 id="四、多进程架构的优化"><a href="#四、多进程架构的优化" class="headerlink" title="四、多进程架构的优化"></a>四、<strong><strong>多进程架构的优化</strong></strong></h1><p>之前的我们说到，<code>Renderer Process</code>的作用是负责一个 Tab 内的显示相关的工作，这就意味着一个 Tab，就会有一个 <code>Renderer Process</code>，这些进程之间的内存无法进行共享，不同进程的内存常常需要包含相同的内容。</p>
+<h2 id="4-1-浏览器的进程模式"><a href="#4-1-浏览器的进程模式" class="headerlink" title="4.1 浏览器的进程模式"></a>4.1 <strong><strong>浏览器的进程模式</strong></strong></h2><p>为了节省内存，Chrome 提供了四种进程模式（Process Models），不同的进程模式会对 tab 进程做不同的处理。</p>
+<ol>
+<li><strong>Process-per-site-instance (default)：</strong>同一个 <strong>site-instance</strong> 使用一个进程；</li>
+<li><strong>Process-per-site</strong> ：同一个 <strong>site</strong> 使用一个进程；</li>
+<li><strong>Process-per-tab</strong> ：每个 tab 使用一个进程；</li>
+<li><strong>Single process</strong> ： 所有 tab 共用一个进程。</li>
+</ol>
+<p>这里需要给出 site 和 site-instance 的定义</p>
+<ul>
+<li><strong>site (同站点)：</strong> 相同的 registered domain name(如： google.com ，bbc.co.uk)和 scheme (如：<a href="https://link.segmentfault.com/?enc=vo3e5JJy1l6C%2BE57S22G0Q%3D%3D.REB0HpmFqj885xoEO27CBA%3D%3D" target="_blank" rel="noopener">https://)</a>。比如 a.baidu.com 和 b.baidu.com 就可以理解为同一个 site（注意这里要和 <a href="https://link.segmentfault.com/?enc=H749yfdgi0%2Be72brSo412w%3D%3D.R7UGZ42OmNfsRHR6P32BFdCl%2FsUrXqkvjXQZtPpFyjoMSQFlhmfSvEsWIu6DIdtyfjd4uOJdATdaEhHfS0Y4PoYCsQL7MtKpg7NmB9h38dE%3D" target="_blank" rel="noopener">Same-origin policy</a> 区分开来，<strong>同源</strong>策略还涉及到子域名和端口）。</li>
+<li><strong>site-instance（同站点实例）：</strong>满足下面两中情况并且打开的新、旧页面属于上面定义的同一个 site，就属于同一个 <strong>site-instance</strong><ol>
+<li>用户通过<code>&lt;a target=&quot;_blank&quot;&gt;</code>这种方式点击打开的新页面</li>
+<li>JS代码打开的新页面（比如 <code>window.open</code>)</li>
+</ol>
+</li>
+</ul>
+<p>理解了概念之后，下面解释四个进程模式</p>
+<ol>
+<li><code>Single process</code>：顾名思义，单进程模式，所有 tab 都会使用同一个进程；</li>
+<li><code>Process-per-tab</code>：每打开一个 tab，会新建一个进程；</li>
+<li><code>Process-per-site</code>：当你打开 a.baidu.com 页面，在打开 b.baidu.com 的页面，这两个页面的 tab 使用的是共一个进程，因为这两个页面的 site 相同，而如此一来，如果其中一个tab崩溃了，而另一个tab也会崩溃；</li>
+<li><code>Process-per-site-instance</code>： <strong>是最重要的，因为这个是 Chrome 默认使用的模式</strong>，也就是几乎所有的用户都在用的模式：<ol>
+<li>当你打开一个 tab 访问 a.baidu.com ，然后再打开一个 tab 访问 b.baidu.com，这两个 tab 会使用<strong>两个进程</strong>；</li>
+<li>而如果你在 a.baidu.com 中，通过 JS 代码打开了 b.baidu.com 页面，这两个 tab 会使用<strong>同一个进程</strong>。</li>
+</ol>
+</li>
+</ol>
+<h2 id="4-2-使用-Process-per-site-instance的原因"><a href="#4-2-使用-Process-per-site-instance的原因" class="headerlink" title="4.2 使用 Process-per-site-instance的原因"></a>4.2 使用 <code>Process-per-site-instance</code><strong>的原因</strong></h2><p><code>Process-per-site-instance</code>兼容了性能与易用性，是一个比较中庸通用的模式</p>
+<ul>
+<li>相较于 Process-per-tab，能够少开很多进程，就意味着更少的内存占用；</li>
+<li>相较于 Process-per-site，能够更好的隔离相同域名下毫无关联的 tab 更加安全。</li>
+</ul>
+<h1 id="五、导航过程"><a href="#五、导航过程" class="headerlink" title="五、导航过程"></a>五、<strong><strong>导航过程</strong></strong></h1><p>之前我们我们提到，tab 以外的大部分工作由浏览器进程<code>Browser Process</code>负责，针对工作的不同，Browser Process 划分出不同的工作线程：</p>
+<ol>
+<li>UI thread：控制浏览器上的按钮及输入框；</li>
+<li>Network thread：处理网络请求，从网上获取数据；</li>
+<li>Storage thread： 控制文件等的访问；</li>
+</ol>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/2.png" alt="Untitled"></p>
+<h2 id="5-1-处理输入"><a href="#5-1-处理输入" class="headerlink" title="5.1  处理输入"></a>5.1  处理输入</h2><p>当我们在浏览器的地址栏输入内容按下回车时，<code>UI thread</code>会判断输入的内容是搜索关键词（search query）还是 URL，如果是搜索关键词，跳转至默认搜索引擎对应都搜索 URL，如果输入的内容是URL，则开始请求 URL。（这里有个小型的数据库用于记录历史记录）。</p>
+<h2 id="5-2-开始导航"><a href="#5-2-开始导航" class="headerlink" title="5.2 开始导航"></a>5.2 开始导航</h2><p>回车按下后，<code>UI thread</code>将关键词搜索对应的URL或输入的URL交给网络线程<code>Network thread</code>，此时UI线程使 tab 前的图标展示为加载中状态，然后网络进程进行一系列诸如 DNS 寻址，建立 TLS 连接等操作进行资源请求，<strong>如果收到服务器的 301 重定向响应，它就会告知 UI 线程进行重定向然后它会再次发起一个新的网络请求。</strong></p>
+<h2 id="5-3-读取响应"><a href="#5-3-读取响应" class="headerlink" title="5.3 读取响应"></a>5.3 读取响应</h2><p><code>Network thread</code>接收到服务器的响应后，开始解析HTTP响应报文，然后根据响应头中的<code>Content-Type</code>字段来确定响应主体的媒体类型（MIME Type）</p>
+<ol>
+<li>如果媒体类型是一个 HTML 文件，则将响应数据交给渲染进程（<code>Renderer process</code>）来进行下一步的工作；</li>
+<li>如果是 zip 文件或者其它文件，会把相关数据传输给下载管理器。</li>
+</ol>
+<p>与此同时，浏览器会进行 <a href="https://link.segmentfault.com/?enc=ENNhmhTmznvjoO71cw1q4A%3D%3D.FUqpx2igZciZkJLB31WZTP9kPPofaegQcUh6CSqYW%2BbWnHhVnDT7QLlicWMWLWin" target="_blank" rel="noopener">Safe Browsing</a> 安全检查，如果域名或者请求内容匹配到已知的恶意站点，<strong>Network thread 会展示一个警告页</strong>。除此之外，网络线程还会做 <a href="https://link.segmentfault.com/?enc=VUe7K7fj4IrU7E93oJEu%2Fg%3D%3D.k30swaF%2F2equTeivvmBI3dctbKlk%2BJ9KcfSQYEpAaVuY70h%2FXPh4qijeTHsqqw4518y%2Bn%2FfqScqLjLPxeVzKOk3EOsSIeskpAkwkL3zYkZ0%3D" target="_blank" rel="noopener">CORB</a>（Cross Origin Read Blocking）检查来确定那些敏感的跨站数据不会被发送至渲染进程。</p>
+<h2 id="5-4-网页加载过程"><a href="#5-4-网页加载过程" class="headerlink" title="5.4 网页加载过程"></a>5.4 <strong><strong>网页加载过程</strong></strong></h2><p>各种检查完毕以后，<code>Network thread</code> 确信浏览器可以导航到请求网页，<code>Network thread</code>会通知<code>UI thread</code>数据已经准备好，<code>UI thread</code> 会查找到一个 <code>Renderer process</code> 进行网页的渲染。</p>
+<p>浏览器为了对查找渲染进程这一步骤进行优化，考虑到网络请求获取响应需要时间，所以在第二步开始，浏览器已经<strong>预先查找和启动了一个渲染进程</strong>，如果中间步骤一切顺利，当 <code>Network thread</code>接收到数据时，渲染进程已经准备好了，<strong>但是如果遇到重定向，这个准备好的渲染进程也许就不可用了，这个时候会重新启动一个渲染进程。</strong></p>
+<h2 id="5-5-提交导航"><a href="#5-5-提交导航" class="headerlink" title="5.5 提交导航"></a>5.5 提交导航</h2><p>到了这一步，数据和渲染进程都准备好了，<code>Browser Process</code> 会向 <code>Renderer Process</code>发送 IPC 消息来确认导航。此时，浏览器进程将准备好的数据发送给渲染进程，渲染进程接收到数据之后，又发送 IPC 消息给浏览器进程，告诉浏览器进程导航已经提交页面开始加载。</p>
+<p>这个时候导航栏会更新，安全指示符更新（地址前面的小锁），访问历史列表（history tab）更新，即可以通过前进后退来切换该页面。</p>
+<h2 id="5-6-初始化加载完成"><a href="#5-6-初始化加载完成" class="headerlink" title="5.6 初始化加载完成"></a>5.6 <strong><strong>初始化加载完成</strong></strong></h2><p>当导航提交完成后，渲染进程开始加载资源及渲染页面，当页面渲染完成后（页面及内部的 ifram e都触发了 onload 事件），会向浏览器进程发送 IPC 消息，告知浏览器进程，这个时候<code>UI thread</code>会停止展示 tab 中的加载中图标。</p>
+<h1 id="六、网页渲染原理"><a href="#六、网页渲染原理" class="headerlink" title="六、网页渲染原理"></a>六、<strong><strong>网页渲染原理</strong></strong></h1><p>导航过程完成之后，浏览器进程把数据交给了渲染进程，渲染进程负责 tab 内的所有事情，核心目的就是将 HTML/CSS/JS 代码，转化为用户可进行交互的 web 页面。那么渲染进程是如何工作的呢？</p>
+<p>渲染进程中，包含线程分别是：</p>
+<ol>
+<li>一个主线程（main thread）</li>
+<li>多个工作线程（work thread）</li>
+<li>一个合成器线程（compositor thread）</li>
+<li>多个光栅化线程（raster thread）</li>
+</ol>
+<h2 id="6-1-构建DOM"><a href="#6-1-构建DOM" class="headerlink" title="6.1 构建DOM"></a>6.1 <strong><strong>构建DOM</strong></strong></h2><p>当渲染进程接受到导航的确认信息后，开始接受来自浏览器进程的数据，这个时候，主线程会解析数据转化为 DOM（Document Object Model）对象。DOM 为 WEB开发人员通过 JavaScript 与网页进行交互的数据结构及 API。</p>
+<h2 id="6-2-子资源加载"><a href="#6-2-子资源加载" class="headerlink" title="6.2 子资源加载"></a>6.2 <strong><strong>子资源加载</strong></strong></h2><p>在构建DOM的过程中，会解析到图片、CSS、JavaScript脚本等资源，这些资源是需要从网络或者缓存中获取的，主线程在构建 DOM 过程中如果遇到了这些资源，逐一发起请求去获取，而为了提升效率，浏览器也会运行<strong>预加载扫描（preload scanner）程序</strong>，如果HTML中存在<code>img</code>、<code>link</code>等标签，预加载扫描程序会把这些请求传递给<code>Browser Process</code>的<code>Network thread</code>进行资源下载。</p>
+<h2 id="6-3-JavaScript-的下载与执行"><a href="#6-3-JavaScript-的下载与执行" class="headerlink" title="6.3 JavaScript 的下载与执行"></a>6.3 <strong><strong>JavaScript 的下载与执行</strong></strong></h2><p>构建DOM过程中，如果遇到<code>&lt;script&gt;</code>标签，<strong>渲染引擎会停止对 HTML 的解析，而去加载执行 JS 代码，原因在于 JS 代码可能会改变 DOM 的结构</strong>（比如执行<code>document.write()</code>等API）。不过开发者其实也有多种方式来告知浏览器应对如何应对某个资源，比如说如果在<code>&lt;script&gt;</code>标签上添加了 <code>async</code> 或 <code>defer</code> 等属性，浏览器会异步的加载和执行 JS 代码，而不会阻塞渲染。</p>
+<h2 id="6-4-样式计算-Style-calculation"><a href="#6-4-样式计算-Style-calculation" class="headerlink" title="6.4 样式计算 - Style calculation"></a>6.4 <strong><strong>样式计算 - Style calculation</strong></strong></h2><p>DOM 树只是我们页面的结构，我们要知道页面长什么样子，我们还需要知道 DOM 的每一个节点的样式。主线程在解析页面时，遇到<code>&lt;style&gt;</code>标签或者<code>&lt;link&gt;</code>标签的 CSS 资源，会加载 CSS 代码，根据 CSS 代码确定每个 DOM 节点的计算样式（computed style）。</p>
+<p>计算样式是主线程根据 CSS 样式选择器（CSS selectors）计算出的每个 DOM 元素应该具备的具体样式，即使你的页面没有设置任何自定义的样式，浏览器也会提供其默认的样式。</p>
+<h2 id="6-5-布局-Layout"><a href="#6-5-布局-Layout" class="headerlink" title="6.5 布局 - Layout"></a>6.5 <strong><strong>布局 - Layout</strong></strong></h2><p>DOM 树和计算样式完成后，我们还需要知道每一个节点在页面上的位置，布局（Layout）其实就是找到所有元素的几何关系的过程。</p>
+<p>主线程会遍历 DOM 及相关元素的计算样式，构建出包含每个元素的页面坐标信息及盒子模型大小的<strong>布局树（Render Tree）</strong>，遍历过程中，会跳过隐藏的元素（display: none），另外，伪元素虽然在 DOM 上不可见，但是在布局树上是可见的。</p>
+<h2 id="6-5-绘制-Paint"><a href="#6-5-绘制-Paint" class="headerlink" title="6.5 绘制 - Paint"></a>6.5 <strong><strong>绘制 - Paint</strong></strong></h2><p>布局 layout 之后，我们知道了不同元素的结构，样式，几何关系，我们要绘制出一个页面，我们要需要知道每个元素的绘制先后顺序，在绘制阶段，主线程会遍历布局树<strong>（layout tree）</strong>，生成一系列的绘画记录（paint records）。绘画记录可以看做是记录各元素绘制先后顺序的笔记。</p>
+<h2 id="6-5-合成-Compositing"><a href="#6-5-合成-Compositing" class="headerlink" title="6.5 合成 - Compositing"></a>6.5 <strong><strong>合成 - Compositing</strong></strong></h2><p>文档结构、元素的样式、元素的几何关系、绘画顺序，这些信息我们都有了，这个时候如果要绘制一个页面，我们需要做的是把这些信息转化为显示器中的像素，这个转化的过程，叫做<code>光栅化</code>（rasterizing）。</p>
+<p>那我们要绘制一个页面，最简单的做法是只光栅化视口内（viewport）的网页内容，如果用户进行了页面滚动，就移动光栅帧（rastered frame）并且光栅化更多的内容以补上页面缺失的部分，如下：</p>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/3.png" alt="Untitled"></p>
+<p>Chrome 第一个版本就是采用这种简单的绘制方式，这一方式唯一的缺点就是每当页面滚动，光栅线程都需要对新移进视图的内容进行光栅化，这是一定的性能损耗，为了优化这种情况，Chrome 采取一种更加复杂的叫做合成（compositing）的做法。</p>
+<p>那么，什么是合成？合成是一种将<strong>页面分成若干层</strong>，然后分别对它们进行<strong>光栅化</strong>，最后在一个单独的线程 - 合成线程（compositor thread）里面合并成一个页面的技术。当用户滚动页面时，由于页面各个层都已经被光栅化了，浏览器需要做的只是合成一个新的帧来展示滚动后的效果罢了。页面的动画效果实现也是类似，将页面上的层进行移动并构建出一个新的帧即可。</p>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/4.png" alt="Untitled"></p>
+<p>为了实现合成技术，我们需要对元素进行分层，确定哪些元素需要放置在哪一层，主线程需要遍历渲染树来创建一棵层次树（<strong>Layer Tree）</strong>，对于添加了 <code>will-change</code> CSS 属性的元素，会被看做单独的一层，没有 <code>will-change</code> CSS属性的元素，浏览器会根据情况决定是否要把该元素放在单独的层。</p>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/5.png" alt="Untitled"></p>
+<p>你可能会想要给页面上所有的元素一个单独的层，然而当页面的层超过一定的数量后，层的合成操作要比在每个帧中光栅化页面的一小部分还要慢，因此衡量你应用的渲染性能是十分重要的一件事情。</p>
+<p>一旦 Layer Tree被创建，渲染顺序被确定，主线程会把这些信息通知给合成器线程，合成器线程开始对层次数的每一层进行光栅化。有的层的可以达到整个页面的大小，所以合成线程需要将它们切分为一块又一块的小图块（tiles），之后将这些小图块分别进行发送给一系列光栅线程（raster threads）进行光栅化，结束后光栅线程会将每个图块的光栅结果存在<code>GPU Process</code>的内存中。</p>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/6.png" alt="Untitled"></p>
+<p>为了优化显示体验，合成线程可以给不同的光栅线程赋予不同的优先级，将那些在视口中的或者视口附近的层先被光栅化。</p>
+<p>当图层上面的图块都被栅格化后，合成线程会收集图块上面叫做<strong>绘画四边形</strong>（draw quads）的信息来构建一个<strong>合成帧</strong>（compositor frame）。</p>
+<ul>
+<li>绘画四边形：包含图块在<strong>内存的位置</strong>以及图层合成后图块在页面的位置之类的信息；</li>
+<li>合成帧：代表页面一个帧的内容的绘制四边形<strong>集合</strong>。</li>
+</ul>
+<p>以上所有步骤完成后，合成线程就会通过 IPC 向浏览器进程（browser process）提交（commit）一个渲染帧。这个时候可能有另外一个合成帧被浏览器进程的UI线程（<code>UI thread</code>）提交以改变浏览器的 UI。这些合成帧都会被发送给 GPU 从而展示在屏幕上。如果合成线程收到页面滚动的事件，合成线程会构建另外一个合成帧发送给 GPU 来更新页面。</p>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/7.png" alt="Untitled"></p>
+<p>合成的好处在于这个过程没有涉及到主线程，所以合成线程不需要等待样式的计算以及 JavaScript 完成执行。这就是为什么<a href="https://link.segmentfault.com/?enc=r3mxsZfpvn5VbyxfCBlXtw%3D%3D.Z%2Bdo9pOc%2BCp7mCaM7hSkv1llKlpOv%2BzA7En7%2Bdq%2FGN72tE%2Baf0JVSXHsLJPbn%2BrZC1xYQq%2Fsbht0Py8eYLT1YakMjf20PYXplE4J98bWIMQ%3D" target="_blank" rel="noopener">合成器相关的动画</a> 最流畅，如果某个动画涉及到布局或者绘制的调整，就会涉及到主线程的重新计算，自然会慢很多。</p>
+<p>当页面渲染完毕以后，tab 内已经显示出了可交互的 WEB 页面，用户可以进行移动鼠标、点击页面等操作了，而当这些事件发生时候，浏览器是如何处理这些事件的呢？</p>
+<h1 id="七、浏览器对事件的处理"><a href="#七、浏览器对事件的处理" class="headerlink" title="七、浏览器对事件的处理"></a>七、<strong><strong>浏览器对事件的处理</strong></strong></h1><p>以点击事件（click event）为例，让鼠标点击页面时候，首先接受到事件信息的是<code>Browser Process</code>，但是<code>Browser Process</code>只知道事件发生的类型和发生的位置，具体怎么对这个点击事件进行处理，还是由Tab内的<code>Renderer Process</code>进行的。Browser Process接受到事件后，随后便把事件的信息传递给了渲染进程，渲染进程会找到根据事件发生的坐标，找到目标对象（target），并且运行这个目标对象的点击事件绑定的监听函数（listener）。</p>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/8.png" alt="Untitled"></p>
+<h2 id="渲染进程中合成器线程接收事件"><a href="#渲染进程中合成器线程接收事件" class="headerlink" title="渲染进程中合成器线程接收事件"></a><strong><strong>渲染进程中合成器线程接收事件</strong></strong></h2><p>前面我们说到，合成器线程可以独立于主线程之外通过已光栅化的层创建组合帧，例如页面滚动，如果没有对页面滚动绑定相关的事件，组合器线程可以独立于主线程创建组合帧，如果页面绑定了页面滚动事件，合成器线程会等待主线程进行事件处理后才会创建组合帧。那么，合成器线程是如何判断出这个事件是否需要路由给主线程处理的呢？</p>
+<p>由于<strong>执行 JS 是主线程的工作</strong>，当页面合成时，合成器线程会标记页面中绑定有事件处理器的区域为<code>非快速滚动区域</code>(non-fast scrollable region)，如果事件发生在这些存在标注的区域，合成器线程会把事件信息发送给主线程，等待主线程进行事件处理，如果事件不是发生在这些区域，合成器线程则会直接合成新的帧而不用等到主线程的响应。</p>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/9.png" alt="Untitled"></p>
+<p>而对于非快速滚动区域的标记，开发者需要注意全局事件的绑定，比如我们使用事件委托，将目标元素的事件交给根元素 body 进行处理，代码如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">'touchstart'</span>, event =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (event.target === area) &#123;</span><br><span class="line">    event.preventDefault()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>在开发者角度看，这一段代码没什么问题，但是从浏览器角度看，这一段代码给 body 元素绑定了事件监听器，也就意味着整个页面都被编辑为一个非快速滚动区域，这会使得即使你的页面的某些区域没有绑定任何事件，每次用户触发事件时，合成器线程也需要和主线程通信并等待反馈，流畅的合成器独立处理合成帧的模式就失效了。</p>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/10.png" alt="Untitled"></p>
+<p>其实这种情况也很好处理，只需要在事件监听时传递<code>passtive</code>参数为 true，<code>passtive</code>会告诉浏览器你既要绑定事件，又要让组合器线程直接跳过主线程的事件处理直接合成创建组合帧。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">'touchstart'</span>, event =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (event.target === area) &#123;</span><br><span class="line">        event.preventDefault()</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;, &#123;<span class="attr">passive</span>: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="查找事件的目标对象（event-target）"><a href="#查找事件的目标对象（event-target）" class="headerlink" title="查找事件的目标对象（event target）"></a><strong><strong>查找事件的目标对象（event target）</strong></strong></h2><p>当合成器线程接收到事件信息，判定到事件发生不在非快速滚动区域后，合成器线程会向主线程发送这个时间信息，主线程获取到事件信息的第一件事就是通过命中测试（hit test）去找到事件的目标对象。具体的命中测试流程是遍历在绘制阶段生成的绘画记录（paint records）来找到包含了事件发生坐标上的元素对象。</p>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/11.png" alt="Untitled"></p>
+<h2 id="浏览器对事件的优化"><a href="#浏览器对事件的优化" class="headerlink" title="浏览器对事件的优化"></a><strong><strong>浏览器对事件的优化</strong></strong></h2><p>一般我们屏幕的帧率是每秒 60 帧，也就是60fps，但是某些事件触发的频率超过了这个数值，比如 wheel，mousewheel，mousemove，pointermove，touchmove，这些连续性的事件一般每秒会触发 60~120 次，假如每一次触发事件都将事件发送到主线程处理，由于屏幕的刷新速率相对来说较低，这样使得主线程会触发过量的命中测试以及JS代码，使得性能有了没必要是损耗。</p>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/12.png" alt="Untitled"></p>
+<p>出于优化的目的，浏览器会合并这些连续的事件，延迟到下一帧渲染是执行，也就是<code>requestAnimationFrame</code>之前。</p>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86/13.png" alt="Untitled"></p>
+<p>而对于非连续性的事件，如keydown，keyup，mousedown，mouseup，touchstart，touchend等，会直接派发给主线程去执行。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>浏览器的多进程架构，根据不同的功能划分了不同的进程，进程内不同的使命划分了不同的线程，当用户开始浏览网页时候，浏览器进程进行处理输入、开始导航请求数据、请求响应数据，查找新建渲染进程，提交导航，之后渲染又进行了解析 HTML 构建 DOM、构建过程加载子资源、下载并执行 JS 代码、样式计算、布局、绘制、合成，一步一步的构建出一个可交互的 WEB 页面，之后浏览器进程又接受页面的交互事件信息，并将其交给渲染进程，渲染进程内主进程进行命中测试，查找目标元素并执行绑定的事件，完成页面的交互。</p>
+<h1 id="相关参考链接"><a href="#相关参考链接" class="headerlink" title="相关参考链接"></a><strong><strong>相关参考链接</strong></strong></h1><p><a href="https://segmentfault.com/a/1190000022633988" target="_blank" rel="noopener">前端都该懂的浏览器工作原理，你懂了吗？</a></p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    
+  </div>
+
+</article>
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2022/09/03/%E9%98%85%E8%AF%BB-%E8%9B%A4%E8%9F%86%E5%8C%BB%E7%94%9F%E5%8E%BB%E7%9C%8B%E5%BF%83%E7%90%86%E5%AD%A6/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+    <div id="comment" class="vcomment" ></div>
+    <script>
+        var notify = 'false' == true ? true : false;
+        var verify = 'true' == true ? true : false;
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+            return GUEST_INFO.indexOf(item) > -1
+        });
+        guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+        window.valine = new Valine({
+            el: '.vcomment',
+            notify: notify,
+            verify: verify,
+            appId: "svQWH7m2962Cn42ZT1mvWnCP-gzGzoHsz",
+            appKey: "FvyIr8AWsURL7tzacZHxOE39",
+            avatar:'mm',
+            placeholder: "Just go go",
+            guest_info:guest_info,
+            pageSize:'10'
+        });
+    </script>
+  
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":200,"height":300,"hOffset":90,"vOffset":0},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>
