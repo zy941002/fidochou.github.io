@@ -6,7 +6,7 @@
   <link href="http://jocolorful.com/atom.xml" rel="self"/>
   
   <link href="http://jocolorful.com/"/>
-  <updated>2022-09-15T06:20:13.141Z</updated>
+  <updated>2022-09-15T08:04:00.458Z</updated>
   <id>http://jocolorful.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面试经历</title>
+    <link href="http://jocolorful.com/2022/09/15/%E5%89%8D%E7%AB%AF-%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86/"/>
+    <id>http://jocolorful.com/2022/09/15/%E5%89%8D%E7%AB%AF-%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86/</id>
+    <published>2022-09-15T07:45:54.000Z</published>
+    <updated>2022-09-15T08:04:00.458Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="http://jocolorful.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>浏览器的原理</title>
@@ -385,23 +408,6 @@
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://book.douban.com/subject/2250587/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《一个人的好天气》&lt;/a&gt;是日本作家青山七惠所著。这本书是大学时期英子姐留在实验室里的书。四五年过去了，这本书一直放在我重庆的家里，扉页早已泛黄。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="阅读" scheme="http://jocolorful.com/categories/%E9%98%85%E8%AF%BB/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Peter.Pan</title>
-    <link href="http://jocolorful.com/2021/07/08/%E9%98%85%E8%AF%BB-PeterPan/"/>
-    <id>http://jocolorful.com/2021/07/08/%E9%98%85%E8%AF%BB-PeterPan/</id>
-    <published>2021-07-08T06:36:08.000Z</published>
-    <updated>2022-03-28T00:55:19.590Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://book.douban.com/subject/1386094/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《Peter.Pan》&lt;/a&gt;&lt;/p&gt;</summary>
     
     
     
