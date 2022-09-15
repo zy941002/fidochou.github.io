@@ -6,7 +6,7 @@
   <link href="http://jocolorful.com/atom.xml" rel="self"/>
   
   <link href="http://jocolorful.com/"/>
-  <updated>2022-09-15T08:04:00.458Z</updated>
+  <updated>2022-09-15T09:11:39.961Z</updated>
   <id>http://jocolorful.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面试常考的 CSS 问题</title>
+    <link href="http://jocolorful.com/2022/09/15/CSS-%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%80%83%E7%9A%84%20CSS%20%E9%97%AE%E9%A2%98/"/>
+    <id>http://jocolorful.com/2022/09/15/CSS-%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%80%83%E7%9A%84%20CSS%20%E9%97%AE%E9%A2%98/</id>
+    <published>2022-09-15T08:54:14.000Z</published>
+    <updated>2022-09-15T09:11:39.961Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="http://jocolorful.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>面试经历</title>
@@ -136,7 +159,7 @@
     <link href="http://jocolorful.com/2022/03/28/%E5%89%8D%E7%AB%AF-%E6%AF%8F%E5%A4%A9%E8%B5%B7%E5%BA%8A%E4%B8%80%E6%97%A9%E6%93%8D/"/>
     <id>http://jocolorful.com/2022/03/28/%E5%89%8D%E7%AB%AF-%E6%AF%8F%E5%A4%A9%E8%B5%B7%E5%BA%8A%E4%B8%80%E6%97%A9%E6%93%8D/</id>
     <published>2022-03-28T00:10:10.086Z</published>
-    <updated>2022-04-05T02:39:39.805Z</updated>
+    <updated>2022-09-15T08:58:52.780Z</updated>
     
     
     <summary type="html">&lt;p&gt;每天起床练体操，理论 + 实践 助力小学生茁壮成长！TypeScript 小学生的进击之路：&lt;/p&gt;</summary>
@@ -271,11 +294,11 @@
   </entry>
   
   <entry>
-    <title>伪元素</title>
+    <title>不常见但实用的伪元素</title>
     <link href="http://jocolorful.com/2021/07/28/CSS-%E4%BC%AA%E5%85%83%E7%B4%A0/"/>
     <id>http://jocolorful.com/2021/07/28/CSS-%E4%BC%AA%E5%85%83%E7%B4%A0/</id>
     <published>2021-07-28T06:33:08.000Z</published>
-    <updated>2022-09-09T09:59:11.180Z</updated>
+    <updated>2022-09-15T08:55:25.745Z</updated>
     
     
     <summary type="html">&lt;p&gt;CSS 的伪元素目前一共有八种，孤陋寡闻的我只会「before」和 「after」:&lt;/p&gt;</summary>
@@ -399,23 +422,6 @@
     
     
     <category term="算法" scheme="http://jocolorful.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>一个人的好天气</title>
-    <link href="http://jocolorful.com/2021/07/13/%E9%98%85%E8%AF%BB-%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%A5%BD%E5%A4%A9%E6%B0%94/"/>
-    <id>http://jocolorful.com/2021/07/13/%E9%98%85%E8%AF%BB-%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%A5%BD%E5%A4%A9%E6%B0%94/</id>
-    <published>2021-07-13T01:51:22.000Z</published>
-    <updated>2022-09-02T05:59:54.663Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://book.douban.com/subject/2250587/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《一个人的好天气》&lt;/a&gt;是日本作家青山七惠所著。这本书是大学时期英子姐留在实验室里的书。四五年过去了，这本书一直放在我重庆的家里，扉页早已泛黄。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="阅读" scheme="http://jocolorful.com/categories/%E9%98%85%E8%AF%BB/"/>
     
     
   </entry>

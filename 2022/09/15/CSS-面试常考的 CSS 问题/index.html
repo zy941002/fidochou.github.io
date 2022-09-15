@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
-  <title>不常见但实用的伪元素 | Jojo&#39;s World</title>
+  <title>面试常考的 CSS 问题 | Jojo&#39;s World</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -16,15 +16,15 @@
     <meta name="keywords" content="前端,Frontend,Nodejs,JavaScript" />
   
 
-  <meta name="description" content="CSS 的伪元素目前一共有八种，孤陋寡闻的我只会「before」和 「after」:">
+  <meta name="description" content="用纯 CSS 实现三角形 #demo &amp;#123;  width: 0;  height: 0;  border-width: 100px;  border-style: solid;  border-color: transparent transparent red transparent;  &#x2F;&#x2F;原理，牢记 border 的值是从 border-top 顺时针的&amp;#125;  样式权重计算">
 <meta property="og:type" content="article">
-<meta property="og:title" content="不常见但实用的伪元素">
-<meta property="og:url" content="http://jocolorful.com/2021/07/28/CSS-%E4%BC%AA%E5%85%83%E7%B4%A0/index.html">
+<meta property="og:title" content="面试常考的 CSS 问题">
+<meta property="og:url" content="http://jocolorful.com/2022/09/15/CSS-%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%80%83%E7%9A%84%20CSS%20%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Jojo&#39;s World">
-<meta property="og:description" content="CSS 的伪元素目前一共有八种，孤陋寡闻的我只会「before」和 「after」:">
+<meta property="og:description" content="用纯 CSS 实现三角形 #demo &amp;#123;  width: 0;  height: 0;  border-width: 100px;  border-style: solid;  border-color: transparent transparent red transparent;  &#x2F;&#x2F;原理，牢记 border 的值是从 border-top 顺时针的&amp;#125;  样式权重计算">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-07-28T06:33:08.000Z">
-<meta property="article:modified_time" content="2022-09-15T08:55:25.745Z">
+<meta property="article:published_time" content="2022-09-15T08:54:14.000Z">
+<meta property="article:modified_time" content="2022-09-15T09:11:39.961Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -99,22 +99,17 @@ ga('send', 'pageview');
   
 
   
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Content-属性"><span class="toc-text">Content 属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#从-arrt-属性获取现实的数据"><span class="toc-text">从 arrt() 属性获取现实的数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-url"><span class="toc-text">使用 url</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-url-1"><span class="toc-text">使用 url</span></a></li></ol></li></ol>
-  </div>
-
 
 
 <div class="content content-post LEFT">
-   <article id="post-CSS-伪元素" class="article article-type-post" itemprop="blogPost">
+   <article id="post-CSS-面试常考的 CSS 问题" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">不常见但实用的伪元素</h1>
+    <h1 class="post-title">面试常考的 CSS 问题</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2021.07.28</span>
+        <span>2022.09.15</span>
       </span>
 
       
@@ -147,29 +142,93 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p>CSS 的伪元素目前一共有八种，孤陋寡闻的我只会「before」和 「after」:</p>
-<a id="more"></a>
-
-<ul>
-<li>::after</li>
-<li>::before</li>
-<li>::first-letter</li>
-<li>::first-line</li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/::marker" target="_blank" rel="noopener">::marker</a></li>
-<li>::selection</li>
-</ul>
-<h2 id="Content-属性"><a href="#Content-属性" class="headerlink" title="Content 属性"></a>Content 属性</h2><p>1.「content」属性是必须的，Content 默认是 「display-inline」<br>2.「content」是不能被用户选择的</p>
-<h3 id="从-arrt-属性获取现实的数据"><a href="#从-arrt-属性获取现实的数据" class="headerlink" title="从 arrt() 属性获取现实的数据"></a>从 arrt() 属性获取现实的数据</h3><p>可以从属性值上获取数据</p>
-<p><code>&lt;p data-before-text=&quot;foo&quot;&gt;hello world&lt;/p &gt;
-content: attr(data-before-text);</code></p>
-<h3 id="使用-url"><a href="#使用-url" class="headerlink" title="使用 url"></a>使用 url</h3><p>=======<br><code>&lt;p data-before-text=&quot;foo&quot;&gt;hello world&lt;/p&gt;
-content: attr(data-before-text);</code></p>
-<h3 id="使用-url-1"><a href="#使用-url-1" class="headerlink" title="使用 url"></a>使用 url</h3><p><code>content: url(https://unsplash.it/15/15);</code></p>
-<p>除了 url 还可以使用以下<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content" target="_blank" rel="noopener">属性</a>：</p>
-<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/counter()" target="_blank" rel="noopener">counter</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/quotes）" target="_blank" rel="noopener">quotes</a></li>
-</ul>
+      <ol>
+<li><p><a href="https://juejin.cn/post/6844903882007511048" target="_blank" rel="noopener">用纯 CSS 实现三角形</a></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#demo</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">border-width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-color</span>: transparent transparent red transparent;</span><br><span class="line">  //原理，牢记 border 的值是从 border-top 顺时针的</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>样式权重计算规则</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">important 最高，内敛样式 1000 &gt; id  1000 &gt;  类/伪/属性 样式 100 &gt; 标签/伪元素 1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://juejin.cn/post/6905539198107942919#heading-3" target="_blank" rel="noopener">CSS 的继承</a></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">无继承属性：布局/定位/宽高相关，总结一下就是影响文档流</span><br><span class="line">有继承属性：文本颜色、大小、行高之类</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>display 的属性值及其作用？</p>
+<ol>
+<li><strong>block</strong></li>
+<li><strong>inline</strong>：不能设置宽高</li>
+<li><strong>inline-block</strong></li>
+</ol>
+</li>
+<li><p>隐藏元素的方法有哪些？</p>
+<ol>
+<li><code>display: none;</code> 渲染树不会包含该渲染对象，因此该元素不会在页面中占据位置，也不会响应绑定的监听事件</li>
+<li><code>visibility: hidden;</code> 元素在页面中仍占据空间，但是<strong>不会响应</strong>绑定的监听事件。</li>
+<li><code>opacity: 0;</code>将元素的透明度设置为 0，以此来实现元素的隐藏。元素在页面中仍然占据空间，并且<strong>能够响应</strong>元素绑定的监听事件。</li>
+</ol>
+</li>
+<li><p>link 和 @import 的区别？</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>link</th>
+<th>@import</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CSS/RSS</td>
+<td>CSS</td>
+</tr>
+<tr>
+<td>页面加载时，CSS 同步载入</td>
+<td>页面加载完成时，资源才载入（比较实用特殊样式的字体</td>
+</tr>
+<tr>
+<td>可以通过 JS 操作 DOM</td>
+<td>不可以通过 JS 操作 DOM</td>
+</tr>
+</tbody></table>
+<ol start="7">
+<li><p>transition 和 animation 的区别？<br>transition 强调过渡、而 animation 强调动画</p>
+</li>
+<li><p>display:none 与 visibility:hidden 的区别</p>
+<ol>
+<li><code>display:none;</code><ol>
+<li>在页面 DOM 树是完全不可见的，渲染时不占据任何空间，但是在 Chrome 的审查面版可以看见，</li>
+<li>非继承属性：子节点修改dislay: block 之类的也不会显示出来</li>
+<li>修改值会造成重排</li>
+</ol>
+</li>
+<li><code>visibility:hidden;</code><ol>
+<li>占据 DOM 的空间，只是内容不显示，</li>
+<li>继承属性：修改子节点的属性可显示出来。</li>
+<li>修改值会造成重绘</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>「伪元素」和「伪类」的区别和作用？</p>
+<ol>
+<li>伪元素<ol>
+<li>会产生额外的元素</li>
+<li>两个冒号：常见的伪元素有 before/after/firs-letter/first-line</li>
+</ol>
+</li>
+<li>伪类：额外的样式<ol>
+<li>添加额外的样式</li>
+<li>一个冒号：一般 hover/focus/first-child 之类的</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>对于盒模型的理解</p>
+<ol>
+<li>IE 盒模型：width=padding/border/content</li>
+<li>标准盒模型：width=content</li>
+</ol>
+</li>
+</ol>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     
   </div>
@@ -178,10 +237,10 @@ content: attr(data-before-text);</code></p>
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2021/07/22/%E7%AE%97%E6%B3%95-%E4%BD%8D%E8%BF%90%E7%AE%97/">
+    <a class="show pull-left" href="/2022/09/15/%E5%89%8D%E7%AB%AF-%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2021/11/06/package.json%20%E5%AD%97%E6%AE%B5%E8%AF%A6%E8%A7%A3/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
