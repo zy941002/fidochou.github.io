@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>uni-app 打包 - iOS 篇 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,Frontend,Nodejs,JavaScript" />
+  
+
+  <meta name="description" content="uni-app 打包 - iOS 篇证书 ：对 App 的认证（类似于 Https 的证书）标识符：应用的唯一 ID描述文件：内含证书 + 调试设备信息 环境准备 Hbuilder 下载 苹果开发者账号，并且加入 iOS Developer Program，我们的团队是 Wide Area Mingdao Digital Technology。告知后，Apple 会像你的邮箱发送一封邀请邮件（需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uni-app 打包 - iOS 篇">
+<meta property="og:url" content="http://jocolorful.com/2022/10/14/%E5%89%8D%E7%AB%AF%20-%20uni-app%20%E6%89%93%E5%8C%85%20-%20iOS%20%E7%AF%87/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="uni-app 打包 - iOS 篇证书 ：对 App 的认证（类似于 Https 的证书）标识符：应用的唯一 ID描述文件：内含证书 + 调试设备信息 环境准备 Hbuilder 下载 苹果开发者账号，并且加入 iOS Developer Program，我们的团队是 Wide Area Mingdao Digital Technology。告知后，Apple 会像你的邮箱发送一封邀请邮件（需要">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/ae9c05f4b59605cecf83cfd3b3aea5c5.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/e23230bc7d2db789ca656c042c584dd5.png">
+<meta property="og:image" content="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/ad080e785cb2419b8e2ece5b2a291a7b_image.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/35b2007afc9e32009b6472d8358c6d2a.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/890875c122389dcaec03850081acc65e.png">
+<meta property="og:image" content="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/b7af4b7ccbf74762b47c67e344308cc1_image.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/0b6a336b56624d306da7625099a3db51.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/74051174ffd099862d2d28d5657d9e18.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/e07ae5f61ee512c71574e0c2a910d8b6.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/36cdfc238a95e7409a0f05cfed68acff.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/bb24badaf2becb672559bc289494833f.png">
+<meta property="og:image" content="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/8cc7f62f865142ad95081925f4d5ebd6_image.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/7a1a08323e9216f2347911e5773e3b23.png">
+<meta property="og:image" content="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/0f75a7c11e5d4f3dbf0ee809c5ac6660_wecom-temp-203381-f08a572b44c2594800a3ca8f19b69e97.jpg">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/78882f6762f85cd392a69e0cea3fb7e1.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/b89afcb4f7da511cfb9767b9c79a4c29.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/0e5ff848e1e83facf20455f4705d0aa4.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/e0dfd711b73264cc18cd551359f40a7e.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/b3b64702a3cf4857c97047c7a3f54c92.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/80777452245069ebae852fc811b0956d.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/47aecc44fa2367e99876b05b93dc4feb.png">
+<meta property="og:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/bbdbd61cb97195384e28098298e9d949.png">
+<meta property="og:image" content="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/209ba9a496ff4151b9ecc944530f7479_image.png">
+<meta property="og:image" content="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/d68253f134734937857e25822cda5c9c_image.png">
+<meta property="article:published_time" content="2022-10-14T13:00:15.000Z">
+<meta property="article:modified_time" content="2022-10-24T13:05:05.489Z">
+<meta property="article:author" content="Jojo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/ae9c05f4b59605cecf83cfd3b3aea5c5.png">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#uni-app-打包-iOS-篇"><span class="toc-text">uni-app 打包 - iOS 篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#环境准备"><span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step1：应用-ID-的申请"><span class="toc-text">Step1：应用 ID 的申请</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step2：生成证书请求文件"><span class="toc-text">Step2：生成证书请求文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step3：开发-Development-证书"><span class="toc-text">Step3：开发(Development)证书</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step4：描述文件"><span class="toc-text">Step4：描述文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-UDID-设备标识的获取"><span class="toc-text">4.1 UDID 设备标识的获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-添加调试设备"><span class="toc-text">4.2 添加调试设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-申请开发描述（profile）文件"><span class="toc-text">4.3 申请开发描述（profile）文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step5：如何添加调试设备？"><span class="toc-text">Step5：如何添加调试设备？</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-前端 - uni-app 打包 - iOS 篇" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">uni-app 打包 - iOS 篇</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2022.10.14</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="uni-app-打包-iOS-篇"><a href="#uni-app-打包-iOS-篇" class="headerlink" title="uni-app 打包 - iOS 篇"></a>uni-app 打包 - iOS 篇</h1><p><strong>证书</strong> ：对 App 的认证（类似于 Https 的证书）<br><strong>标识符</strong>：应用的唯一 ID<br><strong>描述文件</strong>：内含证书 + 调试设备信息</p>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><ol>
+<li>Hbuilder 下载</li>
+<li>苹果开发者账号，并且加入 iOS Developer Program，我们的团队是 <strong>Wide Area Mingdao Digital Technology</strong>。告知后，Apple 会像你的邮箱发送一封邀请邮件（需要等一下 or 在垃圾邮箱、广告里多看看）。</li>
+</ol>
+<h1 id="Step1：应用-ID-的申请"><a href="#Step1：应用-ID-的申请" class="headerlink" title="Step1：应用 ID 的申请"></a>Step1：应用 ID 的申请</h1><p><font color="red">App ID = 应用 ID =  Identifier = Bundle ID </font></p>
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/ae9c05f4b59605cecf83cfd3b3aea5c5.png">
+
+<p><strong>下一步 👇</strong></p>
+<img src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/e23230bc7d2db789ca656c042c584dd5.png" width="400px">
+
+<p><strong>下一步 👇</strong></p>
+<img width="400px" src="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/ad080e785cb2419b8e2ece5b2a291a7b_image.png">
+
+<p>接下来需要选择应用需要使用的服务（如需要使用到消息推送功能，则选择 Push Notifications），然后点击 「Continue」<strong>注意：如果 App 用不到的服务一定不要勾选，以免响应审核</strong></p>
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/35b2007afc9e32009b6472d8358c6d2a.png">
+
+<p>确认后选择提交，回到 identifiers 页面即可看到刚创建的 App ID</p>
+<h1 id="Step2：生成证书请求文件"><a href="#Step2：生成证书请求文件" class="headerlink" title="Step2：生成证书请求文件"></a>Step2：生成证书请求文件</h1><p>不管是申请开发 (Development) 证书还是发布 (Distribution) 证书，都需要使用证书请求 (.certSigningRequest) 文件，证书请求文件需在 Mac OS上使用 「钥匙串访问」 工具生成。</p>
+<p>使用「command + k」唤起聚焦搜索输入「钥匙串访问」即可唤起。</p>
+<p>打开菜单 「钥匙串访问-&gt;证书助理」，选择「从证书颁发机构请求证书…」：<br><img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/890875c122389dcaec03850081acc65e.png"></p>
+<p>打开创建请求证书页面，在页面中输入用户邮件地址(Apple 邮箱即可)、常用名称，选择<font color="red">存储到磁盘</font>，点击继续：</p>
+<img width="400px" src="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/b7af4b7ccbf74762b47c67e344308cc1_image.png">
+
+<p>文件名称为“<strong><font color="green">CertificateSigningRequest.certSigningRequest</font></strong>”，选择保存位置，点击 「存储」 将证书请求文件保存到指定路径下，后面申请开发(Development)证书和发布(Production)证书时需要用到。</p>
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/0b6a336b56624d306da7625099a3db51.png">
+
+<h1 id="Step3：开发-Development-证书"><a href="#Step3：开发-Development-证书" class="headerlink" title="Step3：开发(Development)证书"></a>Step3：开发(Development)证书</h1><p><font color="red">certficicate </font></p>
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/74051174ffd099862d2d28d5657d9e18.png">
+
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/e07ae5f61ee512c71574e0c2a910d8b6.png">
+
+<p>接下来需要用到刚刚生成的证书请求文件，点击「Choose File」…”选择刚刚保存到本地的 “<font color="green">CertificateSigningRequest.certSigningRequest</font>”文件，点击 「Continue」 生成证书文件：</p>
+<p>生成证书后选择 Download 将证书下到本地 (ios_development.cer)：</p>
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/36cdfc238a95e7409a0f05cfed68acff.png">
+
+<p>双击保存到本地的 ios_development.cer 文件，会自动打开 「钥匙串访问” 工具说明导入证书成功，可以在证书列表中看到刚刚导入的证书，接下来需要导出 <font color="red">.p12 </font>证书文件，选中导入的证书，右键选择 「导出」…：</p>
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/bb24badaf2becb672559bc289494833f.png">
+
+<img width="400px" src="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/8cc7f62f865142ad95081925f4d5ebd6_image.png">
+
+<p>如果无法选中 P12 格式的，可以参考这篇文章解决：<a href="https://blog.csdn.net/weixin_44237029/article/details/120560958" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44237029/article/details/120560958</a></p>
+<p>接下来，输入密码以及确认密码（这个过程有点像 https 的加签 ）</p>
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/7a1a08323e9216f2347911e5773e3b23.png">
+
+<h1 id="Step4：描述文件"><a href="#Step4：描述文件" class="headerlink" title="Step4：描述文件"></a>Step4：描述文件</h1><p>Profile 文件，用以证书 + 调试设备的描述</p>
+<h2 id="4-1-UDID-设备标识的获取"><a href="#4-1-UDID-设备标识的获取" class="headerlink" title="4.1 UDID 设备标识的获取"></a>4.1 UDID 设备标识的获取</h2><p>填写设备名称 和 UDID（设备标识）：</p>
+<p>UDID 可以通过 <strong>蒲公英提供的网址获取：</strong> <a href="https://www.pgyer.com/tools/udid" target="_blank" rel="noopener">https://www.pgyer.com/tools/udid</a><br><img width="400px" src="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/0f75a7c11e5d4f3dbf0ee809c5ac6660_wecom-temp-203381-f08a572b44c2594800a3ca8f19b69e97.jpg"></p>
+<p>点击下载描述文件后到 设置-&gt; 已下载描述文件选择信任。信任之后再打开蒲公英网址即可。</p>
+<h2 id="4-2-添加调试设备"><a href="#4-2-添加调试设备" class="headerlink" title="4.2 添加调试设备"></a>4.2 添加调试设备</h2><p>在证书管理页面选择「Devices」，可查看到已添加的所有设备信息，点击页面上的加号来添加一个新设备：</p>
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/78882f6762f85cd392a69e0cea3fb7e1.png">
+
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/b89afcb4f7da511cfb9767b9c79a4c29.png">
+
+<h2 id="4-3-申请开发描述（profile）文件"><a href="#4-3-申请开发描述（profile）文件" class="headerlink" title="4.3 申请开发描述（profile）文件"></a>4.3 申请开发描述（profile）文件</h2><p><font color="red">描述文件主要是对「证书」 和「调试设备的」说明。</font></p>
+<p>在证书管理页面选择 「Profiles」，可查看到已申请的所有描述文件，点击页面上的加号来添加一个新的描述文件：</p>
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/0e5ff848e1e83facf20455f4705d0aa4.png">
+
+<p>在 「Development」 栏下选中 「iOS App Development」，点击「Continue」按钮：</p>
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/e0dfd711b73264cc18cd551359f40a7e.png">
+
+<p><strong>接下来选择需要绑定的<font color="red">证书</font>，这里建议直接勾选 「Select All」，点击「Continue」：</strong></p>
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/b3b64702a3cf4857c97047c7a3f54c92.png">
+
+<p>选择授权<font color="red">调试设备</font>，这里建议直接勾选 「Select All」，点击 「」「Continue」：</p>
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/80777452245069ebae852fc811b0956d.png">
+
+<p>输入描述文件的名称（如“HelloUniAppProfile”）, 点击「Generate」生成描述文件：</p>
+<img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/47aecc44fa2367e99876b05b93dc4feb.png">
+
+<p>点击「Download」下载保存开发描述文件（文件后缀为 .mobileprovision）<br><img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/bbdbd61cb97195384e28098298e9d949.png"></p>
+<h1 id="Step5：如何添加调试设备？"><a href="#Step5：如何添加调试设备？" class="headerlink" title="Step5：如何添加调试设备？"></a>Step5：如何添加调试设备？</h1><p>添加调试设备实际上是对描述文件的更新，添加 Device 之后，在对 Profile 文件进行更新。<br><img width="400px" src="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/209ba9a496ff4151b9ecc944530f7479_image.png"></p>
+<img width="400px" src="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/d68253f134734937857e25822cda5c9c_image.png">
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    
+  </div>
+
+</article>
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2022/09/16/%E5%89%8D%E7%AB%AF-%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2022/10/19/%E5%89%8D%E7%AB%AF%20-%20uni-app%20%E6%89%93%E5%8C%85%20Andriod%20%E7%AF%87/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+    <div id="comment" class="vcomment" ></div>
+    <script>
+        var notify = 'false' == true ? true : false;
+        var verify = 'true' == true ? true : false;
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+            return GUEST_INFO.indexOf(item) > -1
+        });
+        guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+        window.valine = new Valine({
+            el: '.vcomment',
+            notify: notify,
+            verify: verify,
+            appId: "svQWH7m2962Cn42ZT1mvWnCP-gzGzoHsz",
+            appKey: "FvyIr8AWsURL7tzacZHxOE39",
+            avatar:'mm',
+            placeholder: "Just go go",
+            guest_info:guest_info,
+            pageSize:'10'
+        });
+    </script>
+  
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":200,"height":300,"hOffset":90,"vOffset":0},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

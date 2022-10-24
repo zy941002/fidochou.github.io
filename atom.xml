@@ -6,7 +6,7 @@
   <link href="http://jocolorful.com/atom.xml" rel="self"/>
   
   <link href="http://jocolorful.com/"/>
-  <updated>2022-09-16T07:37:04.646Z</updated>
+  <updated>2022-10-24T13:59:12.099Z</updated>
   <id>http://jocolorful.com/</id>
   
   <author>
@@ -15,6 +15,75 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>回渝初体验</title>
+    <link href="http://jocolorful.com/2022/10/24/%E7%94%9F%E6%B4%BB-%E5%9B%9E%E6%B8%9D%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
+    <id>http://jocolorful.com/2022/10/24/%E7%94%9F%E6%B4%BB-%E5%9B%9E%E6%B8%9D%E5%88%9D%E4%BD%93%E9%AA%8C/</id>
+    <published>2022-10-24T13:06:39.000Z</published>
+    <updated>2022-10-24T13:59:12.099Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>uni-app 打包 - Android 篇</title>
+    <link href="http://jocolorful.com/2022/10/19/%E5%89%8D%E7%AB%AF%20-%20uni-app%20%E6%89%93%E5%8C%85%20Andriod%20%E7%AF%87/"/>
+    <id>http://jocolorful.com/2022/10/19/%E5%89%8D%E7%AB%AF%20-%20uni-app%20%E6%89%93%E5%8C%85%20Andriod%20%E7%AF%87/</id>
+    <published>2022-10-19T13:00:15.000Z</published>
+    <updated>2022-10-24T13:05:21.380Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="http://jocolorful.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>uni-app 打包 - iOS 篇</title>
+    <link href="http://jocolorful.com/2022/10/14/%E5%89%8D%E7%AB%AF%20-%20uni-app%20%E6%89%93%E5%8C%85%20-%20iOS%20%E7%AF%87/"/>
+    <id>http://jocolorful.com/2022/10/14/%E5%89%8D%E7%AB%AF%20-%20uni-app%20%E6%89%93%E5%8C%85%20-%20iOS%20%E7%AF%87/</id>
+    <published>2022-10-14T13:00:15.000Z</published>
+    <updated>2022-10-24T13:05:05.489Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="http://jocolorful.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>手写代码</title>
@@ -372,62 +441,6 @@
     
     
     <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>递归总结</title>
-    <link href="http://jocolorful.com/2021/07/16/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E6%80%BB%E7%BB%93/"/>
-    <id>http://jocolorful.com/2021/07/16/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E6%80%BB%E7%BB%93/</id>
-    <published>2021-07-16T00:58:58.000Z</published>
-    <updated>2022-03-28T00:54:22.295Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;h2 id=&quot;递归：Recusion&quot;&gt;&lt;a href=&quot;#递归：Recusion&quot; class=&quot;headerlink&quot; title=&quot;递归：Recusion&quot;&gt;&lt;/a&gt;递归：Recusion&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="算法" scheme="http://jocolorful.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>盛夏归家</title>
-    <link href="http://jocolorful.com/2021/07/15/%E7%94%9F%E6%B4%BB-%E7%9B%9B%E5%A4%8F%E5%BD%92%E5%AE%B6/"/>
-    <id>http://jocolorful.com/2021/07/15/%E7%94%9F%E6%B4%BB-%E7%9B%9B%E5%A4%8F%E5%BD%92%E5%AE%B6/</id>
-    <published>2021-07-15T03:05:46.000Z</published>
-    <updated>2022-03-28T00:53:49.269Z</updated>
-    
-    
-    <summary type="html">&lt;p style=&quot;text-align:center&quot;&gt;
-苍霭飞云渡，江森楚天沉。&lt;br/&gt;
-光谲影沙西，破岸又一程。
-&lt;/p&gt;
-
-&lt;center&gt;&lt;img src=&quot;/images/生活-归家.jpg&quot;  width=&quot;500px&quot; /&gt;&lt;/center&gt;</summary>
-    
-    
-    
-    <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>咖啡咖啡</title>
-    <link href="http://jocolorful.com/2021/07/14/%E9%98%85%E8%AF%BB-%E5%92%96%E5%95%A1%E5%92%96%E5%95%A1/"/>
-    <id>http://jocolorful.com/2021/07/14/%E9%98%85%E8%AF%BB-%E5%92%96%E5%95%A1%E5%92%96%E5%95%A1/</id>
-    <published>2021-07-14T14:33:55.000Z</published>
-    <updated>2022-09-09T10:13:55.483Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://book.douban.com/subject/11594188/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《咖啡咖啡》&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="阅读" scheme="http://jocolorful.com/categories/%E9%98%85%E8%AF%BB/"/>
     
     
   </entry>
