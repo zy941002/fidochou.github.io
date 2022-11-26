@@ -6,7 +6,7 @@
   <link href="http://jocolorful.com/atom.xml" rel="self"/>
   
   <link href="http://jocolorful.com/"/>
-  <updated>2022-10-24T13:59:12.099Z</updated>
+  <updated>2022-11-26T08:22:20.669Z</updated>
   <id>http://jocolorful.com/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何阅读一本书</title>
+    <link href="http://jocolorful.com/2022/11/20/%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E4%B8%80%E6%9C%AC%E4%B9%A6/"/>
+    <id>http://jocolorful.com/2022/11/20/%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E4%B8%80%E6%9C%AC%E4%B9%A6/</id>
+    <published>2022-11-20T01:43:36.000Z</published>
+    <updated>2022-11-26T08:22:20.669Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="阅读" scheme="http://jocolorful.com/categories/%E9%98%85%E8%AF%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>基于 Docker 的练习</title>
+    <link href="http://jocolorful.com/2022/10/30/%E8%BF%90%E7%BB%B4-%E5%9F%BA%E4%BA%8EDocker%E7%9A%84%E7%BB%83%E4%B9%A0/"/>
+    <id>http://jocolorful.com/2022/10/30/%E8%BF%90%E7%BB%B4-%E5%9F%BA%E4%BA%8EDocker%E7%9A%84%E7%BB%83%E4%B9%A0/</id>
+    <published>2022-10-30T12:51:04.000Z</published>
+    <updated>2022-10-30T13:01:39.110Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="运维" scheme="http://jocolorful.com/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>回渝初体验</title>
@@ -398,49 +444,6 @@
     
     
     <category term="前端" scheme="http://jocolorful.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>位运算</title>
-    <link href="http://jocolorful.com/2021/07/22/%E7%AE%97%E6%B3%95-%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    <id>http://jocolorful.com/2021/07/22/%E7%AE%97%E6%B3%95-%E4%BD%8D%E8%BF%90%E7%AE%97/</id>
-    <published>2021-07-22T05:51:38.000Z</published>
-    <updated>2022-03-28T00:54:47.405Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;我钟爱位运算，亦如炉石拿着最原始的卡组打着最艰难的怪……&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;从现代计算机中所有的数据二进制的形式存储在设备中。即 0、1 两种状态，计算机对二进制数据进行的运算(+、-、*、/) 都是叫位运算，即将符号位共同参与运算的运算。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="算法" scheme="http://jocolorful.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>三亚之旅</title>
-    <link href="http://jocolorful.com/2021/07/20/%E7%94%9F%E6%B4%BB-GoforSanya/"/>
-    <id>http://jocolorful.com/2021/07/20/%E7%94%9F%E6%B4%BB-GoforSanya/</id>
-    <published>2021-07-20T10:13:59.000Z</published>
-    <updated>2022-09-15T08:21:11.478Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;身份证&lt;/li&gt;
-&lt;li&gt;充电宝&lt;/li&gt;
-&lt;li&gt;防水袋&lt;/li&gt;
-&lt;li&gt;防晒物品（冰袖、墨镜、防晒霜、帽子）&lt;/li&gt;
-&lt;li&gt;日用：护肤品、口罩、游泳装备、防虫喷雾、雨衣、拖鞋、睡衣&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="生活随感" scheme="http://jocolorful.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E6%84%9F/"/>
     
     
   </entry>
