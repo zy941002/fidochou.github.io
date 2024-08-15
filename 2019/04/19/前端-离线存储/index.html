@@ -24,7 +24,7 @@
 <meta property="og:description" content="离线存储离线存储指的是：在用户没有与网络连接时，可以正常访问站点或应用，在用户与网络连接时，更新用户机器上的缓存文件。 什么是 Cache Manifest">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-04-19T04:46:47.000Z">
-<meta property="article:modified_time" content="2022-09-09T09:58:19.672Z">
+<meta property="article:modified_time" content="2024-08-15T14:54:44.793Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -88,8 +88,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
 
@@ -101,7 +100,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#离线存储"><span class="toc-text">离线存储</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是-Cache-Manifest"><span class="toc-text">什么是 Cache Manifest</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Manifest-的特点"><span class="toc-text">Manifest 的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Manifest-使用方式"><span class="toc-text">Manifest 使用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CACHE：（必须）"><span class="toc-text">1. CACHE：（必须）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-NETWORK"><span class="toc-text">2. NETWORK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-FALLBACK"><span class="toc-text">3. FALLBACK</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何更新缓存"><span class="toc-text">如何更新缓存</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器是如何对-HTML5-的离线储存资源进行管理和加载？"><span class="toc-text">浏览器是如何对 HTML5 的离线储存资源进行管理和加载？</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E5%AD%98%E5%82%A8"><span class="toc-text">离线存储</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Cache-Manifest"><span class="toc-text">什么是 Cache Manifest</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Manifest-%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">Manifest 的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Manifest-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">Manifest 使用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CACHE%EF%BC%9A%EF%BC%88%E5%BF%85%E9%A1%BB%EF%BC%89"><span class="toc-text">1. CACHE：（必须）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-NETWORK"><span class="toc-text">2. NETWORK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-FALLBACK"><span class="toc-text">3. FALLBACK</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%9B%B4%E6%96%B0%E7%BC%93%E5%AD%98"><span class="toc-text">如何更新缓存</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E5%AF%B9-HTML5-%E7%9A%84%E7%A6%BB%E7%BA%BF%E5%82%A8%E5%AD%98%E8%B5%84%E6%BA%90%E8%BF%9B%E8%A1%8C%E7%AE%A1%E7%90%86%E5%92%8C%E5%8A%A0%E8%BD%BD%EF%BC%9F"><span class="toc-text">浏览器是如何对 HTML5 的离线储存资源进行管理和加载？</span></a></li></ol></li></ol>
   </div>
 
 
@@ -148,7 +147,7 @@ ga('send', 'pageview');
   <div class="article-content">
     
       <h1 id="离线存储"><a href="#离线存储" class="headerlink" title="离线存储"></a>离线存储</h1><p>离线存储指的是：在用户没有与网络连接时，可以正常访问站点或应用，在用户与网络连接时，更新用户机器上的缓存文件。</p>
-<h2 id="什么是-Cache-Manifest"><a href="#什么是-Cache-Manifest" class="headerlink" title="什么是 Cache Manifest"></a>什么是 Cache Manifest</h2><a id="more"></a>
+<h2 id="什么是-Cache-Manifest"><a href="#什么是-Cache-Manifest" class="headerlink" title="什么是 Cache Manifest"></a>什么是 Cache Manifest</h2><span id="more"></span>
 <p><font size="bold">原理：</font>基于一个新建的 「.appcache」 文件的缓存机制(不是存储技术)，通过这个文件上的解析清单离线存储资源，这些资源就会像 cookie 一样被存储了下来。之后当网络在处于离线状态下时，浏览器会通过被离线存储的数据进行页面展示</p>
 <h2 id="Manifest-的特点"><a href="#Manifest-的特点" class="headerlink" title="Manifest 的特点"></a>Manifest 的特点</h2><ol>
 <li>离线浏览：用户可以在离线状态下浏览网站内容。</li>
@@ -158,12 +157,12 @@ ga('send', 'pageview');
 <h2 id="Manifest-使用方式"><a href="#Manifest-使用方式" class="headerlink" title="Manifest 使用方式"></a>Manifest 使用方式</h2><ol>
 <li>创建一个和 html 同名的 manifest 文件，然后在页面头部加入 manifest 属性：</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">manifest</span>=<span class="string">"index.manifest"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">manifest</span>=<span class="string">&quot;index.manifest&quot;</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li>在 cache.manifest 文件中编写需要离线存储的资源：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line">    #v0.11</span><br><span class="line">    CACHE:</span><br><span class="line">    js&#x2F;app.js</span><br><span class="line">    css&#x2F;style.css</span><br><span class="line">    NETWORK:</span><br><span class="line">    resourse&#x2F;logo.png</span><br><span class="line">    FALLBACK:</span><br><span class="line">    &#x2F; &#x2F;offline.html</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line">    #v0.11</span><br><span class="line">    CACHE:</span><br><span class="line">    js/app.js</span><br><span class="line">    css/style.css</span><br><span class="line">    NETWORK:</span><br><span class="line">    resourse/logo.png</span><br><span class="line">    FALLBACK:</span><br><span class="line">    / /offline.html</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="1-CACHE：（必须）"><a href="#1-CACHE：（必须）" class="headerlink" title="1. CACHE：（必须）"></a>1. CACHE：（必须）</h3><h3 id="2-NETWORK"><a href="#2-NETWORK" class="headerlink" title="2. NETWORK"></a>2. NETWORK</h3><h3 id="3-FALLBACK"><a href="#3-FALLBACK" class="headerlink" title="3. FALLBACK"></a>3. FALLBACK</h3><p><font color="red">在离线状态时，操作 window.applicationCache 进行离线缓存的操作。</font></p>
 <h2 id="如何更新缓存"><a href="#如何更新缓存" class="headerlink" title="如何更新缓存"></a>如何更新缓存</h2><ul>
@@ -184,13 +183,13 @@ ga('send', 'pageview');
 <li><p>在线的情况下，浏览器发现 html 头部有 manifest 属性，它会请求 manifest 文件。</p>
 <ul>
 <li>如果是第一次访问页面 ，那么浏览器就会根据 manifest 文件的内容下载相应的资源并且进行离线存储。</li>
-<li>如果已经访问过页面并且资源已经进行离线存储了，那么浏览器就会使用离线的资源加载页面，然后浏览器会对比新的 manifest 文件与旧的 manifest 文件，如果文件没有发生改变，就不做任何操作，如果文件改变了，就会重新下载文件中的资源并进行离线存储。<br><font color="red">思考题：在更新资源的时候，页面会更新并且闪烁吗？</font></li>
+<li>如果已经访问过页面并且资源已经进行离线存储了，那么浏览器就会使用离线的资源加载页面，然后浏览器会对比新的 manifest 文件与旧的 manifest 文件，如果文件没有发生改变，就不做任何操作，如果文件改变了，就会重新下载文件中的资源并进行离线存储。<br> <font color="red">思考题：在更新资源的时候，页面会更新并且闪烁吗？</font></li>
 </ul>
 </li>
 <li><p>离线的情况下，浏览器会直接使用离线存储的资源。</p>
 </li>
 </ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+
     
   </div>
 

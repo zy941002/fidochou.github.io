@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>TypeScript 每天起床一早操 | Jojo&#39;s World</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="TypeScript," />
+  
+
+  <meta name="description" content="每天起床练体操，理论 + 实践 助力小学生茁壮成长！TypeScript 小学生的进击之路：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript 每天起床一早操">
+<meta property="og:url" content="http://jocolorful.com/2024/08/15/%E5%89%8D%E7%AB%AF-%E6%AF%8F%E5%A4%A9%E8%B5%B7%E5%BA%8A%E4%B8%80%E6%97%A9%E6%93%8D/index.html">
+<meta property="og:site_name" content="Jojo&#39;s World">
+<meta property="og:description" content="每天起床练体操，理论 + 实践 助力小学生茁壮成长！TypeScript 小学生的进击之路：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-15T14:54:44.792Z">
+<meta property="article:modified_time" content="2024-08-15T15:12:19.532Z">
+<meta property="article:author" content="Jojo">
+<meta property="article:tag" content="TypeScript">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Q1-%E6%B3%9B%E5%9E%8B-%E4%BD%BF%E7%94%A8%E7%9A%84%E5%8F%82%E8%80%83%E6%A0%87%E5%87%86%EF%BC%9F"><span class="toc-text">Q1. 泛型 + 使用的参考标准？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q2-%E4%BB%80%E4%B9%88%E5%8F%AB%E6%B3%9B%E5%9E%8B%E7%BA%A6%E6%9D%9F"><span class="toc-text">Q2. 什么叫泛型约束</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%A1%AE%E4%BF%9D%E5%B1%9E%E6%80%A7%E5%AD%98%E5%9C%A8"><span class="toc-text">2.1 确保属性存在</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E6%A3%80%E6%9F%A5%E5%AF%B9%E8%B1%A1%E4%B8%8A%E7%9A%84%E9%94%AE%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="toc-text">2.2 检查对象上的键是否存在</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q3%EF%BC%9A%E6%B3%9B%E5%9E%8B%E9%BB%98%E8%AE%A4%E7%B1%BB%E5%9E%8B"><span class="toc-text">Q3：泛型默认类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q4%EF%BC%9A%E6%B3%9B%E5%9E%8B%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="toc-text">Q4：泛型条件类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q5%EF%BC%9A%E6%B3%9B%E5%9E%8B%E5%B7%A5%E5%85%B7"><span class="toc-text">Q5：泛型工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-Partial"><span class="toc-text">5.1 Partial</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-Record"><span class="toc-text">5.2 Record</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-Pick"><span class="toc-text">5.3 Pick</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-Exclude"><span class="toc-text">5.4 Exclude</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-ReturnType"><span class="toc-text">5.5 ReturnType</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q6-%E4%BD%BF%E7%94%A8%E6%B3%9B%E5%9E%8B%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="toc-text">Q6. 使用泛型创建对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E6%9E%84%E9%80%A0%E7%AD%BE%E5%90%8D"><span class="toc-text">6.1 构造签名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-text">6.1 构造函数类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">6.2 构造函数类型的应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E4%BD%BF%E7%94%A8%E6%B3%9B%E5%9E%8B%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="toc-text">6.3 使用泛型创建对象</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-前端-每天起床一早操" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">TypeScript 每天起床一早操</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2024.08.15</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jojo</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>每天起床练体操，理论 + 实践 助力小学生茁壮成长！TypeScript 小学生的进击之路：</p>
+<span id="more"></span>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/zh/play">TypeScript 广场</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904182843965453">1.2W字 | 了不起的 TypeScript 入门教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904184894980104">一文读懂 TypeScript 泛型及应用</a></li>
+<li><a target="_blank" rel="noopener" href="https://jkchao.github.io/typescript-book-chinese/#why">深入理解 TypeScript</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7009046640308781063">这 30 道 TS 练习题，你能答对几道？</a></li>
+<li><a target="_blank" rel="noopener" href="https://javascript.plainenglish.io/powerful-typescript-tools-e1c7875fbb71">7 Powerful TypeScript Tools</a></li>
+</ul>
+<h1 id="Q1-泛型-使用的参考标准？"><a href="#Q1-泛型-使用的参考标准？" class="headerlink" title="Q1. 泛型 + 使用的参考标准？"></a>Q1. 泛型 + 使用的参考标准？</h1><ol>
+<li>当你的「函数」、「接口」、「类」将处理多种<font color="red">数据类型</font>时；</li>
+<li>当「函数」、「接口」、「类」在多个地方使用该数据类型时。</li>
+</ol>
+<h1 id="Q2-什么叫泛型约束"><a href="#Q2-什么叫泛型约束" class="headerlink" title="Q2. 什么叫泛型约束"></a>Q2. 什么叫泛型<font color="red">约束</font></h1><p>我们可能限制「每个<font color="red">类型变量</font>接受的<font color="red">类型数量</font>」，这就是泛型约束的作用。</p>
+<h2 id="2-1-确保属性存在"><a href="#2-1-确保属性存在" class="headerlink" title="2.1 确保属性存在"></a>2.1 确保属性存在</h2><p>我们需要做的就是让「类型变量」 <code>extends</code> 一个含有我们所需属性的接口(可以思考一下？为什么是接口呢？type 行不行….)</p>
+<p>答案是可以的，但是什么时候继承 interface，什么时候继承 type 呢？</p>
+<p>使用逗号来实现多个继承：<code>&lt;T extends Length, Type2, Type3&gt;</code></p>
+<details>
+  <summary>切换 &#8681;</summary>
+
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Length</span> &#123;</span><br><span class="line">  <span class="attr">length</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> identity&lt;T <span class="keyword">extends</span> <span class="title class_">Length</span>&gt;(<span class="attr">arg</span>: T): T &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg.<span class="property">length</span>) <span class="comment">// 可以获取length属性</span></span><br><span class="line">  <span class="keyword">return</span> arg</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</details>
+
+
+<h2 id="2-2-检查对象上的键是否存在"><a href="#2-2-检查对象上的键是否存在" class="headerlink" title="2.2 检查对象上的键是否存在"></a>2.2 检查对象上的键是否存在</h2><p>TypeScript 2.1  版本引入了 <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-9.html#support-number-and-symbol-named-properties-with-keyof-and-mapped-types"><code>keyof</code></a> 操作符，该操作符可以用于获取某种类型的「所有键」，其返回类型是「联合类型」</p>
+<details>
+  <summary>切换 &#8681;</summary>
+
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="attr">location</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">K1</span> = keyof <span class="title class_">Person</span> <span class="comment">// &quot;name&quot; | &quot;age&quot; | &quot;location&quot;</span></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">K2</span> = keyof <span class="title class_">Person</span>[]  <span class="comment">// number | &quot;length&quot; | &quot;push&quot; | &quot;concat&quot; | ...</span></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">K3</span> = keyof &#123; [<span class="attr">x</span>: <span class="built_in">string</span>]: <span class="title class_">Person</span> &#125;  <span class="comment">// string | number</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">K1</span>)</span><br><span class="line"><span class="string">&#x27;K1&#x27;</span> only refers to a <span class="keyword">type</span>, but is being used <span class="keyword">as</span> a value here.</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Person</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;Person&#x27;</span> only refers to a <span class="keyword">type</span>, but is being used <span class="keyword">as</span> a value here.</span><br><span class="line">说明类型是不能作为值打印出来</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Difficulty</span> &#123;</span><br><span class="line">  <span class="title class_">Easy</span>,</span><br><span class="line">  <span class="title class_">Intermediate</span>,</span><br><span class="line">  <span class="title class_">Hard</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> getProperty&lt;T, K <span class="keyword">extends</span> keyof T&gt;(<span class="attr">obj</span>: T, <span class="attr">key</span>: K): T[K] &#123;</span><br><span class="line">  <span class="keyword">return</span> obj[key]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tsInfo = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Typescript&quot;</span>,</span><br><span class="line">  <span class="attr">supersetOf</span>: <span class="string">&quot;Javascript&quot;</span>,</span><br><span class="line">  <span class="attr">difficulty</span>: <span class="title class_">Difficulty</span>.<span class="property">Intermediate</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">difficulty</span>: <span class="title class_">Difficulty</span> =</span><br><span class="line">  <span class="title function_">getProperty</span>(tsInfo, <span class="string">&#x27;difficulty&#x27;</span>) <span class="comment">// OK</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">supersetOf</span>: <span class="built_in">string</span> =</span><br><span class="line">  <span class="title function_">getProperty</span>(tsInfo, <span class="string">&#x27;superset_of&#x27;</span>) <span class="comment">// Error</span></span><br></pre></td></tr></table></figure>
+</details>
+
+
+<h1 id="Q3：泛型默认类型"><a href="#Q3：泛型默认类型" class="headerlink" title="Q3：泛型默认类型"></a>Q3：泛型默认类型</h1><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> A&lt;T = <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">  <span class="attr">name</span>: T</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">strA</span>: A = &#123; <span class="attr">name</span>: <span class="string">&quot;Semlinker&quot;</span> &#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">numB</span>: A&lt;<span class="built_in">number</span>&gt; = &#123; <span class="attr">name</span>: <span class="number">101</span> &#125;</span><br><span class="line"><span class="comment">// 要默认参数干啥...</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Q4：泛型条件类型"><a href="#Q4：泛型条件类型" class="headerlink" title="Q4：泛型条件类型"></a>Q4：泛型条件类型</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">T extends U ? X : Y</span><br></pre></td></tr></table></figure>
+
+<p>以上表达式的意思是：若 T 能够赋值给 U，那么类型是 X，否则为 Y。在条件类型表达式中，我们通常还会结合 infer 关键字，实现类型抽取：</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Dictionary</span>&lt;T = <span class="built_in">any</span>&gt; &#123;</span><br><span class="line">  [<span class="attr">key</span>: <span class="built_in">string</span>]: T</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">StrDict</span> = <span class="title class_">Dictionary</span>&lt;<span class="built_in">string</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">DictMember</span>&lt;T&gt; = T <span class="keyword">extends</span> <span class="title class_">Dictionary</span>&lt;infer V&gt; ? V : <span class="built_in">never</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">StrDictMember</span> = <span class="title class_">DictMember</span>&lt;<span class="title class_">StrDict</span>&gt; <span class="comment">// string</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Q5：泛型工具"><a href="#Q5：泛型工具" class="headerlink" title="Q5：泛型工具"></a>Q5：泛型工具</h1><p>为了方便开发者 TypeScript 内置了一些常用的工具类型，比如 Partial、Required、Readonly、Record 和 ReturnType 等。</p>
+<h2 id="5-1-Partial"><a href="#5-1-Partial" class="headerlink" title="5.1 Partial"></a>5.1 Partial</h2><p>Partial<T> 的作用就是将某个类型里的属性全部变为可选项 ?。</p>
+<h2 id="5-2-Record"><a href="#5-2-Record" class="headerlink" title="5.2 Record"></a>5.2 Record</h2><details>
+  <summary>切换 &#8681;</summary>
+
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">PageInfo</span> &#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Page</span> = <span class="string">&#x27;Home&#x27;</span> | <span class="string">&#x27;About&#x27;</span> | <span class="string">&#x27;Contact&#x27;</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">x</span>: <span class="title class_">Record</span>&lt;<span class="title class_">Page</span>, <span class="title class_">PageInfo</span>&gt; = &#123;</span><br><span class="line">  <span class="attr">about</span>: &#123;</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;ahout&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">concact</span>: &#123;</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;concact&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">home</span>: &#123;</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;homeß&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1. 提取通用的 property 出来，这里是 title</span></span><br><span class="line"><span class="comment">// 2. 保证 key 值，这里是 Page</span></span><br></pre></td></tr></table></figure>
+</details>
+
+<h2 id="5-3-Pick"><a href="#5-3-Pick" class="headerlink" title="5.3 Pick"></a>5.3 Pick</h2><p>将某个类型中的子属性挑出来，变成包含这个类型部分属性的子类型。</p>
+<details>
+  <summary>切换 &#8681;</summary>
+
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Todo</span> &#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">description</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">completed</span>: <span class="built_in">boolean</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> what = <span class="string">&quot;title&quot;</span> | <span class="string">&quot;completed&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">TodoPreview</span> = <span class="title class_">Pick</span>&lt;<span class="title class_">Todo</span>, what&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">todo</span>: <span class="title class_">TodoPreview</span> = &#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&quot;Clean room&quot;</span>,</span><br><span class="line">  <span class="attr">completed</span>: <span class="literal">false</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</details>
+
+<h2 id="5-4-Exclude"><a href="#5-4-Exclude" class="headerlink" title="5.4 Exclude"></a>5.4 Exclude</h2><p>将某个类型中属于另一个的类型移除掉</p>
+<details>
+  <summary>切换 &#8681;</summary>
+
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="variable constant_">T0</span> = <span class="title class_">Exclude</span>&lt;<span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span> | <span class="string">&quot;c&quot;</span>, <span class="string">&quot;a&quot;</span>&gt; <span class="comment">// &quot;b&quot; | &quot;c&quot;</span></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">T1</span> = <span class="title class_">Exclude</span>&lt;<span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span> | <span class="string">&quot;c&quot;</span>, <span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span>&gt; <span class="comment">// &quot;c&quot;</span></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">T2</span> = <span class="title class_">Exclude</span>&lt;<span class="built_in">string</span> | <span class="built_in">number</span> | (<span class="function">() =&gt;</span> <span class="built_in">void</span>), <span class="title class_">Function</span>&gt; <span class="comment">// string | number</span></span><br></pre></td></tr></table></figure>
+</details>
+
+<h2 id="5-5-ReturnType"><a href="#5-5-ReturnType" class="headerlink" title="5.5 ReturnType"></a>5.5 ReturnType</h2><p>获取函数 T 的返回类型</p>
+<h1 id="Q6-使用泛型创建对象"><a href="#Q6-使用泛型创建对象" class="headerlink" title="Q6. 使用泛型创建对象"></a>Q6. 使用泛型创建对象</h1><h2 id="6-1-构造签名"><a href="#6-1-构造签名" class="headerlink" title="6.1 构造签名"></a>6.1 构造签名</h2><p>在 TypeScript 接口中，你可以使用 new 关键字来描述一个构造函数：</p>
+<details>
+  <summary>切换 &#8681;</summary>
+
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FirstClass</span> &#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="built_in">number</span> | <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SecondClass</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> | <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GenericCreator</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="title function_">create</span>(): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_">T</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> creator1 = <span class="keyword">new</span> <span class="title class_">GenericCreator</span>&lt;<span class="title class_">FirstClass</span>&gt;()</span><br><span class="line"><span class="keyword">const</span> <span class="attr">firstClass</span>: <span class="title class_">FirstClass</span> = creator1.<span class="title function_">create</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> creator2 = <span class="keyword">new</span> <span class="title class_">GenericCreator</span>&lt;<span class="title class_">SecondClass</span>&gt;()</span><br><span class="line"><span class="keyword">const</span> <span class="attr">secondClass</span>: <span class="title class_">SecondClass</span> = creator2.<span class="title function_">create</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抛错：&#x27;T&#x27; only refers to a type, but is being used as a value here.</span></span><br><span class="line"><span class="comment">// T 只是代表一种类型，但却作为值使用</span></span><br></pre></td></tr></table></figure>
+</details>
+
+<p>在 TypeScript 接口中，你可以使用 <font color="red">new </font>关键字来描述一个构造函数：</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">  <span class="keyword">new</span> (<span class="attr">x</span>: <span class="built_in">number</span>, <span class="attr">y</span>: <span class="built_in">number</span>): <span class="title class_">Point</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上接口中的 new (x: number, y: number) 我们称之为「构造签名」，其语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ConstructSignature:  new TypeParametersopt ( ParameterListopt) TypeAnnotationopt</span><br></pre></td></tr></table></figure>
+
+<p>在上述的构造签名中，TypeParametersopt 、ParameterListopt 和 TypeAnnotationopt 分别表示：可选的类型参数、可选的参数列表和可选的类型注解。与该语法相对应的几种常见的使用形式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">new C   // 可选的类型参数</span><br><span class="line">new C ( ... )   // 可选的参数列表</span><br><span class="line">new C &lt; ... &gt; ( ... ) // 可选的类型注解</span><br></pre></td></tr></table></figure>
+<h2 id="6-1-构造函数类型"><a href="#6-1-构造函数类型" class="headerlink" title="6.1 构造函数类型"></a>6.1 构造函数类型</h2><ol>
+<li>包含一个或多个<font color="red">构造签名</font>的对象类型被称为构造函数类型；</li>
+<li>构造函数类型可以使用<font color="red">「构造函数类型字面量」</font>或包含<font color="red">「构造签名」</font>的对象类型字面量来编写。</li>
+</ol>
+<p>构造函数类型字面量 👇：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> &lt; <span class="variable constant_">T1</span>, <span class="variable constant_">T2</span>, ... &gt; <span class="function">(<span class="params"> p1, p2, ... </span>) =&gt;</span> R</span><br></pre></td></tr></table></figure>
+
+<p>与「对象类型字面量」是等价的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123; <span class="keyword">new</span> &lt; <span class="variable constant_">T1</span>, <span class="variable constant_">T2</span>, ... &gt; ( p1, p2, ... ) : R &#125;</span><br></pre></td></tr></table></figure>
+
+<p>举个实际的示例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 「构造函数类型字面量」</span></span><br><span class="line"><span class="keyword">new</span> (<span class="attr">x</span>: number, <span class="attr">y</span>: number) =&gt; <span class="title class_">Point</span></span><br></pre></td></tr></table></figure>
+
+<p>等价于：「对象类型字面量」</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123; new (x: number, y: number): Point &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-2-构造函数类型的应用"><a href="#6-2-构造函数类型的应用" class="headerlink" title="6.2 构造函数类型的应用"></a>6.2 构造函数类型的应用</h2><details>
+  <summary>切换 &#8681;</summary>
+
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">  <span class="keyword">new</span> (<span class="attr">x</span>: <span class="built_in">number</span>, <span class="attr">y</span>: <span class="built_in">number</span>): <span class="title class_">Point</span></span><br><span class="line">  <span class="attr">x</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="attr">y</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Point2D</span> <span class="keyword">implements</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">x</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">y</span>: <span class="built_in">number</span></span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">x</span> = x</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">y</span> = y</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">point</span>: <span class="title class_">Point</span> = <span class="keyword">new</span> <span class="title class_">Point2D</span>(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">// 抛错：</span></span><br><span class="line"><span class="comment">// Class &#x27;Point2D&#x27; incorrectly implements interface &#x27;Point&#x27;.</span></span><br><span class="line"><span class="comment">// Type &#x27;Point2D&#x27; provides no match for the signature &#x27;new (x: number, y: number): Point&#x27;.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</details>
+
+<p>要解决这个问题，我们就需要把对前面定义的 Point 接口进行分离，即把接口的属性和构造函数类型进行分离：</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">  <span class="attr">x</span>: <span class="built_in">number</span>;</span><br><span class="line">  <span class="attr">y</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">PointConstructor</span> &#123;</span><br><span class="line">  <span class="keyword">new</span> (<span class="attr">x</span>: <span class="built_in">number</span>, <span class="attr">y</span>: <span class="built_in">number</span>): <span class="title class_">Point</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完成接口拆分之后，除了前面已经定义的 Point2D 类之外，我们又定义了一个 newPoint 工厂函数，该函数用于根据传入的 PointConstructor 类型的构造函数，来创建对应的 Point 对象。</p>
+<details>
+  <summary>切换 &#8681;</summary>
+
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Point2D</span> <span class="keyword">implements</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">x</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">y</span>: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">x</span> = x;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">y</span> = y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">newPoint</span>(<span class="params"></span></span><br><span class="line"><span class="params">  pointConstructor: PointConstructor,</span></span><br><span class="line"><span class="params">  x: <span class="built_in">number</span>,</span></span><br><span class="line"><span class="params">  y: <span class="built_in">number</span></span></span><br><span class="line"><span class="params"></span>): <span class="title class_">Point</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_">pointConstructor</span>(x, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">point</span>: <span class="title class_">Point</span> = <span class="title function_">newPoint</span>(<span class="title class_">Point2D</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+</details>
+
+<h2 id="6-3-使用泛型创建对象"><a href="#6-3-使用泛型创建对象" class="headerlink" title="6.3 使用泛型创建对象"></a>6.3 使用泛型创建对象</h2><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">GenericCreator</span>&lt;T&gt; &#123;</span><br><span class="line">  create&lt;T&gt;(<span class="attr">c</span>: &#123; <span class="keyword">new</span> (): T &#125;): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_">c</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在以上代码中，我们重新定义了 create 成员方法，根据该方法的签名，我们可以知道该方法接收一个参数，其类型是构造函数类型，且该构造函数不包含任何参数，调用该构造函数后，会返回类型 T 的实例。</p>
+<p>如果构造函数含有参数的话，比如包含一个 number 类型的参数时，我们可以这样定义 create 方法：</p>
+<p>create<T>(c: { new(a: number): T; }, num: number): T {<br>  return new c(num);<br>}</p>
+<p>更新完 GenericCreator 泛型类，我们就可以使用下面的方式来创建 FirstClass 和 SecondClass 类的实例:</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> creator1 = <span class="keyword">new</span> <span class="title class_">GenericCreator</span>&lt;<span class="title class_">FirstClass</span>&gt;();</span><br><span class="line"><span class="keyword">const</span> <span class="attr">firstClass</span>: <span class="title class_">FirstClass</span> = creator1.<span class="title function_">create</span>(<span class="title class_">FirstClass</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> creator2 = <span class="keyword">new</span> <span class="title class_">GenericCreator</span>&lt;<span class="title class_">SecondClass</span>&gt;();</span><br><span class="line"><span class="keyword">const</span> <span class="attr">secondClass</span>: <span class="title class_">SecondClass</span> = creator2.<span class="title function_">create</span>(<span class="title class_">SecondClass</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    
+  </div>
+
+</article>
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2024/08/14/%E7%94%9F%E6%B4%BB-%E6%B4%BB%E8%BF%87%E6%9D%A5%E4%BA%86/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+    <div id="comment" class="vcomment" ></div>
+    <script>
+        var notify = 'false' == true ? true : false;
+        var verify = 'true' == true ? true : false;
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+            return GUEST_INFO.indexOf(item) > -1
+        });
+        guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+        window.valine = new Valine({
+            el: '.vcomment',
+            notify: notify,
+            verify: verify,
+            appId: "svQWH7m2962Cn42ZT1mvWnCP-gzGzoHsz",
+            appKey: "FvyIr8AWsURL7tzacZHxOE39",
+            avatar:'mm',
+            placeholder: "Just go go",
+            guest_info:guest_info,
+            pageSize:'10'
+        });
+    </script>
+  
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":200,"height":300,"hOffset":90,"vOffset":0},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

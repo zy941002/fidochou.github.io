@@ -16,15 +16,15 @@
     <meta name="keywords" content="前端,Frontend,Nodejs,JavaScript" />
   
 
-  <meta name="description" content="用纯 CSS 实现三角形 #demo &amp;#123;  width: 0;  height: 0;  border-width: 100px;  border-style: solid;  border-color: transparent transparent red transparent;  &#x2F;&#x2F;原理，牢记 border 的值是从 border-top 顺时针的&amp;#125;  样式权重计算">
+  <meta name="description" content="用纯 CSS 实现三角形 #demo &#123;  width: 0;  height: 0;  border-width: 100px;  border-style: solid;  border-color: transparent transparent red transparent;  &#x2F;&#x2F;原理，牢记 border 的值是从 border-top 顺时针的&#125;  样式权重计算">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试常考的 CSS 问题">
 <meta property="og:url" content="http://jocolorful.com/2022/09/15/CSS-%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%80%83%E7%9A%84%20CSS%20%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Jojo&#39;s World">
-<meta property="og:description" content="用纯 CSS 实现三角形 #demo &amp;#123;  width: 0;  height: 0;  border-width: 100px;  border-style: solid;  border-color: transparent transparent red transparent;  &#x2F;&#x2F;原理，牢记 border 的值是从 border-top 顺时针的&amp;#125;  样式权重计算">
+<meta property="og:description" content="用纯 CSS 实现三角形 #demo &#123;  width: 0;  height: 0;  border-width: 100px;  border-style: solid;  border-color: transparent transparent red transparent;  &#x2F;&#x2F;原理，牢记 border 的值是从 border-top 顺时针的&#125;  样式权重计算">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-15T08:54:14.000Z">
-<meta property="article:modified_time" content="2022-09-15T09:11:39.961Z">
+<meta property="article:modified_time" content="2024-08-15T14:54:44.776Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -88,8 +88,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
 
@@ -143,21 +142,22 @@ ga('send', 'pageview');
   <div class="article-content">
     
       <ol>
-<li><p><a href="https://juejin.cn/post/6844903882007511048" target="_blank" rel="noopener">用纯 CSS 实现三角形</a></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#demo</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">border-width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-color</span>: transparent transparent red transparent;</span><br><span class="line">  //原理，牢记 border 的值是从 border-top 顺时针的</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903882007511048">用纯 CSS 实现三角形</a></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#demo</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">border-width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-color</span>: transparent transparent red transparent;</span><br><span class="line">  //原理，牢记 <span class="attribute">border</span> 的值是从 <span class="attribute">border-top</span> 顺时针的</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>样式权重计算规则</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">important 最高，内敛样式 1000 &gt; id  1000 &gt;  类/伪/属性 样式 100 &gt; 标签/伪元素 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">important 最高，内敛样式 <span class="number">1000</span> &gt; id  <span class="number">1000</span> &gt;  类/伪/属性 样式 <span class="number">100</span> &gt; 标签/伪元素 <span class="number">1</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><a href="https://juejin.cn/post/6905539198107942919#heading-3" target="_blank" rel="noopener">CSS 的继承</a></p>
+<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6905539198107942919#heading-3">CSS 的继承</a></p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line">无继承属性：布局/定位/宽高相关，总结一下就是影响文档流</span><br><span class="line">有继承属性：文本颜色、大小、行高之类</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>display 的属性值及其作用？</p>
-<ol>
-<li><strong>block</strong></li>
-<li><strong>inline</strong>：不能设置宽高</li>
-<li><strong>inline-block</strong></li>
-</ol>
+</li>
+<li><p><strong>block</strong></p>
+</li>
+<li><p><strong>inline</strong>：不能设置宽高</p>
+</li>
+<li><p><strong>inline-block</strong></p>
 </li>
 <li><p>隐藏元素的方法有哪些？</p>
 <ol>
@@ -177,7 +177,7 @@ ga('send', 'pageview');
 </tr>
 </thead>
 <tbody><tr>
-<td>CSS/RSS</td>
+<td>CSS&#x2F;RSS</td>
 <td>CSS</td>
 </tr>
 <tr>
@@ -190,46 +190,36 @@ ga('send', 'pageview');
 </tr>
 </tbody></table>
 <ol start="7">
-<li><p>transition 和 animation 的区别？<br>transition 强调过渡、而 animation 强调动画</p>
+<li><p>transition 和 animation 的区别？<br>  transition 强调过渡、而 animation 强调动画</p>
 </li>
 <li><p>display:none 与 visibility:hidden 的区别</p>
-<ol>
-<li><code>display:none;</code><ol>
-<li>在页面 DOM 树是完全不可见的，渲染时不占据任何空间，但是在 Chrome 的审查面版可以看见，</li>
-<li>非继承属性：子节点修改dislay: block 之类的也不会显示出来</li>
-<li>修改值会造成重排</li>
-</ol>
 </li>
-<li><code>visibility:hidden;</code><ol>
-<li>占据 DOM 的空间，只是内容不显示，</li>
-<li>继承属性：修改子节点的属性可显示出来。</li>
-<li>修改值会造成重绘</li>
-</ol>
+<li><p><code>display:none;</code><br>1. 在页面 DOM 树是完全不可见的，渲染时不占据任何空间，但是在 Chrome 的审查面版可以看见，<br>2. 非继承属性：子节点修改dislay: block 之类的也不会显示出来<br>3. 修改值会造成重排</p>
 </li>
-</ol>
+<li><p><code>visibility:hidden;</code><br>1. 占据 DOM 的空间，只是内容不显示，<br>2. 继承属性：修改子节点的属性可显示出来。<br>3. 修改值会造成重绘</p>
 </li>
 <li><p>「伪元素」和「伪类」的区别和作用？</p>
 <ol>
 <li>伪元素<ol>
 <li>会产生额外的元素</li>
-<li>两个冒号：常见的伪元素有 before/after/firs-letter/first-line</li>
+<li>两个冒号：常见的伪元素有 before&#x2F;after&#x2F;firs-letter&#x2F;first-line</li>
 </ol>
 </li>
 <li>伪类：额外的样式<ol>
 <li>添加额外的样式</li>
-<li>一个冒号：一般 hover/focus/first-child 之类的</li>
+<li>一个冒号：一般 hover&#x2F;focus&#x2F;first-child 之类的</li>
 </ol>
 </li>
 </ol>
 </li>
 <li><p>对于盒模型的理解</p>
 <ol>
-<li>IE 盒模型：width=padding/border/content</li>
-<li>标准盒模型：width=content</li>
+<li>IE 盒模型：width&#x3D;padding&#x2F;border&#x2F;content</li>
+<li>标准盒模型：width&#x3D;content</li>
 </ol>
 </li>
 </ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+
     
   </div>
 

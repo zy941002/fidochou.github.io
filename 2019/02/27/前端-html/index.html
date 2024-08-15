@@ -24,7 +24,7 @@
 <meta property="og:description" content="Doctype作用？标准模式与兼容模式各有什么区别? &lt;!DOCTYPE&gt; 声明位于 HTML 文档中的第一行，处于 &lt;html&gt; 标签之前。告知浏览器的解析器用什么文档标准解析这个文档。&lt;!DOCTYPE&gt;不存在或格式不正确会导致文档以兼容模式呈现。  标准模式的排版和 JS 运作模式都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式显">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-02-27T06:40:32.000Z">
-<meta property="article:modified_time" content="2022-09-12T02:24:23.537Z">
+<meta property="article:modified_time" content="2024-08-15T14:54:44.788Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -88,8 +88,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
 
@@ -101,7 +100,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Doctype作用？标准模式与兼容模式各有什么区别"><span class="toc-text">Doctype作用？标准模式与兼容模式各有什么区别?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渐进增强、优雅降级"><span class="toc-text">渐进增强、优雅降级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML5-为什么只需要写-lt-DOCTYPE-HTML-gt-？"><span class="toc-text">HTML5 为什么只需要写&lt;!DOCTYPE HTML&gt;？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#行内元素、块级元素"><span class="toc-text">行内元素、块级元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面导入样式时，使用-link-和-import-有什么区别？"><span class="toc-text">页面导入样式时，使用 link 和 @import 有什么区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对浏览器内核的理解"><span class="toc-text">对浏览器内核的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iframe-有那些缺点？"><span class="toc-text">iframe 有那些缺点？</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Doctype%E4%BD%9C%E7%94%A8%EF%BC%9F%E6%A0%87%E5%87%86%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%85%BC%E5%AE%B9%E6%A8%A1%E5%BC%8F%E5%90%84%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-text">Doctype作用？标准模式与兼容模式各有什么区别?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%90%E8%BF%9B%E5%A2%9E%E5%BC%BA%E3%80%81%E4%BC%98%E9%9B%85%E9%99%8D%E7%BA%A7"><span class="toc-text">渐进增强、优雅降级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML5-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E9%9C%80%E8%A6%81%E5%86%99%EF%BC%9F"><span class="toc-text">HTML5 为什么只需要写&lt;!DOCTYPE HTML&gt;？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E3%80%81%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0"><span class="toc-text">行内元素、块级元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%AF%BC%E5%85%A5%E6%A0%B7%E5%BC%8F%E6%97%B6%EF%BC%8C%E4%BD%BF%E7%94%A8-link-%E5%92%8C-import-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">页面导入样式时，使用 link 和 @import 有什么区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对浏览器内核的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iframe-%E6%9C%89%E9%82%A3%E4%BA%9B%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="toc-text">iframe 有那些缺点？</span></a></li></ol>
   </div>
 
 
@@ -157,9 +156,9 @@ ga('send', 'pageview');
 <li>渐进增强：一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器进行效果、交互、追加功能达到更好的体验。</li>
 <li>优雅降级：一开始就构建站点的完整功能，然后针对浏览器测试和修复。</li>
 </ul>
-<a id="more"></a>
+<span id="more"></span>
 
-<h2 id="HTML5-为什么只需要写-lt-DOCTYPE-HTML-gt-？"><a href="#HTML5-为什么只需要写-lt-DOCTYPE-HTML-gt-？" class="headerlink" title="HTML5 为什么只需要写&lt;!DOCTYPE HTML&gt;？"></a>HTML5 为什么只需要写<code>&lt;!DOCTYPE HTML&gt;</code>？</h2><ul>
+<h2 id="HTML5-为什么只需要写？"><a href="#HTML5-为什么只需要写？" class="headerlink" title="HTML5 为什么只需要写&lt;!DOCTYPE HTML&gt;？"></a>HTML5 为什么只需要写<code>&lt;!DOCTYPE HTML&gt;</code>？</h2><ul>
 <li>HTML5 不基于 SGML（标准通用标记语言），因此不需要对 DTD 进行引用，但是需要 doctype 来规范浏览器的行为（让浏览器按照它们应该的方式来运行）；</li>
 <li>HTML4.01 基于 SGML，所以需要对 DTD 进行引用，才能告知浏览器文档所使用的文档类型。</li>
 </ul>
@@ -186,7 +185,7 @@ ga('send', 'pageview');
 <li>iframe 和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载；</li>
 <li>如果需要使用 iframe，最好是通过 Javascript 动态给 iframe 添加 src 属性值，这样可以绕开以上问题。</li>
 </ul>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+
     
   </div>
 

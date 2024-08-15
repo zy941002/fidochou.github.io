@@ -24,7 +24,7 @@
 <meta property="og:description" content="CSS 的伪元素目前一共有八种，孤陋寡闻的我只会「before」和 「after」:">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-28T06:33:08.000Z">
-<meta property="article:modified_time" content="2022-09-15T08:55:25.745Z">
+<meta property="article:modified_time" content="2024-08-15T14:54:44.776Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -88,8 +88,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
 
@@ -101,7 +100,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Content-属性"><span class="toc-text">Content 属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#从-arrt-属性获取现实的数据"><span class="toc-text">从 arrt() 属性获取现实的数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-url"><span class="toc-text">使用 url</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-url-1"><span class="toc-text">使用 url</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Content-%E5%B1%9E%E6%80%A7"><span class="toc-text">Content 属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E-arrt-%E5%B1%9E%E6%80%A7%E8%8E%B7%E5%8F%96%E7%8E%B0%E5%AE%9E%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-text">从 arrt() 属性获取现实的数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-url"><span class="toc-text">使用 url</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-url-1"><span class="toc-text">使用 url</span></a></li></ol></li></ol>
   </div>
 
 
@@ -148,29 +147,27 @@ ga('send', 'pageview');
   <div class="article-content">
     
       <p>CSS 的伪元素目前一共有八种，孤陋寡闻的我只会「before」和 「after」:</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <ul>
 <li>::after</li>
 <li>::before</li>
 <li>::first-letter</li>
 <li>::first-line</li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/::marker" target="_blank" rel="noopener">::marker</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/::marker">::marker</a></li>
 <li>::selection</li>
 </ul>
 <h2 id="Content-属性"><a href="#Content-属性" class="headerlink" title="Content 属性"></a>Content 属性</h2><p>1.「content」属性是必须的，Content 默认是 「display-inline」<br>2.「content」是不能被用户选择的</p>
 <h3 id="从-arrt-属性获取现实的数据"><a href="#从-arrt-属性获取现实的数据" class="headerlink" title="从 arrt() 属性获取现实的数据"></a>从 arrt() 属性获取现实的数据</h3><p>可以从属性值上获取数据</p>
-<p><code>&lt;p data-before-text=&quot;foo&quot;&gt;hello world&lt;/p &gt;
-content: attr(data-before-text);</code></p>
-<h3 id="使用-url"><a href="#使用-url" class="headerlink" title="使用 url"></a>使用 url</h3><p>=======<br><code>&lt;p data-before-text=&quot;foo&quot;&gt;hello world&lt;/p&gt;
-content: attr(data-before-text);</code></p>
+<p><code>&lt;p data-before-text=&quot;foo&quot;&gt;hello world&lt;/p &gt; content: attr(data-before-text); </code></p>
+<h3 id="使用-url"><a href="#使用-url" class="headerlink" title="使用 url"></a>使用 url</h3><p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br><code>&lt;p data-before-text=&quot;foo&quot;&gt;hello world&lt;/p&gt; content: attr(data-before-text); </code></p>
 <h3 id="使用-url-1"><a href="#使用-url-1" class="headerlink" title="使用 url"></a>使用 url</h3><p><code>content: url(https://unsplash.it/15/15);</code></p>
-<p>除了 url 还可以使用以下<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content" target="_blank" rel="noopener">属性</a>：</p>
+<p>除了 url 还可以使用以下<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/content">属性</a>：</p>
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/counter()" target="_blank" rel="noopener">counter</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/quotes）" target="_blank" rel="noopener">quotes</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/counter()">counter</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/quotes%EF%BC%89">quotes</a></li>
 </ul>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+
     
   </div>
 

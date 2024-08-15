@@ -24,7 +24,7 @@
 <meta property="og:description" content="原文：都 9102 年了，还问 GET 和 POST 的区别">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-07T06:43:46.000Z">
-<meta property="article:modified_time" content="2022-09-12T06:22:12.694Z">
+<meta property="article:modified_time" content="2024-08-15T14:54:44.774Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -88,8 +88,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
 
@@ -142,30 +141,34 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p>原文：<a href="https://segmentfault.com/a/1190000018129846" target="_blank" rel="noopener">都 9102 年了，还问 GET 和 POST 的区别</a></p>
-<a id="more"></a>
+      <p>原文：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018129846">都 9102 年了，还问 GET 和 POST 的区别</a></p>
+<span id="more"></span>
 
 <ol>
-<li><p>GET 和 POST 只是 HTTP 协议中两种请求方式，而 HTTP 协议是基于 TCP/IP 的应用层协议，无论 GET 还是 POST，用的都是同一个传输层协议，所以在传输层上，没有任何区别。</p>
+<li><p>GET 和 POST 只是 HTTP 协议中两种请求方式，而 HTTP 协议是基于 TCP&#x2F;IP 的应用层协议，无论 GET 还是 POST，用的都是同一个传输层协议，所以在传输层上，没有任何区别。</p>
 <ol>
-<li><p>当 GET 和 POST 「不携带参数」时，最大的区别是第一行方法名不同:<br>请求报文第一行</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">GET /uri HTTP/1.1 \r\n</span><br></pre></td></tr></table></figure>
+<li>当 GET 和 POST 「不携带参数」时，最大的区别是第一行方法名不同:</li>
+</ol>
+</li>
+</ol>
+<p>请求报文第一行</p>
+<pre><code><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">GET /uri HTTP/1.1 \r\n</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">POST /uri HTTP/1.1 \r\n</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当 GET 和 POST 「携带参数」时，安装约定 GET 方法的参数应该放在 URL 里，POST 方法的参数应该放在  body 中</p>
-<p>GET 简约版报文</p>
+
+2. 当 GET 和 POST 「携带参数」时，安装约定 GET 方法的参数应该放在 URL 里，POST 方法的参数应该放在  body 中
+
+GET 简约版报文
+
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">GET /index.php?name=qiming.c&amp;age=22 HTTP/1.1</span><br><span class="line">Host: localhost</span><br></pre></td></tr></table></figure>
 
-<p>POST 简约版报文</p>
+POST 简约版报文
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">POST /index.php HTTP/1.1</span><br><span class="line">Host: localhost</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">name=qiming.c&amp;age=22</span><br></pre></td></tr></table></figure>
-</li>
+</code></pre>
+<ol start="2">
+<li>「浏览器」的 URL 有长度限制是出于「安全」和「性能」考虑，在解析长 URL 时需防止恶意构造长 URL 来进行攻击，和 HTTP 协议本身没有关系。</li>
 </ol>
-</li>
-<li><p>「浏览器」的 URL 有长度限制是出于「安全」和「性能」考虑，在解析长 URL 时需防止恶意构造长 URL 来进行攻击，和 HTTP 协议本身没有关系。</p>
-</li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+
     
   </div>
 

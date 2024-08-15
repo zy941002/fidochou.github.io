@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://jocolorful.com/images/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E7%BC%93%E5%AD%98.jpg">
 <meta property="article:published_time" content="2021-07-16T00:58:58.000Z">
-<meta property="article:modified_time" content="2022-03-28T00:54:22.295Z">
+<meta property="article:modified_time" content="2024-08-15T14:54:44.807Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://jocolorful.com/images/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E7%BC%93%E5%AD%98.jpg">
@@ -90,8 +90,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
 
@@ -103,7 +102,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#递归：Recusion"><span class="toc-text">递归：Recusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数结构"><span class="toc-text">函数结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机的实现方法"><span class="toc-text">计算机的实现方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#递归一般有三种形式："><span class="toc-text">递归一般有三种形式：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存（Memoization）"><span class="toc-text">缓存（Memoization）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治（Divide-and-Conquer）"><span class="toc-text">分治（Divide and Conquer）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分治模板"><span class="toc-text">分治模板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回溯（Backtracking）"><span class="toc-text">回溯（Backtracking）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治（Divide-and-Conquer）-1"><span class="toc-text">分治（Divide and Conquer）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回溯（Backtracking）-1"><span class="toc-text">回溯（Backtracking）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#回溯模板"><span class="toc-text">回溯模板</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%92%E5%BD%92%EF%BC%9ARecusion"><span class="toc-text">递归：Recusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%BB%93%E6%9E%84"><span class="toc-text">函数结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-text">计算机的实现方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%80%E8%88%AC%E6%9C%89%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F%EF%BC%9A"><span class="toc-text">递归一般有三种形式：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%EF%BC%88Memoization%EF%BC%89"><span class="toc-text">缓存（Memoization）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%B2%BB%EF%BC%88Divide-and-Conquer%EF%BC%89"><span class="toc-text">分治（Divide and Conquer）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%B2%BB%E6%A8%A1%E6%9D%BF"><span class="toc-text">分治模板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E6%BA%AF%EF%BC%88Backtracking%EF%BC%89"><span class="toc-text">回溯（Backtracking）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%B2%BB%EF%BC%88Divide-and-Conquer%EF%BC%89-1"><span class="toc-text">分治（Divide and Conquer）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E6%BA%AF%EF%BC%88Backtracking%EF%BC%89-1"><span class="toc-text">回溯（Backtracking）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E6%BA%AF%E6%A8%A1%E6%9D%BF"><span class="toc-text">回溯模板</span></a></li></ol></li></ol></li></ol>
   </div>
 
 
@@ -149,35 +148,35 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="递归：Recusion"><a href="#递归：Recusion" class="headerlink" title="递归：Recusion"></a>递归：Recusion</h2><a id="more"></a>
+      <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="递归：Recusion"><a href="#递归：Recusion" class="headerlink" title="递归：Recusion"></a>递归：Recusion</h2><span id="more"></span>
 <blockquote>
 <p>Recusion is an approach to solve problems using a function that calls itself as a subroutine</p>
 </blockquote>
-<h2 id="函数结构"><a href="#函数结构" class="headerlink" title="函数结构"></a>函数结构</h2><p>一般来讲，递归函数 = 终止条件（Base case） + 递归关系（Recusion relation）。</p>
+<h2 id="函数结构"><a href="#函数结构" class="headerlink" title="函数结构"></a>函数结构</h2><p>一般来讲，递归函数 &#x3D; 终止条件（Base case） + 递归关系（Recusion relation）。</p>
 <p>Base case：最小问题的解决方式<br>Recusion relation：大问题和小问题的关系</p>
 <h2 id="计算机的实现方法"><a href="#计算机的实现方法" class="headerlink" title="计算机的实现方法"></a>计算机的实现方法</h2><ol>
 <li>任何一个函数的调用，计算机会在内存中生成一块区域，用于存放函数的参数，返回的地址等，这块区域叫做「栈」。</li>
 <li>递归函数的调用会生成一系列的栈</li>
 </ol>
-<h1 id="递归一般有三种形式："><a href="#递归一般有三种形式：" class="headerlink" title="递归一般有三种形式："></a>递归一般有三种形式：</h1><h2 id="缓存（Memoization）"><a href="#缓存（Memoization）" class="headerlink" title="缓存（Memoization）"></a>缓存（Memoization）</h2><p>以经典的 <a href="https://leetcode-cn.com/problems/fibonacci-number/" target="_blank" rel="noopener">斐波那契数列</a> 为例</p>
+<h1 id="递归一般有三种形式："><a href="#递归一般有三种形式：" class="headerlink" title="递归一般有三种形式："></a>递归一般有三种形式：</h1><h2 id="缓存（Memoization）"><a href="#缓存（Memoization）" class="headerlink" title="缓存（Memoization）"></a>缓存（Memoization）</h2><p>以经典的 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/fibonacci-number/">斐波那契数列</a> 为例</p>
 <ol>
 <li>Base case：</li>
 </ol>
-<p>$F(0) = 0;F(1) = 1$</p>
+<p>$F(0) &#x3D; 0;F(1) &#x3D; 1$</p>
 <ol start="2">
 <li>Relation</li>
 </ol>
-<p>$F(n) = F(n - 1) + F(n - 2)$</p>
+<p>$F(n) &#x3D; F(n - 1) + F(n - 2)$</p>
 <p>根据这两个条件很容易得出递归函数，而为什么需要引入缓存：</p>
 <center>
     <img src="/images/算法-递归缓存.jpg"  width="500px" />
 </center>
 
-<p>如上图：f(4) = f(3) + <font color="red">f(2)</font></p>
-<p>而 f(3) = <font color="red">f(2)</font> + f(1)</p>
+<p>如上图：f(4) &#x3D; f(3) + <font color="red">f(2)</font></p>
+<p>而 f(3) &#x3D; <font color="red">f(2)</font> + f(1)</p>
 <p>在计算 $f(3)$ 时，我们其实已经计算过 $f(2)$ 的结果，将 $f(2)$ 存入缓存则可以减少以空间换时间。</p>
 <p>相关题目：</p>
-<p><a href="https://leetcode-cn.com/problems/climbing-stairs/" target="_blank" rel="noopener">爬楼梯</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/climbing-stairs/">爬楼梯</a></p>
 <h2 id="分治（Divide-and-Conquer）"><a href="#分治（Divide-and-Conquer）" class="headerlink" title="分治（Divide and Conquer）"></a>分治（Divide and Conquer）</h2><blockquote>
 <p>分而治之，几乎等同与标准的递归，唯一的区别是。最后需要将子问题的结果合并。</p>
 </blockquote>
@@ -186,14 +185,14 @@ ga('send', 'pageview');
 <li>Conquer：递归解决小问题</li>
 <li>Combine：合并每个结果</li>
 </ul>
-<p>以 <a href="https://leetcode-cn.com/problems/validate-binary-search-tree/" target="_blank" rel="noopener">98. 验证二叉搜索树</a> 为例</p>
+<p>以 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/validate-binary-search-tree/">98. 验证二叉搜索树</a> 为例</p>
 <p>给定一个二叉树，判断其是否是一个有效的二叉搜索树。<br>一个二叉搜索树具有如下特征：</p>
 <ul>
 <li>节点的左子树只包含小于当前节点的数。</li>
 <li>节点的右子树只包含大于当前节点的数。</li>
 <li>所有左子树和右子树自身必须也是二叉搜索树。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> isValidBST = <span class="function"><span class="keyword">function</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">valid</span>(<span class="params">root, low = -Infinity, high = Infinity</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (root.left &amp;&amp; (root.left.val &gt;= root.val) || root.val &gt;= high ) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (root.right &amp;&amp; (root.right.val &lt;= root.val) || root.val &lt;= low ) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125; <span class="comment">// base case</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (valid(root.left, low, root.val) &amp;&amp; valid(root.right, root.val, high)) </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> valid(root)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> isValidBST = <span class="keyword">function</span>(<span class="params">root</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">valid</span>(<span class="params">root, low = -<span class="literal">Infinity</span>, high = <span class="literal">Infinity</span></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (root.<span class="property">left</span> &amp;&amp; (root.<span class="property">left</span>.<span class="property">val</span> &gt;= root.<span class="property">val</span>) || root.<span class="property">val</span> &gt;= high ) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (root.<span class="property">right</span> &amp;&amp; (root.<span class="property">right</span>.<span class="property">val</span> &lt;= root.<span class="property">val</span>) || root.<span class="property">val</span> &lt;= low ) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125; <span class="comment">// base case</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (<span class="title function_">valid</span>(root.<span class="property">left</span>, low, root.<span class="property">val</span>) &amp;&amp; <span class="title function_">valid</span>(root.<span class="property">right</span>, root.<span class="property">val</span>, high)) </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">valid</span>(root)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 <ul>
@@ -202,33 +201,35 @@ ga('send', 'pageview');
 <li>结合：将结果合并</li>
 </ul>
 <p>将问题分解为：验证左子树 和 验证右子树。</p>
-<h3 id="分治模板"><a href="#分治模板" class="headerlink" title="分治模板"></a>分治模板</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">divideAndConquer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    [S1, S2, ...Sn] = divide(S)</span><br><span class="line">    rets = <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; Things.length; i++) &#123;</span><br><span class="line">        divideAndConquer(Things[i])</span><br><span class="line">    &#125;</span><br><span class="line">    [R1, R2, ...Rn] = rets</span><br><span class="line">    <span class="keyword">return</span> Combine([R1, R2, ...Rn])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="分治模板"><a href="#分治模板" class="headerlink" title="分治模板"></a>分治模板</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">divideAndConquer</span>(<span class="params"></span>) &#123;</span><br><span class="line">    [<span class="variable constant_">S1</span>, <span class="variable constant_">S2</span>, ...<span class="title class_">Sn</span>] = <span class="title function_">divide</span>(S)</span><br><span class="line">    rets = <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="title class_">Things</span>.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="title function_">divideAndConquer</span>(<span class="title class_">Things</span>[i])</span><br><span class="line">    &#125;</span><br><span class="line">    [<span class="variable constant_">R1</span>, <span class="variable constant_">R2</span>, ...<span class="title class_">Rn</span>] = rets</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Combine</span>([<span class="variable constant_">R1</span>, <span class="variable constant_">R2</span>, ...<span class="title class_">Rn</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="回溯（Backtracking）"><a href="#回溯（Backtracking）" class="headerlink" title="回溯（Backtracking）"></a>回溯（Backtracking）</h2><blockquote>
 <p>回溯问题的一般形式：寻找所有满足 XXX 条件的结果，并且问题可以递归实现。</p>
 </blockquote>
-<p>以 <a href="https://leetcode-cn.com/problems/generate-parentheses/" target="_blank" rel="noopener">LC22: 括号生成</a> 为例</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">=======</span><br><span class="line">Base <span class="keyword">case</span>：</span><br><span class="line"></span><br><span class="line">$F(<span class="number">0</span>) = <span class="number">0</span>;F(<span class="number">1</span>) = <span class="number">1</span>$</span><br><span class="line"></span><br><span class="line">Relation</span><br><span class="line"></span><br><span class="line">$F(n) = F(n - <span class="number">1</span>) + F(n - <span class="number">2</span>)$</span><br><span class="line"></span><br><span class="line">根据这两个条件很容易得出递归函数</span><br><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">`js</span></span><br></pre></td></tr></table></figure>
+<p>以 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/generate-parentheses/">LC22: 括号生成</a> 为例</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">=======</span><br><span class="line"><span class="title class_">Base</span> <span class="keyword">case</span>：</span><br><span class="line"></span><br><span class="line">$F(<span class="number">0</span>) = <span class="number">0</span>;<span class="title function_">F</span>(<span class="number">1</span>) = <span class="number">1</span>$</span><br><span class="line"></span><br><span class="line"><span class="title class_">Relation</span></span><br><span class="line"></span><br><span class="line">$F(n) = <span class="title function_">F</span>(n - <span class="number">1</span>) + <span class="title function_">F</span>(n - <span class="number">2</span>)$</span><br><span class="line"></span><br><span class="line">根据这两个条件很容易得出递归函数</span><br><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">`js</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
 <p>为什么需要引入缓存：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">st&#x3D;&gt;start: F(4)</span><br><span class="line">op1&#x3D;&gt;operation: F(3)</span><br><span class="line">op2&#x3D;&gt;operation: F(2)</span><br><span class="line">op3&#x3D;&gt;operation: F(1)</span><br><span class="line"></span><br><span class="line">st-&gt;op1-&gt;op2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">st=&gt;start: F(4)</span><br><span class="line">op1=&gt;operation: F(3)</span><br><span class="line">op2=&gt;operation: F(2)</span><br><span class="line">op3=&gt;operation: F(1)</span><br><span class="line"></span><br><span class="line">st-&gt;op1-&gt;op2</span><br></pre></td></tr></table></figure>
 
-<h2 id="分治（Divide-and-Conquer）-1"><a href="#分治（Divide-and-Conquer）-1" class="headerlink" title="分治（Divide and Conquer）"></a>分治（Divide and Conquer）</h2><h2 id="回溯（Backtracking）-1"><a href="#回溯（Backtracking）-1" class="headerlink" title="回溯（Backtracking）"></a>回溯（Backtracking）</h2><p>1.</p>
-<p><a href="https://leetcode-cn.com/problems/generate-parentheses/" target="_blank" rel="noopener">LC22: 括号生成</a></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;string[]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> generateParenthesis = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> result = []</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">backtracking</span>(<span class="params">charactor = <span class="string">''</span>, left = <span class="number">0</span>, right = <span class="number">0</span></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (charactor.length === <span class="number">2</span> * n) &#123;</span><br><span class="line">            result.push(charactor)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (left &lt; n) &#123;</span><br><span class="line">            backtracking(charactor + <span class="string">'('</span>, left + <span class="number">1</span>, right)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) &#123;</span><br><span class="line">            backtracking(charactor + <span class="string">')'</span>, left, right + <span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    backtracking(<span class="string">''</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="分治（Divide-and-Conquer）-1"><a href="#分治（Divide-and-Conquer）-1" class="headerlink" title="分治（Divide and Conquer）"></a>分治（Divide and Conquer）</h2><h2 id="回溯（Backtracking）-1"><a href="#回溯（Backtracking）-1" class="headerlink" title="回溯（Backtracking）"></a>回溯（Backtracking）</h2><ol>
+<li></li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/generate-parentheses/">LC22: 括号生成</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">n</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">string[]</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> generateParenthesis = <span class="keyword">function</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> result = []</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">backtracking</span>(<span class="params">charactor = <span class="string">&#x27;&#x27;</span>, left = <span class="number">0</span>, right = <span class="number">0</span></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (charactor.<span class="property">length</span> === <span class="number">2</span> * n) &#123;</span><br><span class="line">            result.<span class="title function_">push</span>(charactor)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (left &lt; n) &#123;</span><br><span class="line">            <span class="title function_">backtracking</span>(charactor + <span class="string">&#x27;(&#x27;</span>, left + <span class="number">1</span>, right)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) &#123;</span><br><span class="line">            <span class="title function_">backtracking</span>(charactor + <span class="string">&#x27;)&#x27;</span>, left, right + <span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">backtracking</span>(<span class="string">&#x27;&#x27;</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>使用两个 if 判断是否可以添加左右括号。不满足 if 的则为无效表达式</li>
 <li>使用 charactor 表示当前变量。</li>
 </ul>
-<h3 id="回溯模板"><a href="#回溯模板" class="headerlink" title="回溯模板"></a>回溯模板</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">backtrack</span>(<span class="params">candiate</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> findSolution(candiate) &#123;</span><br><span class="line">        outPut(candiate)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (nextCandidate <span class="keyword">in</span> listOfCandiate) &#123;</span><br><span class="line">        <span class="keyword">if</span> (is_validate(nextCandidate)) &#123;</span><br><span class="line">            place(nextCandidate)</span><br><span class="line">            backtrack(nextCandidate)</span><br><span class="line">            remove(nextCandidate)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="回溯模板"><a href="#回溯模板" class="headerlink" title="回溯模板"></a>回溯模板</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">backtrack</span>(<span class="params">candiate</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="title function_">findSolution</span>(<span class="params">candiate</span>) &#123;</span><br><span class="line">        <span class="title function_">outPut</span>(candiate)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (nextCandidate <span class="keyword">in</span> listOfCandiate) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_">is_validate</span>(nextCandidate)) &#123;</span><br><span class="line">            <span class="title function_">place</span>(nextCandidate)</span><br><span class="line">            <span class="title function_">backtrack</span>(nextCandidate)</span><br><span class="line">            <span class="title function_">remove</span>(nextCandidate)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>相关习题：</p>
 <ul>
-<li><a href="https://leetcode-cn.com/problems/validate-binary-search-tree/" target="_blank" rel="noopener">98. 验证二叉搜索树</a></li>
-<li><a href="https://leetcode-cn.com/problems/fibonacci-number/" target="_blank" rel="noopener">509. Fibonacci Number</a></li>
-<li><a href="https://leetcode-cn.com/problems/generate-parentheses/" target="_blank" rel="noopener">22. 括号生成</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/validate-binary-search-tree/">98. 验证二叉搜索树</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/fibonacci-number/">509. Fibonacci Number</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/generate-parentheses/">22. 括号生成</a></li>
 </ul>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+
     
   </div>
 

@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/209ba9a496ff4151b9ecc944530f7479_image.png">
 <meta property="og:image" content="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/d68253f134734937857e25822cda5c9c_image.png">
 <meta property="article:published_time" content="2022-10-14T13:00:15.000Z">
-<meta property="article:modified_time" content="2022-10-24T13:05:05.489Z">
+<meta property="article:modified_time" content="2024-08-15T14:54:44.782Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/ae9c05f4b59605cecf83cfd3b3aea5c5.png">
@@ -113,8 +113,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
 
@@ -126,7 +125,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#uni-app-打包-iOS-篇"><span class="toc-text">uni-app 打包 - iOS 篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#环境准备"><span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step1：应用-ID-的申请"><span class="toc-text">Step1：应用 ID 的申请</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step2：生成证书请求文件"><span class="toc-text">Step2：生成证书请求文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step3：开发-Development-证书"><span class="toc-text">Step3：开发(Development)证书</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step4：描述文件"><span class="toc-text">Step4：描述文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-UDID-设备标识的获取"><span class="toc-text">4.1 UDID 设备标识的获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-添加调试设备"><span class="toc-text">4.2 添加调试设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-申请开发描述（profile）文件"><span class="toc-text">4.3 申请开发描述（profile）文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step5：如何添加调试设备？"><span class="toc-text">Step5：如何添加调试设备？</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#uni-app-%E6%89%93%E5%8C%85-iOS-%E7%AF%87"><span class="toc-text">uni-app 打包 - iOS 篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step1%EF%BC%9A%E5%BA%94%E7%94%A8-ID-%E7%9A%84%E7%94%B3%E8%AF%B7"><span class="toc-text">Step1：应用 ID 的申请</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step2%EF%BC%9A%E7%94%9F%E6%88%90%E8%AF%81%E4%B9%A6%E8%AF%B7%E6%B1%82%E6%96%87%E4%BB%B6"><span class="toc-text">Step2：生成证书请求文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step3%EF%BC%9A%E5%BC%80%E5%8F%91-Development-%E8%AF%81%E4%B9%A6"><span class="toc-text">Step3：开发(Development)证书</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step4%EF%BC%9A%E6%8F%8F%E8%BF%B0%E6%96%87%E4%BB%B6"><span class="toc-text">Step4：描述文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-UDID-%E8%AE%BE%E5%A4%87%E6%A0%87%E8%AF%86%E7%9A%84%E8%8E%B7%E5%8F%96"><span class="toc-text">4.1 UDID 设备标识的获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E6%B7%BB%E5%8A%A0%E8%B0%83%E8%AF%95%E8%AE%BE%E5%A4%87"><span class="toc-text">4.2 添加调试设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E7%94%B3%E8%AF%B7%E5%BC%80%E5%8F%91%E6%8F%8F%E8%BF%B0%EF%BC%88profile%EF%BC%89%E6%96%87%E4%BB%B6"><span class="toc-text">4.3 申请开发描述（profile）文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step5%EF%BC%9A%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E8%B0%83%E8%AF%95%E8%AE%BE%E5%A4%87%EF%BC%9F"><span class="toc-text">Step5：如何添加调试设备？</span></a></li></ol>
   </div>
 
 
@@ -177,7 +176,7 @@ ga('send', 'pageview');
 <li>Hbuilder 下载</li>
 <li>苹果开发者账号，并且加入 iOS Developer Program，我们的团队是 <strong>Wide Area Mingdao Digital Technology</strong>。告知后，Apple 会像你的邮箱发送一封邀请邮件（需要等一下 or 在垃圾邮箱、广告里多看看）。</li>
 </ol>
-<h1 id="Step1：应用-ID-的申请"><a href="#Step1：应用-ID-的申请" class="headerlink" title="Step1：应用 ID 的申请"></a>Step1：应用 ID 的申请</h1><p><font color="red">App ID = 应用 ID =  Identifier = Bundle ID </font></p>
+<h1 id="Step1：应用-ID-的申请"><a href="#Step1：应用-ID-的申请" class="headerlink" title="Step1：应用 ID 的申请"></a>Step1：应用 ID 的申请</h1><p><font color="red">App ID &#x3D; 应用 ID &#x3D;  Identifier &#x3D; Bundle ID </font></p>
 <img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/ae9c05f4b59605cecf83cfd3b3aea5c5.png">
 
 <p><strong>下一步 👇</strong></p>
@@ -196,7 +195,7 @@ ga('send', 'pageview');
 <p>打开创建请求证书页面，在页面中输入用户邮件地址(Apple 邮箱即可)、常用名称，选择<font color="red">存储到磁盘</font>，点击继续：</p>
 <img width="400px" src="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/b7af4b7ccbf74762b47c67e344308cc1_image.png">
 
-<p>文件名称为“<strong><font color="green">CertificateSigningRequest.certSigningRequest</font></strong>”，选择保存位置，点击 「存储」 将证书请求文件保存到指定路径下，后面申请开发(Development)证书和发布(Production)证书时需要用到。</p>
+<p>文件名称为“**<font color="green">CertificateSigningRequest.certSigningRequest</font>**”，选择保存位置，点击 「存储」 将证书请求文件保存到指定路径下，后面申请开发(Development)证书和发布(Production)证书时需要用到。</p>
 <img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/0b6a336b56624d306da7625099a3db51.png">
 
 <h1 id="Step3：开发-Development-证书"><a href="#Step3：开发-Development-证书" class="headerlink" title="Step3：开发(Development)证书"></a>Step3：开发(Development)证书</h1><p><font color="red">certficicate </font></p>
@@ -213,13 +212,13 @@ ga('send', 'pageview');
 
 <img width="400px" src="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/8cc7f62f865142ad95081925f4d5ebd6_image.png">
 
-<p>如果无法选中 P12 格式的，可以参考这篇文章解决：<a href="https://blog.csdn.net/weixin_44237029/article/details/120560958" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44237029/article/details/120560958</a></p>
+<p>如果无法选中 P12 格式的，可以参考这篇文章解决：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44237029/article/details/120560958">https://blog.csdn.net/weixin_44237029/article/details/120560958</a></p>
 <p>接下来，输入密码以及确认密码（这个过程有点像 https 的加签 ）</p>
 <img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/7a1a08323e9216f2347911e5773e3b23.png">
 
 <h1 id="Step4：描述文件"><a href="#Step4：描述文件" class="headerlink" title="Step4：描述文件"></a>Step4：描述文件</h1><p>Profile 文件，用以证书 + 调试设备的描述</p>
 <h2 id="4-1-UDID-设备标识的获取"><a href="#4-1-UDID-设备标识的获取" class="headerlink" title="4.1 UDID 设备标识的获取"></a>4.1 UDID 设备标识的获取</h2><p>填写设备名称 和 UDID（设备标识）：</p>
-<p>UDID 可以通过 <strong>蒲公英提供的网址获取：</strong> <a href="https://www.pgyer.com/tools/udid" target="_blank" rel="noopener">https://www.pgyer.com/tools/udid</a><br><img width="400px" src="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/0f75a7c11e5d4f3dbf0ee809c5ac6660_wecom-temp-203381-f08a572b44c2594800a3ca8f19b69e97.jpg"></p>
+<p>UDID 可以通过 <strong>蒲公英提供的网址获取：</strong> <a target="_blank" rel="noopener" href="https://www.pgyer.com/tools/udid">https://www.pgyer.com/tools/udid</a><br><img width="400px" src="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/0f75a7c11e5d4f3dbf0ee809c5ac6660_wecom-temp-203381-f08a572b44c2594800a3ca8f19b69e97.jpg"></p>
 <p>点击下载描述文件后到 设置-&gt; 已下载描述文件选择信任。信任之后再打开蒲公英网址即可。</p>
 <h2 id="4-2-添加调试设备"><a href="#4-2-添加调试设备" class="headerlink" title="4.2 添加调试设备"></a>4.2 添加调试设备</h2><p>在证书管理页面选择「Devices」，可查看到已添加的所有设备信息，点击页面上的加号来添加一个新设备：</p>
 <img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/78882f6762f85cd392a69e0cea3fb7e1.png">
@@ -245,7 +244,7 @@ ga('send', 'pageview');
 <p>点击「Download」下载保存开发描述文件（文件后缀为 .mobileprovision）<br><img width="400px" src="https://img-cdn-tc.dcloud.net.cn/uploads/article/20191112/bbdbd61cb97195384e28098298e9d949.png"></p>
 <h1 id="Step5：如何添加调试设备？"><a href="#Step5：如何添加调试设备？" class="headerlink" title="Step5：如何添加调试设备？"></a>Step5：如何添加调试设备？</h1><p>添加调试设备实际上是对描述文件的更新，添加 Device 之后，在对 Profile 文件进行更新。<br><img width="400px" src="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/209ba9a496ff4151b9ecc944530f7479_image.png"></p>
 <img width="400px" src="https://tce-1304962210.cos.ap-chongqing.myqcloud.com/tce-kbms/kbms-prod/d68253f134734937857e25822cda5c9c_image.png">
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+
     
   </div>
 

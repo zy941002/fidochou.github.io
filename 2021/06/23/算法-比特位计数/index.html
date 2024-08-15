@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://jocolorful.com/images/Brian-Kernighan.jpeg">
 <meta property="article:published_time" content="2021-06-23T01:37:09.000Z">
-<meta property="article:modified_time" content="2022-03-28T00:54:19.322Z">
+<meta property="article:modified_time" content="2024-08-15T14:54:44.806Z">
 <meta property="article:author" content="Jojo">
 <meta property="article:tag" content="位运算 动态规划">
 <meta name="twitter:card" content="summary">
@@ -91,8 +91,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
 
@@ -104,7 +103,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法一：Brian-Kernighan-算法"><span class="toc-text">方法一：Brian Kernighan 算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法二：dp-最高有效位"><span class="toc-text">方法二：dp 最高有效位</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9ABrian-Kernighan-%E7%AE%97%E6%B3%95"><span class="toc-text">方法一：Brian Kernighan 算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9Adp-%E6%9C%80%E9%AB%98%E6%9C%89%E6%95%88%E4%BD%8D"><span class="toc-text">方法二：dp 最高有效位</span></a></li></ol>
   </div>
 
 
@@ -150,16 +149,16 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p><a href="https://leetcode-cn.com/problems/counting-bits/" target="_blank" rel="noopener">LC338: 比特位计数</a></p>
-<h2 id="方法一：Brian-Kernighan-算法"><a href="#方法一：Brian-Kernighan-算法" class="headerlink" title="方法一：Brian Kernighan 算法"></a>方法一：Brian Kernighan 算法</h2><a id="more"></a>
+      <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/counting-bits/">LC338: 比特位计数</a></p>
+<h2 id="方法一：Brian-Kernighan-算法"><a href="#方法一：Brian-Kernighan-算法" class="headerlink" title="方法一：Brian Kernighan 算法"></a>方法一：Brian Kernighan 算法</h2><span id="more"></span>
 <p>算法：对任何一个数 n，n &amp; ( n − 1 ) 的结果是 n 的比特位<font color="red">最右端的 1 </font>变为 0。</p>
-<p>例如，n = 12 , n − 1 = 11 , 11 &amp; 12 = 8 </p>
+<p>例如，n &#x3D; 12 , n − 1 &#x3D; 11 , 11 &amp; 12 &#x3D; 8 </p>
 <center><img src="/images/Brian-Kernighan.jpeg" width="600px" /></center>
 
 <p>解释：结果 8 的 2 进制中，右边第三位为 1，因此经过 「Brian Kernighan」计算变为了 0</p>
 <p>因此只要重复计算对 n 进行重复计算, 直到 n 为 0，其中操作的次数，即为 1 的个数</p>
 <p>伪代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while (n &gt; 0)</span><br><span class="line">  n &#x3D; n &amp; (n - 1)</span><br><span class="line">  count ++</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while (n &gt; 0)</span><br><span class="line">  n = n &amp; (n - 1)</span><br><span class="line">  count ++</span><br></pre></td></tr></table></figure>
 
 <p><strong>位运算：妙不可言！</strong></p>
 <h2 id="方法二：dp-最高有效位"><a href="#方法二：dp-最高有效位" class="headerlink" title="方法二：dp 最高有效位"></a>方法二：dp 最高有效位</h2><p>最高有效位：对于正整数 x 而言，如果存在最大的正整数满足： </p>
@@ -167,16 +166,16 @@ ga('send', 'pageview');
 <p>则称 y 为 x 的最高有效位。</p>
 <p>最高有效位的特性包括：</p>
 <ul>
-<li>最高位是 1，其余位均为 0，因此 y &amp; (y - 1) = 0</li>
+<li>最高位是 1，其余位均为 0，因此 y &amp; (y - 1) &#x3D; 0</li>
 </ul>
-<p>如何判断一个正整数是不是 2 的整数次幂，可以利用方法一提到的位与运算的性质，如果正整数 y 是 2的整数次幂，则 y 的二进制中只有最高位是 1，其余为 0.<br>因此当且仅当 <code>y &amp; (y - 1)  = 0</code>， y 为 2 的整数次幂</p>
+<p>如何判断一个正整数是不是 2 的整数次幂，可以利用方法一提到的位与运算的性质，如果正整数 y 是 2的整数次幂，则 y 的二进制中只有最高位是 1，其余为 0.<br>因此当且仅当 <code>y &amp; (y - 1)  = 0 </code>， y 为 2 的整数次幂</p>
 <p>对于题目</p>
 <ul>
-<li>如果 i &amp; (i - 1) = 0，则令 highBit =i，更新当前的最高有效位</li>
+<li>如果 i &amp; (i - 1) &#x3D; 0，则令 highBit &#x3D;i，更新当前的最高有效位</li>
 <li>i 比 i - highBit 的「一比特数」多 1，由于是从小到大遍历每个整数，因此遍历到 i 时，i − highBit 的「一比特数」已知。</li>
 </ul>
 <p>看不懂 QAQ</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+
     
   </div>
 

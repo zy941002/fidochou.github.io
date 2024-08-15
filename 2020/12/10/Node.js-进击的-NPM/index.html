@@ -24,7 +24,7 @@
 <meta property="og:description" content="NPM2优点：完整的依赖拓扑图缺点：很暴力，重复依赖">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-10T02:10:00.000Z">
-<meta property="article:modified_time" content="2022-09-13T01:12:24.340Z">
+<meta property="article:modified_time" content="2024-08-15T14:54:44.780Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -88,8 +88,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
 
@@ -101,7 +100,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM2"><span class="toc-text">NPM2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM3"><span class="toc-text">NPM3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM4"><span class="toc-text">NPM4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM5"><span class="toc-text">NPM5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#lockfile"><span class="toc-text">lockfile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cache-优化"><span class="toc-text">cache 优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件下载优化"><span class="toc-text">文件下载优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npx"><span class="toc-text">npx</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM6"><span class="toc-text">NPM6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM7"><span class="toc-text">NPM7</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#breaking-Changes"><span class="toc-text">breaking Changes</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM2"><span class="toc-text">NPM2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM3"><span class="toc-text">NPM3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM4"><span class="toc-text">NPM4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM5"><span class="toc-text">NPM5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#lockfile"><span class="toc-text">lockfile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cache-%E4%BC%98%E5%8C%96"><span class="toc-text">cache 优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%BC%98%E5%8C%96"><span class="toc-text">文件下载优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npx"><span class="toc-text">npx</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM6"><span class="toc-text">NPM6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NPM7"><span class="toc-text">NPM7</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#breaking-Changes"><span class="toc-text">breaking Changes</span></a></li></ol></li></ol>
   </div>
 
 
@@ -148,7 +147,7 @@ ga('send', 'pageview');
   <div class="article-content">
     
       <h1 id="NPM2"><a href="#NPM2" class="headerlink" title="NPM2"></a>NPM2</h1><p>优点：完整的依赖拓扑图<br>缺点：很暴力，重复依赖</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h1 id="NPM3"><a href="#NPM3" class="headerlink" title="NPM3"></a>NPM3</h1><p>公共依赖提升，但是由于下载顺序问题，最极端情况下还是 npm2，并不能完全解决依赖重复</p>
 <h1 id="NPM4"><a href="#NPM4" class="headerlink" title="NPM4"></a>NPM4</h1><p>npm-shrinkwrap.json 被认为是完整的安装清单，但是 npm2 就有 npm-shrinkwrap.json</p>
@@ -190,7 +189,7 @@ ga('send', 'pageview');
 <li>发包模块不包含 lock 文件</li>
 <li>install 时默认 –save，除非使用 –no-save</li>
 </ol>
-<h2 id="npx"><a href="#npx" class="headerlink" title="npx"></a>npx</h2><p>npx 一个随着 npm 5.2.0 发布的命令，会帮你执行依赖包里的二进制文件。比如对于没有全局安装的命令你想执行的话就只能 ./node_modules/.bin/webpack -v，有 npx 之后就可以直接使用 npx webpack -v。</p>
+<h2 id="npx"><a href="#npx" class="headerlink" title="npx"></a>npx</h2><p>npx 一个随着 npm 5.2.0 发布的命令，会帮你执行依赖包里的二进制文件。比如对于没有全局安装的命令你想执行的话就只能 .&#x2F;node_modules&#x2F;.bin&#x2F;webpack -v，有 npx 之后就可以直接使用 npx webpack -v。</p>
 <h1 id="NPM6"><a href="#NPM6" class="headerlink" title="NPM6"></a>NPM6</h1><p>解决安全相关问题</p>
 <p>npm audit：这个命令本地试过，但是貌似已经没撒用了 🤔</p>
 <h1 id="NPM7"><a href="#NPM7" class="headerlink" title="NPM7"></a>NPM7</h1><ol>
@@ -202,8 +201,8 @@ ga('send', 'pageview');
 <li>npx 被「npm exec」重写</li>
 </ol>
 <p>相关文章</p>
-<p><a href="https://github.com/Kimi-Gao/Program-Blog/issues/112" target="_blank" rel="noopener">npm@5 新特性使用指南</a><br><a href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905" target="_blank" rel="noopener">Announcing npm@6</a><br><a href="https://blog.npmjs.org/post/173239798780/beyond-npm6-the-future-of-the-npm-cli" target="_blank" rel="noopener">npm blog V6</a><br><a href="https://blog.npmjs.org/post/626173315965468672/npm-v7-series-beta-release-and-semver-major" target="_blank" rel="noopener">npm blog V7</a><br><a href="https://www.youtube.com/watch?v=7gFaBjY7fHs" target="_blank" rel="noopener">Youtube: V7 Released</a></p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<p><a target="_blank" rel="noopener" href="https://github.com/Kimi-Gao/Program-Blog/issues/112">npm@5 新特性使用指南</a><br><a target="_blank" rel="noopener" href="https://medium.com/npm-inc/announcing-npm-6-5d0b1799a905">Announcing npm@6</a><br><a target="_blank" rel="noopener" href="https://blog.npmjs.org/post/173239798780/beyond-npm6-the-future-of-the-npm-cli">npm blog V6</a><br><a target="_blank" rel="noopener" href="https://blog.npmjs.org/post/626173315965468672/npm-v7-series-beta-release-and-semver-major">npm blog V7</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=7gFaBjY7fHs">Youtube: V7 Released</a></p>
+
     
   </div>
 

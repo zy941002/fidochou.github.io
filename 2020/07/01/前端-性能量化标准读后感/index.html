@@ -24,7 +24,7 @@
 <meta property="og:description" content="祭出原 issue 👉 前端性能量化标准 它正在发生吗？">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-01T08:19:22.000Z">
-<meta property="article:modified_time" content="2022-09-09T09:58:19.439Z">
+<meta property="article:modified_time" content="2024-08-15T14:54:44.791Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -88,8 +88,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
 
@@ -101,7 +100,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#它正在发生吗？"><span class="toc-text">它正在发生吗？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#它是否有用？"><span class="toc-text">它是否有用？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#它是否令人愉快的"><span class="toc-text">它是否令人愉快的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#它是否可用-？"><span class="toc-text">它是否可用 ？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思考"><span class="toc-text">思考</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%83%E6%AD%A3%E5%9C%A8%E5%8F%91%E7%94%9F%E5%90%97%EF%BC%9F"><span class="toc-text">它正在发生吗？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%83%E6%98%AF%E5%90%A6%E6%9C%89%E7%94%A8%EF%BC%9F"><span class="toc-text">它是否有用？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%83%E6%98%AF%E5%90%A6%E4%BB%A4%E4%BA%BA%E6%84%89%E5%BF%AB%E7%9A%84"><span class="toc-text">它是否令人愉快的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%83%E6%98%AF%E5%90%A6%E5%8F%AF%E7%94%A8-%EF%BC%9F"><span class="toc-text">它是否可用 ？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-text">思考</span></a></li></ol>
   </div>
 
 
@@ -147,8 +146,8 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p>祭出原 issue 👉 <a href="https://github.com/frontend9/fe9-library/issues/7" target="_blank" rel="noopener">前端性能量化标准</a></p>
-<h1 id="它正在发生吗？"><a href="#它正在发生吗？" class="headerlink" title="它正在发生吗？"></a>它正在发生吗？</h1><a id="more"></a>
+      <p>祭出原 issue 👉 <a target="_blank" rel="noopener" href="https://github.com/frontend9/fe9-library/issues/7">前端性能量化标准</a></p>
+<h1 id="它正在发生吗？"><a href="#它正在发生吗？" class="headerlink" title="它正在发生吗？"></a>它正在发生吗？</h1><span id="more"></span>
 
 <p>FP：First paint 第一个像素绘制时间<br>FCP：First Content paint 首次内容绘制时间</p>
 <ol>
@@ -158,7 +157,7 @@ ga('send', 'pageview');
 </li>
 </ol>
 <h1 id="它是否有用？"><a href="#它是否有用？" class="headerlink" title="它是否有用？"></a>它是否有用？</h1><p>FMP： First meaningful paint<br>hero element timing</p>
-<p>Lighthouse 使用的算法是：页面绘制布局「变化」最大的那次绘制（根据 页面高度/屏幕高度 调节权重）</p>
+<p>Lighthouse 使用的算法是：页面绘制布局「变化」最大的那次绘制（根据 页面高度&#x2F;屏幕高度 调节权重）</p>
 <h1 id="它是否令人愉快的"><a href="#它是否令人愉快的" class="headerlink" title="它是否令人愉快的"></a>它是否令人愉快的</h1><p>Long tasks。</p>
 <p>JS 线程与 GUI 线程互斥。JS 如果在执行，那么渲染线程就会被阻塞。如果一个 LT 超过 50 ms ，就说明这个线程有问题。</p>
 <h1 id="它是否可用-？"><a href="#它是否可用-？" class="headerlink" title="它是否可用 ？"></a>它是否可用 ？</h1><p>TTI：Time to interactive（页面已经渲染并且可以响应用户交互）。不能响应用户的原因有：</p>
@@ -168,7 +167,7 @@ ga('send', 'pageview');
 </ol>
 <h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>当然这片文章还提出了一些优化策略，优化过程应该是一个全链路的解决方案。</p>
 <p>关于测量标准记录这些，策略手段我想我的学习清单又是一篇长笔记！</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+
     
   </div>
 

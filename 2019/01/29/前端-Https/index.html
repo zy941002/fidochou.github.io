@@ -24,7 +24,7 @@
 <meta property="og:description" content="HTTPSHttp 和 TCP 之间多了一层(SSL&#x2F;TLS)">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-01-29T04:46:47.000Z">
-<meta property="article:modified_time" content="2022-09-09T10:03:29.463Z">
+<meta property="article:modified_time" content="2024-08-15T14:54:44.783Z">
 <meta property="article:author" content="Jojo">
 <meta name="twitter:card" content="summary">
 
@@ -88,8 +88,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
 
@@ -101,7 +100,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS"><span class="toc-text">HTTPS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#加密"><span class="toc-text">加密</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对称加密"><span class="toc-text">对称加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非对称加密"><span class="toc-text">非对称加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#散列加密"><span class="toc-text">散列加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CA-证书"><span class="toc-text">CA 证书</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-延迟因素"><span class="toc-text">HTTP 延迟因素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#带宽"><span class="toc-text">带宽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#延迟"><span class="toc-text">延迟</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP1-1"><span class="toc-text">HTTP1.1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存"><span class="toc-text">缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带宽优化以及网络连接的使用"><span class="toc-text">带宽优化以及网络连接的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误通知的管理"><span class="toc-text">错误通知的管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Host处理："><span class="toc-text">Host处理：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#长连接（PersistentConnection）Pipelining。"><span class="toc-text">长连接（PersistentConnection）Pipelining。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP1-0-和-1-1-现存的一些问题"><span class="toc-text">HTTP1.0 和 1.1 现存的一些问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SPDY：HTTP1-x的优化"><span class="toc-text">SPDY：HTTP1.x的优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#多路复用（Multiplexing）"><span class="toc-text">多路复用（Multiplexing）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#请求优先级（request-Prioritization）"><span class="toc-text">请求优先级（request Prioritization）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Header压缩：（Compression）"><span class="toc-text">Header压缩：（Compression）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全"><span class="toc-text">安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务端推送（Server-Push）"><span class="toc-text">服务端推送（Server Push）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP2-0-的升级改造"><span class="toc-text">HTTP2.0 的升级改造</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#头部压缩"><span class="toc-text">头部压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全-1"><span class="toc-text">安全</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP3（OUIC）"><span class="toc-text">HTTP3（OUIC）</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS"><span class="toc-text">HTTPS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86"><span class="toc-text">加密</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="toc-text">对称加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="toc-text">非对称加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%A3%E5%88%97%E5%8A%A0%E5%AF%86"><span class="toc-text">散列加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CA-%E8%AF%81%E4%B9%A6"><span class="toc-text">CA 证书</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-%E5%BB%B6%E8%BF%9F%E5%9B%A0%E7%B4%A0"><span class="toc-text">HTTP 延迟因素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%A6%E5%AE%BD"><span class="toc-text">带宽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%B6%E8%BF%9F"><span class="toc-text">延迟</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP1-1"><span class="toc-text">HTTP1.1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98"><span class="toc-text">缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%A6%E5%AE%BD%E4%BC%98%E5%8C%96%E4%BB%A5%E5%8F%8A%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">带宽优化以及网络连接的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E9%80%9A%E7%9F%A5%E7%9A%84%E7%AE%A1%E7%90%86"><span class="toc-text">错误通知的管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Host%E5%A4%84%E7%90%86%EF%BC%9A"><span class="toc-text">Host处理：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%BF%E8%BF%9E%E6%8E%A5%EF%BC%88PersistentConnection%EF%BC%89Pipelining%E3%80%82"><span class="toc-text">长连接（PersistentConnection）Pipelining。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP1-0-%E5%92%8C-1-1-%E7%8E%B0%E5%AD%98%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-text">HTTP1.0 和 1.1 现存的一些问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SPDY%EF%BC%9AHTTP1-x%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-text">SPDY：HTTP1.x的优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%EF%BC%88Multiplexing%EF%BC%89"><span class="toc-text">多路复用（Multiplexing）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%88request-Prioritization%EF%BC%89"><span class="toc-text">请求优先级（request Prioritization）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Header%E5%8E%8B%E7%BC%A9%EF%BC%9A%EF%BC%88Compression%EF%BC%89"><span class="toc-text">Header压缩：（Compression）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8"><span class="toc-text">安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8E%A8%E9%80%81%EF%BC%88Server-Push%EF%BC%89"><span class="toc-text">服务端推送（Server Push）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP2-0-%E7%9A%84%E5%8D%87%E7%BA%A7%E6%94%B9%E9%80%A0"><span class="toc-text">HTTP2.0 的升级改造</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%B4%E9%83%A8%E5%8E%8B%E7%BC%A9"><span class="toc-text">头部压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8-1"><span class="toc-text">安全</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP3%EF%BC%88OUIC%EF%BC%89"><span class="toc-text">HTTP3（OUIC）</span></a></li></ol>
   </div>
 
 
@@ -147,23 +146,23 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <h1 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h1><p>Http 和 TCP 之间多了一层(SSL/TLS)</p>
-<a id="more"></a>
-<h1 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h1><h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><p>将加密的 内容 + 钥匙 都发送给对方，如：（DES/AES）</p>
-<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><p>生成一对密钥 (k1, k2)，公/私钥匙<br>凡是 k1 加密的数据，k1 自身不能解密，而需要 k2 才能解密；<br>凡是 k2 加密的数据，k2 不能解密，需要 k1 才能解密。<br>如：(RSA、DSA)</p>
-<h2 id="散列加密"><a href="#散列加密" class="headerlink" title="散列加密"></a>散列加密</h2><p>SHA-1、MD5 (128 bit)<br>HTTPS把对称加密、非对称加密和 CA 结合起来以保证数据安全。如果想对对称加密和非对称加密以及 SSL/TLS 要更多了解可以参考下面两篇文章：</p>
+      <h1 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h1><p>Http 和 TCP 之间多了一层(SSL&#x2F;TLS)</p>
+<span id="more"></span>
+<h1 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h1><h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><p>将加密的 内容 + 钥匙 都发送给对方，如：（DES&#x2F;AES）</p>
+<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><p>生成一对密钥 (k1, k2)，公&#x2F;私钥匙<br>凡是 k1 加密的数据，k1 自身不能解密，而需要 k2 才能解密；<br>凡是 k2 加密的数据，k2 不能解密，需要 k1 才能解密。<br>如：(RSA、DSA)</p>
+<h2 id="散列加密"><a href="#散列加密" class="headerlink" title="散列加密"></a>散列加密</h2><p>SHA-1、MD5 (128 bit)<br>HTTPS把对称加密、非对称加密和 CA 结合起来以保证数据安全。如果想对对称加密和非对称加密以及 SSL&#x2F;TLS 要更多了解可以参考下面两篇文章：</p>
 <h2 id="CA-证书"><a href="#CA-证书" class="headerlink" title="CA 证书"></a>CA 证书</h2><p>解决公钥、godaddy</p>
 <h1 id="HTTP-延迟因素"><a href="#HTTP-延迟因素" class="headerlink" title="HTTP 延迟因素"></a>HTTP 延迟因素</h1><p>影响 Http 的因素主要有两个：</p>
 <h2 id="带宽"><a href="#带宽" class="headerlink" title="带宽"></a>带宽</h2><p>这个是无法解决的</p>
 <h2 id="延迟"><a href="#延迟" class="headerlink" title="延迟"></a>延迟</h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/Head-of-line_blocking" target="_blank" rel="noopener">HOL 浏览器的阻塞</a>，基于同一个域名，超过最大请求连接个数，请求会被阻塞。<ol>
-<li>HTTP/1.1 中 HOL 阻塞的一种形式是当浏览器中允许的<font color="red">并行请求数量用完时</font>，后续请求需要等待前一个请求完成。</li>
-<li>HTTP/2 通过<font color="red">多路复用</font>解决了这个问题，在应用层消除了 HOL 阻塞，但在传输 (TCP) 层仍然存在 HOL。</li>
-<li>HTTP/3 使用 QUIC 而不是 TCP 它消除了传输层中的 HOL 阻塞。</li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Head-of-line_blocking">HOL 浏览器的阻塞</a>，基于同一个域名，超过最大请求连接个数，请求会被阻塞。<ol>
+<li>HTTP&#x2F;1.1 中 HOL 阻塞的一种形式是当浏览器中允许的<font color="red">并行请求数量用完时</font>，后续请求需要等待前一个请求完成。</li>
+<li>HTTP&#x2F;2 通过<font color="red">多路复用</font>解决了这个问题，在应用层消除了 HOL 阻塞，但在传输 (TCP) 层仍然存在 HOL。</li>
+<li>HTTP&#x2F;3 使用 QUIC 而不是 TCP 它消除了传输层中的 HOL 阻塞。</li>
 </ol>
 </li>
 <li>DNS 的查询</li>
-<li>TCP 的建立：HTTP（1/2）是基于 TCP 协议的</li>
+<li>TCP 的建立：HTTP（1&#x2F;2）是基于 TCP 协议的</li>
 </ul>
 <h1 id="HTTP1-1"><a href="#HTTP1-1" class="headerlink" title="HTTP1.1"></a>HTTP1.1</h1><h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><ol>
 <li>HTTP1.0：If-Modified-Since，Expires</li>
@@ -182,12 +181,12 @@ ga('send', 'pageview');
 <li>header 内容过大</li>
 </ol>
 <h1 id="SPDY：HTTP1-x的优化"><a href="#SPDY：HTTP1-x的优化" class="headerlink" title="SPDY：HTTP1.x的优化"></a>SPDY：HTTP1.x的优化</h1><h2 id="多路复用（Multiplexing）"><a href="#多路复用（Multiplexing）" class="headerlink" title="多路复用（Multiplexing）"></a>多路复用（Multiplexing）</h2><p>二进制帧层（header + 数据体）多个请求 stream 共享一个tcp连接的方式，每个 stream 需携带一个 id（从应用层解决 HOL 问题，但 是TCP 层面没有解决，多个 stream 是串行）</p>
-<h2 id="请求优先级（request-Prioritization）"><a href="#请求优先级（request-Prioritization）" class="headerlink" title="请求优先级（request Prioritization）"></a>请求优先级（request Prioritization）</h2><p>多路复用：关键请求被阻塞。每个 request 设置优先级，比如浏览器加载首页，首页的 html 内容应该优先展示，之后才是各种静态资源文件，脚本文件等加载，保证用户看到网页内容。<br><a href="https://mp.weixin.qq.com/s/XKYWFzgiFizhTXdv2WmHlg" target="_blank" rel="noopener">Web 性能优化：控制关键请求的优先级</a></p>
+<h2 id="请求优先级（request-Prioritization）"><a href="#请求优先级（request-Prioritization）" class="headerlink" title="请求优先级（request Prioritization）"></a>请求优先级（request Prioritization）</h2><p>多路复用：关键请求被阻塞。每个 request 设置优先级，比如浏览器加载首页，首页的 html 内容应该优先展示，之后才是各种静态资源文件，脚本文件等加载，保证用户看到网页内容。<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/XKYWFzgiFizhTXdv2WmHlg">Web 性能优化：控制关键请求的优先级</a></p>
 <h2 id="Header压缩：（Compression）"><a href="#Header压缩：（Compression）" class="headerlink" title="Header压缩：（Compression）"></a>Header压缩：（Compression）</h2><p>前面提到 HTTP1.x 的 header 很多时候都是重复多余的选择合适的压缩算法可以减小包的大小和数量。</p>
 <h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><p>必须使用HTTPS的加密协议传输，大大提高了传输数据的可靠性。</p>
 <h2 id="服务端推送（Server-Push）"><a href="#服务端推送（Server-Push）" class="headerlink" title="服务端推送（Server Push）"></a>服务端推送（Server Push）</h2><p>采用了SPDY的网页，例如我的网页有一个 sytle.css 的请求，在客户端收到 sytle.css 数据的同时，服务端会将 sytle.js 的文件推送给客户端，当客户端再次尝试获取 sytle.js 时就可以直接从缓存中获取到，不用再发请求了。</p>
 <h1 id="HTTP2-0-的升级改造"><a href="#HTTP2-0-的升级改造" class="headerlink" title="HTTP2.0 的升级改造"></a>HTTP2.0 的升级改造</h1><p>HTTP2 多个请求可同时在一个连接上并行执行。某个请求任务耗时严重，不会影响到其它连接的正常执行；</p>
-<p>当你的网站已经升级HTTPS之后，那么升级HTTP2.0就简单很多。如果你使用NGINX，只要在配置文件中启动相应的协议就可以了<br>可以参考NGINX白皮书，<a href="https://www.nginx.com/blog/nginx-1-9-5/" target="_blank" rel="noopener">NGINX 配置 HTTP2.0官方指南</a></p>
+<p>当你的网站已经升级HTTPS之后，那么升级HTTP2.0就简单很多。如果你使用NGINX，只要在配置文件中启动相应的协议就可以了<br>可以参考NGINX白皮书，<a target="_blank" rel="noopener" href="https://www.nginx.com/blog/nginx-1-9-5/">NGINX 配置 HTTP2.0官方指南</a></p>
 <h2 id="头部压缩"><a href="#头部压缩" class="headerlink" title="头部压缩"></a>头部压缩</h2><p>HTT2：HPACK<br>SPDY：DEFLATE</p>
 <h2 id="安全-1"><a href="#安全-1" class="headerlink" title="安全"></a>安全</h2><p>非必需的 HTTPS的。主流浏览器：chrome，firefox 表示还是只支持基于 TLS 部署的 HTTP2.0协议。所以要想升级成 HTTP2.0 还是先升级 HTTPS 为好。</p>
 <h1 id="HTTP3（OUIC）"><a href="#HTTP3（OUIC）" class="headerlink" title="HTTP3（OUIC）"></a>HTTP3（OUIC）</h1><ol>
@@ -196,7 +195,7 @@ ga('send', 'pageview');
 <li>多路复用</li>
 <li>快速握手</li>
 </ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+
     
   </div>
 

@@ -24,7 +24,7 @@
 <meta property="og:description" content="What You Need to Know About React 18 自动的批量更新">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-23T07:29:35.000Z">
-<meta property="article:modified_time" content="2022-09-09T09:58:19.439Z">
+<meta property="article:modified_time" content="2024-08-15T14:54:44.785Z">
 <meta property="article:author" content="Jojo">
 <meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
@@ -89,8 +89,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
 
@@ -102,7 +101,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#自动的批量更新"><span class="toc-text">自动的批量更新</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#不需要批量更新"><span class="toc-text">不需要批量更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SSR-support-for-Suspense"><span class="toc-text">SSR support for Suspense</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Transition"><span class="toc-text">Transition</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E7%9A%84%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0"><span class="toc-text">自动的批量更新</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E9%9C%80%E8%A6%81%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0"><span class="toc-text">不需要批量更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SSR-support-for-Suspense"><span class="toc-text">SSR support for Suspense</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Transition"><span class="toc-text">Transition</span></a></li></ol>
   </div>
 
 
@@ -148,15 +147,15 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p><a href="https://javascript.plainenglish.io/what-you-need-to-know-about-react-18-54070f6bc4a1" target="_blank" rel="noopener">What You Need to Know About React 18</a></p>
-<h1 id="自动的批量更新"><a href="#自动的批量更新" class="headerlink" title="自动的批量更新"></a>自动的批量更新</h1><a id="more"></a>
+      <p><a target="_blank" rel="noopener" href="https://javascript.plainenglish.io/what-you-need-to-know-about-react-18-54070f6bc4a1">What You Need to Know About React 18</a></p>
+<h1 id="自动的批量更新"><a href="#自动的批量更新" class="headerlink" title="自动的批量更新"></a>自动的批量更新</h1><span id="more"></span>
 <p>批量更新：React 会尝试将同一上下文中触发的多个更新合并为一个好处是：</p>
 <ol>
 <li>避免页面重复渲染</li>
 <li>状态按顺序处理，不会出现竞争态问题，最终触发渲染的是异步流程。</li>
 </ol>
-<p>但值得注意的是，在一<font color="red">异步的方法回调</font>中，React 并不能进行批量更新。<br>（这里可以尝试用看似同步的方式调用 async/await 的调用，是什么效果）</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// this code will be re-render-twice</span></span><br><span class="line"><span class="keyword">const</span> handleClick =<span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">  fetch().then().catch(<span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">    setCount(<span class="function"><span class="params">c</span> =&gt;</span> c+<span class="number">1</span>)</span><br><span class="line">    setF(<span class="function"><span class="params">f</span>=&gt;</span> !f)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但值得注意的是，在一<font color="red">异步的方法回调</font>中，React 并不能进行批量更新。<br>（这里可以尝试用看似同步的方式调用 async&#x2F;await 的调用，是什么效果）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// this code will be re-render-twice</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">handleClick</span> =(<span class="params"></span>)=&gt; &#123;</span><br><span class="line">  <span class="title function_">fetch</span>().<span class="title function_">then</span>().<span class="title function_">catch</span>(<span class="function">()=&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">setCount</span>(<span class="function"><span class="params">c</span> =&gt;</span> c+<span class="number">1</span>)</span><br><span class="line">    <span class="title function_">setF</span>(<span class="function"><span class="params">f</span>=&gt;</span> !f)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>解释：React 的批量更新只在浏览器的 event 中生效（比如点击时间），但是上面的代码更新状态是事件已经处理完成，在 fetch 的回调中。<br>那么V18 以后，状态管理无论是在哪里，只会被更新一次。</p>
 <h2 id="不需要批量更新"><a href="#不需要批量更新" class="headerlink" title="不需要批量更新"></a>不需要批量更新</h2><p>使用 <code>flushSync</code> 去重新渲染组件</p>
@@ -168,20 +167,20 @@ ga('send', 'pageview');
 <li>在最后一步，客户端连接 JS 的逻辑和 HTML 绑定。（称之为：脱水）</li>
 </ol>
 <p>缺点：在下一步可以开始之前，整个应用程序的每个步骤都必须立即完成。这样会导致在初始化时加载时长变慢。</p>
-<p>React 18 中     <code>&lt;Suspense&gt;</code> 组件已经以这样的方式进行了革命性的变更：</p>
+<p>React 18 中 	<code>&lt;Suspense&gt;</code> 组件已经以这样的方式进行了革命性的变更：</p>
 <p>它将应用程序分解为更小的独立单元，这些单元再经历上面提及的每一部分。</p>
 <p>因此：这样一旦用户看到内容，都将是可交互的。</p>
 <h1 id="Transition"><a href="#Transition" class="headerlink" title="Transition"></a>Transition</h1><p>这是即将发布的令人难以置信的功能。它可以让用户解决大屏幕频繁更新的问题。<br>例如，考虑在过滤数据列表的输入字段中键入。您需要将字段的值存储在 state 中，以便您可以过滤数据并控制该输入字段的值。您的代码可能如下所示：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Update the input value and search results</span></span><br><span class="line">setSearchQuery(input)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Update the input value and search results</span></span><br><span class="line"><span class="title function_">setSearchQuery</span>(input)</span><br></pre></td></tr></table></figure>
 
 <p>在这里，每当用户键入一个字符时，我们都会更新输入值并使用新值来搜索列表并显示结果。</p>
 <p>对于大屏幕更新，这可能会导致页面在呈现所有内容时出现延迟，从而使打字或其他交互感觉缓慢且无响应。即使列表不是太长，列表项本身也可能很复杂，每次击键都不同，并且可能没有明确的方法来优化它们的呈现.</p>
 <p>从概念上讲，问题在于需要进行两种不同的更新。</p>
 <p>第一次是紧急更新，用于更改输入字段的值<br>第二个是显示搜索结果的不太紧急的更新</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; Urgent: Show what was typed</span><br><span class="line">setInputValue(input)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Not urgent: Show the results</span><br><span class="line">setSearchQuery(input)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// Urgent: Show what was typed</span><br><span class="line">setInputValue(input)</span><br><span class="line"></span><br><span class="line">// Not urgent: Show the results</span><br><span class="line">setSearchQuery(input)</span><br></pre></td></tr></table></figure>
 
 <p>新的 <code>startTransition</code> API 通过让您能够将更新标记为「过渡」来解决这个问题：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &#123; startTransition &#125; from &#39;react&#39;;</span><br><span class="line">&#x2F;&#x2F; Urgent: Show what was typed</span><br><span class="line">setInputValue(input);</span><br><span class="line">&#x2F;&#x2F; Mark any state updates inside as transitions</span><br><span class="line">startTransition(() &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; Transition: Show the results</span><br><span class="line">  setSearchQuery(input);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import &#123; startTransition &#125; from &#x27;react&#x27;;</span><br><span class="line">// Urgent: Show what was typed</span><br><span class="line">setInputValue(input);</span><br><span class="line">// Mark any state updates inside as transitions</span><br><span class="line">startTransition(() =&gt; &#123;</span><br><span class="line">  // Transition: Show the results</span><br><span class="line">  setSearchQuery(input);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
     
   </div>
 

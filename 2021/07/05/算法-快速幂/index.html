@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://jocolorful.com/images/%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E5%B9%8206.png">
 <meta property="og:image" content="http://jocolorful.com/images/%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E5%B9%8205.png">
 <meta property="article:published_time" content="2021-07-05T00:42:42.000Z">
-<meta property="article:modified_time" content="2022-03-28T00:54:35.346Z">
+<meta property="article:modified_time" content="2024-08-15T14:54:44.806Z">
 <meta property="article:author" content="Jojo">
 <meta property="article:tag" content="快速幂">
 <meta name="twitter:card" content="summary">
@@ -96,8 +96,7 @@ ga('send', 'pageview');
 
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Jojo's World" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
 
@@ -109,7 +108,7 @@ ga('send', 'pageview');
   
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#快速幂算法简介"><span class="toc-text">快速幂算法简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#二进制角度"><span class="toc-text">二进制角度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特殊情况：n-为-2-的幂，以-a-64-为例："><span class="toc-text">特殊情况：n 为 2 的幂，以 $a^64$ 为例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#n-不为-2-的幂，以-a-105-为例："><span class="toc-text">n 不为 2 的幂，以 $a^{105}$ 为例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算-a-n-mod-m"><span class="toc-text">计算 $a^n$ mod m</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#伪代码且以-7-105-为例："><span class="toc-text">伪代码且以 $7^{105}$ 为例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速幂-JS-代码"><span class="toc-text">快速幂 JS 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速幂-JS-代码-1"><span class="toc-text">快速幂 JS 代码</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%B9%82%E7%AE%97%E6%B3%95%E7%AE%80%E4%BB%8B"><span class="toc-text">快速幂算法简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%A7%92%E5%BA%A6"><span class="toc-text">二进制角度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5%EF%BC%9An-%E4%B8%BA-2-%E7%9A%84%E5%B9%82%EF%BC%8C%E4%BB%A5-a-64-%E4%B8%BA%E4%BE%8B%EF%BC%9A"><span class="toc-text">特殊情况：n 为 2 的幂，以 $a^64$ 为例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#n-%E4%B8%8D%E4%B8%BA-2-%E7%9A%84%E5%B9%82%EF%BC%8C%E4%BB%A5-a-105-%E4%B8%BA%E4%BE%8B%EF%BC%9A"><span class="toc-text">n 不为 2 的幂，以 $a^{105}$ 为例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97-a-n-mod-m"><span class="toc-text">计算 $a^n$ mod m</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%AA%E4%BB%A3%E7%A0%81%E4%B8%94%E4%BB%A5-7-105-%E4%B8%BA%E4%BE%8B%EF%BC%9A"><span class="toc-text">伪代码且以 $7^{105}$ 为例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%B9%82-JS-%E4%BB%A3%E7%A0%81"><span class="toc-text">快速幂 JS 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%B9%82-JS-%E4%BB%A3%E7%A0%81-1"><span class="toc-text">快速幂 JS 代码</span></a></li></ol></li></ol></li></ol>
   </div>
 
 
@@ -158,16 +157,16 @@ ga('send', 'pageview');
       <blockquote>
 <p>不会快速幂的我留下了超时的悔恨泪水</p>
 </blockquote>
-<p><a href="https://leetcode-cn.com/problems/count-good-numbers/" target="_blank" rel="noopener">统计好数字的数目</a></p>
-<p><a href="https://www.youtube.com/watch?v=GbDtCFhq20A" target="_blank" rel="noopener">快速幂：油管讲解</a></p>
-<a id="more"></a>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-good-numbers/">统计好数字的数目</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=GbDtCFhq20A">快速幂：油管讲解</a></p>
+<span id="more"></span>
 <h1 id="快速幂算法简介"><a href="#快速幂算法简介" class="headerlink" title="快速幂算法简介"></a>快速幂算法简介</h1><p>求 x^n 最简单的方法是通过循环将 n 个 x 乘起来，依次求 $x^1$, $x^2$, …, $x^{n-1}$, $x^n$ 时间复杂度为 O(n) 。</p>
 <p>快速幂法可将时间复杂度降低至 O(log n) ，以下从 「分治法」 和 「二进制」 两个角度解析快速幂法。</p>
 <h2 id="二进制角度"><a href="#二进制角度" class="headerlink" title="二进制角度"></a>二进制角度</h2><blockquote>
 <p>利用十进制数字 n 的二进制表示，可对快速幂进行数学化解释</p>
 </blockquote>
 <h3 id="特殊情况：n-为-2-的幂，以-a-64-为例："><a href="#特殊情况：n-为-2-的幂，以-a-64-为例：" class="headerlink" title="特殊情况：n 为 2 的幂，以 $a^64$ 为例："></a>特殊情况：n 为 2 的幂，以 $a^64$ 为例：</h3><blockquote>
-<p>其中 n = 64 为 2 的幂</p>
+<p>其中 n &#x3D; 64 为 2 的幂</p>
 </blockquote>
 <ol>
 <li>朴素算法进行逐个相乘：$a * a … * a$ (时间复杂度为 O(n))</li>
@@ -205,10 +204,10 @@ ga('send', 'pageview');
 </center>
 
 <h3 id="快速幂-JS-代码"><a href="#快速幂-JS-代码" class="headerlink" title="快速幂 JS 代码"></a>快速幂 JS 代码</h3><p>$a^n$ mod m</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pow</span>(<span class="params">a, n, m</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> usefulA = a % m</span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> (n) &#123;</span><br><span class="line">    <span class="keyword">if</span> (n &amp; <span class="number">1</span>) &#123;</span><br><span class="line">      result *= result % m</span><br><span class="line">    &#125;</span><br><span class="line">    usefulA *= usefulA % m</span><br><span class="line">    n &gt;&gt;&gt;= <span class="number">1</span>; </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">pow</span>(<span class="params">a, n, m</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> usefulA = a % m</span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> (n) &#123;</span><br><span class="line">    <span class="keyword">if</span> (n &amp; <span class="number">1</span>) &#123;</span><br><span class="line">      result *= result % m</span><br><span class="line">    &#125;</span><br><span class="line">    usefulA *= usefulA % m</span><br><span class="line">    n &gt;&gt;&gt;= <span class="number">1</span>; </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="快速幂-JS-代码-1"><a href="#快速幂-JS-代码-1" class="headerlink" title="快速幂 JS 代码"></a>快速幂 JS 代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> countGoodNumbers = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> mod = BigInt((<span class="number">1e+9</span>) + <span class="number">7</span>)</span><br><span class="line">    <span class="keyword">const</span> odd = <span class="built_in">Math</span>.ceil(n / <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">const</span> even = n / <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> pow(<span class="number">5</span>, odd, mod) * pow(<span class="number">4</span>, even, mod)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<h3 id="快速幂-JS-代码-1"><a href="#快速幂-JS-代码-1" class="headerlink" title="快速幂 JS 代码"></a>快速幂 JS 代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> countGoodNumbers = <span class="keyword">function</span> (<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> mod = <span class="title class_">BigInt</span>((<span class="number">1e+9</span>) + <span class="number">7</span>)</span><br><span class="line">    <span class="keyword">const</span> odd = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(n / <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">const</span> even = n / <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">pow</span>(<span class="number">5</span>, odd, mod) * <span class="title function_">pow</span>(<span class="number">4</span>, even, mod)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
     
   </div>
 
