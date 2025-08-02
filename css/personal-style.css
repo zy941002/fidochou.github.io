@@ -63,7 +63,7 @@ body {
   flex-direction: row;
   width: 100vw;
   height: 100vh;
-  background: url(https://img.zcool.cn/community/01c9905b858a3ca8012126ce7c37c0.jpg@1280w_1l_0o_100sh.jpg);
+  background: url(/images/bg.jpeg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
